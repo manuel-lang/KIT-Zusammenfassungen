@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{float}
+\usepackage{multicol}
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Karlsruhe Institute of Technology} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Neuronale Netze\\ Zusammenfassung SS17 % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+%\maketitle % Print the title
+%\newpage
+%\tableofcontents
+%\newpage
+
+\section{Rektifizierung}
+
+\begin{itemize}
+\item Nach Rektifizierung verlaufen alle Epipolarlinien horizontal mit derselben v-Koordinate wie der Bildpunkt im anderen Kamerabild. 
+\item Nach Korrespondenzen muss nur noch horizontal (in eine Richtung) gesucht werden.
+\end{itemize}
+
+\section{Lochkameramodell}
+
+\section{Histogramme}
+
+\section{Faltung}
+
+\section{Komplexes Spektrum zeichnen}
+
+\section{Hough Transformation}
+
+\begin{itemize}
+\item Ziel: Erkennung gerader Linien im Bild
+\item Definition eines zum Bild dualen Parameterraums: Dimensionalität des Parameterraums=Anzahl Parameter zur Beschreibung des Objekts
+\item Ansatz: Stelle Linie durch Normalenvektor (Länge, Winkel) in Polarkoordinaten dar (Sinus-Kosinus-Kurve)
+\item $r = x cos \theta + y sin \theta$
+\item Realisierung des Parameterraums als Akkumulator Array
+\item Für jedes Kantenpixel: Erhöhen der Akkumulatorzellen auf dem zugehörigen Sinusoid
+\item Gesuchte Gerade entspricht Maximum im Parameterraum
+\item Erweiterung der Hough-Transformation für Geraden auf andere parametrische Formen möglich (Anwendung zur Detektion von Kreisen: $r^2 = x^2 + y^2$)
+\end{itemize}
+
+\section{Naive Bayes}
+
+\section{Kamerakoordinaten Geraden}
+
+\section{Morphologische Operatoren}
+
+\section{ZNCC}
+
+\section{SAD}
+
+\section{Bestandteile von Logik}
+
+\section{Fehlerwahrscheinlichkeit (ML)}
+
+\section{Sprachmodelle}
+
+\section{Region Growing}
+
+\begin{enumerate}
+\item Wähle Saatpunkt $p_0 = (u_0,v_0)$
+\item Initialisiere Region $R = {p_0}$, wähle Schwelle $\epsilon$
+\item while $\exists p \in R, q \not\in R$
+\end{enumerate}
+
+\section{HSI <> RGB}
+
+\section{Von-Neumann vs NN}
+
+\section{Typen von Hornklauseln}
+
+\section{Rotationsmatrix zu Quaternionen}
+
+\section{Theorie Spracherkennung}
+
+\end{document}

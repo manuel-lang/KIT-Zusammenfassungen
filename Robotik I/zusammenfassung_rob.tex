@@ -1,0 +1,4267 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\setcounter{secnumdepth}{3} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Karlsruher Institut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Robotik I - Einführung in die Robotik WS2016/2017\\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+{\small\tableofcontents}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Teilsysteme}
+
+\subsection{Mechanische Komponenten}
+
+\subsubsection{Gelenktypen}
+
+\begin{itemize}
+\item Rotationsgelenk (R)
+\begin{itemize}
+\item Die Drehachse bildet einen rechten Winkel mit den Achsen der beiden angeschlossenen Glieder.
+\item Beispiel: Ellbogengelenk
+\end{itemize}
+\item Torsionsgelenk (T)
+\begin{itemize}
+\item Die Drehachse des Torsionsgelenks verläuft parallel zu den Achsen der beiden Glieder.
+\item Beispiel: Unterarmdehnung
+\end{itemize}
+\item Revolvergelenk (V)
+\begin{itemize}
+\item Das Eingangsgelenk verläuft parallel zur Drehachse, das Ausgangsglied steht im rechten Winkel zur Drehachse.
+\item Beispiel: Schultergelenk (Arm nach vorne)
+\end{itemize}
+\item Lineargelenk
+\begin{itemize}
+\item Lineare Gelenke bewirken eine geleitende oder fortschreitende Bewegung entlang der Achse.
+\item auch Translationsgelenk, Schubgelenk oder prismatisches Gelenk
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Arbeitsraum}
+
+Der \textbf{Arbeitsraum} besteht aus denjenigen Punkten im 3D Raum, die von der Roboterhand angefahren werden können. Hierzu sind drei Freiheitsgrade in der Bewegung, also mindestens drei Gelenke erforderlich.
+
+Die \textbf{Grundform des Arbeitsraums} ist der Arbeitsraum, der sich ergeben würde, wenn man die gegenseitige Behinderung der Arme des Roboters und die Begrenzung der Gelenkwinkel nicht berücksichtigt.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 80mm]{/Users/Manu/Desktop/koord.png}
+\end{figure}
+
+\subsubsection{Radkonfiguration}
+
+\begin{itemize}
+\item Differentialantrieb
+\begin{itemize}
+\item Eigenschaften
+\begin{itemize}
+\item Geradeaus- und Kurvenfahrten
+\item Drehen auf der Stelle
+\item Vorwärts- und Rückwährtsfahrten identisch
+\end{itemize}
+\item Vorteile
+\begin{itemize}
+\item einfache Mechanik
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Radregelung in Echtzeit
+\end{itemize}
+\end{itemize}
+\item Synchro-Drive
+\begin{itemize}
+\item Eigenschaften
+\begin{itemize}
+\item Geradeaus- und Kurvenfahrten
+\item Vorwärts- und Rückwärtsfahrten identisch
+\item Plattform dreht nicht mit
+\end{itemize}
+\item Vorteile
+\begin{itemize}
+\item Einfache Regelung
+\item Geradeausfahrt mechanisch garantiert
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Mechanische Komplexität
+\end{itemize}
+\end{itemize}
+\item Dreirad-Antrieb
+\begin{itemize}
+\item Eigenschaften
+\begin{itemize}
+\item Geradeaus- und Kurvenfahrten
+\item Vorwärts- und Rückwärtsfahrten unterschiedlich
+\end{itemize}
+\item Vorteile
+\begin{itemize}
+\item Einfache Mechanik
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Eingeschränkte Manövrierfähigkeit
+\end{itemize}
+\end{itemize}
+\item Mecanum-Antrieb
+\begin{itemize}
+\item Eigenschaften / Vorteile
+\begin{itemize}
+\item Uneingeschränkte Beweglichkeit in Richtungen x, y und $\omega$
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Mechanische Komplexität
+\item Aufwendige Regelung
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{Antriebe}
+
+\subsubsection{Fluidische Antriebe}
+
+\begin{itemize}
+\item Linearantrieb
+\begin{itemize}
+\item Kolbengeschwindigkeit $v(t) = f(t) / A$ mit $f(t)$: Fließgeschwindigkeit des Mediums (Volumen pro Zeit) und $A$: Grundfläche des Kolbens
+\item Kolbenkraft $F(t) = P(t) * A$ mit $P(t)$: Durck des Mediums und $A$: Grundfläche des Kolbens
+\end{itemize}
+\item Schaufelrad
+\begin{itemize}
+\item Winkelgeschwindigkeit des Kolbens $W(t) = 2 * f(t) / ((R^2 - r^2) * h)$ mit $f(t)$: Fließgeschwindigkeit des Mediums, $h$: Höhe des Schaufelrades, $r$: innerer Radius des Schaufelrades und $R$: äußerer Radius des Schaufelrades
+\item Drehmoment des Kolbens $T(t) = 0.5 * P(t) * h * (R - r) * (R + r)$ mit $P(t)$: Druck des Mediums
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Muskelartige Antriebe}
+
+\begin{itemize}
+\item Pneumatischer Antrieb
+\begin{itemize}
+\item Stellenergie: Komprimierte Luft bewegt Kolben, kein Getriebe
+\item Vorteile: billig, einfacher Aufbau, schnelle Reaktionszeit, auch in ungünstigen Umgebungen brauchbar
+\item Nachteile: laut, keine Steuerung der Geschwindigkeit bei der Bewegung, nur Punkt-zu-Punkt-Betrieb, schlechte Positioniergenauigkeit, da Luft kompressibel ist
+\item Einsatz: kleinere Roboter mit schnellen Arbeitszyklen und wenig Kraft, beispielsweise zur Palettierung kleinerer Werkstücke
+\end{itemize}
+\item Hydraulischer Antrieb
+\begin{itemize}
+\item Stellenergie: Öldruckpumpe und steuerbare Ventile
+\item Vorteile: sehr große Kräfte, mittlere Geschwindigkeit
+\item Nachteile: laut, zusätzlicher Platz für Hydraulik, Ölverlust führt zu Verunreinigungen, Ölviskosität erlaubt keine guten Reaktionszeiten und keine hohen Positionier- und Wiederholgenauigkeiten
+\item Einsatz: große Roboter, beispielsweise zum Schweißen
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Elektrische Antriebe}
+
+\begin{itemize}
+\item Stellenergie: Schritt- oder Servomotoren
+\item Vorteile: wenig Platzbedarf, kompakt, ruhig, gute Regelbarkeit der Drehzahl und des Drehmoments, daher auch Abfahren von Flächen oder gekrümmten Bahnen präzise möglich
+\item Nachteile: wenig Kraft, keine hohen Geschwindigkeiten
+\item Einsatz: kleinere Roboter für Präzisionsarbeiten, beispielsweise zur Leiterplattenbestückung
+\end{itemize}
+
+\subsection{Getriebe}
+
+zur Übertragung und Umwandlung von Drehbewegungen und Kräften
+
+\begin{itemize}
+\item Stirnradgetriebe
+\begin{itemize}
+\item Untersetzung $n = N_1 / N_2$
+\item Winkelgeschwindigkeit $W_2 = n * W_1$
+\item Drehmoment $T_2 = T_1 / n$
+\end{itemize}
+\item Schrauben- und Spindelgetriebe
+\begin{itemize}
+\item Lineargeschwindigkeit $v(t) = p * W(t)$ mit $p$: Steigerungskonstante (Ganghöhe) - Entfernung, welche die Schraube bei einer Umdrehung zurücklegt und $W(t)$: Winkelgeschwindigkeit
+\item Kraft $F = \frac{2 * T * \pi * d_m - \mu * p * sec \beta}{d_m * p + \mu * \pi * d_m * sec \beta}$ mit $T$: Drehmoment, $d_m$: Gewindewinkel, $sec$: mittlere Durchmesser der Schraube und $\mu$: Reibungskoeffizient
+\end{itemize}
+\item Harmonic Drive
+\begin{itemize}
+\item Gutes Übersetzungsverhältnis
+\item Sehr genaue Bewegung
+\item Hohe Positioniergenauigkeit
+\item Das Getriebe für Leuchtbauroboter
+\end{itemize}
+\end{itemize}
+
+\subsection{Sensoren}
+
+System zur Umwandlung physikalischer Größen und deren Änderung in geeignete elektronische Signale. Einsatz in Systemen, in denen der Zeitverlauf der Störgröße unbekannt ist (Regelung).\newpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width = 120mm]{/Users/Manu/Desktop/sensor.png}
+\end{figure}
+
+\begin{itemize}
+\item Elementarsensor
+\begin{itemize}
+\item Aufnahme einer Messgröße und Abbildung auf Signal
+\end{itemize}
+\item Integrierter Sensor
+\begin{itemize}
+\item zusätzliche Signalaufbereitung: Verstärkung, Filterung, Linearisierung, Normierung
+\end{itemize}
+\item Intelligenter Sensor
+\begin{itemize}
+\item integrierter Sensor mit rechnergesteuerter Auswertung, Ausgang: verarbeitete Größe, Bsp.: Mustererkenner
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Anforderung an die Sensorik}
+
+\begin{itemize}
+\item Genauigkeit
+\item Präzision
+\item Betriebsbereich
+\item Antwortgeschwindigkeit
+\item Kalibrierung
+\item Zuverlässigkeit
+\item Kosten
+\item Installationsaufwand
+\end{itemize}
+
+Wahl eines Sensors ausgehend von Aufgabenstellung und Integrationsort
+
+\subsubsection{Problemstellungen}
+
+\begin{itemize}
+\item Ziel
+\begin{itemize}
+\item Erfassung der Umwelt in nicht fest definierten oder sich verändernden Umgebungen
+\end{itemize}
+\item Probleme
+\begin{itemize}
+\item Signalverarbeitung
+\item Sensorik liefert nur partielle Information: Wahl der Sensorik
+\item Verwendung mehrerer Sensortypen in Mulstisensorsystemen: Fusion der Messwerte
+\item Modellierung: Abstraktionsstufen des Umweltmodells
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Klassifizierung}
+
+\begin{itemize}
+\item Interne Sensoren
+\begin{itemize}
+\item Kein Kontakt zur Umwelt
+\item Bestimmung von Lage und Position durch Neigung, Orientierung, Drehrichtung, Beschleunigung, Lenkwinkel
+\end{itemize}
+\item Externe Sensoren
+\begin{itemize}
+\item Information aus Umwelt
+\item Bestimmung von Position und Orientierung in Bezug auf Umwelt, Beschaffenheit der Umwelt, Kommandos
+\end{itemize}
+\item Aktive Sensoren
+\begin{itemize}
+\item Simulation der Umwelt durch Eintrag von Energie, Messen und Auswerten der Antwort
+\end{itemize}
+\item Passive Sensoren
+\begin{itemize}
+\item Umwelt vorhandene Signale werden gemessen und ausgewertet
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Aufgaben}
+
+\begin{itemize}
+\item Interne Sensoren
+\begin{itemize}
+\item Stellung der Gelenke
+\item Geschwindigkeit, mit der sich Gelenke bewegen
+\item Kräfte und Momente, die auf die Gelenke einwirken
+\end{itemize}
+\item Externe Sensoren
+\begin{itemize}
+\item Entfernungen
+\item Lage von Positioniermarken und Objekten
+\item Kontur von Objekten
+\item Pixelbilder der Umwelt (CCD-Kamera)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Beispiele}
+
+\begin{itemize}
+\item Interne Sensoren
+\begin{itemize}
+\item Enkoder (inkrementell u. absolut)
+\item Tachogenerator
+\item Strom, Spannung, Temperatur, Feuchtigkeit
+\item Kräfte
+\item Neigungsmesser
+\item Orientierungsmesser
+\item Beschleunigungsmesser
+\item Inertialsystem
+\end{itemize}
+\item Externe Sensoren
+\begin{itemize}
+\item Aktive Sensoren
+\begin{itemize}
+\item Ultraschall
+\item Infrarot
+\item Laser-Entfernungsmesser
+\item Lichtschnittverfahren
+\end{itemize}
+\item Passive Sensoren
+\begin{itemize}
+\item Tastsensoren
+\item Photodetektoren
+\item Kameras
+\item Mikrophone
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Mathematische Grundlagen}
+
+\subsection{Definitionen}
+
+\begin{itemize}
+\item Kinematik analysiert die Geometrie eines Manipulators. Das essentielle Konzept ist die Position.
+\item Statik behandelt Kräfte und Momente, die sich auf den ruhenden Mechanismus auswirken. Das essentielle Konzept ist die Steifigkeit.
+\item Dynamik analysiert die Kräfte und Momente, die durch Bewegung und Beschleunigung eines Mechanismus und einer zusätzlichen Last entstehen.
+\end{itemize}
+
+\subsection{Kinematik}
+
+\subsubsection{Terminologie}
+
+\begin{itemize}
+\item Gelenke (z. B. Ellbogen)
+\item Armelement/Glied (z. B. Oberarm)
+\item Endeffektor (Hand, Greifer, Schweißpistole)
+\item Kinematische Kette ist ein Satz an Gliedern die durch Gelenke verbunden sind.
+\item Kinematische Ketten können durch einen Graph repräsentiert werden. Kanten repräsentieren Glieder, Knoten repräsentieren Gelenke.
+\end{itemize}
+
+\subsubsection{Freiheitsgrade}
+
+Freiheitsgrade (weniger formale Definition) ist eine Anzahl unabhängiger Parameter, die zur kompletten Spezifikation der Position eines Mechanismus/Objektes benötigt werden.
+
+Beispiele:
+\begin{itemize}
+\item Ein Punkt auf einer Ebene hat 2 DoF (degrees of freedom)
+\item Ein Punkt im 3D Raum hat 3 DoF
+\item Ein Starrkörper im 2D Raum, z.B. auf einer Ebene hat 3 DoF
+\item Ein Starrkörper im 3D Raum hat 6 DoF
+\end{itemize}
+
+\subsubsection{Starrkörperbewegung}
+
+Starrkörperbewegungen werden durch zwei Eigenschaften charakterisiert
+\begin{itemize}
+\item Die Diestanz zweier beliebiger Punkte ist konstant.
+\item Die Orientierung des Körpers bleibt erhalten. (Ein rechtsdrehendes Koordinatensystem bleibt rechtsdrehend)
+\end{itemize}
+
+\subsubsection{SO(3) und SE(3)}
+
+Die folgenden beiden Gruppen sind in der Robotik von besonderem Interesse
+
+\begin{itemize}
+\item SO(3) - die Spezielle Orthogonal Gruppe, die Rotationen repräsentiert
+\begin{itemize}
+\item Elemente aus SO(3) werden als reale 3x3 Matrizen beschrieben und erfüllen $R^T R = I$ mit $det(R) = 1$
+\end{itemize}
+\item SE(3) - Spezielle Euklidsche Gruppe, die Starrkörperbewegungen repräsentiert
+\begin{itemize}
+\item Elemente aus SE(3) sind von der Form $(p,R)$, mit $p \in R^3$ und $R \in SO(3)$
+\end{itemize}
+\end{itemize}
+
+\subsection{Affine Geometrie}
+
+\begin{itemize}
+\item Wir benutzen affine Geometrie um räumliche Transformationen zu beschreiben.
+\item Diese Transformationen bestehen aus Verknüpfungen von
+\begin{itemize}
+\item Rotationen
+\item Translationen
+\end{itemize}
+\item Unterschiedliche Möglichkeiten zur mathematischen Beschreibung räumlicher Transformationen
+\begin{itemize}
+\item Rotationsmatrizen und Translationsvektoren
+\item Homogene Matrizen
+\item Quaternionen
+\item ...
+\end{itemize}
+\end{itemize}
+
+\subsection{Konventionen}
+
+Hier werden für Symbole folgende Konventionen vorwendet:
+\begin{itemize}
+\item Skalare: kleingeschriebene lateinische Buchstaben, Bsp: $s, t \in R$
+\item Vektoren: fette kleingeschriebene lateinische Buchstaben, Bsp: \textbf{a,b,c} $\in R^3$
+\item Matrizen: großgeschriebene lateinische Buchstaben, Bsp: $A \in R^{3x3}$
+\item Lineare Abbildungen (Transformationen): großgeschriebene griechische Buchstaben, Bsp: $\phi(\cdot): R^3 \implies R^3$
+\end{itemize}
+
+\subsection{Euklidscher Raum}
+
+Der euklidsche Raum ist der Vektorraum $R^3$ mit dem standard Skalarprodukt (auch: inneres Produkt). Beispiel: Ein Punkt c, der auf einer Linie zwischen den zwei Punkten a und b liegt, kann folgendermaßen repräsentiert werden: $c = t * a + (1-t) * b$, $t \in (0,1) \in R$, a,b,c$ \in R^3$
+Ein Punkt a im euklidischen Raum wird durch Koordinaten repräsentiert, die sich auf ein Koordinatensystem $e_x$, $e_y$, $e_z$ beziehen. $a = a_x * e_x + a_y * e_y + a_z * e_z = (a_x,a_y,a_z)^T$.
+
+Konventionen:
+\begin{itemize}
+\item Wir benutzen orthonormale Koordinatensystem. Dis Basisvektoren $e_x$, $e_y$, $e_z$ sind zu einander sekrecht (orthoganale) stehende Einheitsvektoren.
+\item Wir benutzen rechtsdrehende Koordinatensysteme.
+\end{itemize}
+
+\subsection{Lineare Abbildungen, Endomorphismen}
+
+Lineare Abbildungen (Transformationen), die den euklidischen Raum auf sich selbst abbilden, nennt man Endomorphismen: $\phi(\cdot): R^3 \implies R^3$.
+Endomorphismen können durch quadratische Matrizen repräsentiert werden: $\phi(a) = A * a$.
+A beschreibt einen  Basiswechsel zwischen den originalen Basisvektoren $e_x$, $e_y$, $e_z$ und den neuen Basisvektoren $e_x$', $e_y$',$e_z$': $A = (e_x' e_y' e_z') * (e_x e_y e_z)^{-1}$
+
+\subsection{Isomorphismen}
+
+Bijektive (umkehrbare) Endomorphismen nennt man Isomorphismen. Diese können spezielle und interessante Eigenschaften besitzen:
+\begin{itemize}
+\item Sie können Winkel erhalten. (Beispiel: Skalierung und Rotation)
+\item Sie können Längen erhalten. (Beispiel: Rotation)
+\item Sie können Händigkeit erhalten. (Beispiel: Rotation. Rechtshändiges Koordinatensysten bleibt erhalten, usw.)
+\end{itemize}
+
+Eine spezielle Art von Isomorphismen, die alle genannten Kriterien erfüllt, ist die die Rotationsgruppe (oder spezielle orthogonale Gruppe) SO(3).
+
+\subsection{Die Rotationsgruppe SO(3)}
+
+\begin{itemize}
+\item SO(3) beinhaltet alle möglichen Rotationen um willkürlich durch den Ursprung gelegte Achsen.
+\item SO(3) ist nicht abelsch (nicht kommutativ)
+\item Mit Hilfe von SO(3) kann eine Objektpose (z.B. Position und Orientierung) im Raum, so wie Transformationen zwischen zwei Robotergelenkachsen als Verkettung einer Translation und Rotation repräsentiert werden: $\phi(\cdot): R^3 \implies R^3, \phi(x) = t + R * x$
+\item Die Abbildung $\phi(\cdot)$ ist nicht linear! Sie wird affin genannt.
+\end{itemize}
+
+\subsection{Rotationen}
+
+\subsubsection{Rotationen in 2D}
+
+\begin{itemize}
+\item Eine Rotation in der xy-Ebene um (0,0) ist eine lineare Transformation.
+\item Eine Rotation von $\alpha$  um (0,0) transformiert den
+\begin{itemize}
+\item Vektor $(1,0)^T$ zu $(cos \alpha, sin \alpha)^T$
+\item Vektor $(0,1)^T$ zu $(-sin \alpha, cos \alpha)^T$
+\end{itemize}
+\item Rotationsmatrix $R_\alpha(x) = (cos \alpha -sin \alpha) (sin \alpha cos \alpha) * x$
+\item Eine Rotation um einen Punkt c ungleich (0,0) ist keine lineare Transformation. Sie transformiert (0,0) in einen anderen Punkt als (0,0).
+\item Vorgehen bei der Rotation um ein beliebiges Rotationszentrum c:
+\begin{itemize}
+\item Wir verschieben die Ebene um -c, sodass das Rotationszentrum in (0,0) liegt.
+\item Dann führen wir eine Rotation um (0,0) durch.
+\item Danach schieben wir die Ebene um +c zurück.
+\item $R_{c,\alpha}(x) = R_\alpha(x-c) + c = R_\alpha(x) + (-R_\alpha(c)+c)$
+\item $R_{c,\alpha}$ ist eine nichtlineare Transformation. Sie unterscheidet sich von $R_\alpha$ nur durch das Addieren einer Konstante.
+\item Transformationen (wie $R_{c,\alpha}$) der Form $T(x) = A(x) + b$ werden affine Transformationen (oder auch affine Abbildungen) genannt.
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Rotation in 3D}
+
+\begin{itemize}
+\item Eine 2D Rotation in der xy-Ebene ist in 3D eine Rotation um die z-Achse.
+\item Eine Rotation von Punkten um z hängt nicht von ihren z-Werten ab. Punkte auf der z-Achse werden durch solch eine Rotation nicht betroffen.
+\item Die Rotationsmatrix um die z-Achse besitzt eine einfache Form:
+\begin{itemize}
+\item Die zu xy zugehörige Teilmatrix ist identisch mit dem 2D Fall und die Einträge zum Einfluss von y auf x sowie y und umgekehrt sind 0.
+\item ...
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Rotationen um Koordinatenachsen}
+
+\begin{itemize}
+\item Die Rotationen um die Achsen $e_x$, $e_y$, $e_z$ des Bezugssystems sind besondere Rotationen. Sie können durch die Rotationsmatrizen $R_x$, $R_y$ und $R_z$ dargestellt werden.
+\end{itemize}
+
+\subsubsection{Verkettung von Rotationen}
+
+Die Verkettung von Rotationen ist äquivalent zum Matrixprodukt. Wichtig: Es gibt zwei Möglichkeiten die Verkettung zu interpretieren (rechts nach links oder links anch rechts).
+
+\subsubsection{Probleme mit Rotationsmatrizen}
+
+Rotationsmatrizen haben mehrere Nachteile:
+\begin{itemize}
+\item Redundanz: Neun Werte für eine Rotationsmatrix
+\item Im Bereich des maschinellen Lernens: Wenn die Einträge einer Rotationsmatrix unabhängig voneinander präzidiert werden, ist es wahrscheinlich, dass die resultierende Matrix keine gültige Rotationsmatrix ist.
+\end{itemize}
+
+\subsection{Eulerwinkel}
+
+\begin{itemize}
+\item Es ist möglich, jede Rotation durch drei Rotationen um drei Koordinatenachsen darzustellen.
+\item Die Achsen können willkürlich gewählt werden, aber aus historischen Gründen wird oft die sogenannte Euler-Konvention z,x',z'`' verwendet.
+\item Die Winkel $\alpha,\beta,\gamma$ sind Eulerwinkel.
+\end{itemize}
+
+\subsubsection{Euler-Konvention z, x', z'`'}
+
+Euler-Winkel
+\begin{itemize}
+\item Drehung um $\alpha$ zm die z-Achse des BKS $R_z$
+\item Drehung um $\beta$ um die neue x-Achse x' $R_x'$
+\item Drehung um $\gamma$ um die neue z-Achse z'`' $R_z'`'$
+\end{itemize}
+
+\subsubsection{Roll, Pitch und Yaw}
+
+\begin{itemize}
+\item Eine andere Konvention ist die Euler-Konvention x,y,z.
+\item Diese spezielle Eulerwinkel werden Roll, Pitch und Yaw genannt.
+\item Abfolge der Rotationen
+\begin{enumerate}
+\item x-Achse des BKS um $\alpha$ (Roll)
+\item y-Achse des BKS um $\beta$ (Pitch)
+\item z-Achse des BKS um $\gamma$ (Yaw)
+\end{enumerate}
+\end{itemize}
+
+\subsubsection{Beurteilung}
+
+\begin{itemize}
+\item Vorteile der Eulerwinkel
+\begin{itemize}
+\item Kompakter als Rotationsmatrizen
+\item Aussagekräftiger als Rotationsmatrizen
+\end{itemize}
+\item Nachteile der Eulerwinkel:
+\begin{itemize}
+\item Nicht eindeutig:
+\begin{itemize}
+\item Beispiel: in der Euler z, x', z'`' Konvention beschreiben die Eulerwinkel (45°,30°,-45°) und (0°,30°,-0°) die gleiche Rotation! Dieses Problem wird Gimbal Lock (karkdanische Blockade) genannt.
+\end{itemize}
+\item Nicht kontinuierlich:
+\begin{itemize}
+\item Eulerwinkel einer kontinuierlichen Rotation sind nicht kontinuierlich.
+\item Kleine Änderungen in der Orientierung können zu großen Änderungen der Eulerwinkel führen.
+\item Konsequenz: Eine stetige Interpolation zwischen zwei Eulerwinkeln ist nicht möglich.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{Affine Transformationen}
+
+\begin{itemize}
+\item Der affine Raum ist eine Erweiterung des euklidischen Raums.
+\item Er beinhaltet Punkte und Vektoren, die in erweiterten (oder homogenen) Koordinaten ausgedrückt werden.
+\item Affine Transformationen könne so definitiert werden, dass lineare Transformationen im euklidischen Raum (wie Rotation, Skalierung und Scheren um den Ursprung) mit Translationen kombiniert und in homogenen Koordinaten ausgedrückt werden können.
+\end{itemize}
+
+Vorteile:
+\begin{itemize}
+\item Es wird ermöglicht, Rotationen um beliebige Achsen im affinen Raum zu formulieren.
+\item Rotationen und Translationen können in einer einzelnen Matrix kombiniert werden. Das heißt, Rotationen und Translationen können einheitlich abgehandelt werden.
+
+\subsection{Quaternionen}
+
+\begin{itemize}
+\item Probleme mit Rotationsmatrizen:
+\begin{itemize}
+\item Redundant
+\item Schwierige Interpolation
+\end{itemize}
+\item Probleme mit Euler Winkeln:
+\begin{itemize}
+\item Numerisch instabil
+\end{itemize}
+\item Quaternionen
+\begin{itemize}
+\item Quaternionen sind eine Erweiterung der Komplex Zahlen
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Definition}
+
+Die Menge der Quaternionen $H$ ist definiert durch $H = C + Cj$ mit $j^2 = -1$ und $i \cdot j = -j \cdot i$. Ein Element $q \in H$ hat die Form $q = (a,u)^T = a + u_1 i + u_2 j + u_3 k$. Koeffizient a wird als Realteil bezeichnet. $u = (u_1,u_2,u_3)^T$ als Imaginärteil.
+
+\subsubsection{Rechenregeln}
+
+\begin{itemize}
+\item Gegeben zwei Quaternionen $q,r: q = (a,u)^T, r = (b,v)^T$
+\item Addition: $q+r = (a+b,u+v)^T$
+\item Skalarprodukt: $<q|r> = a \cdot b + <v|u> = a \cdot b + v_1 * u_1 + v_2 * u_2 + v_3 * u_3$
+\item Multiplikation: $q \cdot r = (a + u_1 i + u_2 j + u_3 k) \cdot (b + v_1 i + v_2 j + v_3 k)$
+\item Konjugiertes Quaternion: $q^* = (a,-u)^T$
+\item Norm: $|q| = \sqrt{q * q^*} = \sqrt{q^* * q} = \sqrt{a^2 + u_1^2 + u_2^2 + u_3^2}$
+\item Inverse: $q^{-1} = \frac{q^*}{|q|^2}$
+\end{itemize} 
+
+\subsubsection{Rotationen}
+
+\begin{itemize}
+\item Beschreibung eines Vektor p als Quaternion q: $p = (x,y,z)^T => q = (0,p)^T$
+\item Skalar s als Quaternion q: $q = (s,0)^T$
+\item Einheitsquaternion $S^3$:
+\begin{itemize}
+\item Es existiert eine Einbettung von SO(3) $\in R^3$ nach H
+\item Rotationen sind definiert durch Einheitsquaternionen in $S^3$
+\item Bilden eine Gruppe $S^3 = { g \in H {||q||}^2 = 1 }$
+\end{itemize}
+\item Sei eine Rotation beschrieben durch
+\begin{itemize}
+\item Eine Drehachse a mit ||a|| = 1
+\item und einen Drehwinkel $\phi$
+\end{itemize}
+\item dann existiert hierfür eine Repräsentation als Quaternion $q = (cos \frac{\phi}{2}, a sin \frac{\phi}{2})$
+\item Ein Punkt v wird mit einem Quaternion q rotiert durch $v' = qvq^{-1}$
+\item Da q ein Einheitsquaternion ist, gilt $q^{-1} = q^*$ und somit folglich: $v' = qvq^*$
+\item Konkatenation zweier Rotation eines Vektors v mit zwei Quaternionen q und r: $q = (cos \frac{\phi_q}{2}, u_q sin \frac{\phi_q}{2}), r = (cos \frac{\phi_r}{2}, u_r sin \frac{\phi_r}{2})$
+\item Rotation mit einem Quaternion: $f(v) = qvq^*, h(v) = rvr^*$
+\item dann entspricht $f \cdot h$ gerade der Rotation mit dem Quaternion $p = q \cdot r$
+\end{itemize}
+
+\subsubsection{Beispiel}
+Beispiel: Rotation des Punkts $p = (1,0,9)^T$ um die Drehachse $a = (1,0,0)^T$ mit Winkel $\phi = 90°$
+
+\begin{enumerate}
+\item Darstellung von p als Quaternion v: $v = 0 + 1i + 0j + 9k$
+\item Rotationsquaternion q: $q = cos \frac{\phi}{2} + 1i \cdot sin \frac{\phi}{2} + 0j + 0k$
+\item Konjugiertes Quaternion $q^* = cos \frac{\phi}{2} - 1i \cdot sin \frac{\phi}{2} - 0j - 0k$
+\item Rotation von v um q: $v_r = qvq^* = 0 + 1i - 9j + 0k$
+\item Darstellung als Punkt $p_r = (1,-9,0)^T$
+\end{enumerate}
+
+\subsubsection{Bewertung}
+
+\begin{itemize}
+\item Vorteile:
+\begin{itemize}
+\item Kompakte Darstellung: 4 Werte im Vergleich zu 9 bei Rotationsmatrizen
+\item Anschaulich (angelehnt an Axis-Winkel Repräsentation)
+\item Konkatenation möglich, ähnlich wie bei Rotationsmatrix
+\item Kann für Berechnung der Inversen Kinematik verwendet werden
+\item Kein Gimbal Lock
+\item Repräsentation ist stetig (keine Sprünge)
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Nur Beschreibung von Rotation, keine Translation
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Interpolation}
+
+\begin{itemize}
+\item Ziel: Kontinuierliche Rotation zwischen zwei Orientierungen
+\item Probleme:
+\begin{itemize}
+\item Euler-Winkel sind nicht kontinuierlich
+\item Rotationsmatrizen haben viele Freiheitsgrade
+\end{itemize}
+\item Interpolation von Quaternionen mittels SLERP (Spherical Linear Interploation)
+\begin{itemize}
+\item $Slerp(q_1,q_2,t) = q_1 * (q^{-1} * q_2)^t$
+\item Potenzieren von Quaternionen nicht behandelt
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Kinematik}
+
+Robotermodellierung
+\begin{itemize}
+\item Geometrische Modellierung
+\begin{itemize}
+\item Geometrie: Mathematische Beschreibung der Form von Körpern
+\end{itemize}
+\item Kinematische Modellierung
+\begin{itemize}
+\item Kinematik: Lehre der geometrischen und analytischen Beschreibung der Bewegungszustände mechanischer Systeme
+\end{itemize}
+\item Dynamische Modellierung
+\begin{itemize}
+\item Dynamik: Untersuchung der Bewegung von Körpern als Folge der auf sie wirkenden Kräfte und Momente
+\end{itemize}
+\end{itemize}
+
+\subsection{Kinematisches Modell}
+
+Definition: Das kinematische Modell eines Roboters beschreibt die Zusammenhänge zwischen dem Raum der Gelenkwinkel (Roboterkoordinaten, Konfigurationsraum) und dem Raum der Lage des Endeffektors in Weltkoordinaten (Arbeitsraum, kartesischer Raum).
+
+Einsatzbereiche:
+\begin{itemize}
+\item Bestimmung des Zusammenhangs zwischen Gelenkwerten und Stellungen des Roboters
+\item Erreichbarkeitsanalyse
+\item Relation zwischen Körpern des Roboters (Selbstkollision)
+\item Relation zur Umgebung (Kollisionserkennung)
+\end{itemize}
+
+Arten der Kinematik:
+\begin{itemize}
+\item Diskretes kinematisches Modell (Vorwärtskinematik): Bestimmung der Lage des Endeffektors aus den Gelenkwinkelstellungen des Roboters.
+\item Inverses kinematisches Modell (Rückwärtskinematik): Bestimmung der Gelenkwinkelstellungen zu einer gewünschten Lage des Endeffektors.
+\end{itemize}
+
+\subsubsection{Kinematische Kette}
+
+\begin{itemize}
+\item Elemente einer kinematischen Kette
+\begin{itemize}
+\item Endeffektor
+\item Armelemente (Glieder, Segmente)
+\item Gelenke
+\item Roboterarm Basis
+\end{itemize}
+\item Definition: Eine kinematische Kette wird von mehreren Körpern gebildet, die durch Gelenke kinematisch verbunden sind (z. B. Roboterarm).
+\item Typen: Offene vs geschlossene kinematische Kette
+\item Konventionen
+\begin{itemize}
+\item Jedes Armelement entspricht einem starren Körper
+\item Jedes Armelement ist mit dem nächsten durch ein Gelenk verbunden.
+\item Bei Schub- und Rotationsgelenken: Jedes Gelenk hat nur einen Bewegungsfreiheitsgrad (Rotation oder Translation)
+\end{itemize}
+\item Kinematische Parameter
+\begin{itemize}
+\item Gelenkparameter, z.B. Rotationsgelenk: Rotationsachse oder Schubgelenk: Translationsrichtung
+\item Spezifikation der Lage der Gelenke zueinander
+\begin{itemize}
+\item Feste Transformationen zwischen zwei Gelenken
+\item Definiert die lokalen Koordinatensysteme der Gelenke
+\item Transformation von Gelenk $i-1$ zu Gelenk $i$ durch Transformationsmatrix $^{i-1}T_i$
+\end{itemize}
+Für jedes Glied muss eine Transformation bestimmt werden (3 Rotationsparameter + 3 Translationsparameter) -> 6 Parameter pro Glied der kinematischen Kette
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Denavit-Hartenberg Konvention}
+
+\begin{itemize}
+\item Ziel: Reduktion der Parameter zur Beschreibung eines Armelementes
+\item Eigenschaften
+\begin{itemize}
+\item Systematische Beschreibung der Beziehungen (Translationen und Rotationen) zwischen benachbarten Gelenken
+\item Reduktion der Anzahl der Parameter von 6 auf 4
+\end{itemize}
+\item Jedes Koordinatensystem wird auf Basis der folgenden drei Regeln bestimmt:
+\begin{enumerate}
+\item Die $z_{i-1}$-Achse liegt entlang der Bewegungsachse des i-ten Gelenks.
+\item Die $x_i$-Achse verläuft entlang der gemeinsamen Normalen (common normal) von $z_{i-1}$ und $z_i$. Dabei zeigt sie weg von $z_{i-1}$.
+\item Die $y_i$-Achse vervollständigt das Koordinatensystem entsprechend der Rechte-Hand-Regel.
+\end{enumerate}
+\end{itemize}
+
+Bestimmung der DH Parameter:
+\begin{enumerate}
+\item Skizze des Manipulators
+\item Identifiziere und nummeriere die Gelenke (1-n)
+\item Zeichne die Achsen $z_{i-1}$ für jedes Gelenk $i$
+\item Bestimme die Parameter $a_i$ zwischen $z_{i-1}$ und $z_i$
+\item Zeichne die $x_i$-Achsen
+\item Bestimme die Parameter $\alpha_i$ (Verwindung um die $$x_i$$-Achsen)
+\item Bestimme die Parameter $d_i$ (Gelenkabstand)
+\item Bestimme die Winkel $\theta_i$ um $z_{i-1}$-Achsen
+\item Gelenk-Transformation-Matrizen $A_{i-1,i}$ - verknüpfe sie
+\end{enumerate}
+
+\subsubsection{Diskretes Kinematisches Problem}
+
+\begin{itemize}
+\item Aus den DH-Parametern und den Gelenkwinkeln soll die Stellung des Endeffektors (Tool Center Point: TCP) ermittelt werden.
+\item Die Stellung des Endeffektors (TCP) in Bezug auf das BKS ist gegeben durch; $S_{Basis,Greifer}(\theta) = A_{0,1}(\theta_1) \cdot A_{1,2} (\theta_2) \cdot ... \cdot A_{n-2,n-1}(\theta_{n-1}) \cdot A_{n-1,n}(\theta_n)$
+\item Gelenkwinkel $\theta_1,...\theta_n$ sind vorgegeben -> Stellung des TCP ergibt sich aus obiger Gleichung durch Einsetzen der Gelenkwinkelwerte
+\end{itemize}
+
+\subsubsection{Beispiele}
+
+// TODO //
+
+\subsubsection{Jacobi-Matrizen}
+
+\begin{itemize}
+\item Vorwärtskinematik: Gelenkwinkelstellung -> End-Effektor-Pose
+\item Wie sehen verwandte Beziehungen aus?
+\begin{itemize}
+\item Gelenkwinkelgeschwindigkeiten -> End-Effektor-Geschwindigkeit
+\item Drehmomente in Gelenkwinkeln -> End-Effektor-Kräfte und -Momente
+\end{itemize}
+\item Ansatz: Vorwärtskinematik ableiten (-> Jacobi-Matrix)
+\item Problem: Vorwärtskinematik ist matrixwertig -> Jacobi-Matrix nicht definiert
+\item Lösung: Vektorwertige Repräsentation wählen (z.B. Roll-Pitch-Yaw)
+\end{itemize}
+
+End-Effektor-Geschwindigkeiten
+\begin{itemize}
+\item Annahme: Die kinematische Kette bewege sich einlang einer Trajektorie $\theta: \mathbb{R} -> \mathbb{R}^n$
+\item Dann gilt für die End-Effektor Pose $x(t) \in \mathbb{R^6}$ zum Zeitpunkt $t: x(t) = f(\theta(t))$
+\item Die End-Effektor-Geschwindigkeit hängt linear von den Gelenkgeschwindigkeiten ab (Kettenregel): $\dot{x}(t) = \frac{\partial{f}(\theta(t))}{\partial{t}} = J_f(\theta(t)) \cdot \dot \theta(t) $
+\item Die Jacobi-Matrix setzt kartesische End-Effektor-Geschwindigkeiten in Relation zu Gelenkwinkelgeschwindigkeiten
+\item Die folgenden Probleme können nun mit dieser Beziehung gelöst werden
+\begin{enumerate}
+\item Gegeben eine kartesische End-Effektor-Geschwindgkeit, welche Gelenkwinkelgeschwindigkeiten sind notwendig, um diese zu realisieren?
+\item Gegeben die Gelenkwinkelgeschwindigkeiten, welche kartesische End-Effektor-Geschwindigkeit wird damit realisiert?
+\end{enumerate}
+\end{itemize}
+
+Kräfte und Momente am End-Effektor
+\begin{itemize}
+\item Annahme: Die kinematische Kette bewege sich entlang einer Trajektorie $\theta: \mathbb{R} -> \mathbb{R}^n$
+\item Die geleistete Arbeit muss unabhängig vom Bezugssystem konstant bleiben (Reibung vernachlässigt) $\int_{t_1}^{t_2} \dot{\theta}(t)^T \cdot \tau(t)dt = W = \int_{t_1}^{t_2} \dot x(t)^T \cdot F(t) dt$
+\item Die Beziehung muss für jedes Zeitintervall [$t_1,t_2$] gelten, daher: $\dot \theta(t)^T \cdot \tau(t) = \dot x(t)^T \cdot F(t)$
+\item Bekannte Beziehung zwischen End-Effektor-Geschwindigkeit und Jacobi-Matrix: $\dot \theta(t)^T \cdot \tau(t) = \dot \theta(t)^T \cdot J_f^T(\theta(t)) \cdot F(t)$
+\item Da $\dot \theta(t)$ beliebig ist, folgt: $\tau(t) = J_f^T(\theta(t)) \cdot F(t)$
+\item Die Jacobi-Matrix setzt Kräfte und Momente am End-Effektor in Relation zu Drehmomenten in den Gelenken
+\item Die folgenden Probleme können mit dieser Beziehung gelöst werden:
+\begin{enumerate}
+\item Gegeben eine Kraft am End-Effektor, welche Drehmomente müssen in den Gelenken wirken, um dieser Kraft zu widerstehen?
+\item Gegeben die Drehmomente in den Gelenken, welche Kräfte und Momente wirken dadurch am (fixierten) End-Effektor?
+\end{enumerate}
+\end{itemize}
+
+Berechnung der Jacobi-Matrix
+\begin{itemize}
+\item Jede Spalte der Jacobi-Matrix korrespondiert zu einem Gelenk $\theta_i$ der kinematischen Kette
+\item Ansatz: Die numerische Berechnung der Jacobi-Matrix verläuft spaltenweise
+\item 1. Fall: Translationsgelenk
+\begin{itemize}
+\item Annahme: Das j-te Gelenk führe eine Translation in Richtung des Einheitsvektors $v_j \in \mathbb{3}$ durch.
+\item Dann gilt: $\frac{\partial f(\theta)}{\partial \theta_j} = //TODO//$
+\end{itemize}
+\end{itemize}
+
+Zusammenfassung: Jacobi-Matrix
+\begin{itemize}
+\item $J_f$ beschreibt die Beziehung zwischen
+\begin{itemize}
+\item Geschwindigkeit der Gelenkwinkel (n-dimensional) und Geschwindigkeit des Endeffektors (6-dimensional)
+\item Drehmomente in Gelenken (n-dimensional) und Kräfte und Momente am Endeffektor (6-dimensional)
+\end{itemize}
+\item Jacobi-Matrix ist nur gültig für eine bestimmte Gelenkwinkelkonfiguration
+\end{itemize}
+
+
+\subsubsection{Singularitäten und Manipulierbarkeit}
+
+Singularitäten:
+\begin{itemize}
+\item Eine kinematische Kette ist in einer singulären Konfiguration, wenn die zugehörige Jacobi-Matrix nicht vollen Rang hat
+\begin{itemize}
+\item Zwei oder mehr Spalten von $J_f$ sind linear abhängig
+\end{itemize}
+\item Die Jacobi-Matrix ist nicht invertierbar
+\begin{itemize}
+\item Bestimmte Bewegungen sind unmöglich
+\end{itemize}
+\item In der Umgebung von Singularitäten können große Geschwindigkeiten nötig werden, um eine End-Effektor-Geschwindigkeit zu halten.
+\end{itemize}
+
+Manipulierbarkeit:
+\begin{itemize}
+\item Ein Maß für die Bewegungsfreiheit \glqq manipulability \grqq\ des End-Effektors
+\item Manipulierbarkeits-Ellipsoid
+\begin{itemize}
+\item Nutze $f(\theta)$ um Einheitskreis der Gelenkwinkel-Geschwindigkeiten in den Raum der Endeffektor-Geschwindigkeiten abzubilden
+\item Resultat: Manipulierbarkeits-Ellipsoid (manipulability ellipsoid)
+\item Abhängig von der Gelenkwinkelkonfiguration
+\end{itemize}
+\item Analyse
+\begin{itemize}
+\item Kreis: Bewegungen des Endeffektors in alle Richtungen uneingeschränkt möglich
+\item Degenerierte Fälle (Linie): Endeffektor-Bewegung ist eingeschränkt
+\end{itemize}
+\end{itemize}
+
+Eigenwertanalyse:
+\begin{itemize}
+\item Konstruiere $A(\theta) = J(\theta) J(\theta)^T \in \mathbb{R}^{n x n}$
+\item $A(\theta)$ ist dann:
+\begin{itemize}
+\item Quadratisch
+\item Symmetrisch
+\item positiv definit
+\item invertierbar
+\end{itemize}
+\item Eigenwerte $\lambda$ und Eigenvektoren $v$ von $A$: $Av = \lambda v$, $(\lambda I - A) v = 0$
+\item Singulärwerte $\sigma_i = \sqrt{\lambda_i}$
+\end{itemize}
+
+Berechnung:
+\begin{itemize}
+\item Maße für die Manipulierbarkeit
+\begin{itemize}
+\item Kleinster Singulärwert $\mu_1(\theta) = \sigma_{min}(A(\theta))$
+\item Inverse Kondition $\mu_2(\theta) = \frac{\sigma_{min}(A(\theta))}{\sigma_{max}(A(\theta))}$
+\item Determinate $\mu_3(\theta) = det A(\theta)$
+\end{itemize}
+\item Einsatz:
+\begin{itemize}
+\item Analyse von Gelenkwinkelkonfigurationen
+\item Vermeidung von Singularitäten
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Repräsentation der Erreichbarkeit}
+
+\begin{itemize}
+\item Erreichbarer Teil des Arbeitsraums für den Roboter in $\mathbb{R}^6$
+\item Approximation durch 6-dimensionale Gitter
+\item Eintrag in jeder Gitterzelle:
+\begin{itemize}
+\item Erreichbarkeit (Reachability): Binär: Existiert mind. eine Gelenkwinkelkonfiguration, so dass der TCP innerhalb der 6D-Gitterzelle liegt.
+\item Manipulierbarkeit (Manipulability): Maximaler Manipulierbarkeitswert einer Gitterzelle, z.B. $\mu_1(\theta)$
+\end{itemize}
+\item Erstellung
+\begin{itemize}
+\item Offline-Prozess in Simulation
+\item Taste alle Gelenkwinkel ab
+\begin{itemize}
+\item in x Schritten (z. B. x = 5°)
+\item Bestimme die Lage des TCP über Vorwärtskinematik
+\item Bestimme Gitterzelle und setze den Eintrag
+\end{itemize}
+\end{itemize}
+\item Anwendung
+\begin{itemize}
+\item Vorberechnete Erreichbarkeitsinformationen
+\item Schnell Entscheidung, ob eine Pose mit dem Endeffektor erreichbar ist. Aufwand: O(1)
+\item Kann zur Griffselektion genutzt werden
+\end{itemize}
+\end{itemize}
+
+\subsection{Geometrisches Modell}
+
+\subsubsection{Einsatzbereiche}
+
+\begin{itemize}
+\item Graphische Darstellung von Körpern
+\item Ausgangspunkt der Abstandsmessung und Kollisionserkennung
+\item Grundlage zur Berechnung der Bewegungen
+\item Grundlage zur Ermittlung der wirkenden Kräfte und Momente
+\end{itemize}
+
+\subsubsection{Klassifizierung}
+
+\begin{itemize}
+\item Klassifizierung nach Raum
+\begin{itemize}
+\item 2D Modelle
+\item 2,5D Modelle
+\item 3D Modelle
+\end{itemize}
+\item Klassifizierung nach Grundprimitiven
+\begin{itemize}
+\item Kanten- bzw. Drahtmodelle
+\item Flächen- bzw. Oberflächenmodelle
+\item Volumenmodelle
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Beispiele}
+
+//TODO//
+
+\section{Inverse Kinematik}
+
+\subsection{Inverses kinematisches Problem}
+
+Bestimmung der Gelenkwinkelstellungen zu einer gewünschten Lage des Endeffektors.
+
+Vorgehensweise
+\begin{itemize}
+\item Kinematisches Modell: $P_{TCP} = T_{BKS,TCP}(\theta) = A_{0,1}(\theta_1) \cdot A_{1,2}(\theta_2) \cdot ... \cdot A_{n-2,n-1}(\theta_{n-1}) \cdot A_{n-1,n}(\theta_n) $
+\item Gegeben: $P_{TCP}$
+\item Gesucht: $\theta$
+\item Ansatz: Gleichung nach $\theta$ auflösen (nichtlineares Problem)
+\end{itemize}
+
+Eindeutigkeit
+\begin{itemize}
+\item In der Ebene gibt es für Systene mit $n \ge 3$ Bewegungsfreiheitsgraden mehrere Möglichkeiten eine vorgegebene Endeffektorstellung zu erreichen.
+\item In SE(3) gilt dies für alle Roboter mit $n \ge 6$ Bewegungsfreiheitsgraden.
+\item Reduktionsstellungen sind solche, zu deren Erreichen $n \leq 5$ Bewegungsfreiheitsgrade ausreichen würden.
+\end{itemize}
+
+\subsection{Geschlossene Methoden}
+
+\subsubsection{Geometrische Methoden}
+
+Vorgehen:
+\begin{itemize}
+\item Nutze geometrische Beziehungen, um die Gelenkwinkel $\theta$ aus der $T_{TCP}$ zu bestimmen.
+\item Das kinematische Modell wird dabei nicht direkt verwendet.
+\item Anwendung von:
+\begin{itemize}
+\item Trigonometrischen Funktionen
+\item Sinus- / Kosinussätzen
+\end{itemize}
+\end{itemize}
+
+Polynomialisierung:
+\begin{itemize}
+\item Transzendente Gleichungen sind in der Regel schwer zu lösen, da die Variable $\theta$ gewöhnlich in der Form $cos \theta$ bzw. $sin \theta$ auftritt.
+\item Werkzeug: Substitution $u = tan(\frac{\theta}{2})$ unter Verwendung von:
+\begin{itemize}
+\item $cos \theta = \frac{1-u^2}{1+u^2}$
+\item $sin \theta = \frac{2u}{1+u^2}$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Algebraische Methoden}
+
+\begin{itemize}
+\item Gleichsetzen von TCP Pose $P_{TCP}$ und Transformation $T_{BKS,TCP}$ aus dem kinematischen Modell: $P_{TCP} = T_{BKS,TCP}(\theta)$
+\item Koeffizientenvergleich der beiden Matrizen $a_{ij} = b_{ij}$
+\item 16 Gleichungen bei homogenen Matrizen in 3D (4 trivial: 0=0,1=1) -> 12 nicht-triviale Gleichungen
+\end{itemize}
+
+Lösungsalgorithmus
+\begin{itemize}
+\item Problem: Oft können nicht alle Gelenkwinkel aus den 12 Gleichungen bestimmt werden.
+\item Ansatz: Kenntnis der Transformationen erhöht Chance, die Gleichungen zu lösen.
+\item Gegeben: Die Transformationsmatrizen $A_{0,1} \cdot A_{1,2} \cdot ... \cdot A_{n-1,n}$ und $P_{TCP}$
+\item Gesucht: Die Gelenkwinkel $\theta_1$ bis $\theta_n$
+\end{itemize}
+
+Vorgehensweise
+\begin{itemize}
+\item Algorithmus zur algebraischen Lösung
+\begin{itemize}
+\item $P_{TCP} = A_{0,1}(\theta_1) \cdot A_{1,2}(\theta_2) \cdot A_{2,3}(\theta_3) \cdot A_{3,4}(\theta_4) \cdot A_{4,5}(\theta_5) \cdot A_{5,6}(\theta_6)$
+\end{itemize}
+\item Vorgehensweise:
+\begin{enumerate}
+\item Invertiere $A_{0,1}(\theta_1)$ und multipliziere beide Seiten der Gleichung mit $A_{0,1}^{-1}$
+\item Versuche aus dem neu entstehenden Gleichungssystem eine Gleichung zu finden, die nur eine Unbekannte enthält und löse diese Gleichung nach der Unbekannten.
+\item Versuche eine Gleichung im Gleichungssystem zu finden, die durch die Substitution der im letzten Schritt gefundenen Lösung nach einer Unbekannten lösbar ist.
+\item Falls keine Lösungen mehr gefunden werden können, so muss eine weitere Matrix $(A_{1,2}(\theta_2))$ invertiert werden.
+\item Widerhole die Schritte 1-4 bis alle Gelenkwinkel ermittelt sind.
+\end{enumerate}
+\end{itemize}
+
+\subsection{Numerische Methoden}
+
+\begin{itemize}
+\item Jacobi-Matrix (bereits gezeigt)
+\item Linearisierung
+\begin{itemize}
+\item TCP-Pose über Vorwärtskinematik: $P_{TCP,t} = f(\theta_t)$
+\item Jacobi-Matrix liefert Bewegungstangenten in der aktuellen Stellung $\theta_t$: $J_f(\theta_t) = \frac{\partial f(\theta_t)}{\partial \theta_t}$
+\item Annahme: Modell gültig für kleine $\Delta \theta$
+\begin{itemize}
+\item Lineare Approximation der Bewegung
+\item Approximationsfehler $\epsilon$ existiert
+\end{itemize}
+\end{itemize}
+\item Umkehrung
+\begin{itemize}
+\item Bisher erreicht: Lokale, lineare Annäherung an die Vorwärtskinematik $\Delta x = f(\Delta \theta) \approx J_f(\theta) \cdot \Delta \theta$
+\item Gesucht: Lösung für das inverse Problem $\Delta \theta \approx F(\Delta x) = J_f^{-1}(\theta) \cdot \Delta x$
+\item Invertierung ist möglich, wenn:
+\begin{itemize}
+\item $J_f(\theta)$ ist quadratisch
+\item $J_f(\theta)$ hat vollen Rang
+\end{itemize}
+\end{itemize}
+\item Pseudoinverse
+\begin{itemize}
+\item Ansatz: Pseudoinverse - Verallgemeinerung der inversen Matrix auf singuläre und nicht-quadratische Matrizen $A \in \mathbb{R}^{mxn}$.
+\item Moore-Penrose Pseudoinverse $A^\# = A^T(AA^T)^{-1}$
+\item Es gelten:
+\begin{itemize}
+\item $(A^\#)^\# = A$
+\item $(A^T)^\# = (A^\#)^T$
+\item $(\lambda A)^\# = \lambda^{-1} A^\#$, für ein $\lambda \not 0$
+\end{itemize}
+\item Problem: Berechne die im Sinne der Summe der Fehlerquadrate (least squares) bestmögliche Lösung eines Systems von linearen Gleichungen
+\end{itemize}
+\item Zusammenfassung
+\begin{enumerate}
+\item Vorwärtskinematik als Funktion: $x(t) = f(\theta(t))$
+\item Ableitung nach der Zeit: $\frac{\partial x(t)}{\partial t} = \dot x(t) = J_f(\theta) \dot \theta(t)$
+\item Übergang zum Differenzenquotienten: $\Delta x \approx J_f(\theta) \Delta \theta$
+\item Umkehrung: $\Delta \theta \approx J_f^\#(\theta)\Delta x$
+\end{enumerate}
+\item Iteratives Vorgehen
+\begin{itemize}
+\item Gegeben: Sollpose des TCP $P_{TCP,soll}$
+\item Gesucht: Gelenkwinkel $\theta$, der $P_{TCP,soll}$ realisiert
+\item Iterativer Ansatz beginnend bei Initialkonfiguration $\theta_0$ und $P_{TCP,0}$
+\begin{enumerate}
+\item Berechne $P_{TCP,t}$ in Iteration $t$ aus Gelenkwinkelstellungen $\theta_t$
+\item Berechne Fehler $\Delta x$ aus $P_{TCP,soll}$ und berechneter $P_{TCP,t}$
+\item Benutze approximiertes inverses kinematisches Modell $F$, um Gelenkwinkelfehler $\Delta \theta$ zu berechnen
+\item Berechne $\theta_{t+1} = \theta_t + \Delta \theta$
+\item Fahre mit Iteration $t+1$ fort
+\end{enumerate}
+\end{itemize}
+\item Singularitäten
+\begin{itemize}
+\item Pseudoinverse ist in der Nähe von Singularitäten instabil
+\item Umgang mit Singularitäten (nicht immer möglich)
+\item Damped least squares (auch Levenberg-Marquardt Minimierung)
+\begin{itemize}
+\item Die Pseudoinverse $J_f^\#(\theta)$ löst die Gleichung $J_f(\theta) \Delta \theta = \Delta x$ optimal nach $\Delta \theta$.
+\item Optimal bezieht sich auf die Summe der Fehlerrate $\min_{\Delta \theta} ||J_f(\theta) \Delta \theta - \Delta x||^2_2 $
+\item Ansatz: Minimiere stattdessen $\min_{\Delta \theta} ||J_f(\theta) \Delta \theta - \Delta x||^2_2 + \lambda^2 || \Delta \theta ||^2_2$ mit einer Dämpfungskonstante $\lambda > 0$.
+\item Die zugehörige Gleichung ist $(J^T J + \lambda^2 E) \Delta \theta = J^T \Delta x$
+\item Daraus ergibt sich $\Delta \theta = (J^T J + \lambda^2 E)^{-1} J^T \Delta x = J^T (J J^T + \lambda^2 E)^{-1} \Delta x$
+\item Die Dämpfungskonstante $\lambda > 0$ muss anwendungsspezifisch gewählt werden
+\begin{itemize}
+\item Groß genug für numerische Stabilität in Umgebungen von Singularitäten
+\item Klein genug für schnelle Konvergenzrate
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item Stabilitätsbetrachtung
+\begin{itemize}
+\item Beide Ansätze (Pseudoinverse und Damped Least Squares) können durch Singularitäten instabil werden
+\item Eine Analyse der Stabilität ist über eine Singulärwertzerlegung möglich
+\item Singulärwertzerlegung: Eine Matrix $J \in \mathbb{R}^{mxn}$ wird dargestellt durch zwei orthogonale Matrizen $U \in \mathbb{R}^{mxm}$ und $V \in \mathbb{R}^{nxn}$ und eine Diagonalmatrix $D \in \mathbb{R}^{mxn}$, in der Form: $J = UDV^T$
+\item OBdA: Singulärwerte $\sigma_i$ auf der Diagonalen von $D$ seien sortiert; $\sigma_1 \ge \sigma_2 \ge ... \ge \sigma_m \ge 0$.
+\item Die Singulärwertzerlegung von $J$ existiert immer und sie erlaubt die folgende Darstellung von $J$: $J = \sum_{i=1}^m \sigma_i u_i v_i^T = \sum_{i=1}^r \sigma_i u_i v_i^T$
+\item wobei $u_i$ und $v_i$ die Spanteln von $U$ und $V$ sind, sowie $r = rang J$.
+\item Für die Pseudoinverse $J^\#$ gilt (durch die Orthogonalität von $U$ und $V$): $J^\# = V D^\# U^T = \sum_{i=1}^r \sigma_i^{-1} v_i u_i^T$
+\item Für die innere (zu invertierende) Matrix gilt: $JJ^T + \lambda^2 E = (UDV)^T (VD^TU^T) + \lambda^2 E = U(DD^T + \lambda^2 E) U^T$
+\item $DD^T + \lambda^2 E$ ist eine nicht-singuläre Diagonalmatrix mit den Diagonaleinträgen $\sigma_i^2 + \lambda^2$. Daher ist $(DD^T + \lambda^2 E)^{-1}$ eine Diagonalmatrix mit den Diagonaleinträgen $(\sigma_i^2 + \lambda^2)^{-1}$.
+\item Es folgt: $J^T(JJ^T + \lambda^2 E)^{-1} = VD^T (DD^t + \lambda^2 E)^{-1} U^T = \sum_{i=1}^r \frac{\sigma_i}{\sigma_i^2 + \lambda^2} v_i u_i^T$
+\item Pseudoinverse: $J^\# = \sum_{i=1}^r \frac{1}{\sigma_i} v_i u_i^T$
+\item Damped least squares: $J^T(JJ^T + \lambda^2 E)^{-1} = \sum_{i=1}^r \frac{\sigma_i}{\sigma_i^2 + \lambda^2} v_i u_i^T$
+\item Die Invertierung von $J$ hat in beiden Fällen eine ähnliche Forum.
+\item Die Pseudoinverse wird instabil, wenn $\sigma_i -> 0$ (Singularität)
+\item Für große $\sigma_i$ (verglichen mit $\lambda$) verhält sich damped least squares wie die Pseudoinverse
+\item Für $\sigma_i -> 0$ verhält sich dumped least squares wohldefiniert.
+\end{itemize}
+\end{itemize}
+
+\section{Dynamik}
+
+\subsection{Dynamisches Modell}
+
+\begin{itemize}
+\item Definition: Das dynamische Modell beschreibt den Zusammenhang von Kräften, Momenten und Bewegungen, welche in einem mechanischen Mehrkörpersystem auftreten.
+\item Zweck:
+\begin{itemize}
+\item Analyse der Dynamik
+\item Synthese mechanischer Strukturen
+\item Modellierung elastischer Strukturen
+\item Reglerentwurf
+\end{itemize}
+\item Allgemeines Modell:
+\begin{itemize}
+\item Roboter besteht aus $n$ Partikeln mit Masse $m_i$ und Position $r_i$
+\item Newtons zweites Gesetz: $F_i = m_i \cdot \ddot r_i$
+\item Partikel können sich wegen Verbindungen und Gelenken nicht unabhängig voneinander bewegen
+\begin{itemize}
+\item Einführung von Einschränkungen (constraints) der Forum $g_j(r_1,...,r_k) = 0$
+\item Einschränkungen dieser Art nennt man auch holonome Einschränkungen
+\item Einschränkungen wirken auf den Roboter durch Ausübung von Einschränkungskräften (constraint forces)
+\end{itemize}
+\item Parameter im allgemeinen Modell: $3n + k$ (da $r_i \in \mathbb{R}^3$)
+\item Tatsächliche Freiheitsgrade $3n-k$
+\item Ziel: Minimaler Parametersatz, der das System vollständig beschreibt
+\item -> Generalisierte Koordinaten
+\end{itemize}
+\item Generalisierte Koordinaten
+\begin{itemize}
+\item Definition: Minimaler Satz an voneinander unabhängigen Koordinaten, der den aktuellen Systemzustand vollständig beschreibt
+\item Generalisierte Koordinaten: $q_1,...q_m$ mit $m = 3n - k$
+\item Gesucht: Funktionen für Position der Massepunkte: $r_i = f_i(q_1,...,q_m)$ mit $ i = 1,...,n$
+\item die gleichzeit die Einschränkungen (constrainsts) einhalten: $g_j(r_1,...,r_k) = 0$ mit $j = 1,...,k$
+\end{itemize}
+\item Bewegungsgleichung
+\begin{itemize}
+\item Im dynamischen Modell werden die Beziehungen zwischen Kräften/Momenten und den Lagen, Geschwindigkeiten und Beschleunigungen der Armelemente dargestellt.
+\item $\tau = M(q) \cdot \ddot q + c(\dot q, q) + g(q)$ mit:
+\begin{itemize}
+\item $\tau$: $nx1$ Vektor der generalisierten Kräfte
+\item $M(q)$: $nxn$ Massenträgheitsmatrix
+\item $c(\dot q, q)$: $nx1$ Vektor der Zentripetal- und Coriliskomponenten
+\item $g(q)$: $nx1$ Vektor der Gravitationskomponenten
+\item $	q, \dot q, \dot dot q$: $nx1$ Vektor der generalisierten Koordinaten (Position, Geschwindigkeit, Beschleunigung)
+\end{itemize}
+\item Reibung kann als zusätzlicher Term einfließen, wird aber häufig vernachlässigt
+\end{itemize}
+\item Direktes dynamisches Problem
+\begin{itemize}
+\item Aus äußeren Kräften und Momenten sowie Anfangszustand wird unter Verwendung des dynamischen Modells die sich ergebenden Bewegungsänderungen berechnet.
+\item $\tau = M(q) \cdot \ddot q + c(\dot q, q) + g(q$
+\item Differentialgleichung nach $q(t), \dot q(t), \ddot q(t)$ lösen
+\end{itemize}
+\item Inverses dynamisches Problem
+\begin{itemize}
+\item Aus den gewünschten Bewegungsparametern sollen, unter Verwendung des dynamischen Modells, die dazu erforderlichen Stellkräfte und -momente ermittelt werden.
+\item $\tau = M(q) \cdot \ddot q + c(\dot q, q) + g(q$
+\item Rechten Teil der Gleichung berechnen
+\end{itemize}
+\end{itemize}
+
+\subsection{Modellierung der Dynamik}
+
+\begin{itemize}
+\item Lagrange: Analytische Methode
+\begin{itemize}
+\item Arbeits- oder Energiebetrachtungen
+\item Formales Ableiten ergibt die Bewegungsgleichungen
+\end{itemize}
+\item Newton-Euler: Synthetische Methode
+\begin{itemize}
+\item Basiert auf linearem Impuls und Drehimpuls (Drall)
+\item Isoliertes Betrachten der Armelemente
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Methode nach Lagrange}
+
+\begin{itemize}
+\item Langrange-Funktion: $L(q, \dot q) = E_{kin}(q, \dot q) - E_{pot}(q)$
+\item $\tau_i = \frac{d}{dt} (\frac{\partial L}{\partial \dot q_i}) - \frac{\partial L}{\partial q_i}$ mit $q_i$: i-te Komponente der generalisierten Koordinaten und $\tau_i$: i-te Komponente der generaliserten Kräfte
+\item Ziel: Ermittle für jedes Gelenk $i$ eines Roboters die Bewegungsgleichung $\tau_i = \frac{d}{dt} (\frac{\partial L}{\partial \dot q_i}) - \frac{\partial L}{\partial q_i}$
+\item Vorgehen:
+\begin{enumerate}
+\item Berechne $E_{kin}$ und $E_{pot}$
+\item Drücke $E_{kin}$ und $E_{pot}$ in generalisierten Koordinaten aus: $L(q, \dot q) = E_{kin}(q, \dot q) - E_{pot}(q)$
+\item Berechne die Ableitungen
+\end{enumerate}
+\item Zusammenfassung
+\begin{itemize}
+\item Zur Ermittlung der Bewegungsgleichungen müssen nur die kinetische und potentielle Energie aufgestellt werden
+\item Die Bewegungsgleichungen folgen dann formal durch differenzieren
+\item Einfaches Aufstellen der Gleichungen
+\item Geschlossenes Modell
+\item Analytisches auswertbar
+\item Berechnung sehr umfangreich $O(n^3)$, n = Anzahl der Gelenke
+\item Nur Antriebsmomente werden berechnet
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Methoden nach Newton-Euler}
+
+\begin{itemize}
+\item Grundprinzip:
+\begin{itemize}
+\item Betrachtung des Massezentrums eines einzelnen Armelementes
+\begin{itemize}
+\item Kraft = Impuls abgeleitet nach Zeit (Zweites Newtonsches Gesetz) $F_i = \frac{d}{dt} (m_i v_{s,i}) = m_i \dot v_{s,i}$
+\item Drehmoment = Drehimpuls abgeleitet nach Zeit $N_i = \frac{d}{dt}(I_i \omega_{s,i}) = I_i \dot \omega_{s,i}$
+\end{itemize}
+\item Kräfte und Momente, die auf ein Armelement wirken, lassen sich aus Geschwindigkeit und Gelenkwinkelgeschwindigkeit berechnen.
+\end{itemize}
+\item Verkettung
+\begin{itemize}
+\item Die Beschleunigungen $\dot v_{s,i}$ und $\dot \omega_{s,i}$ eines Armelementes $i$ hängen von den Beschleunigungen der vorhergehenden Armelemente ab.
+\begin{itemize}
+\item Beschleunigungen können über kinematisches Modell von der Basis zum Greifer rekursiv berechnet werden
+\item Vorwärtsgleichungen
+\end{itemize}
+\item Die Kraft $F_i$ und das Drehmoment $N_i$, die auf ein Armelement $i$ wirken, hängen von den nachfolgenden Armelementen ab.
+\begin{itemize}
+\item Kräfte und Momente können vom Greifer zur Basis rekursiv berechnet werden
+\item Rückwärtsgleichungen
+\end{itemize}
+\end{itemize}
+\item Vorwärtsgleichungen
+\begin{itemize}
+\item Aus dem kinematischen Robotermodell und dem Systemzustand lassen sich Winkelgeschwindigkeiten, translatorische Geschwindigkeiten und Beschleunigungen des Gelenkes und Armelementes $i$ im Basiskoordinatensystem bestimmen.
+\item Bestimmt werden:
+\begin{itemize}
+\item Winkelgeschwindigkeit $\omega_i$
+\item Winkelbeschleunigung $\dot \omega_i$
+\item Geschwindigkeit $v_i$ und Beschleunigung $\dot v_i$ der Basen der Koordinatensysteme
+\item Geschwindigkeiten $v_{s,i}$ und Beschleunigungen $\dot v_{s,i}$ der Massenmittelpunkte der Armelemente
+\end{itemize}
+\item Die Geschwindigkeiten und Beschleunigungen für Armelement $i+1$ lassen sich rekursiv unter Berücksichtigung der Kinematik aus den Geschwindigkeiten und Beschleunigungen des Armelementes $i$ berechnen.
+\item Die Funktionen $G_i$ lassen sich aus den Gleichungen für Kraft und Drehmoment ableiten
+\end{itemize}
+\item Rückwärtsgleichungen
+\begin{itemize}
+\item Beginnend vom Greifer des Roboters lassen sich die dynamischen Größen des Systems rekursiv bis zur Basis berechnen. Dabei werden die im Vorwärtsschritt berechneten Größen verwendet.
+\item Folgende dynamische Größen werden bestimmt:
+\begin{itemize}
+\item Auftretende Kraft $F_i$ im Schwerpunkt von Armelement $i$
+\item Auftretender Drehimpuls $N_i$ im Schwerpunkt von Armelement $i$
+\item Kraftvektor $f_i$ ausgeübt von Armelement $i-1$ auf Armelement $i$
+\item Momentvektor $n_i$ ausgeübt von Armelement $i-1$ auf Armelement $i$
+\item Skalares Drehmoment $\tau_i$ am $i$-ten Gelenk
+\end{itemize}
+\item Verwendung des Kraft-Momenten-Satzes: $F_i = m_i \cdot \dot v_i = f_i - f_{i+1}$
+\item und des Drehimpulssatzes $N_i = I_i \cdot \dot \omega_i = n_i - n_{i+1} + (-s_i - p_i) x F_i - p_i x f_{i+1}$
+\item Rekursive Berechnung der dynamischen Größen des Armelementes $i$
+\end{itemize}
+\item Eigenschaften
+\begin{itemize}
+\item Beliebige Anzahl von Gelenken
+\item Belastungen der Armelemente werden berechnet
+\item Aufwand $O(n)$ (n: Anzahl der Gelenke)
+\item Rekursion
+\end{itemize}
+\end{itemize}
+
+\section{Regelung von Robotersystemen}
+
+\subsection{Einführung}
+
+Regelungstechnik
+\begin{itemize}
+\item Regelungstechnik: Lehre von der selbsttätigen, gezielten Beeinflussung dynamischer Prozesse während des Prozessablaufs
+\item Regelungstechnische Grundsituation: Forderung nach selbsttätiger, gezielter Beeinflussung bei unvollständiger Systemkenntnis, insbesondere bei Einwirkung von Störungen
+\item Methoden der Regelungstechnik sind allgemeingültig, d. h. unabhängig von der speziellen Natur der Systeme
+\item Aufgabe: Der Ausgangsgröße eines dynamisches Systems soll mittels der Stellgröße ein Sollverhalten, d. h. ein gewünschtes Verhalten aufgeprägt werden, und zwar gegen den Einfluss einer Störgröße, dir nur unvollständig bekannt ist.
+\item Prinzip der Lösung: Die Strecke ist laufend zu beobachten und mit der so gewonnenen Information ist die Stellgröße derart zu verändern, dass trotz der Strörgrößeneinwirkung die Ausgangsgröße an den gewünschten Verlauf (Sollverlauf) angeglichen wird. Eine Anordnung, die dies bewirkt, heißt Regelung.
+\end{itemize}
+
+Wirkungsweise der Regelung
+\begin{itemize}
+\item Die Führungsgröße wird entsprechend eingeregelt, d.h. die Regelgröße folgt der Führungsgröße
+\item Die Regelung ist ein Wirkungskreislauf: Regelkreis
+\item Dabei entscheidend: Umkehr der Wirkungsrichtung im Soll-Istwert-Vergleich
+\end{itemize}
+
+Definition: Regelung\\
+Unter einer Regelung versteht man eine Anordnung, durch welche bei unvollständig Bekannter Stecke, insbesondere unvollständiger Kenntnis der Störgröße, die Regelungsgröße, d. h. die Ausgangsgröße der Strecke, laufend erfasst und mit der Führungsgröße verglichen wird, um mittels der so gebildeten Differenz die Regelgröße an den Sollverlauf anzugleichen.
+
+Regelkreis:
+\begin{itemize}
+\item Strukturbild einer Regelung
+\begin{itemize}
+\item Aus den physikalischen Gesetzen ermittelt man Gleichungen zwischen zeitveränderlichen Größen des Systems
+\item Die zeitveränderlichen Größen und ihre Gleichungen werden durch geeignete Symbole veranschaulicht
+\item Ein Block des Strukturbildes ordnet jedem Zeitverlauf der Eingangsgröße eindeutig ein Zeitverlauf der Ausgangsgröße zu, und wirkt somit als Übertragungsglied
+\end{itemize}
+\end{itemize}
+
+\subsection{Grundlagen der Regelung}
+
+\subsubsection{Grundlegende Regelkreise}
+
+Geschwindigkeitsregelung:
+\begin{itemize}
+\item Im Gelenkraum: Kontinuierliche Vorgabe von Gelenkgeschwindigkeiten
+\item Proportionale Reglung mit Faktor $K_p$: $\dot \theta_r(t) = K_p \cdot (\theta_v(t) - \theta(t))$
+\item Nachteil: Wenn $\theta_d = 0$ bewegt sich das Gelenk nicht
+\end{itemize}
+
+Vorsteuerung
+\begin{itemize}
+\item $\dot \theta_r(t) = K_p \cdot (\theta_v(t) - \theta(t)) + \dot \theta_d(t)$
+\end{itemize}
+
+\subsubsection{Laplace-Transformation}
+
+$L\{f(t)\} = f(s) = \int_0^\infty f(t)e^{-st} dt$ mit $s:= \sigma + j \omega$ und $f(t)=0$
+
+\begin{itemize}
+\item Rechenvereinfachung:
+\begin{itemize}
+\item Differential- und Integralausdrücke werden zu algebraischen Ausdrücken ersetzt
+\end{itemize}
+\item Gleichungslösung im Frequenzbereich statt im Zeitbereich
+\item Integral muss konvergieren - erfüllt für lineare $f(t)$
+\item Ableitungsfunktion $\mathcal{L} = \int_0^\infty e^{-st} \frac{df}{dt} dt = e^{-st} f(t) |_0^\infty - \int_0^\infty - s \cdot e^{-st} f(t) dt$
+\item Assumption: $\lim\limits_{t \rightarrow \infty} e^{-st} f(t) \rightarrow 0$: $\mathcal{L}[\dot f(t)] = s \int_0^\infty e^{-st} f(t) dt - f(0) = s \cdot f(s) - f(0)$
+\item Impulsfunktion (Dirac-Impuls) $\delta(t)$: $\mathcal{L}[\delta(t)] = \int_0^\infty \delta(t) \cdot e^{-st} dt = 1$
+\item Sprungfunktion $\sigma(t)$: $\int_0^\infty \sigma(t) \cdot e^{-st} dt = \int_0^\infty \cdot e^{-st} dt = - \frac{1}{s} \cdot e^{-st} |_0^{\infty}$ mit $s = \delta + j \omega \implies e^{-st} = e^{-(\delta + j \omega)t} = e^{-\delta t} \cdot e^{-j \omega t} = e^{- \delta t} \cdot (cos \omega t - j sin \omega t)$
+\item Regeln:
+\begin{itemize}
+\item Linearitätssatz $L\{\alpha f_1(t) + \beta f_2(t)\} = \alpha f_1(s) + \beta f_2(s)$
+\item Faltungssatz $L\{f_1(t) * f_2(t)\} = f_1(s) * f_2(s)$
+\item Grenzwertsatz $f_1(t=0) = \lim\limits_{s \rightarrow \infty} s * f(s)$
+\item Differentiationssatz $L\{\frac{d}{dt}f(t)\} = s F(s)$
+\item Integrationssatz $L\{\int f(t) dt\} = \frac{1}{s} F(s)$
+\item Verschiebung $L\{f(t-\tau)\} = e^{-\tau s} F(s)$
+\item $L\{e^{\alpha t}\} = \frac{1}{s-\alpha}$, $L\{t^n\} = \frac{n!}{s^{n+1}}$ mit $n = 1,2,...$
+\item $L\{sin(\alpha t)\} = \frac{\alpha}{s^2 + \alpha^2}$,  $L\{cos(\alpha t)\} = \frac{s}{s^2 + \alpha^2}$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Übertragungsglieder}
+
+\begin{itemize}
+\item Häufig Blöcke von folgendem Typ:
+\begin{itemize}
+\item Lineares zeitinvariantes Übertragungsglied (LZI-Glied)
+\item Im komplexen s-Bereich: $Y(s) = G(s) * U(s)$
+\item Im Zeitbereich: $y(t) = g(t) * u(t) = \int_0^t g(t-\tau) * u(\tau) * d\tau$
+\end{itemize}
+\end{itemize}
+
+Elementare Übertragungsglieder
+\begin{itemize}
+\item P-Glied (Proportionalglied): $y(t) = K * u(t)$
+\item I-Glied (Integrierglied): $y(t) = K * \int_0^t u(\tau) d\tau$
+\item D-Glied (Differenzierglied): $y(t) = K * \dot u(t-T_t)$
+\item $T_t$-Glied (Totzeit-Glied): $y(t) = K * u$
+\item S-Glied (Summenglied): $y(t) = \pm u_1(t) \pm u_2(t)$
+\item KL-Glied (Kennlinienglied): $y(t) = K * F(u(t))$
+\item M-Glied (Multiplizierglied): $y(t) = K * u_1(t) u_2(t)$
+\end{itemize}
+
+PID-Regelung
+\begin{itemize}
+\item Proportional-Integral-Derivative Controller: $\tau = K_p \theta_d + K_i \int \theta_d(t)dt + K_d \dot \theta e$
+\end{itemize}
+
+PID-Regler (und Unterklassen)
+\begin{itemize}
+\item sehr verbreitet, da für nahezu alle Prozesstypen geeignet, robust und mit geringem Aufwand realisierbar
+\item Charakterische Gleichung: $u(t) = K_p(e(t) + \frac{1}{T_N} \int_0^1 e(\tau) d \tau + T_V \frac{d}{dt} e(t)) $
+\end{itemize}
+
+\subsubsection{Stabilität einer Regelung}
+
+Drehmomentregelung
+\begin{itemize}
+\item Dynamisches Robotermodell wird in die Regelung miteinbezogen
+\item Dynamische Gleichung für 1DoF-Arm: $\tau = M \ddot \theta + mgr cos(\theta)$
+\item Vereinfachte Annahme: Viskose Reibung (Reibkoeffizient b): $\tau = M \ddot \theta + mgr cos(\theta) + b \dot \theta$
+\item PID-Regler: $\tau = K_p \theta_d + K_i \int \theta_d(t)dt + K_d \dot \theta_e$
+\end{itemize}
+
+Stabilität
+\begin{itemize}
+\item Ziel: Stabiles System, d.h. Regelabweichung geht mit der Zeit
+\begin{itemize}
+\item 1. Annahme: $K_i = 0; g = 0$ -> Roboter bewegt sich in horizontaler Ebene 
+\item Gleichungen des PID-Reglers einsetzen ($\theta_d$: Sollwert \glqq desired value \grqq) $\rightarrow M \ddot \theta + b \dot \theta = K_p(\theta_d - \theta) + K_d (\dot \theta_d - \dot \theta)$
+\item 2. Annahme: Festpunktregler, d.h. Zielposition halten bei konstantem $\theta_d(\dot \theta_d = \ddot \theta_d = 0 -> \theta_d = \theta_v - \theta; \dot \theta_d = - \dot \theta; \ddot \theta = - \ddot \theta)$: $\ddot \theta_d+ \frac{(b+K_d)\dot \theta_d}{M} \frac{K_p}{M} \theta_e = 0 \rightarrow \ddot \theta_e + 2 \zeta \omega_n \dot \theta_d + \omega_n^2 \theta_d = 0$
+\end{itemize}
+\item Lösung des DGL mit Laplace-Transformation\\ $a_n \theta_d^{(n)} + a_{n-1}^{(n-1)} + ... + a_2 \ddot \theta_d + a_1 \dot \theta_d + a_0 \theta_d = 0$\\
+$\rightarrow a_ns^n + a_{n-1}s^{n-1} + ... + a_2s^2 + a_1^s + a_0 = 0$\\
+$\ddot \theta_d + 2 \zeta \omega_n \dot \theta_d + \omega^2_n \theta_e = 0$\\
+$\rightarrow s^2 + 2 \zeta \omega_n s + \omega_n^2 = 0$
+\item 3 mögliche Lösungstypen
+\begin{itemize}
+\item $\zeta > 1$: aperiodische Lösung: Zielwert wird ohne zu schwingen (langsam) über die Exponentialfunktion erreicht
+\item $\zeta = 1$: aperiodischer Grenzfall: Der Zielwert wird schnell erreicht, und das System überschwingt gerade nicht
+\item $\zeta < 1$: gedämpfte Schwingung: Das System überschwingt.
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{Testfunktionen}
+
+\begin{itemize}
+\item Impulsfunktion
+\item Sprungfunktion
+\item Anstiegsfunktion
+\item Harmonische Funktion
+\item Wird die Ausgangsgröße auf die Eingangsgröße bezigen, so entsteht die normierte Sprungantwort $h(t)$ (Übertragsfunktion der Regelstrecke).
+\end{itemize}
+
+\subsection{Regler}
+
+\begin{itemize}
+\item Zustandsregler
+\begin{itemize}
+\item Verbessertes Regelverhalten: Regelabweichung und idealerweise alle Zustandsgrößen der Regelstrecke stehen zur Verfügung
+\item Regeltechnische Behandlung: Mehrgrößensysteme, nichtlineare und zeitvariable Übertragungssysteme
+\end{itemize}
+\item Kaskadenregler
+\begin{itemize}
+\item Manipulator = Mehrgrößensystem: Unabhängige lineare Einzelkreise der einzelnen Gelenke
+\end{itemize}
+\item Adaptive Regler
+\begin{itemize}
+\item Lageabhängige und somit zeitveränderliche Systemteile werden als Parameterschwankungen aufgefasst (Beispiel: Überschallflugzeuge mit Reglern je nach aktueller Mach-Zahl)
+\end{itemize}
+\end{itemize}
+
+\subsection{Regelungskonzepte für Manipulatoren}
+
+Unter dem Begriff Regelung von Manipulatoren fällt nicht nur die klassische Positionsregelung, sondern auch die Einbeziehung weiterer Umwelteinflüsse. Besondere Stellung nimmt dabei die Regelung von Kräften und Drehmomenten ein.\\
+
+Ausgangspunkt: Dynamikmodell
+\begin{itemize}
+\item Bei Bewegungen wirken aufgrund der Masseträgheit des Manipulators Gravitations-, Zentrifugal-, Coriolis und Reibungskräfte/momente auf die Gelenke.\\$Q = M(q) \ddot q + n(\dot q, q) + g(q) + R \dot q$
+\end{itemize}
+
+Regelung im Gelenkwinkelraum
+\begin{itemize}
+\item Koordinatentransformation (Soll-Trajektorie im Gelenkwinkelraum)
+\item Aus den Gelenkwinkel-Sollwerten und den gemessenen Gelenkwinkeln werden Stellgrößen für die Gelenkantriebe generiert
+\end{itemize}
+
+Regelung im kartesischen Raum
+\begin{itemize}
+\item Höhere Komplexität des Regelungsalgorithmus
+\item Direkte, gezielte Beeinflussung der einzelnen Raumkoordinaten
+\end{itemize}
+
+\begin{itemize}
+\item Exakte Systemmodellierung setzt a priori die exakte Kenntnis des Dynamikmodells und der Umgebung des Roboters voraus
+\item Kraft-/Positionsregelung zur Ausführung von Aufgaben, die Interaktionskräfte berücksichtigen müssen (hybride Kraft-/Positionsregelung, Impedanz Regelung)
+\end{itemize}
+
+Kraft-Positionsregelung
+\begin{itemize}
+\item Grundlegendes Problem:
+\begin{itemize}
+\item Positionen und Kräfte sind eng miteinander verknüpft
+\item Steht der Roboter in Kontakt zur Umgebung, so bedeutet jede Positionsänderung auch eine Kraftänderung und umgekehrt
+\end{itemize}
+\item Allgemeine Methode zur Lösung des Problems:
+\begin{itemize}
+\item Aus der Beschreibung der auszuführenden Aufgabe resultieren natürliche Randbedingungen. Künstliche Randbedingungen werden zusätzlich eingeführt, um den Bewegungsablauf vollständig zu beschreiben.
+\end{itemize}
+\end{itemize}
+
+Hybride Kraft-/Positionsregelung
+\begin{itemize}
+\item Reihe Kraft- oder Positionsregelung für jede kartesische Bewegungsrichtung des Arms
+\item Achsen Regelung: Enschieben einer Box
+\begin{itemize}
+\item kartesische Achsen (relativ zu Kraft-Momenten-Sensor im TCP)
+\item Achsen sind unabhängig geregelt
+\item Jeder Achsen-Regler ist ein PID-Regler
+\item Bei dieser Anwendung ist der i-Anteil besonders relevant
+\end{itemize}
+\item Probeleme in der Praxis: Reibung muss berücksichtigt werden, beim Regeln auf 0 kann bei hoher Reibung sein, dass sich nicht bewegt wird.
+\item Achsenüberlagerte Regelung: Spiralsuche
+\begin{itemize}
+\item kartesische Achsen (relativ zu Kraft-Momenten-Sensor im TCP)
+\item Hier reicht reiner hybrider Kraft-Positionsregler nicht mehr aus, da auf zwei Achsen, nämlich X-Y, sowohl Kraft- als auch Position geregelt werden müssen
+\end{itemize}
+\item Offene Fragestellung: Programmierung Reglerprogramm
+\begin{itemize}
+\item Schnell
+\item Intuitiv
+\item Robust
+\item Einfache Wartung
+\item Wiederverwendbar
+\end{itemize}
+\end{itemize}
+
+Impedanz-Regelung
+\begin{itemize}
+\item Regelt die dynamische Beziehung zwischen Kraft und Position im Kontaktfall
+\item Idee:
+\begin{itemize}
+\item Die Interaktion zwischen einem Roboter und der Umwelt verhält sich wie ein Feder-Dämpfer-Masse System
+\item Kraft $f$ und Bewegung können über die Feder-Dämpfer-Masse-Gleichung direkt in Zusammenhang gebracht werden.
+\end{itemize}
+\item Die Impedanz kann über Steifigkeit, Dämpfung und Trägheit beeinflusst werden
+\end{itemize}
+
+\section{Bahnsteuerung}
+
+\subsection{Grundlagen der Bahnsteuerung}
+
+Bewegungen eines Roboters werden aufgefasst als
+\begin{itemize}
+\item Zustandsänderungen
+\begin{itemize}
+\item über der Zeit
+\item relativ zu einem stationären Koordinatensystem
+\end{itemize}
+\item mit Einschränkungen durch
+\begin{itemize}
+\item Zwangsbedingungen
+\item Gütekriterien
+\item Neben- und Randbedingungen
+\end{itemize}
+\end{itemize}
+
+Problem:
+\begin{itemize}
+\item Gegeben
+\begin{itemize}
+\item $S_{Start}$: Zustand zum Startzeitpunkt
+\item $S_{Ziel}$: Zustand zum Zielzeitpunkt
+\end{itemize}
+\item Gesucht $S_i$: Zwischenzustände (Stützpunkte), damit die Trajektorie glatt und stetig wird.
+\end{itemize}
+
+\begin{itemize}
+\item Zustände können dargestellt werden im
+\begin{itemize}
+\item Gelenkwinkelraum (Konfigurationsraum): $\mathbb{R}^n$
+\item Kartesischen Raum (Arbeitsraum): $\mathbb{R}^3$,SO(3)
+\end{itemize}
+\item Bahnsteuerung im Gelenkwinkelraum ist näher an der Ansteuerung der Teilsysteme des Roboters (Gelenke, Sensorik)
+\item Bahnsteuerung im kartesischen Raum ist näher an der zu lösenden Aufgabe (bei Steuerung im kartesischen Raum ist das Lösen der inversen Kinematik nötig)
+\end{itemize}
+
+Bahnsteuerung im Gelenkwinkelraum
+\begin{itemize}
+\item Bahnsteuerung als Funktion der Gelenkwinkelzustände 
+\begin{itemize}
+\item Verlauf der punktweise in Gelenkwinkel spezifizierten Bahn muss im kartesischen Raum nicht notwendigerweise definiert sein
+\end{itemize}
+\item Abfahren dieser punktweise spezifizierten Trajektorien
+\begin{itemize}
+\item Asynchron: Steuerung der Achsen unabhängig voneinander (Anwendung: Punktschweißen, Handhabungsaufgaben)
+\item Synchron: achsinterpolierte Steuerung (Bewegung aller Achsen beginnt und endet zum gleichen Zeitpunkt, Anwendung: Bahnschweißen, Lackieren, Montieren)
+\end{itemize}
+\end{itemize}
+
+Kartesischer Raum
+\begin{itemize}
+\item Angabe der Trajektorie erfolgt als Funktion der Zustände des Roboters (z. B. mit Beschreibungsvektor des TCP(Position, Geschwindigkeit, Beschleunigung))
+\item Endeffektor folgt in Lage und Orientierung einer definierten Bahn
+\item Bahntypen: lineare Bahnen, Polynombahnen, Splines
+\end{itemize}
+
+\subsection{Programmierung der Schlüsselpunkte}
+
+Teach-In
+\begin{itemize}
+\item Anfahren markanter Punkte der Bahn mit manueller Steuerung
+\begin{itemize}
+\item Teach Box, Teach Panel, weitere: Spacemouse, Teach-Kugel
+\end{itemize}
+\item Funktionalitäten einer Teach Box:
+\begin{itemize}
+\item Einzelbewegung der Gelenke
+\item Bewegung des Effektors in 6 Freiheitsgraden
+\item Speichern/Löschen von Anfahrpunkten
+\item Eingabe von Geschwindigkeiten
+\item Eingabe von Befehlen zur Bedienung des Greifers
+\item Starten/Stoppen ganzer Programme
+\end{itemize}
+\item Speichern der Gelenkwerte
+\item Ergänzung der gespeicherten Werte um Parameter wie Geschwindigkeit, Beschleunigung usw.
+\item Anwendung: Fertigungsindustrie (Punktschweißen, Nieten), Handhabungsaufgaben (Pakete vom Fließband nehmen)
+\end{itemize}
+
+Playback
+\begin{itemize}
+\item Roboter im Zero-Force-Control Modus (Roboter kann durch den Bediener bewegt werden)
+\item Abfahren der gewünschten Bahn
+\item Speichern der Gelenkwerte (automatisch mit Abtastfrequenz oder manuell durch Tastendruck)
+\item Anwendung: mathematisch schwer beschreibbare Bewegungsabläufe, Integration der handwerklichen Erfahrung, typische Einsatzbereiche sind Lackieren oder Kleben
+\item Vorteile: schnell für komplexe Bahnen, intuitiv
+\item Nachteile: schwere Roboter schwierig zu bedienen, wenig Platz in engen Fertigungszellen für Bediener, schlechte Korrekturmöglichkeiten, Optimierung und Kontrolle durch Interpolationsmethoden schwierig
+\end{itemize}
+
+\subsection{Interpolationsarten}
+
+\subsubsection{Punkt-zu-Punkt (PTP)}
+
+\begin{itemize}
+\item Roboter führt Punkt-zu-Punkt-Bewegung aus
+\item Vorteile:
+\begin{itemize}
+\item Die Berechnung der Gelenkwinkeltrajektorie ist einfach
+\item Keine Probleme mit Singularitäten
+\end{itemize}
+\item Ablauf der Steuerung
+\begin{itemize}
+\item Fahrzeit $t_e$
+\item Beschleunigungszeit $t_b$
+\item Beginn der Bremszeit $t_v$\\
+$s(t_e) = s_e = |q_z - s_{st}|$\\ 
+$\dot s(t_e) = v(t_e) = 0$
+\end{itemize}
+\end{itemize}
+
+Interpolation für PTP mit Rampenprofil
+\begin{itemize}
+\item Einfache Art zur Berechnung des Bahnparameter $s(t)$
+\item Sprungförmige Auschaltung der Beschleunigung (ruckartig)
+\item Kann zu Eigenschwingungen von mechanischen Teilen führen
+\end{itemize}
+
+Interpolation für PTP mit Sinoidenprofil
+\begin{itemize}
+\item Weichere Bewegung durch Verwendung einer sinusförmigen Zeitfunktion
+\item Längere Beschleunigungs- und Bremsphase als beim Rampenprofil
+\item Roboter wird weniger beansprucht
+\item Bestimmung der Kurvenparameter für die Phase
+\begin{itemize}
+\item Beschleunigung
+\item Gleichförmige Bewegung
+\item Bremsvorgang
+\end{itemize}
+\end{itemize}
+
+Synchrone PTP-Bahnen
+\begin{itemize}
+\item Vorgehen bei synchronen PTP-Bahnen
+\begin{itemize}
+\item Bestimme für jedes Gelenk $i$ die PTP-Parameter $s_{e,i}$, $v_{m,i}$, $b_{m,i}$ und Fahrtzeit $t_{e,i}$
+\item Bestimme $t_e = t_{e,max} = max(t_{e,i})$
+\item Setze $t_{e,i} = t_e$ für alle Gelenke
+\item Bestimme die neuen maximalen Geschwindigkeiten für alle Gelenke
+\end{itemize}
+\item Alle Gelenke beginnen und beenden ihre Bewegung gemeinsam
+\end{itemize}
+
+Asynchrone PTP-Bahnen
+\begin{itemize}
+\item Jedes Gelenk wird sofort mit der maximalen Beschleunigung angesteuert.
+\item Jede Gelenkbewegung endet unabhängig von den anderen.
+\end{itemize}
+
+Vollsynchrone PTP-Bahnen
+\begin{itemize}
+\item Zusätzliche Berücksichtigung der Beschleunigungs- und Bremszeit
+\item Bessere Annhäherung der Start- und Zielpunkte im kartesischen Raum
+\item Bestimmung Leitachse mit $t_e$ und $t_b \rightarrow t_v = t_e - t_b$
+\item Bestimmung der Geschwindigkeit und Beschleunigung der anderen Achse
+\item Nachteil: Beschleunigung jeder Achse wird vorgegeben
+\end{itemize}
+
+\subsubsection{Linear- und Zirkularinterpolation}
+
+Linearinterpolation:
+\begin{itemize}
+\item Orientierung in Eulerwinkel
+\item Berechnung von $s_\omega(t)$ mit Rampen- oder Sinoidenprofil
+\item Angleich der Fahrzeiten $t_{ep}$ (Position) und $t_{e\omega}$ (Orientierung)
+\item Analog zur Anpassung der Geschwindigkeiten bei synchronen PTP
+\end{itemize}
+
+CP (Continuous Path)
+
+\subsubsection{Splineinterpolation}
+
+\begin{itemize}
+\item Die Endbedingungen der Teiltrajektorie $j-1$ (Richtung, Geschwindigkeit, Beschleunigkeit) und die Anfangsbedingungen der Teiltrajektorie werden aneinander angeglichen
+\item Teiltrajektorien werden separat beschrieben
+\end{itemize}
+
+\subsection{Approximierte Bahnsteuerung}
+
+Bauninterpolation: Die ausgeführte Baun verläuft durch alle Stützpunkte der Trajektorie\\
+Baunapproximation: Die Kontrollpunkte beeinflussen den Baunverlauf und werden approximiert.\\
+
+PTP und CP mit Überschleifen
+\begin{itemize}
+\item Geschwindigkeitsüberschleifen
+\begin{itemize}
+\item Beginn, wenn die Geschwindigkeit einen festgelegten Minimalwert unterschreitet.
+\item Nachteil: Abhängig vom Geschwindigkeitsprofil.
+\end{itemize}
+\item Positionsüberschleifen
+\begin{itemize}
+\item Beginn, wenn der TCP in die Überschleifkugel eintritt
+\item Außerhalb der Überschleifkugel wird Bahn exakt eingehalten
+\item Vorteil: Gut kontrollierbar
+\end{itemize}
+\end{itemize}
+
+Bézierkurven
+\begin{itemize}
+\item Im Unterschied zu kubischen Splines verlaufen Bézierkurven nicht durch alle Stützpunkte, sondern nur von ihnen beeinflusst.
+\item Basisfunktion:
+\begin{itemize}
+\item $P(t) = \sum\limits_{i=0}^n B_{i,n}(t) P_i$
+\item $B_{i,n}(t) = \overset{n}{i} t^i(1-t)^{n-i}$
+\end{itemize}
+$B_{i,n}(t)$: $i$-tes Bernsteilpolynom $n$-ten Grads
+\item Berechnung beliebiger Zwischenstellungen
+\end{itemize}
+
+De-Casteljau-Algorithmus
+\begin{itemize}
+\item Annäherung an die Bézierkurve: Effiziente Berechnung\\ Näherungsdarstellung von Bézierkurven durch einen Polygonzug
+\item Iterative Berechnung: Kann auch für große $n$ effizient berechnet werden
+\end{itemize}
+
+\section{Bewegungsplanung}
+
+\subsection{Motivation}
+
+Erzeugen einer kollisionsfreien Trajektorie unter Berücksichtigung verschiedener Ziele und Einschränkungen
+
+\subsection{Grundlagen der Bewegungsplanung}
+
+\subsubsection{Problemstellung}
+
+\begin{itemize}
+\item Gegeben
+\begin{itemize}
+\item Konfigurationsraum $C$
+\item Startkonfiguration $q_{start} \in C$
+\item Zielkonfiguration $q_{ziel} \in C$
+\end{itemize}
+\item Gesucht
+\begin{itemize}
+\item Stetige Trajektorie $\tau: [0,1] \implies C$ mit
+\begin{itemize}
+\item $\tau(0) = q_{start}$
+\item $\tau(1) = q_{ziel}$
+\end{itemize}
+\item Unter Berücksichtigung von
+\begin{itemize}
+\item Gütekriterien
+\item Neben- und Randbedingungen
+\item Zwangsbedingungen
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Definitionen}
+
+\begin{itemize}
+\item Konfiguration: Eine Konfiguration $q \in C$ beschreibt den Zustand eines Roboters
+\begin{itemize}
+\item als Lage und Orientierung im euklidischen Raum oder
+\item als Gelenkwinkelvektor im Gelenkwinkelraum,
+\end{itemize}
+\item Konfigurationsraum: Der Konfigurationsraum $C$ eines Roboters $R$ ist der Raum aller möglicher Konfigurationen von $R$.
+\item Arbeitsraumhindernis: Ein Arbeitsraumhindernis $H$ ist der Raum, welcher von einem Objekt im Arbeitsraum eingenommen wird.
+\item Konfigurationsraumhindernis: Ein Konfigurationsraumhindernis $C_H$ ist die Menge aller Punkte des Konfigurationsraumes $C$, welche zu einer Kollision mit dem Hindernis $H$ führen.
+\item Hindernisraum: Der Hindernisraum $C_{obs}$ ist die Menge aller Konfigurationshindernisse.
+\item Freiraum
+\begin{itemize}
+\item Der Freiraum ist die Menge aller Punkte aus $C$, welche nicht im Hindernisraum $C_{obs}$ liegen
+\item Aufwand für die Berechnung des Freiraums: $O(m^n)$
+\item Verwendung approximativer Verfahren zur vereinfachten Repräsentation von $C_{free}$
+\end{itemize}
+\item{Umweltmodellierung}
+\begin{itemize}
+\item Exakt: Beispielsweise über CSG (constructed-solid-geometry), in Form einer algebraischen Beschreibung
+\item Approximiert: Die Umwelt wird durch Näherungen beschrieben (Kuben, verallgemeinerte Zylinder, Polyeder,...)
+\end{itemize}
+\item Planungsverfahren
+\begin{itemize}
+\item Vollständig: liefert immer eine korrekte Lösung, kann ermitteln, ob keine Lösung existiert
+\item Probabilistisch vollständig: Falls eine Lösung existiert geht die Wahrscheinlichkeit, dass eine Lösung gefunden wird, bei fortschreitender Zeit gegen 1, existiert keine Lösung, terminiert das Verfahren nicht
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Begriffsbildung}
+
+\begin{itemize}
+\item Pfadplanung
+\begin{itemize}
+\item Starres Objekt (z. B. mobiler Roboter, autonomes Fahrzeug)
+\item 2D Problem (Position: x,y)
+\item 3D Problem (Position: x,y; Rotation $\alpha$) -> Piano Mover's Problem
+\end{itemize}
+\item Bewegungsplanung
+\begin{itemize}
+\item Mehrkörpersystem (z. B. Roboterarme, Systeme mit mehreren Robotern)
+\item Hochdimensionale Problemstellungen
+\end{itemize}
+\item Randbedingungen (auch Zwangsbedingungen)
+\begin{itemize}
+\item Globale Randbedingungen: Limitieren den gültigen Konfigurationsraum (z. B. aufrechte Position des Endeffektors, maximale Motorströme, etc.)
+\item Lokale Randbedingungen: Schränken die Übergänge zwischen Konfigurationen ein (z. B. nicht-holonome Fahrzeuge, max. Geschwindigkeit/Beschleunigung)
+\end{itemize}
+\item Komplexität: Allgemeine Planungsaufgaben sind PSPACE-vollständig
+\item Vollständiger Algorithmus: Ein vollständiger Algorithmus findet für spezielle Planungsprobleme mindestens eine Lösung oder erkennt in endlicher Zeit, dass keine Lösung existiert.
+\item Randomisierter Algorithmus: Randomisierte Algorithmen verwenden Zufallsgrößen, um den Ablauf zu steuern, wobei oft heuristische Annahmen genutzt werden, um die Berechnung zu beschleunigen.
+\item Auflösungsvollständiger Algorithmus: Ist ein approximativer Algorithmus für eine diskretisierte Problemstellung vollständig, gehört er zur Klase der auflösungsvollständigen Algorithmen
+\item Probabilistisch-vollständiger Algorithmus: Ein probabilistisch-vollständiger Algorithmus findet mindestens eine Lösung falls sie existiert. D. h. die Wahrscheinlichkeit, dass eine Lösung gefunden wird, konvergiert mit fortlaufender Zeit gegen eins. Allerdings kann mit probabilistisch-vollständigen Algorithmen nicht ermittelt werden, ob keine Lösung existiert.
+\end{itemize}
+
+\subsubsection{Problemklassen}
+
+\begin{itemize}
+\item Klasse a)
+\begin{itemize}
+\item Bekannt: vollständiges Umweltmodell, vollständige Neben-, Rand- und Zwangsbedingungen
+\item Gesucht: Kollisionsfreie Trajektorie vom Start- zum Zielzustand
+\end{itemize}
+\item Klasse b)
+\begin{itemize}
+\item Bekannt: unvollständiges Umweltmodell, unvollständige Neben-, Rand- und Zwangsbedingungen
+\item Gesucht: Kollisionsfreie Trajektorie vom Start- zum Zielzustand
+\item Problem: Kollision mit unbekannten Objekten
+\end{itemize}
+\item Klasse c)
+\begin{itemize}
+\item Bekannt: zeitvariantes Umweltmodell (bewegliche Hindernisse)
+\item Gesucht: Kollisionsfreie Trajektorie vom Start- zum Zielzustand
+\item Problem: Hindernisse in Ort und Zeit variant
+\end{itemize}
+\item Klasse d)
+\begin{itemize}
+\item Bekannt: kein Umweltmodell
+\item Gesucht: Kollisionsfreie Trajektorie vom Start- zum Zielzustand
+\item Problem: Kartographieren
+\end{itemize}
+\item Klasse e)
+\begin{itemize}
+\item Bekannt: zeitvariantes Umweltmodell
+\item Gesucht: Trajektorie zu einem beweglichen Ziel (Rendezvous-Problem)
+\item Problem: Zielzustand in Ort und Zeit beweglich
+\end{itemize}
+\end{itemize}
+
+\subsection{Pfadplanung für mobile Roboter}
+
+\begin{itemize}
+\item Gegeben
+\begin{itemize}
+\item 2D Weltmodell (z. B. Straßenkarte)
+\item Start- und Zielposition $q_{start}$ und $q_{ziel}$
+\end{itemize}
+\item Gesucht: Günstigste Verbindung von $q_{start}$ nach $q_{ziel}$
+\item Ansatz:
+\begin{itemize}
+\item Konstuiere ein Netz $W$ von Wegen in $C_{free}$
+\item Bilde $q_{start}$ und $q_{ziel}$ auf die nächsten Knoten $q'_{start}$ und $q'_{ziel}$ in $W$ ab
+\item Suche in $W$ einen Weg von $q'_{start}$ nach $q'_{ziel}$
+\item Finde einen Weg zwischen $q_{start}$ und $q'_{start}$ sowie zwischen $q'_{ziel}$ und $q_{ziel}$
+\end{itemize}
+\item Konstruktion des Wegenetzes $W$: Voronoi-Diagramme, Sichtgraphen, Zellzerlegung
+\item Suche in W: Euklidischer Abstand, Potentialfelder, Baumsuche, A*
+\end{itemize}
+
+\subsubsection{Voronoi-Diagramme}
+
+\begin{itemize}
+\item Visualisiert die Zerlegung eines Raumes in Regionen basierend auf vorgegebenen Punkten.
+\item Eine Region ist definiert als die Menge aller Punkte, deren Abstand zum Zentrum geringer ist als zu allen anderen Zentren.
+\item Alle Punkte an der Grenze zwischen zwei Regionen besitzen den gleichen Abstand zum eigenen und zum benachbarten Zentrum.
+\end{itemize}
+
+Vorteile:
+\begin{itemize}
+\item Maximaler Abstand zu Hindernissen
+\item Ein Roboter kann mit Hilfe von Abstandssensoren leicht prüfen ob der richtige Weg abgefahren wird
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item In der Regel ist der Weg nicht der kürzeste.
+\item Bei wenigen Hindernissen werden nur wenige Wege generiert.
+\end{itemize}
+
+\subsubsection{Sichtgraphen}
+
+Verbinde jedes Paar von Eckpunkten auf dem Rand von $C_{free}$ durch ein gerades Liniensegment, wenn das Segment kein Hindernis schneidet und verbinde $q_{start}$ und $q_{ziel}$ analog.\\ 
+
+Vor-und Nachteile:
+\begin{itemize}
+\item Vorteile:
+\begin{itemize}
+\item Wenn ein Weg gefunden ist, ist es auch der kürzeste Weg.
+\item Methode ist exakt, wenn nur zwei translatorische Freiheitsgrade existieren und sowohl Roboter als auch Hindernisse durch konvexe Polygone dargestellt werden können.
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item Wege sind nicht zwingend kollisionsfrei, da Hinderniskanten auch Wegsemente sein können. Abhilfe durch Erweiterung der Hindernisse.
+\end{itemize}
+\item Methode auch im $\mathbb{R}^3$ anwendbar, jedoch sind die gefunden Wege i. A. keine kürzesten Wege mehr.
+\end{itemize}
+
+\subsubsection{Zellzerlegung}
+
+\begin{itemize}
+\item Vorgehen:
+\begin{enumerate}
+\item Zerlege $C_{free}$ in Zellen, so dass ein Weg zwischen zwei Konfigurationen innerhalb einer Zelle leicht zu finden ist.
+\item Stelle die Nachbarschaft (Adjazenz) in einem Graphen dar
+\item Suche den optimalen Weg von $q_{start}$ nach $q_{ziel}$ in dem Graphen
+\end{enumerate}
+\item Es gibt zwei Zerlegungsarten:
+\begin{itemize}
+\item Exakte Zerlegung
+\item Approximative Zerlegung
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Potentialfelder}
+
+\begin{itemize}
+\item Der Roboter bewegt sich unter dem Einfluss von Kräften, welche ein Potentialfeld auf ihn ausübt
+\item Definition:
+\begin{itemize}
+\item Ein Potentialfeld $U$ ist eine Skalarfunktion über dem Freiraum $U: C_{free} \rightarrow \mathbb{R}$
+\item Die Kraft in einem Punkt $q$ des Potentialfeldes ist der negative Gradient in diesem Punkt $F(q) = - \nabla U(q)$
+\end{itemize}
+\item Abstoßendes Potenzial
+\begin{itemize}
+\item Hindernisse erzeugen ein abstoßendes Potential
+\item In großen Abstand zu Hindernissen ($>p_0$) soll der Roboter nicht beeinflusst werden
+\end{itemize}
+\item Anziehendes Potential: Es soll möglichst nur ein Minimum in $q_{ziel}$ geben
+\item Lineare Funktion der Distanz zum Ziel: $F_{ab}(q) = - \nabla U_{ab}(q) = - \zeta \frac{q-q_{ziel}}{||q-q_{ziel}||}$, wird für kleine Distanzen sehr groß
+\item Quadratische Funktion der Distanz: $F_{an}(q) = - \nabla U_{an}(q) = - \zeta(q-q_{ziel})$
+\item Oft wird die Kombination auss linearer und quadratischer Funktion verwendet
+\begin{itemize}
+\item Lineare Funktion, wenn weit vom Ziel entfernt
+\item Quadratische Funktion, wenn nah am Ziel
+\end{itemize}
+\item Lokale Minima: Durch Summation von $U_{an}$ und $U_{ab}$ kann $U$ lokale Minima besitzen. Wenn der Roboter sich in Richtung des negativen Gradienten des Potentialfeldes bewegt, kann er in solch einem lokalen Minimum steckenbleiben.
+\item Maßnahmen:
+\begin{itemize}
+\item $U_{an}$ und $U_{ab}$ so definieren, dass $U$ kein lokales Minimum hat, außer in $q_{ziel}$
+\end{itemize}
+\end{itemize}
+
+Baumsuche:
+\begin{itemize}
+\item Anwendungsfall:
+\begin{itemize}
+\item Mobiler Roboter
+\item 2D-Arbeits- und Konfigurationsraum
+\end{itemize}
+\item Darstellung des Konfigurationsraums als Quadtree
+\begin{itemize}
+\item Rekursive Unterteilung des Konfigurationsraums in Kacheln
+\item Kacheln sind entweder frei oder ein Hindernis
+\end{itemize}
+\item Bewegungsplanung:
+\begin{itemize}
+\item Kacheln finden, in denen sich Start- bzw. Zielkonfiguration befinden
+\item Benachbarte freie Kacheln des Baums vom Start zum Ziel verbinden
+\item Kollisionsfreie Routenplanung durch freie Kacheln
+\end{itemize}
+\end{itemize}
+
+\subsubsection{A*}
+
+\begin{itemize}
+\item Kürzester Pfad von Start nach Ziel
+\item A* ist einer der beliebtesten Algorithmen zur Routenplanung
+\item Kostenfunktion ist $f(x) = g(x) + h(x)$
+\begin{itemize}
+\item $g(x)$ entspricht Kosten von Start-Knoten nach Knoten $x$
+\item $h(x)$ entspricht geschätzten Kosten von Knoten $x$ nach Ziel-Knoten
+\end{itemize}
+\item Unterteile Knoten in
+\begin{itemize}
+\item Open Set: Enthält zu Beginn alle Knoten außer dem Start-Knoten
+\item Current Set: Enthält zu Beginn nur den Start-Knoten
+\item Closed Set: Enthält bereits untersuchte Knoten, zu welchen der kürzeste Weg bekannt ist, zu Beginn leer.
+\end{itemize}
+\item Knoten aus dem Current Set mit gerinstem $f(x)$ wird als nächsten untersucht.
+\item Wenn ein Knoten $x$ abschließend untersucht wurde, dann werden die Nachfolgeknoten in das Open Set eingefügt und $x$ in das Closed Set aufgenommen.
+\item Algorithmus terminiert, wenn der Ziel-Knoten abschließend untersucht worden ist.
+\item Wenn Open Set leer ist, terminiert der Algorithmus ohne Lösung.
+\end{itemize}
+
+Eigenschaften:
+\begin{itemize}
+\item Findet eine optimale Lösung
+\item Heuristik $h$ darf die minimalen Kosten, das Ziel zu erreichen, nicht überschätzen.
+\item A* ist auch optimal effizient für jede (zulässige) Heuristik
+\item Wenn $h(x) = 0 \forall x$: Dijksta's algorithm, d. h. $f = g$
+\begin{itemize}
+\item Greedy Algorithmus: geachtet die Kosten nicht
+\item Ignoriert Schätzung der Distanz zum Zielknoten
+\item Besucht mehr Knoten als notwendig
+\end{itemize}
+\end{itemize}
+
+\subsection{Bewegungsplanung für Manipulatoren}
+
+\begin{itemize}
+\item Pfadplanung
+\begin{itemize}
+\item Starres Objekt (z. B. mobiler Roboter, autonomes Fahrzeug)
+\item 2D Problem (Position: x,y)
+\item 3D Problem (Position: x,y; Rotation $\alpha$) -> Piano Mover's Problem
+\end{itemize}
+\item Bewegungsplanung
+\begin{itemize}
+\item Mehrkörpersystem (z. B. Roboterarme, Systeme mit mehreren Robotern)
+\item Hochdimensionale Problemstellungen
+\end{itemize}
+\item Randbedingungen (Zweckbedingungen)
+\begin{itemize}
+\item Globale Randbedingungen: Limitieren den gültigen Konfigurationsraum (z.B. aufrechte Position des Endeffektors, maximale Motorströme, etc.)
+\item Lokale Randbedingungen: Schränken die Übergänge zwischen Konfigurationen ein (z. B. holonome Fahrzeuge, max. Geschwindigkeit/Beschleunigung)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Probabilistic Roadmaps (PRM)}
+
+\begin{itemize}
+\item PRM basiert auf Approximation des Freiraumes durch den Graphen (Roadmap) -> Effizienter als die Erzeugung einer expliziten Repräsentation des Freiraumes
+\item PRM ist probabilistisch: Zufallsgesteuerte Erzeugung durch das Sampling
+\item Algorithmus:
+\begin{enumerate}
+\item Vorverarbeitung: Erzeugung einer Kollisionsfreien Straßenkarte (Graph)
+\item Anfrage: Verbinde $q_{start}$ und $q_{ziel}$ mit dem Graphen und suche einen Weg von $q_{start}$ nach $q_{ziel}$ durch den Graphen
+\end{enumerate}
+\item Vorverarbeitung:
+\begin{itemize}
+\item Zufällige Erzeugung von kollisionsfreien Stichproben (Sampling)
+\item Lokale Planung: Stichproben werden über kollisionsfreie Pfade miteinander verbunden
+\end{itemize}
+\item Anfrage
+\begin{itemize}
+\item Verbinde $q_{start}$ und $q_{ziel}$ mit dem Wegenetz
+\item Suche im Graphen (z.B. mit A*)
+\end{itemize}
+\item Konstruktion des Graphen
+\begin{itemize}
+\item $N$: Anzahl der Knoten im Graphen
+\item $R$: PRM, Graph
+\item Algorithmus:
+\begin{itemize}
+\item Erzeugung von $N$ zufälligen Konfiguration in $C_{free}$
+\item Einfügen der erzeugten Konfiguration als Knoten in $R$
+\item Für jeden Knoten $v_i \in R$
+\begin{itemize}
+\item Finde die $k$ nächsten Nachbarn von $v_i$ aus $R$: $N(v_i)$
+\item Für jeden Knoten $v \in N(v_i)$: Wenn es einen (neuen) kollisionsfreien Pfad von $v$ nach $v_i$ gibt, dann füge die Kante($v,vi$) in $R$ ein
+\end{itemize}
+\end{itemize}
+\item Ergebnis: R
+\end{itemize}
+\item Eigenschaften
+\begin{itemize}
+\item Einmalige Konstruktion des Graphen: Anfragen können effizient bearbeitet werden
+\item Randomisierter Ansatz zur Konstruktion: Exponentieller Anstieg der Laufzeit mit der Dimension des Konfigurationsraums wird vermieden
+\item Verwfahren hängt start vom verwendeten Sampling ab
+\begin{itemize}
+\item Problem: Schmale Passagen zwischen Hindernissen
+\item Lösungsansatz: Sampling in der Nähe von Hindernissen erhöhen
+\end{itemize}
+\end{itemize}
+\item Unterschiedliche Sampling-Strategien
+\begin{itemize}
+\item Zufällig: Konfiguration wird zufällig generiert und auf Kollision geprüft
+\item Grid: Konfigurationen werden mit diskreter Auflösung erzeugt, Auflösung einzelner Zellen wird hierarchisch bestimmt
+\item Halton: Halton-Menge: Menge von Punkten, die ein Bereich besser abdeckt als Grid, basiert auf dem mathematischen Konzept der Diskrepanz
+\item Zellenbasiert: Sampling in Zellen mit kleiner werdenden Ausmaßen, Zellgröße wird mit jeder Iteration verkleinert (z.B. auf 1/8)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Rapidly-exploring Random Trees (RRT)}
+
+\begin{itemize}
+\item Algorithmus zur Einmalanfrage
+\begin{itemize}
+\item Im Gegensatz zu PRMs
+\item Keine Vorverarbeitung nötig
+\item Keine Probleme mit sich verändernden Umgebungen
+\end{itemize}
+\item Probabilistisch vollständiger, randomisierter Algorithmus
+\begin{itemize}
+\item Keine Garantie, dass eine Lösung innerhalb eines Zeitlimits gefunden wird
+\item Wenn eine Lösung existiert, wird sie gefunden (Laufzeit geht gegen Unendlich)
+\item Terminiert nicht, wenn keine Lösung existiert
+\end{itemize}
+\item Effizient für hochdimensionale Problemstellungen
+\item Erweiterung der klassischen RRT für spezifische Problemstellungen z.B. enge Durchgänge
+\end{itemize}
+
+Bidirektionale RRTs
+\begin{itemize}
+\item Es werden zwei Bäume aufgebaut
+\begin{itemize}
+\item $T_1$ ausgehend von $q_{start}$
+\item $T_2$ ausgehend von $q_{ziel}$
+\end{itemize}
+\item Zufällig gewählte Punkte $q_s$ erweitern beide Bäume über $q_{nn,1}$ und $q_{nn,2}$
+\item Eine Lösung ist gefunden, wenn beide Bäume mit $q_s$ verbunden wurden
+\end{itemize}
+
+Nachbearbeitung
+\begin{itemize}
+\item Lösungen können durch Nachbearbeitung verbessert werden
+\begin{itemize}
+\item Zufällige Wahl zweier Knoten im Lösungsweg
+\item Falls die Verbindung kollisionsfrei ist, verbinde beide Knoten und lösche den dazwischenliegenden Knoten aus dem Lösungspfad
+\item Erzeugt glattere Trajektorien
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Erweiterungen}
+
+Contrained RRT:
+\begin{itemize}
+\item Bei der Bewegungsplanung müssen evtl. Nebenbedingungen (Constraints) erfüllt werden, z.B. gleichbleibende Orientierung des Endeffektors oder (statische) Stabilität eines zweibeinigen Roboters
+\item Problem: Nebenbedingungen können niederdimensionale Gebilde im Konfigurationsraum darstellen, z.B. die Menge aller Konfigurationen $q$, die eine Nebenbedingung erfüllen, bilden eine Ebene im dreidimensionalen Konfigurationsraum, sampling-basierte Ansätze können diese Nebenbedingungen prinzipiell nicht erfüllen.
+\item Lösungsansätze: Randomized Gradient Descent (RGD) oder First Order Retraction (FR)
+\item Idee: Projiziere eine Stichprobe $q_s$ auf eine Konfiguration $q'_s$, die die Nebenbedingungen erfüllt
+\item Beispiel: eine Nebenbedingung NB bilde eine 2d Mannigfaltikeit
+\item Problem: Wie wird die Projektion durchgeführt? -> Randomized Gradient Descent oder First Order Retraction
+\item Randomized Gradient Descrent
+\begin{itemize}
+\item Toleranzwert für Nebenbedingung $\alpha$
+\item Zufällige Bestimmung von $n$ Nachbarn von $q_s$ (in Hyperkugel mit Radius $d_{max}$)
+\item Falls die Distanz eines Nachbarn zu $C_{NB}$ kleiner als die Distanz von $q_s$ zu $C_{NB}$, ersetze $q_s$ mit diesem Nachbarn
+\item Wiederhole bis maximale Iterantionszahl erreicht oder die Distanz von $q_s$ zu $C_{NB}$ kleiner ist als $\alpha$
+\end{itemize}
+\item First Order Retraction
+\begin{itemize}
+\item Toleranzwert für die Nebenbedingung: $\alpha$
+\item Jacobi-Matrix $J$ liefert Richtungsinformationen
+\item Berechnung wie bei Bestimmung der inversen Kintematik: $q_s' = q_s - J(q_s)^\# \Delta x_s$
+\end{itemize}
+\end{itemize}
+
+RRT*
+\begin{itemize}
+\item Problem: RRTs finden Trajektorien, die üblicherweise nicht optimal sind
+\item RRT* optimiert den Suchbaum iterativ während der Suche: Mit ausreichender Zeit wird der optimale Pfad zwischen $q_{start}$ und $q_{ziel}$ gefunden => asymptotische Optimalität
+\item Optimierung des Suchbaums aufgeteilt in zwei Schritte
+\begin{itemize}
+\item Ermittle zu jedem Knoten die Kosten
+\item Rewiring des Suchbaums beim Hinzufügen neuer Knoten: Die Verbindungen des Suchbaumes werden in einer lokalen Umgebung des neuen Knoten optimiert.
+\end{itemize}
+\item Nachteil:
+\begin{itemize}
+\item Uni-direktionaler Ansatz
+\item Längere Laufzeiten
+\end{itemize}
+\end{itemize}
+
+Enge Passagen:
+\begin{itemize}
+\item Klassische RRTs bestimmen neue Punkte $q_s$ durch gleichverteilte Zufallswahl im Konfigurationsraum $C$
+\item Ergebnis gleichverteilter Zufallswahl:
+\begin{itemize}
+\item Viele eher uninteressante Stichproben
+\item Wenige interessante Stichproben
+\end{itemize}
+\item Klassische RRTs können viel Zeit benötigen, bis eine Lösung für einen Durchgang durch eine enge Passage gefunden wurde
+\item Hauptidee der Verfahren: Sampling ist deutlich günstiger als Kollisionsprüfung von Pfaden im Baum
+\item Dynamic Domain RRT
+\begin{itemize}
+\item Problem: RRTs erkennen enge Passagen nicht und können nicht zielgerichtet sampeln
+\item Ideal: Nur in sichtbarer Voronoi Region eines Knoten sampeln
+\item Aber: Berechnung sichtbarer Voronoi Regionen ist aufwendig
+\item Stattdessen: Approximation sichtbarer Voronoi Regionen durch Kugeln mit Radius $r$ (Dynamic Domain)
+\item Dynamic Domain RRT beschränkt in der Nähe von Hindernissen die Sampling Domäne eines Knotens auf dessen Dynamic Domain (DD)
+\begin{itemize}
+\item Initial wird der DD-Radius $r$ jedes Knotens auf $\infty$ gesetzt. Sampling findet in gesamter Voronoi Region des Knotens statt.
+\item Wenn während des RRT-Erweiterungsschritts keine Verbindung zu einem Knoten hergestellt werden kann, wird dessen DD-Radius auf einen festgelegten Wert R reduziert. Knoten dieser Art werden Grenzknoten genannt, da sie an der Grenze von $C_{free}$ und $C_{obs}$ liegen.
+\end{itemize}
+\item Sampling: Ein Sample $q_s$ wird verworfen, falls $q_s$ außerhalb des DD-Radius seines nächsten Nachbarn liegt.
+\item Bei engen Passagen werden häufige Kollisionsprüfungen vermieden und keine Expansionsversuche zu weit entfernten und unerreichbaren Knoten unternommen.
+\end{itemize}
+\item Bridge Sampling
+\begin{itemize}
+\item Idee: Wähle zielgerichtet Punkte in engen Passagen für die nächste Stichprobe
+\item Vorgehen
+\begin{enumerate}
+\item Wähle gleichverteilt einen zufälligen Punkt $q_1 \in C_{obs}$
+\item Wähle nach einer geeigneten Wahrscheinlichkeitsverteilung einen zweiten Punkt $q_2 \in C_{obs}$ in der Nähe von $q_1$
+\item Wenn der Mittelpunkt $q_s$ zwischen $q_1$ und $q_2$ in $C_{free}$ liegt, dann verwende ihn als neue Stichprobe für den RRT (oder die PRM)
+\item Wiederhole
+\end{enumerate}
+\item Bridge Sampling erhöht die Stichprobendichte in interessanten Bereich des Konfigurationsraumes $C$ (Interessant sind die Bereiche in der Nähe von Hindernissen, besonders in engen Passagen)
+\item Bridge Sampling kann für RRTs und PRMs verwendet werden
+\item Das zentrale Element des Verfahren, der Bridge Test, ist auch in hochdimensionalen Räumen effizient berechenbar
+\end{itemize}
+\end{itemize}
+
+\section{Greifplanung}
+
+\subsection{Einleitung}
+
+\begin{itemize}
+\item Die menschliche Hand
+\begin{itemize}
+\item 27 Knochen
+\item insgesamt 27 Bewegungsfreiheitsgrade.
+\begin{itemize}
+\item 3 DoF flexion/extension pro Finger
+\item 1 DoF abduction/adduction pro Finger
+\item 5 DoF Daumen (3 DoF flexion/extension, 2 DoF abduction/adduction)
+\item 6 DoF für die Handwurzel (Handfläche)
+\end{itemize}
+\end{itemize}
+\item Modellierung:
+\begin{itemize}
+\item kinematisches Modell
+\item flächenbasiertes Geometriemodell
+\end{itemize}
+\end{itemize}
+
+Cutosky Griffaxanomie
+\begin{itemize}
+\item Griffaxanomie
+\begin{itemize}
+\item Benchmark für die Evaluation von Roboterhänden
+\item Vereinfachung der Griffsynthese
+\item Grundlagen für das Design von Roboterhänden
+\item Einsatz bei der autonomen Greifplanung
+\end{itemize}
+\item Cutkosky Griffaxanomie
+\begin{itemize}
+\item 16 einzelne Griffarten
+\item Hierarchiebaum: Griffarten werden zu Gruppen zusammengefasst
+\item Erste Ebene: Unterscheidung in Kraft- und Präzisionsgriffe
+\end{itemize}
+\end{itemize}
+
+Greianalyse und Greifsynthese:
+\begin{itemize}
+\item Griff: Eine Menge von Kontaktpunkten auf der Oberfläche eines Objekts, die potentielle Bewegungen des Objekts untr dem Einfluss externer Kräfte einschränken/kompensieren
+\item Greifanalyse
+\begin{itemize}
+\item Gegeben: Objekt und eine Menge von Kontaktpunkten
+\item Gesucht: Aussagen zur Stabilität des Griffs unter Berücksichtigung von Nebenbedingungen
+\end{itemize}
+\item Greifsynthese
+\begin{itemize}
+\item Gegeben: Objekt und eine Menge von Nebenbedingungen
+\item Gesucht: Eine Menge von Kontaktpunkten
+\end{itemize}
+\end{itemize}
+
+Fingerspitzengriff-Modell
+\begin{itemize}
+\item Das Fingerspitzengriff-Modell vereinfacht die Algorithmen zur Synthese möglicher Griffe eines Objektes, da nur eine geeignete Anordnung der Kontaktpunkte auf der Oberfläche der zu greifenden Objektes bestimmt werden muss.
+\item Ein gravierender Nachteil liegt in der Nichtbeachtung fundamentaler Nebenbedingungen des Greifvorgangs, wie z.B. der Kollisionsfreiheit und Zugänglichkeit eines Griffes (Anfahr-/Abrückbewegung).
+\end{itemize}
+
+Fingerspitzenkontakte mit der Objektoberfläche\\
+Man unterscheidet verschiedene Fingerspitzenkontakte zur Objektoberfläche mit folgenden Annahmen:
+\begin{itemize}
+\item Punktkontakt ohne Reibung: Eine an einem Punktkontakt ohne Reibung auf eine Fläche eines Objektes angreifende Kraft wirkt ausschließlich normal zur Fläche
+\item Starrer Punktkontakt mit Reibung: Eine an einem starren Punktkontakt mit Reibung auf eine Fläche eines Objektes angreifende Kraft wirkt sowohl normal als auch tangential zur Fläche. Die beiden Kräfte sind über das Coulombsche Reibungsgesetz miteinander verknüpft
+\item Nicht starrer Punktkontakt mit Reibung (Soft-Kontakt): Eine an einem nicht starren Punktkontakt mit Reibung auf eine Fläche eines Objektes angreifende Kraft wirkt sowohl normal als auch tangential. Zusätzlich wirken auch axiale Momente. Es gilt ebenfalls das Coulombsche Reibungsgesetz
+\end{itemize}
+
+Wrenchvektor: Die in einem Kontaktpunkt $p_i$ wirkenden Kräfte $f_i$ und Momente $\tau_i$ mit $i \in \{x,y,z\}$ können zu einem Vektor zusammen gefasst werden. Solch ein Vektor wird im folgenden als Wrenchvektor $q$ bezeichnet (wrench: engl.: drehen, winden).
+\begin{itemize}
+\item In Abhänigkeit vom Typ des $i$-ten Kontaktpunktes folgen Wrenchvektoren, welche die am Kontaktpunkt wirkenden normalen ($n$) und tangentialen ($t$) Kräfte und die am Kontaktpunkt wirkenden axialen Momente ($\theta$) beschreiben
+\end{itemize}
+
+Greifmatrix: Die Wrenchvektoren können für einen räumlichen Griff als Spaltenvektor einer 6x3m Matrix $G$ dargestellt werden:\\
+$G = [{}^1w_n,{}^1w_t,{}^1w_\theta,...,{}^mw_n,{}^mw_t, {}^mw_\theta] \in \mathbb{R}^{6x3m}$ mit m: Anzahl der Kontaktpunkte\\
+Die Matrix $G$ repräsentiert die geometrischen und physikalischen Eigenschaften eines Fingerspitzengriffes und wird im folgenden als Greifmatrix bezeichnet. Für die Skalare erhält man den Vektor: $\vec{c} = ({}^1c_n, {}^1c_t, {}^1c_\theta,...,{}^mc_n,{}^mc_t,{}^mc_\theta) \in \mathbb{R}^{3m}$
+
+Gleichgewichtsgriff: Ein durch eine Greifmatrix $G$ spzifizierter Griff, auf den eine externe Kraft und ein externes Moment $e=(f_x,f_y,f_z,\tau_x,\tau_y,\tau_z)^T \in \mathbb{R}^6$ ausgeübt werden, wird als Gleichgewichtsgriff bezeichnet, falls:
+\begin{enumerate}
+\item $\forall i \in {1,...,m}$: ${}^ic_n \ge 0$, ${}^i \mu_t * {}^ic_n \ge |{}^ic_t|, {}^i\mu_\theta * {}^i c_n \ge |{}^i c_\theta|$
+\item $\exists c \in \mathbb{R}^{3m}: G.c + e = 0$
+\end{enumerate}
+
+Kraftgeschlossene Griffe
+\begin{itemize}
+\item Während der Transferbewegung und der Ausführung einer Greif- operation ist ein gegriffenes Objekt verschiedenen externen Kräften und Momenten ausgesetzt.
+\item Die Stabilität eines Griffes erfordert, dass das gegriffene Objekt im Kräftegleichgewicht bleibt. Dies bedeutet, dass die Kräfte und Momente, die durch die Greiferfinger auf das gegriffene Objekt ausgeübt werden, sämtliche externen Kräfte und Momente kompensieren müssen.
+\item Sind die externen Kräfte wie z.B. Störkräfte im voraus nicht bekannt, bietet sich das kraftgeschlossene Greifen zur Erreichung eines stabilen Griffes an.
+\item Ein durch eine Greifmatrix $G$ spezifizierter Griff ist kraftgeschlossen, falls:
+\begin{itemize}
+\item $\forall e = (f_x,f_y,f_z,\tau_x,\tau_y,\tau_z)^T \in \mathbb{R}^6$
+\end{itemize}
+\end{itemize}
+
+Anzahl benötigter Kontaktpunkte
+\begin{itemize}
+\item Für die minimale Anzahl der benötigten Kontaktpunkte eines kraftgeschlossenen Fingerspitzengriffes gilt folgendes:
+\begin{itemize}
+\item Kraftgeschlossenheit basierend auf Punktkontakten ohne Reibung: Vorausgesetzt, dass das zu greifende Objekt keine Rotationssymmetrie besitzt, benötigt ein planarer, kraftgeschlossener Griff mindestens 4 Kontaktpunkte. Werden beliebige 3D-Objekte betrachtet, so werden höchstens 12 Kontaktpunkte benötigt. Wird die Klasse der zu greifenden Objekte auf Polyeder eingeschränkt, so gilt eine generelle obere Grenze von 7 Kontaktpunkten.
+\item Kraftgeschlossenheit basierend auf Punktkontakten mit Reibung: Jedes planare Objekt kann durch einen auf 3 Kontaktpunkten basierenden Fingerspitzengriff kraftgeschlossen gegriffen werden. Für den räumlichen Fall gilt eine untere Grenze von 4 Kontaktpunkten.
+\end{itemize}
+\end{itemize}
+
+Formgeschlossene Griffe
+\begin{itemize}
+\item Ein formgeschlossener Griff unterliegt stärkeren Einschränkungen als ein kraftgeschlossener Griff, da für jeden Kontaktpunkt ausschließlich die Nichtdurchdringungseigenschaften co-linear zum korrespondierenden externen Oberflächennormalvektor berücksichtigt werden.
+\item Somit ist die Formgeschlossenheit eines Griffes nur von der Position der Kontaktpunkte auf der Oberfläche des zu greifenden Objektes und den korrespondierenden externen Oberflächennormalvektoren abhängig.
+\item Es werden weder Normal- oder Tangentialkräfte noch Drehmomente, die u.a. aufgrund von Reibung auftreten könnten, berücksichtigt.
+\item Die zu den Kontaktpunkten korrespondierenden externen Oberflächen-Normalenvektoren spezifizieren die Kontaktgeometrie des Figerspritzengriffs. Diese kann durch folgende modifizierte Greifmatrix $´G \in \mathbb{R}^{3xm}$ ausgedrückt werden.\\ 
+$´G = [{}^1w_n, {}^2w_n,...,{}^mw_n]$
+\item Für einen formgeschlossenen, planaren Griff sind mindestens 4 Kontaktpunkte erforderlich. Bei beliebigen, 3D Objekten erhöht sich die Anzahl auf wenigstens 7 Kontaktpunkte.
+\end{itemize}
+
+Kraft- und Formschlüssige Griffe
+\begin{itemize}
+\item Kraftschluss: Die Kinematik der Hand kann aktiv Kräfte erzeugen, um einer externen Störung zu wiederstehen
+\item Formschluss: Die Kontakte an sich verhindern, dass sich das Objekt bewegen kann
+\item Formschluss ist mit weniger Kontaktpunkten möglich und wird deshalb bei Präzisionsgriffen verwendet; erfordert jedoch eine Regelung der intern auftretenden Kräfte bei einem Griff.
+\item Die Analyse von formschlüssigen Griffen erfolgt basierend auf die Geometrie.
+\end{itemize}
+
+Stabile Griffe
+\begin{itemize}
+\item Bisher wurde vorausgesetzt, dass die Kontaktpunkte eines Griffes durch starre Greiferfinger hervorgerufen werden. In der Realität ist dies jedoch nicht der Fall und oft nicht wünschenswert.
+\item Zur Modellierung von Fingerkräften, die durch ihre Nachgiebigkeit kleine Änderungen von der Nominallage des gegriffenen Objektes kompensieren können, führt man eine Potentialfunktion $V$ ein: $V: \mathbb{R}^6 \rightarrow \mathbb{R}$
+\item Die Potentialfunktion $V$ spezifiziert die im Griff gespeicherte potentielle Energie in Abhängigkeit von Lage und Orientierung des gegriffenen Objektes.
+\end{itemize}
+
+Klassifikation von Greifplanungssystemen
+\begin{enumerate}
+\item Typ des verwendeten Greifers (Zweifinger-, Dreifinger-, Mehrfingergreifer,...)
+\item Typ der zugrunde liegenden Greifplanungsalgorithmen. Geometrisch-basiert (Berücksichtigung von CAD-Daten), physikalisch basiert (auftretende Kräfte und Momente),...
+\item Typ der zu manipulierenden Szenen. Deterministisch, d.h. Lage und Orientierung aller Objekte in der Szene bekannt oder nicht deterministisch
+\item Einsatz von Sensorik. Keine Sensorik, taktile Sensorik, visuelle Sensorik,...
+\end{enumerate}
+
+Suchraum
+\begin{itemize}
+\item Soll ein zulässiger Griff geplant werden, so beträgt die Dimension des Suchraums für den physikalischen als auch für den geometrischen Ansatz $6+n$ (6 Parameter für die Position und Orientierung der Hand im Raum, n Anzahl der Konfigurationsparameter der Greiferfinger)
+\item Bei einem Parallelbackengreifer hat der Suchraum die Dimension 7 (1 für den Greifer + 6)
+\item Bei der ARMAR-III Hand hat der Suchraum die Dimension 14 (8 für die Hand + 6)
+\item Bei der menschlichen Hand hat der Suchraum die Dimension 28 (22 für die Hand + 6)
+\end{itemize}
+
+Objektklassen für das Greifen
+\begin{itemize}
+\item Bekannte Objekte (known objects)
+\begin{itemize}
+\item Bekannte Objektgeometrie (d.h. wir haben ein komplettes Objektmodell)
+\item Ansatz: Verwende einen Greifplaner, der mit bekannten Objektgeometrien arbeitet
+\item Domäne für klassische Greifplanung
+\item Schwierig
+\end{itemize}
+\item Bekannte Objektklasse (familiar objects)
+\begin{itemize}
+\item Konkrete Objektgeometrie ist nicht bekannt (z.B. \glqq Objekt ist vom Typ Flasche\grqq)
+\item Ansatz: Übertrage Wissen von bekannten Klassenelementen auf das zu greifende Objekt
+\item Schwieriger
+\end{itemize}
+\item Unbekannte Objekte (unknown objects)
+\begin{itemize}
+\item Weder Objektgeometrie, noch Objektklasse ist bekannt
+\item Probleme (u.a.)
+\begin{itemize}
+\item Verarbeiten von (unvollständigen) Sensordaten (Stereo Vision, RGB-D, Laserscans, haptische Daten)
+\item Segmentierung des Objektes vom Hintergrund
+\item Erstellen eines (teilweisen) Objektmodells
+\end{itemize}
+\item Ansätze (u.a.)
+\begin{itemize}
+\item Sensorfusion
+\item Objekt verschieben
+\end{itemize}
+\item Am schwierigsten!
+\end{itemize}
+\end{itemize}
+
+Aktuelle Algorithmen zur Griffsynthese
+\begin{itemize}
+\item Vorraussetzungen
+\begin{itemize}
+\item Definition der Handkinematik
+\item Kontaktmodell (meist: Punktkontakt mit Reibung)
+\item Objektmodell (meist: vollständig bekannt)
+\end{itemize}
+\item Algorithmen zur Greifsynthese bei bekannten Objekten
+\begin{itemize}
+\item Siehe Kapitel 9 - Folie 46
+\end{itemize}
+\end{itemize}
+
+Griffsynthese durch Vorwärtsplanung
+\begin{itemize}
+\item Ansatz
+\begin{itemize}
+\item Planung in Simulation
+\item Bestimmung von Anfahrtspunkt und Anfahrtsrichtung
+\item Hand nähert sich dem Objekt, bis ein Kontakt detektiert wird
+\item Finger schließen sich um das Objekt, bis Kontakt hergestellt ist
+\item Evaluation der Kontakte zwischen Hand und Objekt
+\end{itemize}
+\item Vorteile
+\begin{itemize}
+\item Vorwärtsplanung ist ähnlich zur Ausführung eines Griffs auf einem realen Roboter
+\item Griffe, die erfolgreich in der Simulation evaluiert wurden, können mit hoher Wahrscheinlichkeit auch mit einem realen Roboter durchgeführt werden
+\end{itemize}
+\item Algorithmus
+\begin{enumerate}
+\item Lade Hand- und Objektmodell in eine Simulationsumgebung
+\item Erzeuge Griffkandidaten
+\begin{itemize}
+\item Bestimme Näherungsrichtung der Hand zum Objekt
+\item Bestimme Orientierung der Hand
+\item Bestimme Handkonfiguration (beginnend mit der geöffneten Hand)
+\end{itemize}
+\item Evaluation der Griffkandidaten
+\begin{itemize}
+\item Bewege die Hand entlang der Näherungsrichtung bis zu Kontakt mit dem Objekt
+\item Schließe die Hand bis Kontakt mit dem Objekt
+\item Bestimmt die Kontaktpunkte
+\item Bestimme die Griffqualität (Krafschluss-Metrik)
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+
+Griffqualität (Kraftschluss-Metrik)
+\begin{itemize}
+\item Prinzip: Wie gut kann ein Griff externen Kräften widerstehen?
+\item Ansatz
+\begin{itemize}
+\item Bestimme Kontaktpunkte und Kontaktnormalen zwischen Hand und Objekt
+\item Bestimme den Reibungskegel an jedem Kontaktpunkt (Öffnungswinkel des Kegels hängt von den Reibunskoeffizienten ab)
+\item Berechne den Grasp Wrench Space als konvexe Hülle über alle Reibungskegel
+\item Die minimale Distanz vom Zentrum zum Rand des GWS ist ein Maß für die Stabilität des Griffs
+\end{itemize}
+\end{itemize}
+
+Grasp Wrench Space
+\begin{itemize}
+\item Grasp Wrench Space (GWS): Konvexe Hülle über die Vereinigung aller Kontakt-Wrenches
+\item Qualitätsmaß
+\begin{itemize}
+\item Kraftschluss (force closure): GWS enthält Ursprung
+\item Volumen (V): Volumen des GWS
+\item Epsilon ($\epsilon$): größte einschließende Kugel, bzw. kleinste Distanz $\epsilon$ vom Ursprung zum Rand des GWS
+\end{itemize}
+\end{itemize}
+
+Zufallsbasierte Vorwärts-Greifplanung
+\begin{itemize}
+\item Ablauf
+\begin{enumerate}
+\item Randomisierte Erzeugung von Greifhypothesen (Position und Orientierung der Hand, Konfiguration der Finger)
+\item Kontaktermittlung
+\item Evaluation der Hypothesen (Kraftschluss, Kollision, Robustheit)
+\end{enumerate}
+\item Handmodell: Grasp Center Point (GCP): Definiert das Zentrum $g$ sowie die Anfahrtsrichtung $a$ für einen Grifftyp
+\item Erzeugung von Greifhypothesen: Bestimmung der Anfahrtsrichtung: Zufällige Auswahl eines Oberflächenpunktes $p$, Ermittlung der Oberflächennormalen $n$
+\item Bestimmung der Greifhypothese
+\begin{itemize}
+\item Positionierung der Hand (Position der Hand: $g$ liegt auf Halbgerade, welche durch $p$ und $n$ definiert wird, Ausrichtung der Handorientierung, so dass $a$ und $n$ kollinear sind. Der freie Parameter (Orientierung um $a$) wird zufällig gewählt)
+\item Kontaktermittlung: Bewegung der Hand entlang $a$ zum Objekt, Schließen der Finger, Ermittlung von n Kontaktpunkten $k_1,...k_n$
+\end{itemize}
+\item Analyse der Greifhypothese
+\begin{itemize}
+\item Kontaktpunkte $k_1,...,k_n$ werden analysiert (Kraftschluss, Griffqualität)
+\item Valide Griffe werden gespeichert
+\item Greifhypothese mit unzureichenden Eigenschaften werden verworfen
+\end{itemize}
+\end{itemize}
+
+Griffsynthese auf Teilobjekten
+\begin{itemize}
+\item Frage: Wie können gute Griffkandidaten erzeugt werden?
+\item Ansätze für verschiedene Unterteilungsverfahren
+\begin{itemize}
+\item Formprimitive (shapes primitives): Manuelle Unterteilung in Primitive (z.B. Boxe, Zylinder, Kugeln, Kegel, etc.)
+\item Box decomposition: Automatische Unterteilung (nur Boxen)
+\item Superquadriken: Automatische Unterteilung
+\item Mediale-Achse-Transformation: Nur Kugeln
+\item Oberflächennormalen
+\end{itemize}
+\end{itemize}
+
+Greifplanung mit Formprimiviten
+\begin{itemize}
+\item Objekte werden durch einfache Formprimitive (shape primivites) dargestellt
+\item Für jedes Formprimitiv sind unterschiedliche Greifstrategien vordefiniert (inklusiv Startpunkt und Anrückrichtung)
+\item Vorwärtssimulation des Greifprozesses:
+\begin{itemize}
+\item Der Startpunkt definiert die initiale Greiferposition
+\item Basierend auf der Anrückrichtung wird der Greifer zum Objekt bewegt bis ein Kontakt ermittelt wird
+\item Kontaktpunkte werden durch Schließen des Greifers bestimmt
+\item Evaluation der Kontakte über den GWS Ansatz
+\end{itemize}
+\item Greifstrategien
+\begin{itemize}
+\item Box
+\item Kugel
+\item Zylinder
+\item Kegel
+\end{itemize}
+\item Parameter
+\begin{itemize}
+\item Anzahl paralleler Unterteilungen (Boxen, Seiten von Zylinder und Kegel)
+\item Anzahl Kreisunterteilungen (Kugel, Seiten von Zylinder und Kegel)
+\item Anzahl Handorientierungen (um die Anfahrtsrichtung)
+\item Spiegelung der Griffe (bei seitensymmetrischen Primitiven)
+\end{itemize}
+\item Die Parameter werden automatisch aus den Objektdimensionen bestimmt.
+\end{itemize}
+
+Greifen bekannter Objekte: Ein Box-basierter Ansatz
+\begin{itemize}
+\item Approximation der Objektgeometrie durch Boxen (box decomposition) 
+\item Griffhypothesen für Boxen erzeugen
+\item Evaluation der Griffhypothesen in GraspIt!
+\item Haushaltsobjekte mit bekannter Geometrie
+\begin{itemize}
+\item Aus der KIT object models database
+\item Objektrepräsentation: 3D Punktwolen, Meshes
+\end{itemize}
+\item Approximation der Objektgeometrie durch Box Decomposition
+\begin{itemize}
+\item Effizienter Mimimum Volume Bounding Box (MVBB) Algorithmus
+\item Basierend auf Punktwolken
+\end{itemize}
+\end{itemize}
+
+Erzeugen von Griffhypothesen: Von Boxen zu Griffen
+\begin{itemize}
+\item Jede Box hat sechs Seitenflächen, welche jeweils vier Griffhypothesen implizieren
+\begin{itemize}
+\item Griffpunkt: Mittelpunkt der Seitenfläche
+\item Griffrichtung: Entlang der Normale der Seitenfläche
+\item Handorientierung: Vier Möglichkeiten, orientiert an den Kanten der Fläche
+\end{itemize}
+\item Über die Größen der Seitenflächen können unmögliche Griffe direkt ausgeschlossen werden (z.B. Seitenfläche ist größer als die Handöffnung)
+\item Griffhypothese für blockierte oder verdeckte Seitenflächen können durch einfache geometrische Berechnungen verworfen werden
+\end{itemize}
+
+Ergebnisse:
+\begin{itemize}
+\item Exakte Form ist nicht notwendig, um Griffe zu erzeugen
+\item Objekte können durch vereinfachte Form (Boxen) besser verarbeitet werden. Hierzu können Punktwolken der Oberflächen verwendet werden.
+\item Einfache Parametrisierung der Algorithmen
+\item Evaluation: Der box-decomposition Ansatz erzeugt Griffe, welche mit einem humanoiden Roboter erfolgreich ausgeführt werden können.
+\end{itemize}
+
+Greifplanung mit Superquadriken
+\begin{itemize}
+\item Superquadrik
+\begin{itemize}
+\item Parametrisierbare Funktionen definieren die Form des geometrischen Objektes
+\item Eine an den Koordinatenachsen ausgerichtete Superquadrik im Ursprung des Koordinatensystems wird durch fünf Parameter mit folgender Gleichung beschrieben (...)
+\end{itemize}
+\item Objektdarstellung über Superquadriken
+\begin{itemize}
+\item Objektoberfläche wird als Punktwolke dargestellt
+\item Ermittle Superquadrik deren Oberfläche die Punktwolke am besten darstellt
+\item Decomposition Tree
+\begin{itemize}
+\item Verfeinere die Approximation schrittweise: Suche Superquadrik mit größtem Fehler zu Punktwolke, teile die zugehörige Punktwolke, erstelle zwei Superquadriken
+\item Speichere Resultate für jeden Approximationsschritt im decomposition tree
+\end{itemize}
+\end{itemize}
+\item Greifplanung
+\begin{itemize}
+\item Für jede Superquadrik werden Greifhypothesen erzeugt: Gleichverteilte Anfahrtspunkte und Anfahrtsrichtungen relative zur Oberfläche der entsprechenden Superquadrik
+\item Evaluation der Greifhypothesen mittels GWS Ansätzen: Detailliertes Objektmodell (3D mesh)
+\item Für alle Stufen des decomposition trees: Greifplanung auf groben sowie feinen Strukturen des Objektes
+\end{itemize}
+\end{itemize}
+
+Motivation
+\begin{itemize}
+\item Stand der Forschung: Algorithmen zur Griffplanung in Simulationsumgebungen
+\begin{itemize}
+\item Griffhypothesen werden auf Stabilität untersucht
+\item Effizienz hängt von den Heuristiken zur Erzeugung von Griffhypothesen ab
+\end{itemize}
+\item Ziel: Verbesserung der Effizienz von Griffplanungs-Algorithmen, indem nur \glqq geometrisch sinnvolle\grqq\ Griffe untersucht werden müssen
+\item Ansatz: Verwende lokale Symmetrien der Objektgeometrie
+\begin{itemize}
+\item Die Repräsentation des Objektes ist wichtig
+\begin{itemize}
+\item Dreiecksnetz (Mesh): Zu niedriges Abstraktionsniveau
+\item Mediale Achse als Objektrepräsentation
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Griffplanung mit medialen Achsen
+\begin{itemize}
+\item Mediale Achse
+\begin{itemize}
+\item Objektform wird approximiert über enthaltene Kugeln mit maximalem Durchmesser
+\item Enthaltene Kugeln müssen die Objekthülle an zwei oder mehr Punkten berühren
+\end{itemize}
+\item Die mediale Achse ist die Vereinigung der Mittelpunkte aller enthaltenen Kugeln
+\item Die mediale Achse beschreibt das topologische Skelett des Objekts
+\item Vorteile:
+\begin{itemize}
+\item Gute Approximation der Objektgeometrie
+\item Details bleiben erhalten
+\item Gute Beschreibung der Symmetrien
+\end{itemize}
+\item Algorithmus
+\begin{enumerate}
+\item Abtasten der Objektoberfläche
+\item Berechnen der medialen Achse
+\item Analyse der Querschnitte der medialen Achse
+\begin{itemize}
+\item Minimum Spanning Tree (MST)
+\item Clustern
+\item Konvexe Hülle
+\end{itemize}
+\item Erzeuge Griffhypothesen
+\item Evaluiere Griffstabilität
+\end{enumerate}
+\item Zusammenfassung:
+\begin{itemize}
+\item Die mediale Achse enthält Informationen über Struktur und Geometrie des Objektes
+\item Generierung möglicher Griffe mit Heuristiken
+\begin{itemize}
+\item Einbeziehung von Objektsymmetrie
+\item Mögliche Griffe sind geometrisch sinnvolle: Hoher prozentualer Anteil von stabilen Griffen, resultierende Griffe wirken natürlich
+\end{itemize}
+\item Genaue Approximation der Objektgeometrie: Mögliche Griffe werden nicht durch eine schlecht approximierte Objektgeometrie beeinflusst
+\item Erweiterbares Konzept: Erweiterbarer Satz von Heuristiken um mögliche Griff zu generieren
+\end{itemize}
+\end{itemize}
+
+\section{Umweltmodellierung}
+
+\subsection{Motivation: Adaptive Roboteraufgaben}
+
+Bisher in VL: un- oder marginal flexible Roboteraufgaben
+\begin{itemize}
+\item Feste Trajektorie programmiert:
+\begin{itemize}
+\item Positionsregelung
+\item Eventuell lokale Kraftregelung
+\item Benötigte Modelle für Programmierung und Regelung: Kinematisches Modell, dynamisches Modell
+\item Benötigte Sensoren: Gelenkencoder, (eventuell) Kraft-Momenten-Sensor
+\end{itemize}
+\item Bahn absolut fest oder nur lokal-adaptiv, repetitiv ausgeführt
+\end{itemize}
+
+Adaptive Roboteraufgaben:
+\begin{itemize}
+\item Keine feste Trajektorie programmier
+\begin{itemize}
+\item Trajektorie muss flexibel vom Roboter bestimmt werden
+\item Benötigte Modelle für Programmierung und Regelung:
+\begin{itemize}
+\item Kinematisches Modell
+\item Dynamisches Modell
+\item + Umweltmodelle
+\item + Aufgaben/Planungsmodelle
+\end{itemize}
+\item Benötigte Sensoren:
+\begin{itemize}
+\item Gelenkencoder
+\item (eventuell) Kraft-Momenten-Sensor
+\item + visuelle und eventuell taktile Sensoren
+\end{itemize}
+\end{itemize}
+\item Bahn völlig frei, flexibel, nicht-repetitiv ausgeführt
+\end{itemize}
+
+Anforderungen für Adaption (Zusätzliche Anforderungen gegenüber starren Aufgaben)
+\begin{enumerate}
+\item Visuelle und (eventuell) taktile Sensorik zur Umwelterfassung (Rob3 im SoSe)
+\item Datenrepräsentation der Umgebung/Umwelt (dieses Kapitel)
+\item Planungsmethoden zur Aufgaben/Bewegungsberechnung (Kapitel 9,10,12)
+\end{enumerate}
+
+Übersicht Modelle (Verschiedene Arten von Modellen in der Robotik)
+\begin{enumerate}
+\item Modell der Kinematik (Manipulator, mobile Plattform)
+\item Modell der Dynamik (Manipulator, mobile Plattform)
+\item Modelle der Sensoren
+\item Umweltmodell (Umgebung: Einzelobjekte und Szenen)
+\item Aufgabenmodell (Bewegungen und abstrakte Aufgaben)
+\end{enumerate}
+
+\subsection{Objektmodelle}
+
+\subsubsection{Geometrische Beschreibung}
+
+Anwendungsgebiete für das geometrische Modell
+\begin{itemize}
+\item Umweltwahrnehmung (Live)
+\begin{itemize}
+\item Objektklassifizierung
+\item Objektlokalisierung
+\item Bewegungserkennung/klassifikation des Menschen
+\end{itemize}
+\item Bewegungsplanung (Live, offline)
+\begin{itemize}
+\item Pfadplanung (mobile Systeme)
+\item Bewegungsplanungen (Manipulatoren)
+\item Greifplanung und Planung von Inhandmanipulationsaufgaben
+\end{itemize}
+\item Abstrakte Aufgabenplanung (Live, offline)
+\item Dynamische Effektsimulation und -prädiktion (Live,offline)
+\item Arbeitsraum/Anlagenplanung (Offline)
+\end{itemize}
+
+Volumenmodelle
+\begin{itemize}
+\item Punktwolken
+\item Approximative Oberflächenmodelle (B-Rep)
+\begin{itemize}
+\item Dreiecksflächen (Meshes)
+\item Vierecksflächen
+\item Bezierflächen
+\end{itemize}
+\item Approximative Zellenbelegung
+\begin{itemize}
+\item Voxel
+\item Octree
+\end{itemize}
+\item Analytisch-parametrische Modelle
+\begin{itemize}
+\item Constructive Solide Geometry (CSG)
+\end{itemize}
+\end{itemize}
+
+Punktwolken (Point Clouds) sind das einfachste Objektmodell
+\begin{itemize}
+\item Modell ist eine beliebige Menge aus Raumpunkten
+\item Daten direkt aus aktuellen Tiefensensoren (3D-Sensoren)
+\item Objekte nur implizit, indirekt modelliert
+\item Mehrdeutigkeiten
+\item Hochgradig approximativ
+\item Datenlücken durch Modellform
+\item Grundlage für weitergehende Objektmodelle (z.B. Erkennung/Lokalisierung von Objekten im Raum)
+\end{itemize}
+
+Approximative Oberflächen
+\begin{itemize}
+\item Bildung einer großen Fläche aus einem Netz (Mesh) von einfachen Einzelflächen, z.B. Dreiecke, Vierecke
+\item Vorteile:
+\begin{itemize}
+\item Definition sehr einfach
+\item einfache Algorithmen
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item hoher Speicherbedarf
+\item hoher Rechenaufwand
+\end{itemize}
+\end{itemize}
+
+Dreiecksflächen
+\begin{itemize}
+\item Approximation von Freiformflächen: Die einfachste Fläche ist die Dreiecksfläche.
+\item Definition: Gegeben seien 3 Punkte im Raum $P_1,P_2,P_3$. Damit hat die Fläche folgende Gleichung: $F(u,v) = u \cdot P_1 + v \cdot P_2 + (1-u-v) \cdot P_3$ mit $0 \le u,v,u+,v \le 1$
+\end{itemize}
+
+Bilineare Vierecksflächen
+\begin{itemize}
+\item Definition: Gegeben sind 4 Punkte im Raum $P_1,P_2,P_3,P_4$. Damit wird die Fläche definiert durch: $F(u,v) = (1-u)(1-v) \cdot P_1 + (1-u)v \cdot P_2 + u(1-v) \cdot P_3 + uv \cdot P_4$ mit $0 \le u \le 1$, $0 \le v \le 1$
+\item Vorteil: Flächenelemente können gekrümmt sein (weniger Gitterpunkte bei gleich guter Approximation)
+\item Nachteil: Rechnen mit gekrümmten Flächen ist aufwendig
+\end{itemize}
+
+Bezierflächen (Erweiterung des Ansatzes der Bezierkurven)
+\begin{itemize}
+\item Definition: Gegeben ist ein Gitter von Führungspunkten $P_{ij}$
+\item Damit ist die Fläche beschreiben durch $F(u,v) = \sum\limits_{i=0}^N \sum\limits_{j=0}{M} P_{ij} \cdot B_{i,N}(u) \cdot B_{j,M}(v)$
+\end{itemize}
+
+Kantenmodell (reines Kantenmodell ohne weitere Informationen)
+\begin{itemize}
+\item Nur die Kanten werden gespeichert, d.h. Punkte und Verbindungen (Gerade, Polygonzug, Bezierkurve)
+\item Vorteile:
+\begin{itemize}
+\item einfache Daten
+\item wenige Daten
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item Mehrdeutigkeiten
+\item hoher Eingabeaufwand
+\item keine Kollisionsberechnung
+\item kein Schnitt
+\end{itemize}
+\end{itemize}
+
+Flächenmodell
+\begin{itemize}
+\item Speicherung von Kanten \& Oberflächen (Dreiecke,Bezier)
+\item Vorteile:
+\begin{itemize}
+\item effiziente Verfahren
+\item entspricht dem Vorgehen während der Modellierung
+\item schnelle Kollisions- und Abstandsberechnung
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item hoher Eingabeaufwand
+\item Darstellung aufwendig
+\item Problem bei Schnittoperationen
+\item Inkosistenzen möglich
+\end{itemize}
+\end{itemize}
+
+Boundary Representation
+\begin{itemize}
+\item Organisationsform der geometrischen Flächenmodelle
+\begin{itemize}
+\item Hierarchische Darstellung eines Objektes durch begrenzende Elemente, i.d.R. Kanten oder Flächen.
+\item Elemente eines Quaders im Flächenmodell
+\item Elemente: Quader, 6 Flächen, 12 Kanten, 8 Ecken
+\end{itemize}
+\item Vorteile: Aus topologischer Struktur Informationen über
+\begin{itemize}
+\item Welche Flächen gehören zum Objekt?
+\item Welche Kanten gehören zur Fläche?
+\item Zu welchem Objekt gehört eine Fläche?
+\item Zu welchem Objekt gehört eine Kante?
+\item Welche Flächen stoßen aneinander?
+\item $\rightarrow$ kantenbasierte Objekterkennung
+\end{itemize}
+\end{itemize}
+
+Approximative Zellenbelegung
+\begin{itemize}
+\item Objekte werden aus disjunkten Elementarzellen aufgebaut. Verwendung finden einfache geometrische Objekte z.B. Tetraeder, Quader,...
+\item Benutzt in der Strukturanalyse mit Finite-Elemente-Methoden (FEM).
+\end{itemize}
+
+Voxeldarstellung (äquidistante Raumunterteilung in 3D)
+\begin{itemize}
+\item Speicherungsmöglichkeiten (0: nicht-belegt, 1: belegt, 2: weiß-nicht (unbekannt), Wahrscheinlichkeit belegt 0.0 bis 1.0)
+\item Vorteile:
+\begin{itemize}
+\item Einfache Darstellung
+\item Berechnungen homogen, parallel auf GPU
+\item Raytracing u.ä. einfach parallelisierbar
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item Festes Gitter, gleicher Detaillierungsgrad sowohl bei großflächigen als auch bei feiner aufgelösten Strukturen
+\item Kartengröße/Präzision durch Speicher begrenzt
+\end{itemize}
+\end{itemize}
+
+Octree (effizientere Topologie als Voxel)
+\begin{itemize}
+\item Der Raum wird in mehrere Zellen unterteilt
+\item Zelle komplett vom Objekt belegt $\rightarrow$ als belegt markieren
+\item Wenn die Zelle nur teilweise belegt ist, dann wird auf diese Zelle das Verfahren rekursiv angewendet. Ansonsten ist die Zelle leer.
+\item Die Rekursion terminiert bei einer vorbestimmten minimalen Zellgröße.
+\item Teilbelegte kleinste Zellen werden als belegt markiert.
+\end{itemize}
+
+Analytisch-parametrische Modelle (Beispiel analytisch gegebene Fläche)
+\begin{itemize}
+\item Beispiel: 3D-Kugel
+\item $r = ||x-p||$
+\item Exaktes Modellierungsverfahren
+\item Vorteile:
+\begin{itemize}
+\item Geschlossene Darstellung (wenig Speicherbedarf)
+\item Analytische Darstellung erlaubt einfache Rechenverfahren (z.B. Schnitt von Ebenen/Kugeln -> schnelle Kollisionsberechnung)
+\end{itemize}
+\item Nachteil: Wenige Flächen sind analytisch darstellbar
+\end{itemize}
+
+Parametrische Volumenmodelle
+\begin{itemize}
+\item Grundkörper und topologische Operationen auf diesen (Schnitt, Vereinigung,...) werden abgespeichert.
+\item Vorteile:
+\begin{itemize}
+\item eindeutige Objektbeschreibung
+\item geringer Eingabeaufwand
+\item Ergebnis von Operationen sind korrekte Objekte
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item hoher Implementierungsaufwand
+\item Einbindung von Freiformflächen schwierig
+\end{itemize}
+\item Objekte sind bereits vorhanden und können durch Angabe von Parameter angepasst werden (Varianten).
+\item Konsistenzprüfungen sind notwendig!
+\end{itemize}
+
+Constructive Solid Geometry (CSG)
+\begin{itemize}
+\item Es gibt eine Menge von einfachen Grundkörpern, die parametriert werden können und auf denen verschiedene Operationen definiert sind.
+\item Speicherung erfolgt als Binär-Baum mit Knoten als Operation und linker bzw. rechter Teilbaum als Teil-CSG oder Grundkörper
+\end{itemize}
+
+Anwendungsgebiete für das geometrische Modell
+\begin{itemize}
+\item Punktwolke:
+\begin{itemize}
+\item Lokalisation, Klassifikation
+\item Kartierung (movile Systeme)
+\end{itemize}
+\item Mesh: 
+\begin{itemize}
+\item Bewegungsplanung (v.a. Manipulatoren)
+\item Dynamische Simulation (komplexere Starrkörper)
+\end{itemize}
+\item Voxel/Octtree
+\begin{itemize}
+\item Bewegungsplanung (v.a. mobile Systeme)
+\item Dynamische Simulation elastische Materialien (FEM)
+\end{itemize}
+\item CSG:
+\begin{itemize}
+\item CAD/CAE/CAM
+\item Dynamische Simulation (einfache Starrkörper)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Zusätzliche Eigenschaften}
+
+Eigenschaften des Objektes mit Geometriebezug
+\begin{itemize}
+\item Masse
+\item Oberflächeneigenschaften (z.B. Reigung)
+\item Temperatur
+\item Steifigkeit
+\item Greifpunkte
+\item Verbindungspunkte zur Montage
+\item Ablagepunkte bei Paletten
+\item Stellung bezüglich eines Referenzobjektes
+\end{itemize}
+
+\subsection{Szenenmodelle}
+
+Entity-Relationship-Modelle (ER) //TODO \\
+
+Semantische Netze (Konzept: Objekte und Beziehungen)
+\begin{itemize}
+\item Semantisches Netz = gerichteter Graph
+\item Knoten = Objektklasse oder Einzelobjekt
+\item gerichtete und benannte Kanten = Beziehungen
+\item nur zweistellige Beziehungen
+\item mehrstellige Beziehungen => als eigenes Objekt
+\item keine Attribute => Attribute als Wertobjekt
+\end{itemize}
+
+Frame Modell nach Minsky
+\begin{itemize}
+\item Frame = Schablone (nicht mit Koordinaten-Frames verwechseln)
+\item Erfassung der:
+\begin{itemize}
+\item Eigenschaften von Objekten
+\item Einordnung in Hierarchie von Objektklassen
+\end{itemize}
+\item Leichte Implementierung mit objektorientierten Sprachen
+\item Frame beschreibt ein Objekt/Objektklasse und enthält eine Menge von Slots
+\item Slots enthalten Attribute und Verweise auf andere Frames
+\item Instanzen, Vererbung
+\end{itemize}
+
+Implicit Shape Modell (ISM) - Moderne Szenenbeschreibung, robust bei Varianzen
+\begin{itemize}
+\item Szene besteht aus relativen Transformationsrelationen zwischen Objekten
+\item ISM ist Variation der Generalisierten Hough Transformation (Maschinensehen)
+\item Daraus folgt, dass Instanzen der Relationen in buckets abstimmen (voten)
+\item Baumartige Topologie der relativen Relationen
+\end{itemize}
+
+Objekt Constellation Modell (OCM): probabilistisches Modell
+\begin{itemize}
+\item Probabilistische Szenenrelationen
+\item Basiert auf Gauss-Mixturen (GMMs) und probabilistischer Graph-Inferenz
+\end{itemize}
+
+\section{Bildverarbeitung}
+
+Motivation
+\begin{itemize}
+\item Das Sehvermögen ermöglicht die Wahrnehmung der Umwelt
+\item Nutzbarkeit in einem technischen Systen
+\begin{itemize}
+\item Visuellen Informationen müssen aufgenommen werden
+\begin{itemize}
+\item gute Qualität
+\item digitales Format
+\end{itemize}
+\item Relevante Informationen müssen aus den Daten extrahiert werden
+\end{itemize}
+\item Bilderfassung: Hardware
+\item Bildverarbeitung: überwiegend Software
+\end{itemize}
+
+Bildrepräsentation
+\begin{itemize}
+\item Bilder müssen im Computer/Roboter repräsentiert werden
+\item Ein Bild ist ein 2D Gitter von diskreten Punkten (Pixel)
+\item Bildkoordinaten (hier):
+\begin{itemize}
+\item $u$ (horizontal)
+\item $v$ (vertikal)
+\item Urpsrung ist oben links
+\item Einheiten: Pixel
+\end{itemize}
+\item Die Farbe eines Bildpunktes kann auf unterschiedliche Weise repräsentiert werden
+\item Graustufenbilder: Für jeden Pixel wird ein Helligkeitswert abgelegt (Normalerweise ein Byte pro Pixel, i.A. Werte in [0,255])
+\item Monochrombild: Diskrete Funktion
+\item Farbbild
+\begin{itemize}
+\item Verschiedene Farbmodelle für unterschiedliche Anwendungen
+\item Klassifikation nach erreichbarem Farbraum
+\end{itemize}
+\end{itemize}
+
+Koordinatensysteme
+\begin{itemize}
+\item Hauptachse: Gerade durch das Projektionszentrum, rechtwinklig zur Bildebene
+\item Hauptpunkt: Schnitt der Hauptachse mit der Bildebene
+\item Bildkoordinaten: 2D Koordinaten eines Punktes im Bild. Einheit: Pixel
+\item Kamerakoordinatensystem: 3D Koordinaten eines Punktes relativ zur Kamera. Der Ursprung liegt im Projektionszentrum, die x- und y-Achse ist parallel zur u- bzw. v-Achse in der Bildebene. Einheit: mm
+\item Weltkoordinatensystem: 3D Basiskoordinatensystem in der Welt. Einheit: mm
+\end{itemize}
+
+Kameraparameter
+\begin{itemize}
+\item Parameter, die ds Kameramodell vollständig beschreiben
+\item Man unterscheidet zwischen intrinsischen und extrinsischen Kameraparametern
+\begin{itemize}
+\item Intrinsische Parameter sind unabhängig von der Auswahl des Weltkoordinatensystems. Sie bleiben konstant bei Veränderung des Aufbaus.
+\item Extrinsische Parameter modellieren die Transformation vom Weltkoordinatensystem in das Kamerakoordinatensystem. Sie sind bei einer neuen Lage der Kamera neu zu bestimmen.
+\end{itemize}
+\item Bisher:
+\begin{itemize}
+\item Im Lochkameramodell nur ein intrinsischer Kameraparameter (f)
+\item Kein Weltkoordinatensystem berücksichtigt, deshalb keine extrinisches Parameter
+\item Annahmen: Hauptpunkt im Ursprung des Bildkoordinatensystem; Pixel sind exakt quadratisch; Keine Linzenverzerrung
+\end{itemize}
+\end{itemize}
+
+Filteroperationen
+\begin{itemize}
+\item Filter in der Bildbearbeitung (auch spartial filters, spatial masks, kernels, windows)
+\item Ein Filter besteht aus einer Nachbarschaft und einer vordefinierten Operation
+\item Ein Filter wird auf alle Pixel de Bildes angewendet: Berechnung eines neuen Pixelwertes durch Anwendung der Filteroperation unter Berücksichtigung der Nachbarschaftspixel
+\item Tiefpassfilter: Glättung, Rauschelimination (Mitterlwertfilter, Gauß-Filter)
+\item Hochpassfilter: Kantendetektion (Prewitt, Sobel, Laplace, Roberts)
+\item Kombinierte Operatoren (Laplacian of Gaussian)
+\end{itemize}
+
+Mittelwertfilter (Rauschunterdrückung)
+\begin{itemize}
+\item Beispiel: Durchschnitt aus einem Pixel und seine 8 Nachbarn; Größe beliebig wählbar
+\item 3x3 Mittelwertfilter: Filtermaske (3x3 Matrix mit je 1/9 als Wert)
+\end{itemize}
+
+Gauß-Filter (Rauschunterdrückung, Glättung)
+\begin{itemize}
+\item Definiert durch zweidimensionale Gauß-Funktion
+\item Approximation von $f(x)$ durch einen 3x3-Filter $1/16 (1 2 1; 2 4 2; 1 2 1)$
+\item Die Stärke der Glättung ist ausschließlich durch den Parameter $\sigma$ bestimmt: Je größer $\sigma$, umso stärker die Glättung.
+\item Die Größe $nxn$ der Filtermaske beeinflusst die Güte der Approximation des Filters.
+\end{itemize}
+
+Prewitt-Filter
+\begin{itemize}
+\item Prewitt-X approximiert durch $(-1 0 1; -1 0 1; -1 0 1)$
+\item Prewitt-Y approximiert durch $(-1 -1 -1; 0 0 0; 1 1 1)$
+\item Eigenschaften: Gute Ergebnisse bei Detektion von vertikalen bzw. horizontalen Kanten
+\item Komvination der Prewitt-Filter zur Bestimmung des Gradientenbetrags $M \approx \sqrt{P_x^2 + P_y^2}$
+\item Danach: Schwellwertfilterung
+\end{itemize}
+
+Segmentierung
+\begin{itemize}
+\item Segmentierung ist die Aufteilung eines Bildes in aussagekräftige Segmente
+\item Jedes Pixel wird mindestens einem Segment zugeordnet
+\item Identifikation von interessanten Bildregionen für die Analyse, Erkennung unf Klassifikation
+\item Mögliche Verfahren:
+\begin{itemize}
+\item Schwellwertfilterung
+\item Clustering
+\item Kantenextraktion
+\item Region-Growing
+\end{itemize}
+\end{itemize}
+
+Schwellwertfilterung
+\begin{itemize}
+\item Schwellwertfilterung zur Konvertierung eines Grauwertbildes in ein binäres Bild
+\item Intensität vin jedem Pixel ($u,v$) wird mit einem vordefinierten Schwellwert $T$ abgeglichen
+\item Oft können Objekte über ihre Farbe segmentiert werden (menschliche Haut, einfarbige Objekte)
+\item Problem: Wechselnde Lichtbedingungen, Reflexionen, Schattenwürfe
+\end{itemize}
+
+Morphologische Operatoren
+\begin{itemize}
+\item Morphologische Operatoren werden oft für die Nachbearbeitung binärer Bilder verwendet (z.B. Ergebnis einer Farbsegmentierung)
+\item Gängige morphologische Operatoren:
+\begin{itemize}
+\item Dilatation: vergrößert Pixel zu größeren Bereichen
+\item Erosion: entfernt vereinzelte Pixel und schwach zusammenhängende Pixelgruppen
+\end{itemize}
+\item Der Effekt eines morphologischen Operators hängt von der Größe und der Form der berücksichtigten Pixelnachbarschaft ab
+\end{itemize}
+
+Canny-Kantendetektor
+\begin{itemize}
+\item Der Canny-Kantendetektor ist weit verbreitet und bezüglich der Leistung im Vergleich zu anderen Kantendetektoren im Allgemeinen überlegen.
+\item Ziel war es den optimalen Kantendetektor zu finden:
+\begin{itemize}
+\item Gute Detektion
+\item Gute Lokalisierung
+\item Minimale Antwort
+\end{itemize}
+\item Canny-Kantendetektor berechnet binäre Antwort
+\item Subpixelgenauigkeit durch Erweiterung möglich
+\item Algorithmus besteht aus mehreren Schritten
+\item Grundsätze:
+\begin{enumerate}
+\item Geringe Fehlerrate: Alle Kanten sollen gefunden werden und detektierte Kanten sollten so nah wie möglich an den realen Kanten sein.
+\item Kantenpunkte sollen gut detektiert werden: Distanz zwischen detektierten Kantenpunkten und dem Zentrum der realen Kanten soll minimal sein.
+\item Eindeutigkeit: Der Detektor soll nur ein Punkt, nicht mehrere Kantenpunkte, zu einem realen Kantenpunkt liefern.
+\end{enumerate}
+\item Algorithmus
+\begin{enumerate}
+\item Rauschunterdrückung: Gauß-Filter
+\item Berechnung der Gradienten in horinzontaler und in vertikaler Richtung (Prewitt/Sobel)
+\item Non-Maximum Surpression
+\begin{itemize}
+\item Gradient muss lokales Maximum sein
+\item Betrachtung der zwei direkten Nachbarn entlang der Gradientenrichtung
+\item Überprüfung erfolgt gemäßt dem jeweiligen Quadranten
+\end{itemize}
+\item Hysterese-Schwellwertverfahren
+\begin{enumerate}
+\item Verwendung von zwei Schwellwerten: low/high
+\item Liegt der Betrag des Gradienten für ein Pixel über dem Schwellwert high, so wird es auf den Fall als Teil einer Kante akzeptiert
+\item Liegt der Betrag des Gradienten für ein Pixel unter dem Schwellwert low, so wird es als Teil einer Kante abgelehnt
+\item Ausgehend von den akzeptierten Pixeln werden Kanten (rekursiv) verfolgt:
+\begin{itemize}
+\item Überprüfung der acht direkten Nachbarn
+\item Betrag Gradient muss über Schwellwert low liegen
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+
+Visual Servoing
+\begin{itemize}
+\item Der Ausruck Visual Servoing beschreibt Verfahren, bei denen visuelle Eingabedaten genutzt werden, um die Bewegung eines Roboters zu steuern.
+\item Motivation
+\begin{itemize}
+\item Modellfehler (z.B. Kinematik)
+\item Fehler bei der Ausführung (z.B. fehlerhafte Positionierungen der Robotergelenke)
+\item Überwachung der Szene (z.B. Reaktionen auf Kollisionen)
+\end{itemize}
+\item Systemaufbau
+\begin{itemize}
+\item Kamera-in-Hand (eye-in-hand)
+\begin{itemize}
+\item Kamera ist an dem Manipulator angebracht
+\item Bewegungen des Manipulators beeinflussen die Pose der Kamera
+\end{itemize}
+\item Externes (festes) Kamera System (eye-to-hand)
+\begin{itemize}
+\item Externes Kamerasystem wird zur Beobachtung der Bewegung genutzt
+\end{itemize}
+\end{itemize}
+\item Verfahren
+\begin{itemize}
+\item Positionsbasiertes Visual Servoing
+\begin{itemize}
+\item Position-based visual servoing (PBVS)
+\item Einfache Regler
+\item 3D Rekonstruktion aufwendig
+\end{itemize}
+\item Bildbasiertes Visual Servoing
+\begin{itemize}
+\item Image-based visual servoing (IBVS)
+\item Merkmalsextraktion einfach
+\item Komplexere Regelungsvorschriften
+\end{itemize}
+\item Hybride Verfahren (z.B. 2,5D visual servo)
+\end{itemize}
+\end{itemize}
+
+Positionsbasiertes Visual Servoing
+\begin{itemize}
+\item Zielpose $X_g$ ist vorgegeben
+\item Ablauf der Regelschleife
+\begin{itemize}
+\item 3D Lage Schätzung: Aktuelle Pose $X_c$ des Zielobjektes (bzw. Hand) wird aus Bildmerkmalen extrahiert
+\item Regelvorgabe (kartesisch): Differenz $\Delta X = X_g - X_c$
+\item Ziel erreicht: Distanz $\Delta X$ Kleiner als Schwellwert
+\end{itemize}
+\end{itemize}
+
+Bildbasiertes Visual Servoing
+\begin{itemize}
+\item Ansatz: Die Bewegung des Manipulators ergibt sich aus der aktuellen und gewünschten Position von Bildmerkmalen
+\item Bildmerkmale: Bildverarbeitungsmethoden zur Extraktion von Bildmerkmalen
+\item Regelung: Geschwindigkeitsvorgaben werden direkt aus der aktuellen und gewünschten Stellung der Bildmerkmale erzeugt
+\item Bildmerkmal: Ein Bildmerkmal $s = (u,v)^T$ ist die Projektion eines 3D Punktes $P=(x,y,z)^T$ im Kamerabild.
+\item Fehlerfunktion
+\begin{itemize}
+\item Interaction Matrix/Image Jacobian: Die interaction matrix L beschreibt die Beziehung zwischen der Bewegung eines Bildmerkmals $s=(u,v)^T$ und des entsprechenden 3D Punktes $P=(x,y,z)^T$
+\item Aus den Projektionsvorschriften (Lochkameramodell) ergibt sich L.
+\end{itemize}
+\item Invertierung der Interaction Matrix
+\begin{itemize}
+\item Distanz z wird geschätzt
+\item Mehrere Merkmale werden beobachtet (mind. 3)
+\item Annahme: Kamera-In-Hand System - Bewegung der 3D Punkt korrespondiert mit Bewegung der Kamera (Geschwindigkeit der Kamera $v_c$)
+\item Daraus folgt $\dot e = Lv_c$
+\item Mit $e = -\lambda e$ ergibt sich $v_c = -\lambda L^+ e$
+\item Hierbei ist $L^+$ die Pseudoinverse von $L$
+\end{itemize}
+\end{itemize}
+
+Point Clouds
+\begin{itemize}
+\item Eine Punktwolke ist eine diskrete Menge von 3D-Punkten mit einem festen Koordinatensystem.
+\item Punktwolke $P = \{(X,C)|X \in \mathbb{R}^3, C \in [0...255]^3\}$
+\begin{itemize}
+\item $X = (x,y,z)$ Ortsinformationen
+\item $C = (r,g,b)$ Farbinformationen
+\item Es können weitere (Sensor-)Informationen abgespeichert werden
+\end{itemize}
+\item Zwei verschiedene Arten der Repräsentation
+\begin{itemize}
+\item Organisierte Punktwolke (2D Array Format, Größe muss vorab bekannt sein)
+\item Unorganisierte Punktwolke (Vector Format)
+\end{itemize}
+\end{itemize}
+
+Normalenschätzung in 3D Punktwolken\\ 
+Ziel:
+\begin{itemize}
+\item Zusätzliche Oberflächeninformationen durch Einbeziehung von lokalen Nachbarpunkten
+\item Grundlage für weiterführende Algorithmen
+\begin{itemize}
+\item Segmentierung
+\item Deskriptoren
+\item Objekterkennung
+\item Oberflächenmodellierung
+\end{itemize}
+\item PCA-basierter Ansatz
+\item Erstelle die Kovarianzmatrix $C$ der $k$-Punktnachbarschaft für jeden Punkt p: $C = \frac{1}{k}\sum\limits_1^k (p_o - \bar{p}) \cdot (p_i - \bar{p})^T$
+\item Bestimme die Eigenwerte und Eigenvektoren von $C$
+\begin{itemize}
+\item Hauptkomponentenanalyse (PCA)
+\item Eigenvektor zu kleinstem Eigenwert korrespondiert mit der Normalen
+\end{itemize}
+\end{itemize}
+
+Registrierung von Punktwolken
+\begin{itemize}
+\item Registrierung: Zusammenführend von Punktwolken, welche das gleiche Objekt aus unterscheidlichen Ansichten beschreibt
+\item Überführung in ein übergeordnetes Koordinatensystem (z.B. Weltkoordinatensystem)
+\item Extrinsische Kalibrierung der Kameras erforderlich
+\end{itemize}
+
+Iterative Closest Point
+\begin{itemize}
+\item Iterative Closest Point (ICP) ist ein gängier Algorithmus für die Registrierung zweier Mengen $A,B$ mit a priori unbekannter Zuordnung
+\item Beispiel: Registrierung zweier 3D Punktwolken
+\begin{itemize}
+\item Für jede Iteration $k$ gilt:
+\begin{itemize}
+\item Für jeden Punkt $a_i$ aus $A$ suche Punkt $b_i$ aus $B$, der $a_i$ am nächsten liegt
+\item Berechne eine Transformation $T_k$ so dass $D_k$ minimal wird, z.B. mit $D_k = \sum_i ||a_i - T_k \cdot b_i ||^2$
+\end{itemize}
+\item Wende Transformation $T_k$ auf alle Punkte aus $B$ an
+\item Abbruchkriterien:
+\begin{itemize}
+\item Schwellwert für $D_{k-1} - D_k$
+\item Maximale Anzahl an Iterationen erreicht
+\end{itemize}
+\end{itemize}
+\item Minimiert die Distanz zwischen zwei Punktwolken
+\item Sehr gut geeignet für die Rekonstruktion in 2D und 3D
+\item Vorteile
+\begin{itemize}
+\item Algorithmus für Punkte, Normalenvektoren und andere Darstellungsformen anwendbar
+\item Nur einfache mathematische Operationen notwendig
+\item Schnelles Registrierungsergebnis
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Symmetrische Objekte können nicht ohne weiteres registriert werden
+\item Konvergenz in ein lokales Minimum möglich
+\item Überlappung der Punktwolken erforderlich
+\end{itemize}
+\end{itemize}
+
+RANSAC (Random Sample Consensus)
+\begin{itemize}
+\item RANSAC ist eine iterative Methode zur Schätzung von Modellparametern aus Datenpunkten
+\item RANSAC ist ein nicht-deterministischer Algorithmus
+\item Robust gegenüber Ausreißern und fehlenden Datenpunkten
+\item Anwendung in der Bildverarbeitung
+\begin{itemize}
+\item Schätzung von Linien in 2D Bildern
+\item Schätzung von Ebenen und anderen Primitiven in 3D Punktwolken
+\end{itemize}
+\item Der RANSAC-Algorithmus
+\begin{enumerate}
+\item Wähle zufällig die minimale Anzahl an Punkten aus, die nötig ist um die Modellparameter zu berechnen
+\begin{itemize}
+\item 2 Punkte für Linien in 2D
+\item 3 Punkte für Ebenen in 3D
+\end{itemize}
+\item Schätze ein Modell aus dem ausgewählten Datensatz
+\item Bewertung der Modellschätzung: Berechne die Teilmenge der Datenpunkte (Inliers), deren Abstand zum Modell kleiner ist als ein vordefinierter Schwellwert
+\item Wiederhole 1-3 bis das Modell mit den meisten Inliers gefunden wird
+\end{enumerate}
+\item Die voraussichtliche Anzahl an Iterationen $k$ damit der Algorithmus mit der
+Wahrscheinlichkeit $P$ erfolgreich terminiert kann wie folgt berechnet werden:
+\begin{itemize}
+\item Wahrscheinlichkeit für einen Inlier: $P(inlier) = w$ (w = Anzahl der Inlier/Gesamtzahl der Samples)
+\item Wahrscheinlichkeit ein Inlier-Modell zu ziehen: $P(subset with no outlier) = w^n$
+\item Wahrscheinlichkeit ein Outlier-Modell zu ziehen: $P(subset with outliers) = 1-w^n$
+\item Wahrscheinlichkeit in $k$ Iterationen ein Outlier-Modell zu ziehen: $P(k subsets with outliers) = (1-w^n)^k$
+\item Wahrscheinlichkeit für einen erfolglosen Durchlauf: $P(fail) = (1-w^n)^k$
+\item Wahrscheinlichkeit für einen erfolgreichen Durchlauf: $P(success) = 1 - (1-w^n)^k$
+\item Vorraussichtliche Anzahl an Iterationen: $\implies k = \frac{log(1-P(success))}{log(1-w^n)}$
+\end{itemize}
+\item RANSAC benötigt mehr Iterationen im Fall von vielen Outliern
+\item Vorraussichtliche Anzahl an Iterationen: $\implies k = \frac{log(1-P(success))}{log(1-w^n)}$
+\item Minimale Sample Anzahl $n$ muss vorher definiert sein!
+\item $P(success)$ muss hoch angesetzt werden (d.h. $\ge 95\%$)
+\item Vorteile:
+\begin{itemize}
+\item Simpel, allgemein und einfach zu implementieren
+\item Robuste Modellschätzung für Daten mit wenigen Ausreißen
+\item Vielseitig anwendbar
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item Nicht-deterministisch
+\item Viele Parameter
+\item Trade-off zwischen Genauigkeit und Laufzeit (benötigt viele Iterationen)
+\item Nicht anwendbar wenn das Verhältnis Inliers/Outliers zu klein ist
+\end{itemize}
+\end{itemize}
+
+Simultaneous Localization and Mapping (SLAM)
+\begin{itemize}
+\item Das SLAM Problem: Wie kann ein Roboter in einer unbekannten Umgebung navigieren und dabei eine Karte von seiner Umgebung erstellen und auch aktualisieren?
+\item SLAM bedeutet die Schätzung der aktuellen Roboterpose als auch der Karte der Umgebung zur gleichen Zeit.
+\item SLAM wird benötigt
+\begin{itemize}
+\item um voll autonome Roboter zu bauen
+\item um in einer unbekannten Umgebung zu überleben
+\item um zu wissen wo sich der Roboter gerade befindet
+\item um die Navigation ohne externe Positionsbestimmung (z.B. GPS) zu ermöglichen.
+\end{itemize}
+\item Es entsteht ein Henne-Ei-Problem. Wir brauchen eine Karte, um den Roboter zu lokalisieren (aber SLAM hat kein Vorwissen über die Umgebung) und eine genaue Schätzung der Position, um eine Karte zu erstellen
+\item Begriffe:
+\begin{itemize}
+\item Lokalisierung: Schätzen der Roboterposition bei gegebener Karte
+\item Katierung: Aus einer Menge von Positionen einer Karte ableiten
+\item SLAM: Gleichzeitige Lokalisierung und Kartierung
+\end{itemize}
+\item Lösung: Position von Kamera und Roboter während einer Bewegung verfolgen
+\item Deshalb braucht der Roboter Features, die er zuordnen und verfolgen kann
+\begin{itemize}
+\item SLAM wählt Szenenfeatures als Orientierungspunkte
+\item Visuelle Features: Punkte, Ecken, Kanten, Texturen, Oberflächen
+\item Hinweis: Features müssen unterscheidbar und dekriptiv sein (invariant gegenüber Standpunktwechsel)
+\end{itemize}
+\item Wie funktioniert SLAM?
+\begin{itemize}
+\item Interne Repräsentation für:
+\begin{itemize}
+\item Position der Orientierungspunkte
+\item Parameter der kamera
+\end{itemize}
+\item In jedem Frame:
+\begin{itemize}
+\item Vorhersage, wie viel sich der Roboter bewegt hat
+\item Neue Orientierungspunkte aufnehmen
+\item Interne Repräsentation aktualisieren (Messungenauigkeiten)
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Roboterprogrammierung}
+
+\subsection{Klassische Roboterprogrammierverfahren (Übersicht)}
+
+Klassifizierung der Roboterprogrammierverfahren - Kriterien:
+\begin{enumerate}
+\item Programmierort
+\begin{itemize}
+\item on-line/direkt: Die Programmierung erfolgt direkt am Roboter (an der Robotersteuerung)
+\begin{itemize}
+\item Einstellen des Roboters
+\begin{itemize}
+\item Ältestes Programmierverfahren
+\item Der Bewegungsbereich jedes Gelenks wird durch Stopper eingeschränkt
+\item Die Bewegungen erfolgen für jedes Gelenk einzeln bis zum Anschlag
+\item Zuordnung zwischen Anfahrpunkten zu Stopper kann mit Codiermatrizen erfolgen
+\item Sog.: Bang-Bang-Robot
+\item Nachteil: Sehr kleine Menge von Anfahrpunkten
+\end{itemize}
+\item Teach-In Programmierung
+\begin{itemize}
+\item Anfahren markanter Punkte der Bahn mit manueller Steuerung (Teach Box, Teach Panel)
+\item Funktionalität einer Teach Box:
+\begin{itemize}
+\item Einzelbewegung der Gelenke
+\item Bewegung des Effektors in 6 Freiheitsgraden
+\item Speichern/Löschen von Anfahrpunkten
+\item Eingabe von Geschwindigkeiten
+\item Eingabe von Befehlen zur Bedienung des Greifers
+\item Starten/Stoppen ganzer Programme
+\end{itemize}
+\item Weitere Eingabegeräte: Maus, Joystick, Spacemouse (Teach-Kugel)
+\item Vorgehensweise beim Teach-In
+\begin{itemize}
+\item Anfahren markanter Punkte der Bahn
+\item Bahn = Folge von Zwischenpunkten
+\item Speichern der Gelenkwerte
+\item nachträgliche Ergänzung der gespeicherten Werte um Parameter wie Geschwindigkeit, Beschleunigung usw.
+\item Anwendung in der Fertigungsindustrie (Punktschweißen, Nieten) und Handhabungsaufgaben (Pakete vom Fließband nehmen)
+\end{itemize}
+\end{itemize}
+\item Play-Back Programmierung (manuelle Programmierung)
+\begin{itemize}
+\item Einstellung des Roboters auf Zero-Force-Control (Roboter kann durch den Bediener bewegt werden)
+\item Auch kinästhetisches Lernen genannt
+\item Abfahren der gewünschten Bahn
+\item Speichern der Gelenkwerte:
+\begin{itemize}
+\item automatisch (definierte Abtastfrequenz) oder
+\item manuell (durch Tastendruck)
+\end{itemize}
+\item Anwendung:
+\begin{itemize}
+\item mathematisch schwer beschreibbare Bewegungsabläufe
+\item Integrierung der handwerklichen Erfahrung des Bedieners
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item schwere Roboter schwierig zu bewegen
+\item direkter Kontakt mit Roboter -> Sicherheitsrisiko
+\item hoher Speicherbedarf (bei hoher Abtastrate)
+\item schlechte Korrekturmöglichkeiten
+\end{itemize}
+\end{itemize}
+\item Master-Slave Programmierung (mit Sonderfall Teleoperation)
+\begin{itemize}
+\item Bediener führt einen kleinen, leicht bewegbaren Master-Roboter (entspricht einem kinematischen Modell des Slave-Roboters)
+\item Bewegung wird auf den Slave-Roboter übertragen
+\item Bewegungen werden synchron ausgeführt
+\item Slave-Roboter wirkt als Kraftverstärker
+\item Anwendung: Handhabung großer Lasten bzw. großer Roboter
+\item Vor-und Nachteile: teuer, da zwei Roboter benötigt werden; Möglichkeit, auch schwerste Roboter zu programmieren
+\end{itemize}
+\item Sensorunterstützte Programmierung
+\begin{itemize}
+\item Manuell
+\begin{itemize}
+\item Bediener führt Programmiergriffel (Leuchtstift, Laserstift) entlang der abzufahrenden Bahn
+\item Erfassung der Bewegung durch externe Sensoren (z.B. Kameras, Laserscanner)
+\item Berechnung der inversen Kinematik
+\item Abspeichern der Bahn als Folge der Gelenkwinkel
+\end{itemize}
+\item Automatisch
+\begin{itemize}
+\item Vorgabe des Start- und Zielpunktes
+\item Sensorische Ertastung der Sollkontur (z.B. über Kraft-Momenten-Sensor)
+\end{itemize}
+\item Anwendung: Schleifen, Entgraten von Werkstücken
+\end{itemize}
+\end{itemize}
+\item off-line/indirekt: Die Programmierung erfolgt ohne den Roboter mit Hilfe textueller, graphischer, interaktiver Methoden.
+\end{itemize}
+\item Art der Programmierung
+\begin{itemize}
+\item Direkte Programmierung
+\begin{itemize}
+\item Vorteile: schnell bei einfachen Trajektorien; sofort anwendbar; geringe Fehleranfälligkeit; Bediener benötigt keine Programmierkenntnise; kein Modell der Umwelt erforderlich
+\item Nachteile: hoher Aufwand bei komplexen Trajektorien; nur mit und am Roboter möglich; spezifisch für einen Robotertyp; Verletzungsgefahr durch Roboter; keine Adaption an neue Gegebenheiten
+\end{itemize}
+\item Textuelle Verfahren
+\begin{itemize}
+\item Programmierung erfolgt mittels erweiterter, höherer Programmiersprachen wie PASRO, VAL, V+ (Unimation/Stäubli), RAPID (ABB), KRL (KUKA),... -> Robotersteuerung
+\item Vorteile:
+\begin{itemize}
+\item Programmierung kann unabhängig vom Roboter erfolgen
+\item strukturierte, übersichtliche Programmierlogik
+\item Erstellung komplexer Programme (Einbezug von Wissensbasis, Weltmodell, Auswertung von Sensoren)
+\end{itemize}
+\item Nachteile: Bediener benötigt Programmierkenntnise; keine/schlechte Korrekturmöglichkeiten
+\item DIN 66024
+\begin{itemize}
+\item Befehlscodierung nach DIN 66025
+\item Programm = Menge numerierter Sätze
+\item Sprachen: APT (Automatically Programmed Tools), EXAPT (Extended Subset of APT)
+\end{itemize}
+\item SPS
+\begin{itemize}
+\item VPS: Verbindungprogrammierte Steuerung (historisch): Steuerung erfolgt über Hardware; Programmänderung = Hardwareänderung
+\item SPS: Speicherprogrammierbare Steuerung: Steuerungs- und Regelungsablauf werden programmiert; große Flexibilität
+\end{itemize}
+\item CNC: Computerized Numerical Control
+\begin{itemize}
+\item Steuerung von Werkzeugmaschinen: geometrische Beschreibung des Werkstücks bzw. der Bearbeitungsflächen + Kurven (Bahnkurve des Werkzeugs); technologische Beschreibung (z.B. Vorschubgeschwindigkeit oder Spindeldrehzahl)
+\item Steuerungsarten: Punktsteuerung (Bohrung); Achsenparallele Steuerung (Fräsen); Bahnsteuerung z.B. Strecke oder Kreis (Brennschneidenmaschinen)
+\item Sprachen: APT, EXAPT
+\end{itemize}
+\end{itemize}
+\item Graphische Verfahren
+\begin{itemize}
+\item Virtuelles Teach-In
+\begin{itemize}
+\item Manipulation von Roboter und Umgebung in 3D Visualisierung
+\item Abspeichern der Bewegungen
+\item Benötigt exaktes 3D Modell von Roboter und Umgebung
+\item Vorteile
+\begin{itemize}
+\item Programmierung kann unabhängig vom Roboter erfolgen
+\item Programmierer benötigt weniger Programmierkenntnisse
+\item einfache Programmierung, leichte Fehlererkennung
+\item schnelles Erstellen komplexer Programme (rapid porototyping)
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Leistungsfähige Hardware für Visualisierung und Simulation
+\item Komplexe (Rechen-)Modelle für eine realitätsnahe Simulation benötigt
+\item Roboter und Umwelt müssen modelliert werden!
+\end{itemize}
+\end{itemize}
+\item Graphische Modellierungsformalismen
+\begin{itemize}
+\item Endliche Zustandsautomaten
+\item Petri-Netze
+\item Statecharts
+\end{itemize}
+\end{itemize}
+\item Gemischte Verfahren
+\begin{itemize}
+\item Graphische Programmierung basierend auf sensorieller Erfassung der Benutzervorführung -> Simulation der Roboterprogramme
+\item Vorteile
+\begin{itemize}
+\item Programmierer benötigt weniger Programmierkenntnisse
+\item einfache Programmierung, leichte Fehlererkennung
+\item schnelles Erstellen komplexer Programme (rapid prototyping)
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item sensorielle Benutererfassung noch zu ungenau
+\item Leistungsfähige Hardware für Signalanalyse, Modellierung,...
+\item Komplexxe Modelle benötigt
+\end{itemize}
+\end{itemize}
+\item Abstraktionsgrad der Programmierung
+\begin{itemize}
+\item Implizite Programmierung: Die Aufgabe, die der Roboter durchführen soll, wird beschrieben, z.B. in Form von Zuständen.
+\item Explizite Programmierung: Bewegungen und Greiferbefehle sind direkt in eine Programmiersprache eingebunden.
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+\subsection{Graphisches Programmierverfahren: Statecharts}
+
+\begin{itemize}
+\item Warum Statecharts zur Programmierung von Robotern?
+\item Lernen von Aktionen aus Beobachtung schwierig
+\begin{itemize}
+\item Perzeption
+\item Embodiment
+\item Ausführungsunsicherheiten
+\end{itemize}
+\item Textuelle Aktionsprogrammierung schwierig
+\begin{itemize}
+\item Systemkomplexität
+\item Roboterfähigkeiten stark zustandsbehaftet
+\item Fähigkeiten bestehen zumeist aus Subfähigkeiten
+\item Textuelle Programmierung unübersichtlich
+\end{itemize}
+\item Graphische Programmierung von Roboteraktionen: Statecharts
+\end{itemize}
+
+Harel Statechart Formalismus
+\begin{itemize}
+\item Graphischer Formalismus zum Entwurf komplexer Systeme
+\item Wichtigste Features:
+\begin{itemize}
+\item Hierarchisch
+\item Interlevel Transitionen
+\item Orthogonalität
+\item Zustandsaktionsphasen: Entry, Exit, Throughout
+\end{itemize}
+\item Limitation: Keine Datenflussspezifikation
+\begin{itemize}
+\item Datenfluss in der Robotik ist notwendig; Ergebnisse von Zuständen werden in Folgezuständen benötigt
+\begin{itemize}
+\item Beispiel: Objektlokalisierung wird für Visual Servoing oder inverse Kinematik benötigt
+\end{itemize}
+\item Wiederverwendbarkeit erfordert eine Adaption von Parametern
+\begin{itemize}
+\item Kontrollparameter
+\item Kinematikparameter
+\item Objektparameter
+\item ...
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Erweiterung des Harel Statechart Formalismus am H${^2}$T
+\begin{itemize}
+\item Datenflussspezifikation: Transitionsbasierter Datenfluss
+\item Keine Inter-level Transition, da sie die Widerverwendbarkeit verhindern
+\item Erfolgs- und Misserfolgszustände in jedem Zustand
+\item Dynamische Struktur
+\item Verteilung über mehrere Host-PCs
+\item Verbindung von graphischer Kontroll- und Datenflussspezifikation mit C++ Benutzer-Code
+\end{itemize}
+
+Statechart Erweiterungen
+\begin{itemize}
+\item Transitionsbasierter Datenfluss
+\begin{itemize}
+\item Beliebige Datentypen (grundlegende: int, float, string, ... + komplexe: Position, 6D-Pose, Matrizen, Listen, ...)
+\item 3 Parameter Container pro Zustand (Eingabe, Lokale Parameter, Ausgabe)
+\item Parameterabbildung pro Transition (Abbildung von Quell-Parameter auf Eingabe-Parameter des Zielzustandes)
+\item Spezifizierter Datenfluss $\rightarrow$ Keine Seiteneffekte durch globale Variablen
+\end{itemize}
+\item Verteilung über mehrere Host-PCs
+\begin{itemize}
+\item Transparente Verteilung von Statecharts (Netzwerk Middleware Zero Ice)
+\item Kind-Zustände können Zeiger auf entfernt liegende Zustände sein (grüner Zustand)
+\item Vorteile:
+\begin{itemize}
+\item Lastverteilung
+\item Erhöht Robustheit und Fehlertoleranz
+\item Näher an eingesetzter Hardware (Sensorik, Aktorik)
+\end{itemize}
+\end{itemize}
+\item Dynamische Struktur
+\begin{itemize}
+\item Austausch von Unterzuständen zur Laufzeit
+\item Transparente Verbindungen zu beliebigem entfernten Zustand
+\item Unterzustand durch Parameterabbildung spezifiziert
+\item Einsatz: Ausführung von generierten Plänen
+\end{itemize}
+\end{itemize}
+
+\subsection{Symbolische Planung}
+
+\begin{itemize}
+\item Plan in der Robotik: Sequenz von parametrisierten Aktionen zum Erreichen eines definierten Ziels
+\item Symbolisch: Repräsentationen des Weltzustandes durch Boolesche Prädikaten statt kontinuierliche Werten
+\item Planung: Finden einer Aktionssequenz zur Lösung eines Zielzustandes
+\item Klassisches Planungsbeispiel: Blockwelt
+\item Herausforderung: Wie kann man das Planungsproblem so formulieren, dass eine Lösung einfach/schnell zu finden ist und die Existenz einer Lösung bewiesen/wiederlegt werden kann?
+\item Klassischer Lösungsansatz: Wissensmodellierung (Beschreibssprache der Umwelt und Aktionen (STRIPS,ADL,PDDL,...); Suche: Suchalgorithmus zum Finden der gültigen Aktionsseuqenz)
+\item Probleme: Suchraum sehr groß (Branching factor); Abbildung der realen Welt auf Symbole (Symbole Grounding Problem)
+\end{itemize}
+
+STRIPS (Standford Research Institute Problem Solver)
+\begin{itemize}
+\item Bekannteste und eine der ältesten Sprachen zur Beschreibung von Planungsdomänen. Wurde in 1971 von Fikes und Nilson zur Steuerung des Roboters „Shakey“ entwickelt
+\item Sehr einfach, daher auch eingeschränkt
+\item Action Description Language (ADL) und Planning Domain Definition Language (PDDL) sind von STRIPS abgeleitet
+\item Bestandteile von STRIPS (auch Planungsdomäne genannt): Zustände, Aktionen, Ziele
+\item Symbole
+\begin{itemize}
+\item Funktionsfreie Sprache erster Ordnung (Prädikatenlogik erster Stufe): Endliche Anzahl an Prädikaten und Konstanten, keine Funktionssymbol, endliche Anzahl an Operatorensymbolen
+\end{itemize}
+\item Zustände
+\begin{itemize}
+\item Konjunktionen positiver aussagenlogischer Literale aus Prädikaten und Konstantensymbole
+\item Einschränkungen: Endliche Anzahl an Literalen, keine Variablen, keine negativen Literale, keine Funktionen
+\item Geschlossene Welt (Closed World Assumption): Jeder Zustand muss vollständig bekannt sein und beschrieben werden können, nicht vorkommende Literale gelten als negative (negierte) Literale
+\end{itemize}
+\item Ziele
+\begin{itemize}
+\item Ein Ziel ist ein teilweise spezifizierter Zustand: Konjunktion von positiven Literalen
+\item Erfüllung von Zielen: Alle Literale des Zieles müssen im Weltzustand vorkommen
+\end{itemize}
+\item Aktionen: Tripel bestehend aus (Deklaration, Vorbedingungen, Effekte)
+\begin{itemize}
+\item Deklaration: Name und Parameterliste (Beispiel: Greife(h,o,l), eindeutiger Name, Parameterliste muss alle Variablen enthalten, die in den Vorbedingungen und Effekten benutzt werden)
+\item Vorbedingungen (Preconditions): Konjunktionen von Literalen, die wahr sein müssen, um einen Operator aufwenden zu können (Negative Literale erlaubt, nur Variablen in Literalen)
+\item Effekte (Effects): Auswirkungen der Aktion auf den Weltzustand, Liste von positiven oder negativen Literalen; auch bekannt als Hinzufüge-Listen (add-List) oder Lösch-Listen (Delete-List) von positiven Literalen
+\end{itemize}
+\item Ausführbarkeit
+\begin{itemize}
+\item Eine Aktion A ist ausführbar in allen Zuständen, die die Vorbedingung erfüllen
+\item Ergebnis der Ausführung: Das Ergebnis der Ausführung der Aktion auf einem Zustand erhält man durch Entfernen aller negativen Literale des Effekts aus dem Zustand und Hinzufügen aller positiven Literale des Effekts zum Zustand
+\end{itemize}
+\item Vorteile
+\begin{itemize}
+\item Einfache Beschreibungssprache
+\item Einfache Planung
+\item Lösbarkeitsbeweis einfach
+\end{itemize}
+\item Nachteile
+\begin{itemize}
+\item Viele Restriktionen beim Modellieren (Geschlossene Welt, nur positive Literale in Zuständen (unbekanntes Wissen nicht modellierbar), keine Quantoren und Disjunktionen in Zielen, Vorbedingungen, Effekte, keine Typisierung (nur mit Prädikaten umsetzbar), nur boolesche Prädikate)
+\end{itemize}
+\item ADL und PDDL sind mächtiger, erlauben bessere Modellierung, sind aber auch komplexer
+\item Suche im Zustandsraum
+\begin{itemize}
+\item Suche: Anwenden von ausführbaren Aktionen
+\item Suche ist einfach umzusetzen
+\begin{itemize}
+\item Keine Funktionssymbole (endlicher Zustandsraum, Standard-Algorithmus zur Baumsuche möglich)
+\item Transformation der Vorbedingung (Effekte bijektiv -> Suche auch rückwärts möglich)
+\end{itemize}
+\item Problem: Suchraum ist sehr groß (Branching factor: Anzahl möglicher Verzweigungen pro Zustand, Aktion mit n Parametern und m Konstanten in der Domäne hat $m^n$ Aktionskandidaten. Prüfung auf Ausführbarkeit -> Alle ausführbaren Aktionen werden weiter verfolgt)
+\item Suchalgorithmen:
+\begin{itemize}
+\item Tiefensuche findet meistens nicht den kürzesten Plan
+\item Breitensuche findet immer den kürzesten Plan, hoher Speicherbedarf -> oft nicht anwendbar
+\item Heuristik basierte Suche: Güte der Heuristik ist ausschlaggebend, bisher keine allgemeingültige Heuristik
+\item FastForward-Planer: gierige Vorwärtssuche mit Heuristik, Breitensuche um aus lokalen Minima zu entkommen, findet nicht immer den kürzesten Plan, aber in viele Fällen einen kurzen
+\item Planungsgraphen: Analyse der Prädikate und Aktionen um eine Heuristik aufzustellen
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\section{Programmieren durch Vormachen}
+
+\begin{itemize}
+\item Hauptziel von Programmieren durch Vormachen
+\begin{itemize}
+\item Intuitive Roboterprogrammierung ohne Expertenwissen
+\item Lernen von Aufgaben durch Generalisierung auf Basis mehrerer Observationen
+\end{itemize}
+\item PdV impliziert Lernen und Generalisierung und ist deshalb kein Playback Verfahren.
+\item Drei-Phasen-Modell
+\begin{itemize}
+\item Zerlegung in Teilprobleme
+\item Lösung in getrennten Modulen
+\item Austausch von Modulen möglich
+\item Kette: Perzeption -> Kognition -> Aktion
+\end{itemize}
+\end{itemize}
+
+Drei Gründe für PdV:
+\begin{itemize}
+\item Mächtiger Mechanismus zur Komplexitätsredukation des Suchraums während des Lernens (im Gegensatz zum Ausprobieren aller Möglichkeiten).
+\begin{itemize}
+\item Gute Observationen können als Startpunkt gewählt werden
+\item Schlechte Observationen können direkt aus dem Suchraum eliminiert werden
+\end{itemize}
+\item Implizierter Mechanismus zum Trainieren durch Maschinen, der das explizite und mühsame händische Programmieren durch Menschen reduziert oder sogar ganz eliminiert.
+\item Hilft beim Verständnis der Kopplung zwischen Perzeption und Aktion dem lernen relvenater Beziehungen zwischen diesen
+\end{itemize}
+
+Hauptherausforderungen in PdV
+\begin{itemize}
+\item Wer soll imitiert werden?
+\begin{itemize}
+\item Lehrerauswahl: wähle einen Lehrer von dessen Verhalten der Imitierende am meisten profitiert.
+\item Problem wird bei den meisten Methoden durch Auswahl eines dedizierten Lehrers vermieden.
+\end{itemize}
+\item Wann soll imitiert werden?
+\begin{itemize}
+\item Der Imitierende muss die Bewegung segmentieren und Start und Ende des gezeigten Verhaltens ermitteln.
+\item Der Imitierende muss entscheiden, ob es angemessen ist das beobachtete Verhalten im aktuellen Kontext auszuführen und wie oft es wiederholt werden muss.
+\item Problem wird bei den meisten Methoden durch explizites Kennzeichnen von Start und Ende der Demonstration vermieden.
+\end{itemize}
+\item Was soll limitiert werden?
+\begin{itemize}
+\item Wie findet man heraus welche Aspekte der Demonstrationen von Interesse sind? Bei Aktionen sind es Bewegungen (Trajektorien) des Vorführenden. In anderen Situationen werdend as Ergebnis und die Effekte von Aktionen als wichtig erachtet.
+\item Manche beobachtbaren Eigeschaften sind irrelevant und können problemlos ignoriert werden. Ist es zum Beispiel wichtig, dass der Vorführende immer von Norden her zum Tisch läuft?
+\item Bei kontinuierlichen Regelungsaufgaben entspricht dise Aufgabe der Bestimmung des Merkmalraums für das Lernen, sowie der Constraints und der Kostenfunktion.
+\item Bei diskreten Regelungsaufgaben, die z.B. mit Reinforcement Learning und symbolischem Reasoning behandelt werden, entspricht diese Aufgabe der Definition des Zustands- und Aktionsraums und wie dem automatischen Lernen von Vor- und Nachbedingungen (Constraints).
+\end{itemize}
+\item Wie soll imitiert werden?
+\begin{itemize}
+\item Bestimme, wie der Roboter das gelernte Verhalten tatsächlich ausführen wird, um die Metrik zu maximieren, die beim \glqq Was soll imitiert werden?\grqq\ Problem gefunden wurde. Auf Grund unterschiedlicher Kinematik kann z.B. ein Roboter menschliche Bewegungen nicht identisch reproduzieren. Darf z.B. ein Roboter mit Rädern ein Objekt anfahren, wenn der Lehrer es mit dem Fuß angestoßen hat, oder muss er stattdessen einen Arm einsetzen?
+\item Der Roboter muss eine Abbildung von Perzeption zu einer Sequenz eigener Bewegungen lernen. Deshalb bestimmen das Embodiment und die Körpereinschränkungen wie beobachtete Aktionen imitiert werden können (Korrespondenzproblem).
+\end{itemize}
+\end{itemize}
+
+Zwei unterschiedliche Arten wie bestimmt werden kann, ob der Zustand des Lehrers (Mensch) und des Imitators (Roboter) korrelieren
+\begin{itemize}
+\item Perzeptive Äquivalenz: Auf Grund von Unterschieden zwischen menschlicher und robotischer Sensorfähigkeiten kann die gleiche Szene sehr unterschiedlich aussehen. Ein Mensch erkennt beispielsweise andere Menschen und Gesten anhand von Farbe und Intensität, während ein Roboter Tiefeninformationen dazu verwendet.
+\item Physikalische Äquivalenz: Auf Grund unterschiedlicher Embodiements führen Menschen und Roboter z.B. unterschiedliche Aktionen aus, um den gleichen physikalischen Effekt zu erzielen.
+\end{itemize}
+
+\subsubsection{Perzeption}
+
+Aufnahme der Demonstration
+\begin{itemize}
+\item Beim Lernen: Übertragung der aufgenommenen Aktion vom Lehrer auf den Roboter
+\item Zwei Schritte:
+\begin{itemize}
+\item Aktionen des Lehrers aufnehmen
+\item Entsprechende Aktion des Roboters bestimmen (Direkte Abbildung oder Abbildungsvorschrift notwendig)
+\end{itemize}
+\item Beide Schritte können direkt oder indirekt durchgeführt werden
+\item Es gibt also vier Typen von Lernen durch Vormachen:
+\begin{itemize}
+\item Teleoperationen
+\item Shadowing
+\item Sensoren am Lehrer
+\item Externe Beobachtung
+\end{itemize}
+\end{itemize}
+
+Schnittstellen zum Vormachen
+\begin{itemize}
+\item Erste Zeile: Aufgenommene Daten können direkt vom Roboter genutzt werden
+\item Zweite Zeile: Benötigte Daten sind nur indirekt verfügbar und müssen aus den aufgenommenen Daten abgeleitet werden.
+\item Linke Spalte: Die vorgemachten Daten entsprechen dem Körper des Roboters und können direkt benutzt werden
+\item Rechte Spalte: Die vorgemachten Daten entsprechen nicht dem Körper des Roboters, weshalb eine Abbildung auf den Roboter notwendig ist
+\item Teleoperation
+\begin{itemize}
+\item Lehrer steuert den Roboter direkt mittels Joysticks oder anderen Remote-Steuerungsgeräten
+\item Die Sensoren des Roboters (z.B. Position, Kraft) nehmen die Demonstration auf
+\item Embodiments des Lehrers und Schülers sind die selben (der Roboter selbst) -> keine Nachverarbeitung nötigt (kein Korrespondenzproblem)
+\item Aber: Benutzung des Steuerungsgeräts benötigt oft Training, da oft 6+ Freiheitsgrade gesteuert werden
+\end{itemize}
+\item Teleoperation vs Kinästhetisches Lernen
+\begin{itemize}
+\item bei kinästhetischem Lernen wird der Roboter direkt durch physikalische Interaktion bewegt (setzt Compliance (aktiv/passiv) beim Roboter voraus)
+\item Aufnahme der Demonstration wie bei Teleoperation
+\item Mensch braucht für gewöhnlich mehr DoF als der Roboter, um eine Aktion zu demonstrieren (zweihändige Aktionen nur schwer möglich)
+\item Mensch muss sich im Arbeitsbereich des Roboters befinden (Sicherheitsrisiko, nicht von Entfernungen möglich)
+\end{itemize}
+\item Shadowing
+\begin{itemize}
+\item Lehrer und Schüler haben gleiches Embodiment
+\item kein direkter Zugriff auf die Daten des Lehrers
+\item Nachahmung der Aktionen des Lehrers (durch Beobachtung) und Aufnahme der Aktion mit eigenen Sensoren
+\item Daher ist die Aufnahme indirekt
+\item Aufnahme direkt im Embodiment des Schülers
+\end{itemize}
+\item Sensoren auf dem Lehrer
+\begin{itemize}
+\item Bewegung des Lehrers werden direkt aufgenommen und der Roboter hat direkten Zugriff -> Explizite und direkte Aufnahme
+\item hohe Genauigkeit der Aufnahmen
+\item Mensch kann sich frei bewegen
+\item Abbildung vom Menschen auf Roboter nötig (Korrespondenzproblem)
+\end{itemize}
+\item Externe Beobachtungen
+\begin{itemize}
+\item Beobachtung durch Sensoren des Roboters (Kameras)
+\item Komplexe Algorithmen nötig zur Bildverarbeitung
+\item Niedrige Präzision
+\item Haptik des Lehrers kann nicht aufgenommen werden
+\item Abbildung vom Menschen auf Roborer nötig (Korrespondenzproblem)
+\end{itemize}
+\end{itemize}
+
+Erfassung der menschlichen Bewegung
+\begin{itemize}
+\item Die Erfassung der menschlichen Bewegung ist Ausgangspunkt für die Programmierung durch Vormachen
+\item Marker-basierte Verfahren:
+\begin{itemize}
+\item Marker werden an vorher festgelegten anatomischen Landmarken des menschlichen Körpers angebracht
+\item Marker sind entweder aktiv (z.B. Codierung mit LED) oder passiv (z.B. reflektierend)
+\item Mensch muss zur Erfassung vorbereitet (vermarkert) werden
+\end{itemize}
+\item Marker-lose Verfahren:
+\begin{itemize}
+\item Direkte Rekonstruktion der menschlichen Pose aus Kamera-Daten (RGB-/Tiefendaten)
+\item Keine Vermarkerung des Menschen erforderlich
+\end{itemize}
+\end{itemize}
+
+Marker-basierte optisch-passive Bewegungserfassung
+\begin{itemize}
+\item Lokalisierung von infrarot-reflektierenden passiven Markern mit Hilfe eines Mehr-Kamera-Systems
+\item Weit verbreitete Lösung, verschiedene kommerzielle Anbieter
+\item Vorteile: hohe räumliche Genauigkeit, hohe zeitliche Auflösung
+\item Nachteile: teuer und hoher technischer Aufwand, Aufwand für Nachbearbeitung durch Verdeckung und Labeling der Marker, Anforderungen an Aufnahmebereich
+\end{itemize}
+
+Marker-basierte optisch-aktive Bewegungserfassung
+\begin{itemize}
+\item Marker übertragen eine codierte Kennung, z.B. mir Infrarot-LED
+\item Vor-/Nachteile ähnlich zu optisch-passiven Systemen, aber vereinfachte Handhabung des Marker Labelings, Dafür: Batterien/Kabel zur Stromversorgung jedes Markers notwendig
+\end{itemize}
+
+IMU-basierte Bewegungserfassung
+\begin{itemize}
+\item Anbringung von inertialen Messenheiten (IMUs) an anatomisch definierten Punkten des menschlichen Probandes
+\item Vorteile: Geringe Anforderungen an Aufnahme-Umgebung, genaue Bestimmung der menschlichen Pose
+\item Nachteile: Exakte Platzierung der IMUs erforderlich, keine exakte Positionsbestimmung des Menschen im global Koordinatensystem möglich
+\end{itemize}
+
+Mechanische Bewegungserfassung
+\begin{itemize}
+\item Direkte Messung von Gelenkwinkeln (z.B. Potentiometer)
+\item Vorteile: Geringe Anforderungen an Aufnahme-Umgebung
+\item Nachteile: Einschränkung der menschlichen Bewegung durch Exoskelett, hoher technischer Aufwand, keine Positionsbestimmung des Menschen im globalen Koordinatensystem möglich
+\end{itemize}
+
+Magnetische/akustische Bewegungserfassung
+\begin{itemize}
+\item Lokalisierung von Markern mit elektromagnetischen oder akustischen (Ultraschall) Prinzipien
+\item Vorteile: Günstiger als marker-basierte optische Lösungen, geringe Probleme mit Verdeckungen
+\item Nachteile: Stark begrenzte Reichweite, Empfindlichkeit ggü. Störungen, teilweise hohe Ungenauigkeiten
+\end{itemize}
+
+Master Motor Map (MMM) Framework
+\begin{itemize}
+\item Framework zur vereinheitlichenden Darstellung menschlicher Ganzkörperbewegung
+\item Erfasste Bewegungenn unterschiedlicher Menschen und Erfassungstechniken werden auf Referenzmodell des menschlichen Körpers mit 104 Bewegungsfreiheitsgraden abgebildet
+\end{itemize}
+
+Marker-lose optische Bewegungserfassung
+\begin{itemize}
+\item Rekonstruktion der menschlichen Pose aus RGB- und/oder Tiefen-Daten
+\item Vorteile: Sehr günstig, geringer Hardware-Aufwand, geringe Anforderungen an Aufnahme-Umgebung
+\item Nachteile: Komplexe Algorithmen und hohe Fehlerrate, niedrige zeitliche Auflösung, vor allem bei Online-Einsatz
+\end{itemize}
+
+Skeleton Tracking
+\begin{itemize}
+\item Tiefenkameras liefern Tiefenbilder und Skelettdaten mit 30 fps 
+\item Skelettdaten werden aus jedem Einzelbild berechnet 
+\item Genauigkeit zwischen RGB-Tracking und Marker-basiert
+\end{itemize}
+
+Segmentation \& Tracking
+\begin{itemize}
+\item Tracking von Lehrer und Objekten durch Farb- und Tiefenregionen
+\item Optischer Fluss (Bewegungsmuster) wird benutzt, um Bewegungen zwischen 2 Frames zu tracken
+\item Segmentmittelpunkte pro Frame stellen die Trajektorie dar
+\end{itemize}
+
+Interfaces for Demonstration
+\begin{itemize}
+\item Demonstration für Teleoperation und Shadowing
+\item Imitation für Sensoren auf dem Lehrer und externe Beobachtung
+\end{itemize}
+
+Mensch-Roboter Interaktion für PdV
+\begin{itemize}
+\item Weitere Aufnahmekanäle für PdV: multimodale Interaktion
+\item Interaktion während des Lernvorgangs mit dem Menschen
+\begin{itemize}
+\item Blickrichtung des Lehrers
+\item Zeige-Gesten des Lehrers
+\item Sprachliche Informationen: Ergänzende Informationen (vokale Deixis: Hier, Dort, Jetzt,...; Hervorhebung von einzelnen Schritten)
+\end{itemize}
+\item Roboter fragt bei Unklarheit: Repräsentation mit Konfidenzmaß, Roboter fragt gezielt nach Details
+\item Mensch weist den Roboter gezielt auf schlecht ausgeführte Aspekte der Aktionen hin
+\end{itemize}
+
+\subsubsection{Kognition}
+
+Lernen einer Fähigkeit (PdV)
+\begin{itemize}
+\item Eine Fähigkeit kann auf zwei Ebenen repräsentiert werden
+\begin{itemize}
+\item Trajektorie: Eine nicht lineare Zuordnung zwischen Sensor- und Motorinformation stellt eine Repräsentation auf niedriger Ebene dar
+\begin{itemize}
+\item Verwendet Methoden zur Dimensionalreduktion, die das aufgenommene Signal in einen latenten Bewegungsraum mit niedrigerer Dimension projiziert
+\item Diese Methoden setzen lokale lineare Transformationen oder globale nicht-lineare Verfahren ein
+\item Die Kodierung kann spezifisch zu einer zyklischen (periodischen) Bewegung, zu einer diskreten Bewegung oder zu einer Kombination aus beiden sein
+\end{itemize}
+\item Symbolisch: Eine Zerlegung in eine Folge von Aktionen (action perception units) stellt eine Repräsentation auf hoher Ebene dar
+\begin{itemize}
+\item Ein üblicher Ansatz segmentiert und kodiert die Aufgabe anhand von Folgen vordefinierter Aktionen, die symbolisch beschrieben sind.
+\item Das Kodieren und Reproduzieren der Aktionsfolgen kann mit klassischen Machine-Learning-Verfahren wie z. B. HMMs erfolgen.
+\item Vorteil: Komplexe Fertigkeiten können effizient über einen interaktiven Prozess gelernt werden
+\item Nachteil: Die Verfahren benötigen sehr viel Vorwissen, um die wichtigen Kennzeichen zur Segmentierung erkennen zu können
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Roboterprogrammierung durch Vormachen (symbolisch)
+\begin{itemize}
+\item Der Roboter muss die geeignetste Aktion auf Basis des aktuellen Weltzustands bestimmen oder abschätzen
+\item Ziel: Eine Zuordnung zwischen Weltzustand und Aktion (Strategie zur Aktionswahl)
+\item Um eine Strategie zu lernen zeigt ein Demonstrator dem Roboter Beispiele für mögliche Aktionen im aktuellen Weltzustand (Demonstrator: Lehrer, Roboter: Schüler)
+\item Der Weltzustand kann nicht direkt bestimmt werden, sondern nur über die Beobachtungen des Roboters (Sensorik)
+\item Die gelernte Strategie erlaubt dem Roboter, Aktionen auf Basis seiner Beobachtungne auszuwählen
+\end{itemize}
+
+Vorverarbeitung: Segmentierung von Demonstrationen
+\begin{itemize}
+\item Demonstrationen bestehen meist aus Aktionssequenzen
+\item Verständnis von Demonstration einfacher, wenn diese in kleinere Segmente oder sogar bekannte Aktionen zerlegt sind
+\item Aber:
+\begin{itemize}
+\item Welche/Wie viele Aktionen vorkommen ist unbekannt
+\item Start und Ende von Aktionen ist unbekannt
+\item Aktionen gehen nahtlos ineinander
+\end{itemize}
+\item Hauptsächlich zwei Arten von Segmentierung
+\begin{itemize}
+\item Bewegungssegmentierung
+\begin{itemize}
+\item Untersuchung der Bewegungstrajektorien nach Mustern und Änderungen in der Bewegungsart
+\item Algorithmen: HMM, PCA, Clustering, Template matching, Klassifikation
+\end{itemize}
+\item Semantische Segmentierung (Aufgabensegmentierung)
+\begin{itemize}
+\item Beobachtung des Lehrers und der Umgebung
+\item Extraktion von semantischen Merkmalen (Zustände, Objekt-Relationen, Regeln)
+\end{itemize}
+\end{itemize}
+\item Objektkontaktrelationen zur Repräsentation des Weltzustandes
+\item Keyframes werden bei Änderungen der Kontaktrelation eingefügt
+\item Jedes Segment repräsentiert eine Manipulationsaktion (Teig umrühren enthält z.B. greifen, rühren, abstellen, ...)
+\item Aber: Segmente haben noch keine Label
+\item Objektrelationen ermöglichen die Extraktion von Vorbedingungen und Effekten von Aktionen für symbolische Planer
+\begin{itemize}
+\item Zustand am Segmentanfang: LeftHand berührt nichts
+\item Zustant am Segmentende: LeftHand beführt RoteTasse
+\item Vorbedingung: empty(LeftHand)
+\item Nachbedingung: in(RedCup,LeftHand), !empty(LeftHand)
+\end{itemize}
+\end{itemize}
+
+Hierarchische Aufgabensegmentierung unter Berücksichtigung von Bewegung und relevanten Objekten
+\begin{itemize}
+\item Semantische Segmentierung basierend auf Objekt-Kontaktrelationen
+\item Bewegungssegmentierung basierend auf Charakteristiken von Trajektorien (Bewegungsdynamik)
+\end{itemize}
+
+Aufnahme der Demonstrationen
+\begin{itemize}
+\item Marker basiertes Motion-Capture von Proband, Objekten, Umgebung
+\item Transformation zu 6D Posen Trajektorien: 3D Modelle mit virtuellen Markern
+\item Master Motor Map (MMM) Datenformat
+\end{itemize}
+
+Bewegungscharakteristik Heuristik
+\begin{itemize}
+\item Heuristik basierend auf dem Beschleunigungsprofil: Messen der Länge der Beschleunigungskurve\\
+$s_{l,d}(t_c) = \int\limits_{t_c-\frac{w}{2}}^{t_c-1} \sqrt{1 + a'_d(t)^2 dt (\frac{\hat{U_l}}{\hat{U_r}})^2}$\\
+$s_{r,d}(t_c) = \int\limits_{t_c}^{t_c+\frac{w}{2}-1} \sqrt{1 + a'_d(t)^2 dt (\frac{\hat{U_r}}{\hat{U_l}})^2}$
+\item Iterative Suche des besten Keyframe Kandidaten mittels gleitendem Fenster
+\begin{itemize}
+\item Vergleiche der Segmente links und rechts des Keyframe Kandidaten mit der Auswertfunktion s
+\item Keyframe Qualität: $q_d = \frac{s_{l,d}}{s_{r,d}}$ für $s_{l,d} > s_{r,d}$ und $\frac{s_{r,d}}{s_{l,d}}$ für $s_{l,d} \le s_{r,d}$
+\end{itemize}
+\item Rekursive Unterteilung bis die Segmentgröße oder Qualität zu klein/niedrig 
+\end{itemize}
+
+Evaluation der Segmentierung
+\begin{itemize}
+\item Neue Metrik für die Segmentierungsergebnisse: Bestrafung für fehlende und zusätzliche Keyframes $e = (m + f) * p + \sum\limits_i \min\limits_j (k_{r,i} - k_{r,j})^2$
+\end{itemize}
+
+Demonstrationsverarbeitung\\
+2 Möglichkeiten Akionen zu verarbeiten:
+\begin{itemize}
+\item Batch Lernen: Die Aktion wird gelernt wenn alle Aktionen/Wiederholungen aufgenommen werden
+\item Inkrementelles Lernen: Die Aktionsrepräsentation wird nach jeder Aktion/Wiederholung gerlernt/aktualisiert
+\end{itemize}
+
+Aktionsrepräsentation auf Trajektorienebene
+\begin{itemize}
+\item Lernen von Aktionen und Repräsentationen geschieht oft zusammen: Repräsentation ist stark an der Lernverfahren gekoppelt
+\item Populäre Verfahren
+\begin{itemize}
+\item Hidden Markov Models (HMM)
+\item Dynamic Movement Primitives (DMP)
+\item Gaussian Mixture Models (GMM)
+\end{itemize}
+\item Verfeinerung von gelernten Trajektorien: Reinforcement Learning
+\end{itemize}
+
+Dynamic Movement Primitives (DMP)
+\begin{itemize}
+\item Gegeben
+\begin{itemize}
+\item Demonstration für jeden Zeitpunkt Position$y_D$ und Geschwindigkeit $v_D$
+\item Ausführung: Anfangsposition $y_0$, Anfangsgeschwindigkeit $v_0$, Zielposition $y_z$, Zeitdauer $t$
+\end{itemize}
+\item Gesucht: Eine Trajektorie von $y_0$ bis zu $y_z$ ähnlich zu Demonstration $y_D$
+\item Lösung: Feder-Masse-Dämpfer System mit dem Perturbationsterm $\tau \ddot y = K(g-y) - D \dot y + f_\theta (g-y_0)$ und $\tau \dot x = - ax$
+\item $f\theta(x)$ wird durch die Beobachtung von $y_D$ gelernt.
+\item Hyperparameter für die Anpassung
+\begin{itemize}
+\item $\tau$: Zeitlicher Faktor -> Anpassung der Geschwindigkeit
+\item $g$: Ziel -> Anpassung der Zielposition
+\item $y_0$: Skalierungsfaktor -> Anpassung der Anfangsposition
+\end{itemize}
+\item Kanonisches System: $\tau \dot x = - ax$: Das Transformationssystem ist hiermit nicht unmittelbar von der Zeit abhängig
+\end{itemize}
+
+\subsubsection{Aktion}
+
+Trajektorienausführung
+\begin{itemize}
+\item Generierter Trajektorie $Y = (y_t)^T_{t=1}$ folgen (z.B. PD Regler: $u_t = k_p (y_t - y) - k_d v$)
+\item Direktes Konstrollsignal (speziell für DMP): $u_t = \ddot y = \frac{1}{\tau}(K(g-y) - D \dot y + f_\theta(x_t) (g-y_0))$
+\end{itemize}
+
+Online Anpassung bei der Ausführung
+\begin{itemize}
+\item Online Anpassung ist möglich durch den Kopplungsterm in DMP
+\item Online Anpassung ist schwierig für GMM und HMM, weil beide nicht dynamisch sind
+\item DMP Online Anpassung $\tau \ddot y = K(g-y) - D \dot y + f_\theta(x)(g-y_0)+C$
+\end{itemize}
+
+Ausführung von komplexen Aufgaben
+\begin{itemize}
+\item Repräsentationen von komplexen Aufgaben mit Aktionssquenzen
+\item Ausführung von Aktionssequenzen in dynamischen Umgebungen
+\begin{itemize}
+\item Aktionen einzeln programmiert oder gelernt
+\item Aktionssequenzen hängen vom Weltzustand ab -> Einsatz von symbolischen Planern möglich
+\end{itemize}
+\item Zustand der Umgebung
+\begin{itemize}
+\item Selbstlokalisierung (z.B. mit Laserscanner)
+\item Objektlokalisierung (z.B. Stereo-RGB, RGBD)
+\item Symbolisches Umgebungswissen (Landmarken, Zustand der Umgebung)
+\item Abbildung von kontinuierlichem Wissen auf symbolisches Wissen z.B. 6D Objektpose -> auf(Objekt,Tisch)
+\end{itemize}
+\item Initialer Weltzustand
+\begin{itemize}
+\item Klassische Planer benötigen vollständigen Weltzustand
+\item Problem: Roboter weiß zunächst nicht, wo die Objekte sind
+\item Lösung: Hypothesen generieren anhand von Roboterwissen aus
+\begin{itemize}
+\item Erfahrung gewonnen aus früheren Ausführungen
+\item Allgemeines Objektwissen z.B. Data-Mining, Semantische Netzt
+\end{itemize}
+\end{itemize}
+\item Fehlerbehandlung
+\begin{itemize}
+\item Erkennen von Problemen
+\begin{itemize}
+\item Fehlerhafter Weltzustand beim Planen (bei der Ausführung entdeckt)
+\item Fehlerhafte Ausführung
+\end{itemize}
+\item Lösungen
+\begin{itemize}
+\item Neu planen auf dem aktuellen Weltzustand
+\item Wenn nicht möglich: Suche nach Alternativen
+\begin{itemize}
+\item Gemeinsame Affordanzen: Soda nicht verfügbar -> Soda ist trinkbar -> Orangensaft
+\item Ähnliche Funktion aus visuellen Merkmalen (Form der Objekte)
+\item etc.
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+Zusammenfassung:
+\begin{itemize}
+\item PdV ermöglicht es, Fähigkeiten zu transferieren
+\item PdV kann den Lernprozess beschleunigen (im Vergleich zu Reinforcement Learning bzw. Versuch-und-Irrtum Methoden)
+\item PdV liefert Vorschläge für die optimale Lösung für eine Aufgabe zu ermitteln
+\item Beim Imitationslernen können Positiv- und Negativbeispiele verwendet werden
+\item Der Roboter muss über eine Bibliothek an generischen Fähigkeiten (skills) verfügen und in der Lage sein diese an den Kontext anzupassen
+\item Imitation ist
+\begin{itemize}
+\item Nicht geeignet wenn eine gute Lösung des Lehrers keine gute Lösung des Nachahmers ist
+\item Nichr geeignet wenn die Demonstrationen des Lehrers stark verrauscht sind
+\end{itemize}
+\end{itemize}
+
+\end{document}

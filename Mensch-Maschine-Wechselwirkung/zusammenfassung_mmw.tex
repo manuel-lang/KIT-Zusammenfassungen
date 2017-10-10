@@ -1,0 +1,866 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\setcounter{tocdepth}{2} 
+\setcounter{secnumdepth}{3} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Karlsruher Institut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Mensch-Maschine-Wechselwirkung in der Anthropomatik: Basiswissen WS2016/2017\\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+{\small\tableofcontents}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Einführung}
+
+\subsection{Definition der Anthropomatik}
+
+Bestmögliche Gestaltung der Funktionseinheit Mensch-Maschine hinsichtlich
+
+\begin{tabular}{ l | l | l | l }
+  \hline			
+  Leistung & X &  & X \\
+  Zuverlässigkeit & X & & X\\
+  Wirtschafglichkeit & & X &\\
+  Arbeitsbefriedigung & & & X\\
+  \hline  
+  & Effektivität & Effizienz & Akzeptanz
+\end{tabular}
+
+\subsection{Gestaltungsdimensionen der Anthropotechnik}
+
+\begin{center}
+\includegraphics[width=9cm]{\detokenize{/Users/Manu/Desktop/tafel22}}
+\end{center}
+
+Gegenstand dieser Vorlesung ist es ausschließlich, Grundlagenwissen für die Gestaltung der Mensch-Maschine-Verbindungselemente zu vermitteln.
+
+\section{Phänomene, Teilsysteme, Wirkungsbeziehungen}
+
+\subsection{Phänomene und Wirkungsbeziehungen beim Führen/Bedienen technischer Anlagen}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel24}}
+\end{center}
+
+Technische Geräte enthalten heute überwiegend irgendeine Art von Informationsverarbeitung. Das heißt, dass nach einer Eingabe durch den Menschen ein mehr oder weniger lange dauernder Prozess abläuft, bei dem der Mensch zumindest das Ergebnis entgegennimmt, in vielen Fällen aber auch den Ablauf dieses Prozesses überwacht. Letzteres ist zum Beispiel der Fall bei dem im Bild beispielhaft gezeigten Rührkesselreaktor. Gleiches gilt aber auch für den Triebfahrzeugführer eines ICE oder die Pilotin eines Airbus, der weite Strecken per Autopilot fliegt.
+Die technische Anlage führt also selbsttätig Funktionen aus, die - von einem Menschen angestoßen,
+- in ihrem Verlauf überwacht und
+- fallweise korrigiert werden.
+Damit ergibt sich eine Aufgabenteilung zwischen Mensch und Maschine, die sich z. B. von der Situation unterscheidet, in der ein Pilot ein Flugzeug nach traditioneller Art vollständig selbst steuert und jede kleinste Bewegung des Flugzeugs kontrolliert.
+Wer also ein Mensch-Maschine-System entwirft, bei dem die Maschine Teilaufgaben selbsttätig verrichtet, muss sich zuerst über die Aufgabenteilung Gedanken machen.
+
+\subsection{Aufgabenteilung zwischen Mensch und Maschine}
+
+\begin{itemize}
+\item rechnergestütztes Betreiben von technischen Anlagen und Dienstleistungen
+\item Aufgabenteilung zwischen Mensch als Nutzer bzw. Bediener und der technischen Anlage, kurz Maschine
+\item Technische Anlage führt Funktionen aus, die
+\begin{itemize}
+\item von Menschen angestoßen,
+\item in ihrem Verlauf überwacht und
+\item fallweise korrigiert werden.
+\end{itemize}
+\item Rechner bearbeiten diese Teilaufgaben automatisch
+\end{itemize}
+
+Wie kann eine Aufgabe zwischen Mensch und Maschine geteilt werden? Das hängt zunächsteinmal von der Aufgabe selbst ab und wie diese selbst in Teilaufgaben aufgespalten werden kann, von denen die einen vom Menschen, die anderen von der Maschine bearbeitet werden.
+Daneben gibt es aber auch verschiedene Grade der Autonomie von Maschinen im Bezug auf ihr Zusammenwirken von Menschen. Dies soll anhand des 2000 von Parasuraman et al. aufgestellten »model for types and levels of human interaction with automation« dargestellt werden.
+
+\subsection{Zehn Ebenen der überwachten Automatisierung}
+
+Der Automat:
+\begin{enumerate}
+\item bietet keine Unterstützung an: Der Mensch muss alles selbst machen.
+\item bietet eine vollständige Menge von Alternativen an und
+\item schränkt diese auf wenige ein oder
+\item schlägt die geeignetste davon vor oder
+\item führt diesen Vorschlag aus, wenn der Mensch zustimmt oder
+\item gesteht dem Menschen zu, bis zu einem bestimmten Zeitpunkt vor der automatischen Ausführung ein Veto einzulegen oder
+\item führt die vorgeschlagene Handlung aus und benachrichtigt den Menschen darüber oder
+\item benachrichtigt ihn nur, wenn er es wünscht oder
+\item benachrichtigt ihn nach der Ausführung, wenn der Nachgeordnete sich dafür entscheidet.
+\item entscheidet immer und handelt autonom, ignoriert den Menschen als Kontrollinstanz.
+\end{enumerate}
+
+Beispiel: Aufgabe ist, mit vorhandenen Vorräten etwas für andere zu kochen. Ebene 2 wäre dann nach Eingabe der Vorräte eine vollständige Auswahl möglicher Rezepte, Ebene 10 dann die danach vollautomatische Mahlzeitzubereitung nach Wahl des Automaten.
+
+\subsection{Die Rollen von Nutzer, Benutzer und Bediener/Betätiger}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel26}}
+\end{center}
+
+Stellen wir uns hierfür einmal ein Taxi vor. Das Taxi selbst ist sicherlich eine Maschine. Der Nutzer des Taxis ist schlicht der Taxikunde. Kommuniziert er mit der Maschine? Eher nicht. Er kommuniziert mit dem Taxichauffeur. Das erste was der Kunde dem Chauffeur gegenüber äußert ist der Zielwunsch, den der Taxifahrer als Auftrag entgegennimmt. Dazu gehört auch die Angabe von Randbedingungen, wie z. B. des Zeitpunkts, bis zu dem das Ziel erreicht werden muss. Was erwartet nun der Kunde als erstes vom Taxifahrer? Die Bestätigung, dass er den Auftrag verstanden hat und ihn annimmt. Danach kehrt zwischen Fahrer und Kunde gewöhnlich erstmal Ruhe ein. Der Fahrer setzt den Auftrag in eine Fahraufgabe um, überlegt sich die Fahrtroute und führt die Fahrt dann durch. Der Kunde ist aber in diesem System nicht völlig untätig. Vielmehr überwacht er die Lösung der Fahraufgabe, wenigstens dadurch, dass er nach einer gewissen Fahrzeit unruhig wird und sich beim Fahrer erkundigt, wie lange die Fahrt wohl noch dauert. Durch das Steuern des Taxis bedient der Chauffeur eigentlich den Kunden. Aber man spricht im allgemeinen davon, dass er das Fahrzeug bedient. Und hier stoßen wir schon auf eine gewisse Problematik des Begriffs »Bedienen«. Sie ist bei dem Mensch- Maschine-System Taxi nicht so augenfällig, weil der Kunde ja einen persönlichen Kontakt mit dem Fahrer hat. Stellen wir uns dagegen einen Zug vor, so sieht der Fahrgast den Triebwagenführer meistens nicht. Er nimmt nur die Maschinenleistung des Zuges wahr, der von irgendjemandem eben bedient wird. Noch extremer ist es wiederum bei der erwähnten Rührkesselanlage. Hier empfängt der Kunde – und das ist der Fabrikbesitzer – die Leistung von der Anlage. Der Anlagenfahrer ist hier nur ein Maschinenelement.
+Das Beispiel mit dem Taxi ist aber mit Bedacht gewählt. Denn die meisten Menschen sind meistens ihr eigener Taxichauffeur. Die Rollen von Nutzer und Bediener fallen zusammen und wir sprechen dann vom Benutzer.
+
+\subsection{Der Mensch als Nutzer-Maschine-Schnittstelle}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel28}}
+\end{center}
+
+Im Beispiel des Taxis wird deutlich, dass die Schnittstelle zwischen dem Kunden als Nutzer und dem Taxifahrzeug als Maschine schlicht der Taxifahrer ist. Wir haben also gewissermaßen einen Menschen, nämlich den Bediener als Mensch-Maschine-Schnittstelle.
+Hier steht nun zum ersten Mal der - Ihnen sicher geläufige - Begriff »Mensch-Maschine-Schnittstelle« auf der Tafel.
+Woher kommt der Begriff »Schnittstelle«? Wohl davon, dass etwa ursprünglich Ganzes zerteilt wird und man sich die beiden Seiten des Schnittes anschaut (z. B. wenn man einen Apfel zerschneidet, kann man das an fast beliebiger Stelle tun).
+Ist das aber das passende Bild für die Mensch-Maschine-Wechselwirkung? Denn hier wird ja nichts ursprünglich Ganzes zerteilt, sondern es wird etwas zunächst verschiedenes verbunden. Deshalb wäre der Begriff »Nahtstelle« besser oder - schon eingeführt, aber etwas umständlich - Mensch-Maschine- Verbindungselement.
+Wenn man solch ein Verbindungselement konstruieren will, dann ist eine Seite gegeben: Der Mensch. Das zu konstruierende Verbindungselement muss also auf den Menschen passend gemacht werden, gewissermaßen sein Negativabdruck sein (z. B. die beiden Seiten eines Legobausteins).
+Dazu müssen wir erstmal das Positiv kennenlernen.
+
+\subsection{Die ideale Nutzer-Maschine-Schnittstelle}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel29}}
+\end{center}
+
+Die Mensch-Maschine-Schnittstelle als »Gesicht« der Maschine muss zum einen für die Äußerungen von Menschen empfänglich sein, zum anderen die menschlichen Sinne erreichen
+Die ideale Nutzer-Maschine-Schnittstelle hätte also ein quasi-menschliches Gesicht gegenüber dem Nutzer und ein »technisches« Gesicht gegenüber der Maschine.
+Das »Gesicht« gegenüber dem Nutzer muss also auf der einen Seite empfänglich für dessen Äußerungen sein, auf er anderen Seite vom Nutzer wahrgenommen werden.
+
+\subsection{Die Sinne des Menschen}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel30}}
+\end{center}
+
+Schauen wir uns erstmal die Sinne von uns Menschen an, welche unser Wahrnehmungsvermögen bestimmen. Es sind gewissermaßen die Einfallstore für die Umwelt – aber nicht nur für diese.
+
+\subsection{Die Sinne und die dazu gehörenden Anzeigeformen}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel31}}
+\end{center}
+
+Den Sinnen (siehe Tafel 30) sind Sinnesmodalitäten und Anzeigearten zugeordnet. Alle Hautsinne werden gemeinsam in nur einer Modalität erfasst, die mit »taktil« bezeichnet wird, ebenso die beiden Propriozeptionen mit »kinästhetisch«. Die Anzeigen für Geruchs-, Geschmacks- und Gleichgewichtssinn haben noch keine Namen. Das liegt wohl daran, dass es hier noch keine, jedenfalls keine verbreiteten Anzeigetechnik gibt. Dabei wäre das für Geruchs- und Geschmackssinn durchaus chemotechnisch möglich. Aber: Stellen wir uns ein Kino- oder ein Computerspiel vor, bei dem auch der Geruch angesprochen wird. Zwar wäre es möglich, eine Duftwolke technisch zu erzeugen. Diese würde aber beim Szenenwechsel nicht schnell genug abklingen. (Odorama-Kinos in den Siebziger Jahren). - Für den Geschmackssinn müsste man die Zunge direkt erreichen und für den Gleichgewichtssinn den ganzen Körper des Menschen in Bewegung setzen. Vielleicht wird dies eines Tages durch direktes Einwirken auf die Neuronen im Gehirn möglich sein.
+Seh-, Hör, Geruchs-, Geschmacks- und Tastsinn werden auch als die fünf (wichtigsten) Sinne bezeichnet.
+Die Sinne, mit deren physiologischen Eigenschaften wir uns in Kapitel 3 ausführlich befassen werden, sind die Einfallstore für Information von außen und damit auch von Seiten einer Maschine. Nun wollen wir uns mit der entgegengesetzten Richtung befassen: wie geben wir Menschen Information nach außen ab?
+
+\subsection{Vom Wahrnehmen zum Handeln}
+
+\begin{center}
+\includegraphics[width=10cm]{\detokenize{/Users/Manu/Desktop/tafel45}}
+\end{center}
+
+Mit Wahrnehmen bezeichnen wir den Prozess der Aufnahme von äußeren Signalen.
+Mit Handeln bezeichnen wir das willentliche Aussenden von Signalen an die Umgebung.
+Was geschieht im Inneren des Menschen? ... Entscheiden, d. h. die Wahl zwischen Handlungsalternativen aufgrund von Wahrnehmungsergebnissen.
+
+\subsection{Vom Wahrnehmen zum Handeln: Drei Ebenen des Verhaltens}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel46}}
+\end{center}
+
+Fertigkeitsbasierte Ebene: Reflexartiges Fangen eines Balls, der auf einen unerwartet zufliegt: War das eine Entscheidung? Nein! D. h. die Entscheidung hat die Evolution gefällt, indem sie uns diesen Reflex gegeben hat. »Fest verdrahtet« bedeutet: unbewusste Wahl. Wir können Reflexe auch trainieren, deshalb »fertigkeitsbasiert«.
+Regelbasierte Ebene: Wir bearbeiten bewusst eine Aufgabe, indem wir den Zielzustand immer mit dem bisher erreichten Zustand abgleichen.
+Kontinuierlicher Regelprozess:
+z. B. Wasser bis zu einer Marke in ein Glas füllen (Regelkreis).
+Diskreter Regelprozess:
+z. B. Spätzle zubereiten (Flussdiagramm):
+- Mehl abwiegen: solange Mehl nachschütten, bis die Waage 200 g zeigt. - Eier, Wasser, Salz untermischen.
+- Teig schlagen, bis er Blasen wirft, ggf. Wasser nachschütten oder Mehl.
+Immer bewusst die Differenz zwischen dem Ist- und dem Sollzustand feststellen und daraus die Handlungsintensität bzw. den Handlungstyp ableiten: Regelungsprozess!
+Aber: woher kommen die Regeln?
+Eugene Wigner (Physik-Nobelpreis 1963): »Physics doesn't explain nature. It describes
+regularities among events, and only regularities among events«
+Wissensbasierte Ebene: Menschen setzen Erkenntnis in Handlungsregeln um: für sich selbst, für andere, für Maschinen.
+
+\subsection{Das Drei-Ebenen-Modell des menschlichen Verhaltens von Rasmussen/Goodstein (Rasmussen 1983)}
+
+\begin{center}
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel47}}
+\end{center}
+
+Fertigkeitsbasiert --> eintrainiert (z.B. Musik Instrument), aber auch angeboren
+Regelbasiert: Soll-Ist-Vergleich, bewusst aber schematisch
+
+In dieser Darstellungsform ist das Drei-Ebenen-Modell veröffentlicht und in den meisten Literaturstellen zu finden. Ergänzung gegenüber der vorigen Tafel: automatisierte sensumotorische Muster: Aktionskaskaden, die keiner bewussten Kontrolle unterliegen, z. B. (für einen geübten Tipper) ein Wort per Tastatur schreiben: Sobald der Entschluss gefasst ist, das Wort zu schreiben, läuft eine Kaskade von Fingerbewegungen ab, die nur mit bewusster Anstrengung zu stoppen ist, selbst aber nicht Buchstabe für Buchstabe kontrolliert wird. Anderes Beispiel: Gitarrenriff: Man muss nach einer Unterbrechung von vorne beginnen.
+Signale (Signals), Zeichen (Signs), Symbole (Symbols): Unterscheidung entsprechend der Ebene, in der ein sensorisches Phänomen bearbeitet wird.
+Beispiel Blaulicht
+Signal (Thing): ich schaue automatisch hin (reflexartig, fertigkeitsbasiert)
+Sign (Representation): ich mache die Spur frei (regelbasiert: ich kenne die zu Grunde
+liegende Regel und folge ihr)
+Symbol (Interpretation): ich überlege mir eine Ausweichroute (wissensbasiert: ich bilde aus meinem Wissen und meiner Erfahrung neue Regeln für die Weiterfahrt)
+Der letzliche Betätigungsschritt an einer Maschine sollte soweit wie möglich fertigkeitsbasiert stattfinden. Beispiel Drücken einer Taste:
+Taste (an bekanntem und durch häufige Betätigung eintrainiertem Ort) direkt mit dem Finger drücken: Fertigkeitsbasiert.
+Taste auf dem Bildschirm (ebenfalls an bekanntem Ort) mittels der Maus ansteuern: Regelbasiert, weil der Bildschirmzeiger in einem bewusst beobachteten Prozess an die Taste herangeführt werden muss.
+ 
+\subsection{Das Wahrnehmen}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel48}}
+
+Nachdem wir nun die Kette vom Wahrnehmen zum Handeln auf einer abstrakten Ebene geschlossen haben, werden wir nun etwas konkreter und beginnen beim Wahrnehmen.
+Voraussetzung für die Wahrnehmung ist das Vorliegen einer äußeren, physikalischen oder chemischen Einwirkung auf eine Sinneszelle.
+Ist der Reiz so stark, dass er die Sinneszelle zu einer Reizweiterleitung über die Nervenbahn veranlasst, spricht man von einer Erregung. Hier befinden wir uns im Gebiet der Biologie.
+Erst wenn die Erregung so geartet ist, dass wir uns ihrer gewahr werden, sprechen wir von einer Empfindung. Ab hier beginnt das Gebiet der Psychologie.
+Dies findet seine Fortsetzung im Stufenmodell der Wahrnehmung mit den an das Empfinden anschließenden logischen Stufen: Nächste Tafel 49.
+
+\subsection{Stufen der Wahrnehmung}
+ 
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel49}}
+
+Beispiel siehe Tafel 50
+Am Beispiel des Gesichtssinns (Tafel 51):
+- Erkennen ergibt zunächst eine Figur ohne Sinn (z. B. $\forall$) - Interpretieren: kann Mehrdeutigkeiten liefern:
+- $\forall$ als Allquantor
+- $\forall$ als umgedrehtes A
+- Beispiel »Jing« als chinesisches Schriftzeichen: kann ohne bekannte, bedeutungsvolle Vergleichsmuster nicht dekodiert werden.
+Einordnen macht die Figur eindeutig (Buchstabe in einem Wort). Dies setzt Wissen voraus.
+Verstehen ordnet den Satz in in einen Bedeutungszusammenhang ein als Teil eines Konzepts (Information als Produkt hier etwas dürftig und unpräzise benannt)
+Der Verstandene Satz liefert eine Erkenntnis, die – entsprechend dem Ziel – den Anstoß zum willentlichen (bewussten) Handeln gibt.
+
+\section{Die Sinne des Menschen}
+
+\subsection{Allgemeine Eigenschaften der Sinne}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel54}}
+
+was man sich merken soll: Hör- und Sehsinn, Größenordnungen
+
+Kanalkapazität wird berechnet aus der übertragungskapazität jeder Zelle (z. B. Grauwertdynamik der Sehzelle) multipliziert mit der Anzahl der Zellen. (Ist nur ein Schätzwert, da viele Einflussgrößen wirken.)
+Der Sehsinn hat die höchste Kanalkapazität.
+Zweiter in der Anzahl der Zellen ist der Geruchssinn, aber mit wesentlich
+geringerer Kanalkapazität.
+Das Gehör hat die niedrigste Schwellenenergie -> Warnsensor. $1 erg = 0,1 \mu J = 10-7 Joule$
+
+\subsubsection{Sensorischer Wandlungsprozess}
+
+\includegraphics[width=8cm]{\detokenize{/Users/Manu/Desktop/tafel55}}
+
+pulskodierte Weitergabe der Information
+
+Proportional-Differential- (PD-)Verhalten des Wandlers: überschwingen bei plötzlicher Reizänderung erhöht die Empfindlichkeit.
+Wandlung von amplitudenmoduliertem Reiz zu frequenzmodulierten Aktionspotenzialen.
+Die Diskretisierung in Impulse führt zu einer gewissen Verzögerung, da es mindestens zwei Impulse in Folge braucht, um den Intensitätsgrad des Reizes zu ermitteln.
+
+\subsubsection{Zeitliches Auflösungsvermögen}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel58}}
+
+Die Ordnungsschwelle ist ziemlich unabhängig vom Sinneskanal. Sie steigt aber mit zunehmendem Alter an.
+Beispiel für den Test der Ordnungsschwelle:
+Visuell: Man zeigt der Versuchsperson rasch hintereinander zwei verschiedene Abbildungen (Blume, Auto) und fragt, welche der Abbildungen zuerst kam.
+Auditiv: Man spielt einen Ton ins rechte und kurz danach einen ins linke Ohr und fragt, welches Ohr zuerst bespielt wurde.
+Flimmeranzeigen können unterhalb der Ordnungsschwelle liegen. Siehe auch https://de.wikipedia.org/wiki/Zeitwahrnehmung
+
+\subsection{Der Sehsinn}
+
+\subsubsection{Visuelle Wahrnehmung: Das Auge des Menschen}
+
+\includegraphics[width=8cm]{\detokenize{/Users/Manu/Desktop/tafel60}}
+
+gelber Fleck - Fovea
+Sehzellen »schauen« nach hinten
+
+\subsubsection{Verteilung der Rezeptoren im Auge des Menschen}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel63}}
+
+Zapfenkonzentration in Fovea
+Nachts sind alle Katzen grau.
+
+\subsubsection{Hell-/Dunkelsehen des menschlichen Auges: Zeitverlauf}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel641}}
+
+Zum einen sorgt der Pupillenreflex für eine schnelle Adaption.
+Der Hauptteil der Adaption geschieht aber in den Sehzellen. Dabei geht die Anpassung von hell nach dunkel wesentlich langsamer vonstatten als umgekehrt die Anpassung von dunkel nach hell. Wahrscheinlich zum Schutz der Sehzellen vor übermäßiger Helligkeit.
+
+\subsubsection{Hell-/Dunkeladaption des menschlichen Auges: Farbabhängigkeit}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel642}}
+
+Hell-/Dunkeladaption in der Fovea (Zapfen).
+Bevorzugte Farbe in Dunkelräumen: blau, in Hellräumen: gelb. Warum: Nachts überwiegt der Blauanteil, tags der Gelbanteil.
+Nebenbemerkung: Jüngst wurden photorezeptive, nichtvisuelle Ganglienzellen in der Retina entdeckt, die dafür sorgen, dass wir bei blauem Licht wach werden/bleiben und bei gelbem Licht müde werden (siehe z. B. Spektrum der Wissenschaft 12/2011, S. 26ff.)
+Einheit Lumen: Lichtstrom einer 1,464 mW starken 555 nm Lichtquelle (gelbgrün) bei 100 \% Lichtausbeute; bei 555 nm haben unsere Augen photopisch die höchste Empfindlichkeit (siehe auch https://de.wikipedia.org/wiki/Lumen\_(Einheit)).
+
+\subsubsection{Das Auge des Menschen: Verteilung der Sehschärfe}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel671}}
+
+Welchen Zweck erfüllt diese extreme Verteilung der Sehzellen und ihrer zwei Arten?
+ökonomische Verwendung der sensorischen Ressourcen!
+Fovea für die Detailwahrnehmung:
+- hochauflösend - schmalwinklig - träge
+Peripherie für die Umfeldwahrnehmung
+- niedrigauflösend - weitwinklig
+- flink
+
+\subsubsection{Das Auge des Menschen: Foveale Sehschärfe}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel672}}
+
+In der Fovea ist jeder Rezeptorzelle eine Ganglienzelle zugeordnet; in der Peripherie findet eine Zusammenschaltung statt.
+
+\subsubsection{Umfelderkundung durch Blickbewegung: Begriffe}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel70}}
+
+Sakkadische Blickbewegung:
+Willentlich (intentionales Sehen) durch gezielte Verhaltenspläne bei der Umfelderkundung
+Unwillentlich:
+z. B. Kopfwendereflex zur Bewegungswahrnehmung im peripheren Gesichtsfeld;
+z. B. Fixationsunruhe (Mikrosakkaden) zur »Auffrischung« der Sinneszellen.
+Warum Gewöhnung der Sinneszellen? (nicht nur Geruch): Eigentlich ist nur die Veränderung interessant: Information = änderung?
+Die Dauer einer Sakkade hängt von deren Amplitude ab. Als »Faustformel« gilt: Dauer/ms = 2,2 * Amplitude (in Winkelgrad) + 21 (aus Holmqvist et al. (2011), S. 321 – Dieses Buch gibt auch einen guten überblick über das Thema »Eye Tracking«)
+
+\subsubsection{Das horizontale Gesichtsfeld}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel73}}
+
+Winkel nicht merken, aber Begriffe
+
+\subsection{Der Sehsinn}
+
+\subsubsection{Neisser Zyklus}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel772}}
+
+Das »mentale Modell« des Umfelds, also dessen gedankliche Repräsentation in unserem Geist, dient nicht nur der inneren Verarbeitung der von außen eindringenden Information, sondern steuert auch den weiteren Fortgang der Informationsaufnahme.
+Die mentale Modellierung ist also ein laufender Prozess, der in aktiver, erkundender Wechselwirkung mit dem Umfeld stattfindet.
+Erkunden heißt: Mit den Sinnen handeln. ------
+Heinrich Hertz (1857-1894) :
+„Wir machen uns innere Scheinbilder (=Modelle) oder Symbole der äußeren Gegenstände und zwar machen wir sie von solcher Art, dass die denknotwendigen Folgen der Bilder stets wieder Bilder seien von den naturnotwendigen Folgen der abgebildeten Gegenstände.“
+
+\subsection{Der Hörsinn}
+
+\subsubsection{Das Ohr des Menschen}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel81}}
+
+81 wird nicht Ohr abfragen
+
+Das Ohr hat ein sehr komplexes Antransportsystem:
+Ohrmuschel > Trommelfell > Hammer > Amboss > Steigbügel >
+Ovales Fenster > Flüssigkeit in der Gehörschnecke > Härchen an den Sinneszellen
+Warum Hammer, Amboss und Steigbügel?
+Luftschwingung wird auf Flüssigkeitsschwingung übertragen. 1. Druckverstärker:
+Trommelfell hat 0,55 cm2 Steigbügelplatte hat 0,032 cm2 17:1
+2. Hebelprinzip: Amplitudenverstärkung (große Amplitude mit kleiner Kraft am Trommelfell wird zu kleiner Amplitude mit großer Kraft an der Steigbügelplatte)
+Goldstein (1997), S. 311 ff.
+
+\subsubsection{Hörfläche}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel84}}
+
+SPL: Sound Pressure Level (Schalldruckpegel) Wird angegeben in db (Dezibel): 20 log10 p/p0
+Referenzdruck p0: Hörschwelle im empfindlichsten Teil der Cochlea für 1 kHz-Ton p0 = 2*10-5 N/m2 = 2 N/cm2 oder 20 $\mu$ Pa
+Die deutliche Ausbuchtung der Hörschwelle nach unten, sogar zu negativen db-Werten hin, im Bereich sehr hoher Frequenz könnte möglicherweise darin begründet sein, dass das Gehör als ursprünglicher Warnsensor besonders empfänglich für Rascheln sein sollte, wenn sich z. B. ein Feind anschleicht oder sich eine Beute im Blätterwerk bewegt.
+Zu den Tonfrequenzen im Bezug zu Notennamen (auf der Klaviertastatur) siehe z. B. www.sengpielaudio.com/Rechner-notennamen.htm
+
+\subsubsection{Gehörminderung im Alter}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel87}}
+
+\subsubsection{Frequenzabhängigkeit des Richtungshörens}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel89}}
+
+89 Bass braucht man nicht für Stereo empfinden
+
+Grund für das schlechtere Richtungshören bei niederer Frequenz: vermutlich die stärkere Schallleitung durch den Schädelknochen bei tiefereren Tönen, aber auch die großen Wellenlängen.
+
+\subsubsection{ROC-Kurve}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel92}}
+
+Je trennschärfer ein Wahrnehmungssystem ist (= je stärker sich die ROC in die linke obere Ecke schmiegt), desto höher ist die Trefferrate bei gleichbleibender Falschalarmrate bzw. desto geringer ist die Falschalarmrate bei gleicher Trefferrate.
+Bei gleicher Grund-Trennschärfe legt der beliebig wählbare Arbeitspunkt die Empfindlichkeit des Systems fest. Diese Wahl wird bestimmt das Verhältnis der Auszahlung für Treffer zu den Kosten (=negative Auszahlung) für Falschalarme.
+Einen Treffer (Hit) zu belohnen ist gleichwertig zum Bestrafen eines Verpassers (Miss). Ebenso ist es gleichwertig einen Falschalarm zu bestrafen oder eine korrekte Ablehnung zu belohnen.
+Die Wahrscheinlichkeit der Signaldetektion hängt neben der Grund-Trennschärfe des Wahrnehmungssystems auch von der a-priori-Wahrscheinlichkeit der signalerzeugenden Ereignisse ab (bedingte Wahrscheinlichkeit).
+
+\subsection{Weitere Sinne}
+
+\subsubsection{Aktive vs. passive Texturerkennung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel99}}
+
+Es zeigt sich, dass aktives Berühren, also aktives Erkunden die besten Ergebnisse liefert. Das Einbeziehen der Eigenbewegungsempfindung macht die Erkennung sicherer.
+(Die Versuche wurden wahrscheinlich mit normal Sehenden und nicht mit Braille-Geübten durchgeführt. Sonst wären die Ergebnisse zu schlecht.)
+
+\subsubsection{Zwischenresümee zu den Sinnen des Menschen}
+
+\begin{itemize}
+\item Die Sinnesorgane reagieren besonders stark auf Reizänderungen
+\begin{itemize}
+\item Wichtige Informationen zeitlich bzw. örtlich konstrastreich darstellen
+\end{itemize}
+\item Die Sinne unterscheiden sich in ihrer Relation von Reizstärke zu Empfingsintensität
+\begin{itemize}
+\item Die Sinne entsprechend ihrer Fähigkeiten nutzen, Informationen differenziert aufzunehmen
+\end{itemize}
+\item Das Auge ist ein Erkundungsorgan
+\begin{itemize}
+\item Visuelle Informationen so einsetzen, dass jede Fokussierung in der Regel Hinweise auf die Folgefokussierung liefert
+\item Hochstrukturierte visuelle Information im optimalen Gesichtsfeld darstellen
+\end{itemize}
+\item Die Empfindlichkeit des Ohrs ist frequenzabhängig
+\begin{itemize}
+\item Akustische Informationen innerhalb der Hörflächen präsentieren und akustische Richtungshinweise mit eher hoher Frequenz darbieten
+\end{itemize}
+\item Das somatosensorische System liefert örtlich niedriger aufgelöste Informationen
+\begin{itemize}
+\item Somatosensorische Informationen ergänzend zu Seh-und Hörsinn einsetzen
+\item den Tastsinn durch Eigenbewegung unterstützen
+\end{itemize}
+\item Die Empfindlichkeit des sensorischen Systems ist von Erwarung und Motivation abhängig
+\begin{itemize}
+\item Erwartung und Motivation der Benutzer analyisieren (so gut, wie möglich)
+\end{itemize}
+\end{itemize}
+
+\section{Wirkungskreis Mensch-Maschine-Mensch, Systemgrößen}
+
+\subsection{Von der Forderung zur Leistung}
+
+\subsubsection{Mechanische Analogie für kapazitätsbezogene Beanspruchung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel109}}
+
+Es genügt, das schwächste Teil zu bestimmen, um Überbeanspruchung festzustellen.
+
+\subsubsection{Einflussgrößen auf die Beanspruchung - Individuelle Lastaufnahmekapazität}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel110}}
+
+\subsubsection{Einflussgrößen auf die Beanspruchung - Momentane Lastaufnahmekapazität aus dem Aktivitätsniveau: Yerkes-Dodson-Kurve}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel111}}
+
+\subsubsection{Abhängigkeit der Leistung von der Beanspruchung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel112}}
+
+\subsubsection{Von der Forderung zur Leistung: Schließen des Kreises}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel113}}
+
+Die Beanspruchung beeinflusst die Leistung. Sie bestimmt sie nicht.
+
+\section{Quantitative Modelle der Informationsverarbeitung}
+
+\subsubsection{Basisfunktion m Menschen für die Leistungserbringung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel115}}
+
+Wie schon eingeführt ist die Leistung die Erfüllung einer Forderung, die über Sinnesreize vermittelt werden. In einem Mensch-Maschine-System werden die bestimmungsgemäßen Forderungen von der Mensch-Maschine-Schnittstelle aus übermittelt. Sie wirken als Belastung.
+Während wir an dem Beispiel des Tragbalkens oder des Gewichthebers die physische Belastung auf Körperteile abbilden, versuchen wir die Belastung durch Sinnesreize auf Funktionen der Informationsverarbeitung abzubilden. Diese sind das Wahrnehmen und das darauf folgende Entscheiden und Auslösen des Handelns. Dazu kommt eine dritte Funktion, nämlich die des Speicherns. Regelbasiertes Verhalten ist durch einen Vergleich des wahrgenommenen Ist- mit dem gespeicherten Sollwert gekennzeichnet.
+Die Handlung wirkt als Stellakt über die Mensch-Maschine-Schnittstelle an die Maschine zurück. Es entstehen also Teilleistungen im Laufe der Aufgabenlösung. Die letzliche Nutzleistung wird entweder durch den Menschen erbracht, der z. B. ein bestimmtes Informationsverarbeitungsergebnis, das ihm die Maschine geliefert hat, weitergibt oder weiternutzt. Oder sie wird durch die Maschine erbracht, die durch die Sequenz menschlicher Stellschritte dazu ertüchtigt wird (z. B. eine Waschmaschine).
+Zurück zur Bestimmung der objektiven, engpassorientierten Beanspruchung: dafür sind wie schon gesagt, quantitative Modelle erforderlich. Sie ermöglichen bei bekannter Belastung die Vorhersage der Beanspruchung und damit auch der Leistungsentfaltung – nicht des Ergebnisses!
+
+\subsection{Der Model Human Processor}
+
+\subsubsection{Fitts Law}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1171}}
+
+Hier möchte ich Ihnen ein Beispiel der Vorhersage anhand eines Modells geben: Fitts's Law. Es gibt eine Formel zur Berechnung der Zeit an, die man benötigt, um mit einem Zeigeinstrument (z. B. dem Finger) von einer Start-
+auf eine Zielposition im Abstand D zu gelangen: $T\_{Start>Ziel} \propto log2(2D/W)$ 
+Wie kommt der Logarithmus in die Formel?
+Wir gehen davon aus, dass die Bewegung nicht in einem Zug (quasi blind), sondern mit mehreren Zwischenkontrollen an den Stellen 1, 2, ... erfolgt. Weiterhin nehmen wir an, dass di+1/di = E = const. < 1
+0
+Wenn $dn \le W/2$, also die halbe Zielbreite, dann kann die Bewegung beendet
+werden. Nehmen wir also den Grenzfall, d = W/2 = En D, so folgt n
+En = W/2D und damit also
+n = logE (W/2D) = log2 (W/2D)/log2(E)
+Die Gesamtzeit T ist gleich der Summe der Zeiten für die Einzelsprünge, also T = n te = (log2(W/2D)/log2(E)) te
+mit E als für einen bestimmten Menschen individueller Konstante gilt T = const* te (log2(W/2D)) // bzw. const* te (-log2(2D/W)) bei Fitts
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel122}}
+
+Merkeinheit (bzw. im gängigen Fachsprachgebrauch »Chunk« für Informationsklumpen) als eine logische Interpretation für eine mehr oder weniger komplexe Reizfigur. Problem: Welche Figuren zu einer Merkeinheit geballt werden, ist individuell verschieden und von außen schwer zu bestimmen. - Wie entstehen diese Merkeinheiten: Sie sind aktivierte logische Erinnerungsstücke aus dem Langzeitgedächtnis (siehe folgende Tafel).
+Für die Kapazität des Arbeitsgedächtnisses geben Card et al. sowohl 7 als auch 3 Merkeinheiten an. Der Unterschied ergibt sich aus zwei verschiedenen, charakteristischen Merksituationen:
+Merksituation A: Versuchspersonen bekommen Zeichenketten verschie- dener Länge für eine kurze Zeit präsentiert und sollen diese danach in der richtigen Reihenfolge wiedergeben. In diesem Fall sinkt die Wahrschein- lichkeit, dass die ganze Kette korrekt wiedergegeben wird rasch, wenn die Kette länger als sieben Zeichen ist.
+Merksituation B: Versuchspersonen bekommen in relativ schneller Folge hintereinander Zeichen präsentiert. Die Folge stoppt überraschend und sie sollen so viel Zeichen wie möglich in richtiger Reihenfolge wiedergeben. Dann sind es meistens nur die letzten drei.
+Ketten von drei Zeichen merkt man sich auch erfahrungsgemäß am leichtesten. Beispiel: Die Buchstabenfolge RDAFZDRLT ist schwer zu merken. Vertauscht man einige Buchstaben entsteht ARDZDFRTL: Kürzel für Fernsehsender. Die Kette von 9 Zeichen schrumpft auf drei »Dreier-Chunks«.
+
+Vom Langzeitgedächtnis wird angenommen, dass es eine unendliche Kapazität hat. Das stimmt natürlich nicht. Mit »unendlich« will man aber ausdrücken, dass bisher keine obere Schranke für die Kapazität feststellbar ist.
+ähnlich wird die Halbwertszeit als unendlich angenommen. Natürlich können wir vergessen und es gibt physische Hirnschädigungen, die Gedächtnisinhalte für immer löschen. Aber es ist auch zu beobachten, dass wir uns an Ereignisse erinnern können, die sehr lange zurückliegen. Mit »unendlich« wird also auch hier ausgedrückt, dass eine eindeutige Grenze nicht feststellbar ist.
+Oft werden die drei Speicher mit den Speicherklassen eines Computers verglichen, z. B. Register, Arbeitsspeicher, Festplatte etc. Diese Gegenüberstellung trügt. Denn während im Computer Daten vom einen zum anderen Speicherort übertragen werden, ist das Arbeitsgedächtnis nicht ein bestimmter Speicherort im Gehirn. Vielmehr sind im Arbeitsgedächtnis z. B. durch Sinneseindrücke angeregte Merkeinheiten des Langzeitgedächtnisses aktiviert. Das Arbeitsgedächtnis entsteht gewissermaßen durch die Wechselwirkung von Sinnes- und Langzeitgedächtnis. Allerdings nicht nur dadurch. Dazu später aber mehr.
+
+Von den drei Speichern nun zum nächsten, dem sogenannten kognitiven Prozessor. Dieser Prozessor modelliert den eigentlichen Denkvorgang. Mit einer Zykluszeit von 70 ms aktiviert er neue Inhalte im Arbeitsgedächtnis: Der Pfeil aus dem KP heraus führt nur in das Arbeitsgedächtnis hinein.
+In den kognitiven Prozessor (KP) hinein führen allerdings zwei Pfeile, nämlich vom Arbeits- als auch vom Langzeitgedächtnis. Der KP verwendet also Inhalte des (ruhenden) Langzeit- und des (aktiven) Arbeitsgedächtnisses um neue Inhalte im Arbeitsgedächtnis zu erzeugen. Es sind also nicht nur neue Sinnesreize, sondern ist auch die Korrespondez zwischen Arbeits- und Langzeitgedächtnis, die Neues im Arbeitsgedächtnis schafft.
+
+Ist eine Merkeinheit im Arbeitsgedächtnis (AG) so geartet, dass sie mit einer Handlung assoziiert ist, wird der dritte, der sogenannte motorische Prozessor aktiviert und überführt mit einer mittleren Zykluszeit von ebenfalls 70 ms die vorgedachte in die tatsächliche Handlung, in dem er Muskelbewegungen anregt.
+Das Modell wirkt sehr technisch und an Datenverarbeitungsgeräte angelehnt. Es soll aber nicht erklären, wie ein Mensch »funktioniert«, sondern vernünftige Vorhersagen über die Informationsverarbeitungsleistung von Menschen erlauben.
+Insbesondere ist der Arbeitsspeicher des Computers kein Vorbild für das Arbeitsgedächtnis des Menschen.
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel125}}
+
+Was ist eigentlich das Kurzzeitgedächtnis?
+Hier eine Studie zum Kurzzeitgedächtnis von Affen: Im Laufe der Studie wurden sechs Schimpansen mit neun Universitätsstudenten verglichen. Die Primaten lernten zunächst einstellige arabische Zahlen. Dann wurden ihnen die Zahlen in verschiedenen Reihenfolgen präsentiert, um zu testen, ob sie sie behalten könnten. Die Zahlen tauchten dabei in äußerst kurzen Zeitintervallen von 0,21 Sekunden bis zu 0,65 Sekunden auf dem Bildschirm auf. Dann wurden die Zahlen ausgeblendet und die Testpersonen und -primaten aufgefordert, die zuvor eingeblendete Reihenfolge auf einem Bildschirm einzutippen.
+Sowohl bei Geschwindigkeit als auch bei Genauigkeit ließen die jungen
+Affen die Menschen weit hinter sich. \glqq Die Menschen waren langsamer als die drei jungen Affen", so die Studie, "und im Schnitt erzielten die Affenkinder bessere Ergebnisse als die Affenmütter\grqq. 
+Sowohl das Arbeitgedächtnis als auch die Sinnesgedächtnisse haben Kurzzeitcharakter. Bei der Affenstudie könnte es sein, dass die Schimpansen sich durch ein besonders merkfähiges visuelles Sinnesgedächtnis auszeichnen, also sich bei dem Test quasi aus dem Nachbild erinnern. Da wir bei Tieren kaum feststellen können, was für diese eine logische Merkeinheit ist, können wir hier auch die Merkleistung nicht eindeutig einer Gedächtnisart zuordnen.
+
+
+\subsubsection{Recognize-Act Cycle im Arbeitsgedächtnis}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel127}}
+
+Der »Recognize-Act-Cycle« beschreibt, wie Arbeits- und Langzeitgedächtnis miteinander interagieren und wie diese Interaktion durch den kognitiven Prozessor bewerkstelligt wird. Man könnte auch sagen: Die Interaktion zwischen Arbeits- und Langzeitgedächtnis ist der kognitive Prozess.
+Ein Takt des kognitiven Prozessors bedeutet schlicht, dass eine aktivierte Merkeinheit des Langzeitgedächtnisses, die damit dem Arbeitsgedächtnis zugerechnet wird, nach diesem Takt die ihr am stärksten assoziierte »schlafende« Merkeinheit im LZG weckt. Damit ist diese dem AG zuzurechnen.
+Von den beiden Darstellungsvarianten halte ich die von Card et al. (1983) für die günstigere, weil sie veranschaulicht, dass wir nur ein Gedächtnis besitzen. Der englische Begriff »Working Memory« ist, wenn man ihn wortgetreu als »arbeitendes Gedächtnis« übersetzt, treffender als der Begriff Arbeits- gedächtnis. Das arbeitende Gedächtnis ist repräsentiert durch die Teilmenge der Merkeinheiten des Gesamtgedächtnisses (= Langzeitgedächtnis), die gerade aktiviert sind.
+Das Modell von einem Gedächtnis wurde erst in jüngerer Zeit gestützt. Vorher ging man vom präfrontalen Cortex des Gehirns (hinter der Stirn) als Sitz des Arbeitsgedächtnisses aus. Die entscheidende Veröffentlichung mit dem Titel »Working Memory as an Emergent Property of the Mind and Brain« ist Postle (2006). (Zum weiteren Nachlesen siehe auch http://www. gehirn-und-geist.de/alias/gedaechtnis/fluechtige-erinnerung/982321)
+
+\subsubsection{Vorhersage Simple Reaction mit MHP}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel128}}
+Und hier die Beschreibung der Funktionsweise des MHP anhand einiger Reaktionsversuche, bei denen die im Modell vorhergesagten Zeiten im Experiment bestätigt werden konnten.
+Zuerst die sogenannte »Simple Reaction«. Hier sitzt die Versuchsperson (VP) zunächst vor einem leeren Bildschirm. Sobald ein Symbol, z. B. irgendein Buchstabe auf dem Bildschirm erscheint, soll die VP eine Taste drücken.
+Die Zeit beginnt zu laufen, sobald das Symbol erscheint (t = 0).
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel129}}
+Der perzeptive Prozessor schreibt den Stimulus, den das Symbol auf dem Bildschirm bildet, nun in das visuelle Sinnesgedächtnis, hier als $\alpha$' bezeichnet, und benötigt dafür einen Takt der Dauer $\tau_P$.
+Gleichzeitig liegt das Symbol als logische Merkeinheit im Arbeitsgedächtnis
+vor, hier als $\alpha$'' bezeichnet. Dies bedeutet nichts anders als dass der Sinnesreiz etwas im LZG aktiviert hat.
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel130}}
+Die so aktivierte Einheit löst in einem RAC die ebenfalls im LZG durch die vorherige Instruktion verknüpfte Merkeinheit für das Drücken der Taste aus.
+Die ist ein kognitiver Prozess, der $\tau_C$ lang dauert.
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel131}}
+Sobald die Merkeinheit, die hier mit »PUSH-YES« bezeichnet ist, aktiviert wurde, aktiviert diese wiederum den Motorprozessor, der für die Ausführung
+$\tau_M$ benötigt. Die Aktivierung des Motorprozessors erfolgt nur für Merkeinheiten, die mit einer motorischen Aktion gekoppelt sind. Wie wir
+beim nächsten Versuch sehen werden, gilt dies nicht für jede Merkeinheit.
+Vom Erscheinen des Symbols auf dem Bildschirm bis zum Drücken der Taste sind also
+$\tau_P+\tau_C +\tau_M
+= 100 ms + 70 ms + 70 ms = 240 ms$
+verstrichen. Diese Zeitdauer konnte in Experimenten bestätigt werden. (Im Experiment 100 - 400 ms, nach Card et al. 1983).
+
+
+\subsubsection{Simple Reaction als Tabelle}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel134}}
+
+Der ganze Ablauf soll nun nochmal tabellarisch nachvollzogen werden.
+In der linken Spalte steht das Ereignis. Rechts davon, in der Spalte BS, ist symbolisiert, was gerade auf dem Bildschirm steht. Die Spalte VSG gibt den momentanen Inhalt des Sinnes- und Spalte AG des Arbeitsgedächtnisses an.
+In der rechten Spalte ist die gesamte verstrichene Zeit eingetragen.
+
+\subsubsection{Die 10 Operationsprinzipien des Model Human Processor}
+
+\begin{itemize}
+\item Prinzip 0: Recognize-Act Cycle des kognitiven Prozessors
+\begin{itemize}
+\item Mit jedem Zyklus des kognitiven Prozessors initiiert der Inhalt des Arbeitsgedächtnisses mit ihm assoziierte Aktionen im Langzeitgedächtnis; diese Aktionen wiederum verändern den Inhalt des Arbeitsgedächtnisses.
+\end{itemize}
+\item Prinzip 1: Prinzip der variablen Taktrate des perzeptiven Prozessors
+\begin{itemize}
+\item Der perzeptive Prozessor arbeitet umso schneller, je intensiver der Stimulus ist.
+\end{itemize}
+\item Prinzip 2: Prinzip der kontextabhängigen Kodierung (Encoding Specifity Principle)
+\begin{itemize}
+\item Der Kontext der Kodierung im Langzeitgedächtnis bestimmt, was gespeichert wird und das bestimmt wiederum, wie etwas wiedergefunen wird. Beispiel: Der Begriff Bank kann assoziiert mit Geld oder Sitzen gespeichert bzw. wiedergefunden werden.
+\end{itemize}
+\item Prinzip 3: Prinzip der Unterscheidung (Discrimination Principle)
+\begin{itemize}
+\item Die Schwierigkeit des Wiederauffindens einer Merkeinheit im Langzeitgedächtnis ist bestimmt durch die Kandidaten im Langzeitgedächtnis, die mit dieser Merkeinheit assoziiert sind. Oder: Je mehr Kandidaten mit einer bestimmten Merkeinheit assoziiert sind, desto größer ist die Gefahr, dass beim Abrufen Verwechslung eintrifft.
+\end{itemize}
+\item Prinzip 4: Prinzip der variablen Taktrate des kognitiven Prozessors
+\begin{itemize}
+\item Die Taktrate des kognitiven Prozessors ist umso höher, je mehr Anstrengung durch gesteigerte Anforderungen aus der Aufgabe aufgewendet werden muss; sie steigt auch mit wachsender Übung.
+\end{itemize}
+Prinzip 5: Fitts's Law
+\begin{itemize}
+\item Die Zeit, die benötigt wird, um die Hand auf ein Zielfeld in der Weite $W$ zu bewegen, das in einem Abstand $D$ von der Hand entfernt liegt, beträgt $T_{pos} = I_M log_2 (D/W + 0.5)$ mit $I_M = 100 [70 ~ 120] ms$
+\end{itemize}
+\item Prinzip 6: Das Potenzgesetz der Übung (Power Law of Practice)
+\begin{itemize}
+\item Die Zeit $T_n$, die für die n-te Wiederholung einer Aufgabe benötigt wird, folgt dem Potenzgesetzt $T_N = T_1 n^{-\alpha}$ mit $\alpha = 0.4 [0.2 ~ 0.6]$
+\end{itemize}
+\item Prinzip 7: Prinzip der Wahlunsicherheit (Uncertainty Principle)
+\begin{itemize}
+\item Die Zeit $T_{Wahl} = C + kH$ (Hick's Law) mit $C$: Konstante für $\tau_p + \tau_M$, $k = 150 [0 ~150]$ ms (experimentell ermittelt; wird mit Übung kleiner), $H = \sum_{i=1}^n p_i log_2 (1+\frac{1}{p_i})$ mit $p_i$ als Eintrittswahrscheinlichkeit der Alternative $i$
+\end{itemize}
+\item Prinzip 8: Prinzip des verständigen Verhaltens (Rationality Principle)
+\begin{itemize}
+\item Ein Mensch handelt so, dass er seine Ziele durch verständiges Verhalten erreicht, gegeben die Struktur der Aufgabe sowie deren Informationseingang und begrenzt durch sein Wissen und seine Verarbeitungsfähigkeit. Ziele (goals) + Aufgaben (tasks) + Operationen (operators) + Eingaben (inputs) + Verarbeitungsgrenzen (processing limits) = Verhalten (behavior)
+\end{itemize}
+\item Prinzip 9: Prinzip des Problemraums (Problem Space Principle)
+\begin{itemize}
+\item Verständige Tätigkeit von Menschen zur Lösung von Problemen kann beschrieben werden durch:
+\begin{enumerate}
+\item Eine Menge von Wissenszuständen
+\item Operationen, um einen Wissenszustand in einen anderen zu überführen
+\item Bedingungen zur Anwendung von Operationen
+\item Steuerwissen für die Entscheidung, welche Operationen als nächste kommt
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+
+Die Autoren Card, Moran und Newell ordnen dem MHP zehn Funktionsprinzipien zu, die teilweise das bisher gehörte wiederholen, teilweise neue Aspekte einführen.
+Prinzip 0 wiederholt den Recognize-Act-Cycle, der mit Tafel 127 erläutert wurde.
+Prinzip 1 gibt an, dass die Taktrate des perzeptiven Prozessors abhängig von der Intensität des Stimulus ist. $\tau_P$ ist also umso kürzer, je stärker der Reiz ist,
+den der perzeptive Prozessor zu verarbeiten hat. Da wir gelernt haben, dass die Sinnesorgane auf änderungen reagieren, ist hier also der räumliche bzw. zeitliche Kontrast gemeint.
+Prinzip 2 stellt eine Kontextabhängigkeit der Kodierung im LZG fest. Ein neuer Reiz wird als Merkeinheit im AG immer einen Bezug zu Bekanntem im LZG haben. Dieser Bezug bestimmt, unter welchem Kontext die dem Reiz verbundene Merkeinheit wiedergefunden werden kann.
+Da ein und derselbe Reiz zu verschiedenen Zeit unter verschiedenen Kontexten zu einer Merkeinheit »verwandelt« wird, ist er über die Zeit auch mit verschiedenen Kontexten verknüpft. Je größer die Anzahl der Kontexte ist, in die die Merkeinheit ähnlich stark eingebunden ist, desto höher die Wahrscheinlichkeit, dass beim Wiedererkennen eine Verwechslung eintritt. Die besagt das Prinzip 3.
+Auf der folgenden Tafel sind Ergebnisse von Wortlisten-Merkversuchen aufgetragen, die dieses Prinzip untermauern.
+Auch der kognitive Prozessor besitzt eine variable Taktrate. Sie soll umso höher sein, je höher die Anforderung aus der Aufgabe und je höher der Grad der übung ist (Prinzip 4). Hier ist allerdings anzumerken, dass der Anforderungsgrad nicht objektiv bestimmbar ist und die übung eher mit einem effektiven »Chunking« und damit einer geringeren Anzahl von Takten des kognitiven Prozessors als mit dessen Geschwindigkeit zu tun hat.
+Das Gesetz von Fitts, ist auch eines der Prinzipien des MHP, und zwar die Nummer 5. CMN geben hier eine Formel an, die nicht ganz der von Tafel 117 entspricht. Es gibt zu »Fitts' Law« in der Tat mehrere Interpretationen. Wichtig ist aber der Faktor Im, der die Steigung der Gerade angibt, welche die
+Positionierungszeit als Funktion von log(2D/W) beschreibt (siehe folgende Tafel). Können wir Im aus dem MHP bestimmen?
+Die n »Würfe« bis zum Ziel, die in Tafel 117 gezeigt sind, benötigen $Tpos= n *(\tau_P+\_C+\tau_M)=n*240$ms.Wie in Tafel 127 gezeigt, ist $E_n =W/2D$ und damit also $n = logE (W/2D) = - log_2 (2D/W)/log_2(E)$. E soll angeblich etwa gleich 0,07 sein. Damit ist $Tpos = [- log2 (2D/W)/log2(0,07)] * 240$ ms $= 63 $ms$ * log_2 (2D/W)$.
+
+\subsection{Das GOMS-Modell}
+
+\begin{itemize}
+\item Goals: Ziele, die mit einer Operation verfolgt werden (z. B. ein Zeichen löschen)
+\item Operators: Operatoren, die für die Zielerreichung benutzt werden (z. B. ein Tastaturbefehl oder eine Menüauswahl)
+\item Methods: Die Methoden, eine Folge von Operatoren einzusetzen, um ein bestimmtes Ziel zu erreichen.
+\item Selection Rules: Die Regeln, nach denen Operatoren oder Methoden ausgewählt werden (z. B. für Kopieren: Ctrl-C oder Hauptmenü > Bearbeiten > Kopieren oder Rechte Maustaste > Kopieren)
+\end{itemize}
+
+\subsubsection{Beispiel: Goal/Operator-Hierarchie für die Editieraufgabe}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel164}}
+
+\subsubsection{Zeitliche Quantifizierung von Operatoren im GOMS-Modell}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel165}}
+
+\subsubsection{Quantifizierung der Merkbelastung: Kritik an dem Belastungsverlauf von GOMS}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1701}}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1702}}
+
+In einer abstrakt schematisierten Darstellung ist links die Situation von Tafel 169 dargestellt. Die Merkeinheit C wird in Schritt 3 ins Arbeitsgedächtnis eingeschrieben, unmittelbar in diesem Schritt verwendet und gäbe damit seinen Speicherplatz wieder frei. Im Gesamtablauf würde also die Kapazitätsgrenze nicht überschritten werden.
+Das würde aber einen expliziten Akt des Vergessens voraussetzen. Einen solchen gibt es aber nicht. Im Gegenteil: Ein bewusster Schritt des Vergessens würde die Merkeinheit erst recht im Gedächtnis verankern.
+Nimmt man, wie auf der rechten Seite dargestellt, an, dass die Merkeinheit so lange im Gedächtnis erhalten bleibt, bis entweder die Verfallszeit erreicht oder die Kapazitätsgrenze überschritten ist, dann bleibt C im Gedächtnis und verdrängt A, das dann im Schritt 6 eigentlich nicht mehr verwendet werden kann.
+
+\section{Hinweise für den modellgestützten Systementwurf}
+
+\subsubsection{Informationsdarstellung als wesentliches Element der Gestaltung für den Informationsfluss}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel173}}
+
+Auf der Stufe der Perzeption ist es wesentlich, dass die zum Menschen zu transportierende Information eine genügend hohe Reizstärke aufweist und dass der Reizkontrast (örtlich, zeitlich) genügend hoch ist, damit überhaupt eine Empfindung ausgelöst wird.
+Beim Erkennen und Interpretieren spielt der sozusagen logische Kontrast eine Rolle. Hier müssen sich die Symbole aufgabenbezogen genügend voneinander unterscheiden und damit gut auffindbar sind.
+
+\subsubsection{Informations-Codierung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel174}}
+
+\subsubsection{Informations-Organisation}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel175}}
+
+\subsubsection{Beispiel für die Wirkung der örtlichen Informationsorganisation}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1762}}
+
+\subsubsection{Informationsorganisation und mentales Modell}
+
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel177}}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel1771}}
+
+\subsubsection{Auffälligkeit von Information als gemeinsame Eigenschaft von Codierung und Organisation}
+
+Jeder Wahrnehmungszyklus des perzeptuellen Prozessors aktiviert wenigstens eine Merkeinheit für das Arbeitsgedächtnis. Es wird je Zyklus nicht der gesamte Inhalt des Sinnengedächtnisses (das Perzept) für das Arbeitsgedächtnis aktiviert, sondern nur der dominante Reizanteil. Der dominante Reizanteil ist derjenige Anteil des Perzepts, der über die stärkste Assoziation mit dem Inhalt des Langzeitgedächtnisses verankert ist. Je dominanter ein Reizanteil ist, desto auffälliger ist er. Explizit messbarer Kontrast im Reiz (räumlich, zeitlich) ist für Auffälligkeit notwendig, aber nicht hinreichend. Entscheidend ist die Assoziationsstärke zum Langzeitgedächtnis: die kognitive Auffälligkeit.
+
+Stellen Sie sich vor, Sie sehen als schwaches Wasserzeichen hinter unter einem kontraststarken Text das Gesicht einer Person, der Sie auf keinen Fall begegnen möchten. Dann löst dieses kontrastschwache Signal, eine plötzlich viel stärkere Assoziation aus, als der kontraststärkere Text.
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel180}}
+
+Hier muss erkundet werden.
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1812}}
+
+\subsubsection{Stroop-Effekt}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1825}}
+
+\subsubsection{Nutz- und Störinformationen}
+
+Eine dem Menschen dargebrachte Information wird als Nutzinformation bezeichnet wenn sie
+\begin{itemize}
+\item im Wahrnehmungsprozess Merkeinheiten aktiviert,
+\item deren dadurch ausgelöster Recognize-Act-Cycle im Arbeitsgedächtnis eine weitere Merkeinheit aktiviert,
+\item die zur weiteren Bearbeitung der Aufgabe beiträgt.
+\end{itemize}
+
+Andernfalls ist sie eine Störinformation. Störinformation führt über Störforderungen zu Verlustleistungen mit den Folgen
+\begin{itemize}
+\item Energieverlust (kognitiv durch unnötige Gehirnaktivität, motorisch durch unnötige Muskelanspannung)
+\item Zeitverlust (Zeitverbrauch für die unnötige Denk- oder Muskelaktion)
+\item Verwechslung (führt zu Fehlreaktionen)
+\end{itemize}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1841}}
+
+\subsubsection{Wirkung von gleichzeitiger Nutz- und Störforderung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel187}}
+
+\subsubsection{Überproportionale Steigerung der Beanspruchung durch Erhöhung des Aktivitätsniveaus durch Zusatzbelastung}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel188}}
+
+Die Zusatzbelastung durch Störinformation erhöht das Aktivitätsniveau. War es durch die reine Nutzbelastung in der Nähe des Optimums, dann senkt eine zusätzliche Störbelastung die Lastaufnahmekapazität. Dadurch wird in der Beanspruchungs- gleichung nicht nur der Zähler, also die Belastung höher (Nutz + Stör), sondern auch der Nenner kleiner (Kapazität). Die Beanspruchung wächst also stärker als die Belastung.
+Ist das Aktivitätsniveau durch die Nutzbelastung aber links vom Optimum, dann kann die Störbelastung aktivierend und kapazitätssteigernd wirken.
+Ergänzung: Auch eine unerwartete Bewegungshemmung (z. B. Taste klemmt) führt zu einem überflüssigen, nicht aufgabendienlichen Recognize- Act-Cycle, nämlich dem Verarbeiten der Abweichung vom Erwarteten. Meist wechselt man dann aus der fertigkeits- in die regelbasierte Verhaltensebene, die auf jeden Fall einen kognitiven Prozess in Anspruch nimmt.
+
+\subsubsection{Wirkung von parallelen Nutzforderungen (konkurrierend)}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel1901}}
+
+\section{Qualitative Gestaltungsregeln, Normen, Richtlinien}
+
+\subsubsection{Normen und Gesetze für die Software-Ergonomie}
+
+Normen
+\begin{itemize}
+\item DIN ES ISO 9241 Ergonomie der Mensch-System-Interaktion (Leitnorm)
+\item VDI-Richtlinie 5005 Software-Ergonomie in der Bürokommunikation
+\item DIN EN ISO 14915 Software-Ergonomie für Multimedia-Benutzungsschnittstellen
+\item DIN EN ISO 13407 Benutzerorientierte Gestaltung interaktiver Systeme
+\end{itemize}
+
+Gesetze
+\begin{itemize}
+\item Bildschirmarbeitsverordnung (BildscharbV)
+\item Barrierefreie Informationstechnik-Verordnung (BITV)
+\end{itemize}
+
+Normen sind, im Kontrast zu Gesetzen, nicht bindend. Ihre Anwendung regelt sich oft durch den Markt (»Die normative Kraft des Faktischen«). Beispiele für erfolgreiche und nützliche Normen sind Elektrostecker und die dazu Steckdosen oder in der Informationstechnik die USB-Schnittstelle.
+Das Problem in der Ergonomie: Wir Menschen sind sehr flexible »Steckdosen«.
+Eine übersicht bietet http://www.tecchannel.de/webtechnik/webserver/1769052/ergonomie\_usability\_normen\_standards\_iso\_din\_iec/
+Einen tieferen Einblick gibt die Vorlesung 24648 »Gestaltungsgrundsätze für interaktive Echtzeitsysteme im Sommersemester«
+
+\subsection{DIN EN ISO 9241: Ergonomie der Mensch-System-Interaktion}
+
+Leitkriterien
+\begin{itemize}
+\item Effektivität: Genauigkeit und Vollständigkeit des erzielten Effekts im Verhältnis zum Aufwand der Benutzer
+\item Effizienz: Genauifkeit und Vollständigkeit des erzielten Effekts im Verhältnis zum Aufwand der Benutzer
+\item Arbeitszufriedenheit: Positive Einstellung der Benutzer gegenüber der Nutzung des Systems sowie ihre Freiheit von Beeinträchtigungen durch das System
+\end{itemize}
+Ziel
+\begin{itemize}
+\item Gebrauchstauglichkeit: Maß der Effektivität, Effizienz und Arbeitszufriedenheit, mit der ein Benutzer mit einem gegebenen System vorgegebene Ziele erreichen kann.
+\end{itemize}
+
+\subsubsection{Teil 110: Grundlagen der Dialoggestaltung}
+
+\textbf{FILASSE}: Zu den einzelnen Aspekten was sagen, Reihenfolge spielt keine Rolle.
+
+\begin{enumerate}
+\item Aufgabenangemessenheit: Der Benutzer soll bei der Erledigung seiner Arbeitsaufgabe unterstützt werden, seine Aufgaben effektiv und effizient zu erledigen.
+\item Selbstbeschreibungsfähigkeit: Jeder einzelne Dialogschritt ist durch Beschreibung oder Rückmeldung unmittelbar verständlich oder er wird auf Anfrage erklärt.
+\item Steuerbarkeit: Der Benutzer soll in der Lage sein, den Dialogablauf zu steuern, d. h. Ablauf, Richtung und Geschwindigkeit zu beeinflussen, bis er sein Ziel erreicht hat.
+\item Erwartungskonformität: Der Dialog entspricht den Kenntnissen des Benutzers aus seinem Arbeitsgebiet, seiner Ausbildung und seiner Erfahrung. Außerdem ist der Dialog konsistent.
+\item Fehlertoleranz: Trotz erkennbar fehlerhafter Eingaben kann das beabsichtigte Arbeitsergebnis mit keinem oder minimalem Korrekturaufwand erreicht werden.
+\item Individualisierbarkeit: Der Benutzer kann den Dialog an seine Arbeitsaufgabe sowie seine individuellen Fähigkeiten und Vorlieben anpassen.
+\item Lernförderlichkeit: Der Benutzer wird beim Erlernen der Anwendung unterstützt und angeleitet.
+\end{enumerate}
+
+\subsection{Beispiele}
+
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel218}}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel219}}
+\end{minipage}
+
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel2201}}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel2202}}
+\end{minipage}
+
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel2212}}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel2213}}
+\end{minipage}
+
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel221}}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel2222}}
+\end{minipage}
+
+\includegraphics[width=6cm]{\detokenize{/Users/Manu/Desktop/tafel223}}
+
+\subsubsection{Affordance}
+
+Affordance: Eigenschaft eines Objekts, ohne zusätzliche Hinweise, z. B. eine Gebrauchsanleitung, zu einer passenden Handlung einzuladen. Affordance als Einladungscharakter eines Objekts: Eine Taste lädt zum Drücken, ein Hebel zum Umlegen, ein Knopf zum Drehen ein.
+
+\subsubsection{Das Krug'sche Gesetz}
+
+\includegraphics[width=12cm]{\detokenize{/Users/Manu/Desktop/tafel232}}
+
+Jede Dialoggestaltung, die für die Betätigung keinen Denkaufwand fordert, der nicht aus der eigentlich zu bearbeitenden Aufgabe stammt, ist gut!
+
+\end{document}

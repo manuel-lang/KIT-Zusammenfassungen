@@ -1,0 +1,1395 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\setcounter{tocdepth}{2} 
+\setcounter{secnumdepth}{3} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Karlsruher Institut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Computergrafik WS2016/2017\\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+{\small\tableofcontents}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Farbe, Darstellung und Perzeption}
+
+\subsection{Transferfunktion}
+
+Beschreibung der Abbildung Wert -> Helligkeit durch eine Transferfunktion mit den Werten [0,N]:
+$f:[0,N]->[I_{min},I_{max}]$
+
+\subsection{Dynamikumfang}
+
+Der Dynamikumfang beschreibt den erreichbaren Kontrast eines Wiedergabegrätes (Bildschirm, Beamer): $R_d = \frac{I_{max}+k}{I_{min}+k}$, wobei $k$ das Umgebungslicht ist und $I_{max}$ die maximale bzw. $I_{min}$ die minimale Helligkeit des Displays.
+
+\subsection{Gamma-Korrektur}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item Ein Monitor bildet einen Pixel-Wert $n$ mit $N$ Schritten auf die Intensität $I(n)$ ab:
+$I(n) \propto (n/N)^{\gamma}$
+\item Der Gamma-Wert $\gamma$ charakterisiert das Display. 
+\item Das Verhalten des Displays muss vor der Darstellung mit einer Gamma-Korrektur kompensiert werden.
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=6cm]{/Users/Manu/Desktop/gamma-korrektur.png}
+\caption{Gamma-Korrektur}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
+
+\subsection{Alpha-Kanal}
+
+Oftmals werden Bilder mit 32 Bit/Pixel kodiert, beispielsweise im RGBA-Format, das neben den Farbwerten zusätzlich 8 Bit für die Opazität $\alpha$ bereitstellt. Die Opazität ist das Gegenteil von Transparenz, wird im Frame Buffer der Frafikkarte, in PNGs und Texturen verwendet und ist essentiell für Bildbearbeitung/Manipulation, Matting/Blue-Screen-Techniken, Texturen in der Computergrafik, ...
+
+\subsection{Graßmannsche Gesetze}
+
+\begin{itemize}
+\item jeder Farbeindruck kann mit 3 Grundgrößen beschrieben werden
+\item Superpositionsprinzip: Intensität einer additiv gemischten Farbe entspricht Summe der Intensitäten der Ausgangsfarben
+\end{itemize}
+
+\subsection{Farbräume}
+
+\begin{itemize}
+\item Farbraum: Menge der Farben, die mit einem bestimmten Modell beschreiben werden können
+\item Farbmodel: mathematisches Modell mit dem Farben durch Wertetupel beschrieben werden können
+\item Tristimuluswerte beschreiben eine Farbe in einem bestimmten Farbraum eines Farbmodells
+\end{itemize}
+
+\subsubsection{RGB}
+
+Biologisch und technisch motivierte Farbdarstellung mit den 3 Primärfarben rot, grün und blau. Additiver Farbraum (rR+gG+bB) mit r, g und b als Tristimuluswerte. 
+
+\subsubsection{CMY(K)}
+
+Subtraktiver Farbraum, der dual zu RGB funktioniert, d. h. (C,M,K) = (1,1,1) - (R,G,B). Jede Primärfarbe absorbiert einen Teil des Spektrums. Verwendung für Tinte, Farbstoffe und Pigmente. Beim Drucken wird zur Tinteneinsparung meist noch eine 4. Key-Farbe (schwarz) verwendet -> CMYK.
+
+\subsubsection{HSV}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item Farbton (Hue)
+\item Sättigung (Saturation) 
+\item Helligkeit (Value)
+\item weder additiv noch subtraktiv
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=5cm]{/Users/Manu/Desktop/hsv.png}
+\caption{HSV Farbraum}
+\label{fig:Bild1}
+\end{minipage}
+\end{figure}
+
+\subsubsection{CIE Color Matching}
+
+\begin{itemize}
+\item zwei Farben wurden in einem Experiment auf einen Bildschirm projiziert
+\begin{itemize}
+\item Referenzfarbe wurde vorgegeben
+\item Vergleichsfarbe durch Mischung dreier Primärfarbe dargestellt
+\item Proband sollte die Intensitäten einstellen bis beide gleich erschienen
+\end{itemize}
+\item es konnten nicht alle Farben reproduziert werden!
+\begin{itemize}
+\item in diesem Fall wurde eine der Primärfarben zur Testfarbe addiert
+\item Farbeinstellung mit den verbleibenden Primärfarben
+\item die Primärfarbe wurde dann als negativer Vergleichswert angepasst
+\end{itemize}
+\item durch die Reproduktion der Spektralfarben mit den vorgegebenen RGB-Primärfarben erhält man die sog. \textbf{Color Matching Funktionen}
+\item \glqq Wie muss ich die Lampe einstellen, um eine Spektralfarbe zu reproduzieren?\grqq
+\item Wie berechnet man eine metamere Farbe (in demselben RGB-Farbraum mit Primärfarben 435.8nm, 546.1nm, 700nm) zu geg. Spektrum $P(\lambda)$ ?
+\begin{itemize}
+\item Tristimuluswerte: Antwort auf die 3 Color Matching Funktionen $r = \int \bar{r}(\lambda)P(\lambda)d\lambda$ $g = \int \bar{g}(\lambda)P(\lambda)d\lambda$ $b = \bar{b}(\lambda) P (\lambda)d\lambda$
+\item metamere Farben erhalten wir durch Wahl der Intensität der Primärfarben gemäß der 3 Antworten
+\end{itemize}
+\item Problem
+\begin{itemize}
+\item negative Vergleichswerte
+\item einige Spektralfarben/Spektren sind nicht realisierbar durch eine Kombination aus 3 Primärfarben
+\item RGB ist kein perfekter Farbraum, aber eben technisch realisierbar
+\end{itemize}
+\end{itemize}
+
+\subsubsection{XYZ Color Space (CIE 1931)}
+
+\begin{itemize}
+\item Ziel: Farbraum zur standardisierten Konversion zwischen Farbräumen
+\begin{itemize}
+\item Beschreibung aller wahrnehmbaren Farben
+\item Farbraum mit rein positiven Color Matching Funktionen
+\item lineare Abbildung XYZ <=> RGB
+\item Y-Komponente so gewählt, dass sie der Luminanz entspricht
+\end{itemize}
+\item Festlegung der Color Matching Funktionen bedeutet imaginäre übersaturierte Primärfarben, die nicht physikalisch realisierbar sind
+\begin{itemize}
+\item $\bar{y}(\lambda) =$ Luminanz
+\item $\bar{z}(\lambda) \approx$ Empfindlichkeit S-Rezeptor
+\item $\bar{x}(\lambda) \approx$ Linearkombination der Empflichkeitskurven so, dass $\bar{x}(\lambda) > 0$
+\item die Primärfarben vorstellbar als rot, grün und blau
+\end{itemize}
+\item XYZ sind die Tristimuluswerte für den \glqq CIE Standard Observer\grqq
+\begin{itemize}
+\item $X = \int \bar{x}(\lambda)P(\lambda)d\lambda$
+\item $Y = \int \bar{y}(\lambda)P(\lambda)d\lambda$
+\item $Z = \int \bar{z}(\lambda)P(\lambda)d\lambda$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Chromatizität (vom CIE XYZ zum CIE xyY Farbraum)}
+
+Darstellung aller sichbaren Farben
+\begin{itemize}
+\item Beobachtung: alle $k(X,Y,Z) (k>0)$ repräsentieren diselbe Farbe, nur mit unterschiedlicher Intensität
+\item Normalisierung auf die $X+Y+Z=1$ Ebene
+\item anschließend: Projektion auf die XY-Ebene (z weglassen)
+\item $xy$-Diagramm enthält nach wie vor alle Farbtöne und -sättigungen
+\item teile Information in Helligkeit $Y$ und Farbe (Chromatizität) $xy$ auf
+\begin{itemize}
+\item mit $x=\frac{X}{X+Y+Z}, y = \frac{Y}{X+Y+Z}$, nicht gespeichert: $z = \frac{Z}{X+Y+Z} = 1-x-y$
+\end{itemize}
+\item wird Farbe durch $x,y$ vorgegeben, muss noch die Helligkeit $Y$ angegeben werden -> dann können Tristimuluswerte aus CIE xyY bestimmt werden.
+\begin{itemize}
+\item $X = \frac{Y}{y}x$ und $Z = \frac{Y}{y}(1-x-y)$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Chromatizitätsdiagramm}
+
+\begin{itemize}
+\item enthält alle sichtbaren Farben (\textbf{Gamut} der menschlichen Wahrnehmung)
+\item Weißpunkt W($x=y=z=\frac{1}{3})$ (entspricht etwa Sonnenlicht)
+\item Spektralfarben befinden sich entlang der Randkurve und entsprechen monochromatischem Licht
+\item die seltsame Form ergibt sich aus den Empfinglichkeitskurven
+\item Purpurlinie: Menge von gesättigten Farbvalenzen, die ein Mensch wahrnehmen kann
+\item Farben auf der Strecke zwischen 2 Punkten können durch additives Mischen der Farben an den Endpunkten erreicht werden
+\item die reine Farbe $C_P$ zu einer Farbe C findet man durch Verlängern der Linie vom Weißpunkt durch $C$
+\item Komplementärfarbe $C_C$: Linie durch den Weißpunkt zum gegenüberliegenden Rand
+\end{itemize}
+
+\includegraphics[width=4cm]{/Users/Manu/Desktop/chromatizitat.png}
+
+\subsection{Weber-Fechner-Gesetz}
+
+Die subjektiv empfundene Stärke von Sinneseindrücken ist proportional zum Logarithmus der Intensität des physikalischen Reizes. Es gilt:
+$\frac{\Delta L_{JND}}{L} = const \approx 1\%$ bis $2\%$
+
+\subsection{Nyquist-Shannon-Abtasttheorem}
+
+Ein kontinuierliches, bandbegrenztes Signal mit einer max. Frequenz $f_{max}$ muss mit einer Frequenz größer als $2 f_{max}$ abgetastet werden, damit aus dem diskreten Signal das Ursprungssignal rekonstruiert werden kann.
+
+\subsection{Aliasing-Effekt}
+
+Fehler beim Abtasten von Signalen. Im rekonstruierten Signal treten Frequenzen auf, die im Original nicht enthalten sind. Als Lösungsansätze kann das Signal gefiltert werden, was im allgemeinen Fall allerdings nicht möglich ist oder eine Überabtastung verwendet und anschließend gefiltert.
+
+\section{Raytracing}
+
+\subsection{Grundidee}
+\begin{itemize}
+\item Verfahren zur Bildsynthese basierend auf Gesetzen der geometrischen Optik
+\item Ausbreitung des Lichts wird von der Kamera aus zurückverfolgt
+\item betrachte jeden Pixel des Bildes: verfolge einen Strahl durch diesen Pixel und finde das nächste Objekt entlang des Strahls
+\item berechne Schattierung des Objektes
+\item setze Strahlverfolgung fort, wenn Flächeln spiegeln oder transmittieren
+\item Aufbau eines Raytracing-Programms:
+\begin{itemize}
+\item Erzeugung der Sichtstrahlen (ray generation)
+\item Schnittberechnung (ray intersection)
+\item Schattierung bzw. Beleuchtungsberechnung (shading)
+\end{itemize}
+\end{itemize}
+\newpage
+
+\subsection{Baryzentrische Koordinaten}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+Wenn ein Punkt $Q$ in der Form $Q = \lambda_1 P_1 + \lambda_2 P_2 + ... + \lambda_k P_K$ mit $\lambda_1 + \lambda_2 + ... + \lambda_k = 1$ (Affinkombination) dargestelt werden kann, so bezeichnet man $(\lambda_1, \lambda_2, ..., \lambda_k)$ als die baryzentrischen Koodinaten von $Q$ bzgl. der Basispunkte $P_1,...P_k$
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/bary.png}
+\end{minipage}
+\end{figure}
+
+\subsection{Erzeugen von Sichtstrahlen}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+\begin{itemize}
+\item virtuelle Kamera definiert durch Position e, Zielpunkt z, \glqq Up-Vektor\grqq\ up und negative Blickrichtung w.
+\item Bildebene definiert durch Abstand zur Kamera $d$, linker und rechter Rand $l$ und $r$, unterer Rand $b$ und oberer Rand $t$.
+\item Ergezeugen von Sichtstrahlen: Vektor s zu Punkten auf der Bildebene: s$= u \cdot $u$ + v \cdot $v$ - d \cdot $w mit $u \in [l,r]$ und $v \in [b,t]$
+\item Strahlgleichung r$(t) = $e$+t$s, i.d.R r$(t) = $e$ + t $d, mit d = s/|s|
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/rayerz.png}
+\end{minipage}
+\end{figure}
+
+\subsection{Schnittpunktberechnnung}
+
+\subsubsection{Strahl-Kugel-Schnitt}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+\begin{itemize}
+\item Strahlgleichung r$(t) = $e$ + t $d
+\item Kugel (implizite Darstellung) |x-c|$^2$ - $r^2$ = 0
+\item (e-c) $\cdot$ (e-c)-$r^2$ + 2($t$d $\cdot$ (e-c)) + ($t$d) $\cdot$ ($t$d) = 0
+\item Lösung durch Mitternachtsformel
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/stku.png}
+\end{minipage}
+\end{figure}
+\newpage
+\subsubsection{Strahl-Ebene-Schnitt}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+\begin{itemize}
+\item Strahlgleichung r$(t) = $e$ + t $d
+\item Ebene (implizite Repr., HNF) x $\cdot$ n - $d$ = 0 mit Normalenvektor n und Abstand vom Ursprung d
+\item Lösung durch Einsatzen: (e+$t$d)$\cdot$n - $d$ = 0, $t$ = $\frac{d-e\cdot n}{d\cdot n}$
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/steb.png}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Strahl-Dreieck-Schnitt}
+
+Direkte Berechnung über baryzentrische Koordinaten.
+
+\subsection{Schattierung/Beleuchtugnsberechnung}
+
+\subsubsection{Phong-Beleuchtungsmodell}
+
+Das Phong-Beleuchtungsmodell ist phänomelogisches Modell, das die Relexion mit drei Komponenten realisiert:
+\begin{itemize}
+\item ambient: indirekte Belechtung, Licht von anderen Oberflächen
+\item diffus: nach dem Lambertschen Gesetz
+\item spekular: imperfekte Spiegelung
+\end{itemize}
+
+\includegraphics[width=10cm]{/Users/Manu/Desktop/phongbel.png}
+
+\textbf{Lamertsche (ideal-diffuse) Reflexion}: gleiche Helligkeit unabhängig von der Betrachterrichtung: $I_d = k_d \cdot I_L \cdot cos \theta = k_d \cdot I_l \cdot$ (N $\cdot $L)
+
+\textbf{perfekte Spiegelung} findet nur in Richtung R$_L$ statt: R$_L$ = 2N $\cdot$ (N $\cdot$ L) - L
+
+\textbf{spekulare Reflexion}: $I_S = k_S \cdot I_L \cdot cos^n \alpha = k_s \cdot I_L \cdot $R$_L \cdot $ V)$^n$
+
+$I = I_a + I_d + I_s = k_a \cdot I_L + k_d \cdot I_L \cdot (N \cdot L) + k_s \cdot I_L \cdot (R_L \cdot V)^n$
+
+Beachte:
+\begin{itemize}
+\item $k_a, k_d, k_s$ sind wellenabhängig, ebenso die Lichtintensität $I_L$
+\item diffuse Reflexionen haben meist die Farbe der Oberfläche
+\item spekulare Reflexionen haben die Farbe der Oberfläche, wenn es sich um Metalle handelt, sonst typischerweise die Farbe der Lichtquelle
+\item Nur positive Skalarprodukte sind interessant, daher wird max(0,N$\cdot$L) verwendet.
+\end{itemize}
+\newpage
+\subsection{Sekundärstrahlen für Spiegelung und Transmission}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item Spiegelung der Szene auf reflektierenden Oberflächen
+\item Behandle Reflexionsstrahl (fast so) wie einen Sichtstrahl
+\item addiere Farbe des Reflexionsstrahls zur Farbe am Ausgangspunkt
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=8cm]{/Users/Manu/Desktop/sekund.png}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Snellsches Brechnungsgesetz}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+\begin{itemize}
+\item beschreibt die Richtungsänderung einer Welle (Licht) beim Übergang von einem Medium in eines mit anderer Brechzahl
+\item Brechung bei Übergang ins optisch dichtere Medium ($\eta_t > \eta_i$) zum Lot hin
+\item Fresnel-Effekt: Verteilung der Strahldichte
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/snell.png}
+\end{minipage}
+\end{figure}
+
+\subsection{Recap Raytracing}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{10cm}
+\vspace{0pt}
+\begin{itemize}
+\item verfolge den Weg des Lichts, das den Betrachter erreicht, zurück
+\item Lichttransport basiert auf geometrischer Optik
+\item bildbasiertes Verfahren (Image-Order Rendering)
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/recap.png}
+\end{minipage}
+\end{figure}
+
+\subsection{Aliasing}
+
+Aliasing-Effekte (ungewollte Geometrien) entstehen durch falsche Abtastung von Signalen (Bildern). Als Lösung existieren verschiedene Anti-Aliasing-Strategien, meist \textbf{Überabtastung}:
+\begin{itemize}
+\item Uniformes Supersampling: statt Abtastung eines Punktes innerhalb eines Pixels (ein Sample) tasten wir $k^2$-mal in äquidistanten Intervallen ab
+\item Adaptives Supersampling: Pixel wird nur dann unterteilt, wenn Differenz benachbarter Samples zu groß ist.
+\item Stochastisches Sampling: zufällige Samples mit Stratifikation (Stratified Sampling) unterteilt Pixel in ein Gatter und wählt Zufallspunkt pro Zelle, reduziert Aliasing, aber führt zu mehr rauschen.
+\end{itemize}
+
+\includegraphics[width=15cm]{/Users/Manu/Desktop/aliasing.png}
+
+\subsection{Distributed Raytracing}
+
+Beim Whitted-Style Raytracing Verfahren sehen die Bilder zu makellos aus: perfekte Spiegelung und Transmission, harte Schattenkanten, unendliche Schärfentiefe, etc.
+\newpage
+\section{Transformationen und homogene Koordinaten}
+
+\textbf{Lineare Abbildungen} haben zwei Eigenschaften:
+\begin{itemize}
+\item additiv: $T(p+q) = T(p) + T(q)$
+\item homogen: $T(ap) = aT(p)$
+\end{itemize}
+
+Eine Translation ist nicht linear. Sei $T(p) = p + t$. $T(ap) = ap + t \neq aT(p) = a(p+t)$
+
+\subsection{2D Transformationen}
+
+\subsubsection{Skalierung}
+
+$scale(s_x,s_y) = 
+\left(
+   \begin{array}{cc}
+     s_x & 0\\
+     0 & s_y
+   \end{array}
+\right)$
+
+\subsubsection{Scherung}
+
+$shear_x(s) = 
+\left(
+   \begin{array}{cc}
+     1 & s\\
+     0 & 1
+   \end{array}
+\right),shear_y(s) = 
+\left(
+   \begin{array}{cc}
+     1 & 0\\
+     s & 1
+   \end{array}
+\right)$
+
+\subsubsection{Spiegelung}
+
+Spiegelung an der y-Achse: $\left(
+   \begin{array}{cc}
+     -1 & 0\\
+     0 & 1
+   \end{array}
+\right)$, Spiegelung an der x-Achse: $\left(
+   \begin{array}{cc}
+     1 & 0\\
+     0 & -1
+   \end{array}
+\right)$
+
+\subsubsection{Rotationen}
+
+$rotate(\phi) = R(\phi) = 
+\left(
+   \begin{array}{cc}
+     cos \phi & -sin \phi\\
+     sin \phi & cos \phi
+   \end{array}
+\right)$
+
+\subsection{3D Transformationen}
+
+$scale(s_x,s_y,s_z) = 
+\left(
+   \begin{array}{cccc}
+     s_x & 0 & 0 & 0\\
+     0 & s_y & 0 & 0\\
+     0 & 0 & s_z & 0\\
+     0 & 0 & 0 &1
+   \end{array}
+\right),shear_z(d_x,d_y) = 
+\left(
+   \begin{array}{cccc}
+     1 & 0 & d_x & 0\\
+     0 & 1 & d_y & 0\\
+     0 & 0 & 1 & 0\\
+     0 & 0 & 0 &1
+   \end{array}
+\right)$
+
+$R_x(\phi) = 
+\left(
+   \begin{array}{cccc}
+     1 & 0 & 0 & 0\\
+     0 & cos(\phi) & -sin(\phi) & 0\\
+     0 & sin(\phi) & cos(\phi) & 0\\
+     0 & 0 & 0 &1
+   \end{array}
+\right),R_y(\phi) = 
+\left(
+   \begin{array}{cccc}
+     cos(\phi) & 0 & sin(\phi) & 0\\
+     0 & 1 & 0 & 0\\
+     -sin(\phi) & 0 & cos(\phi) & 0\\
+     0 & 0 & 0 & 1
+   \end{array}
+\right)$
+
+$R_z(\phi) = 
+\left(
+   \begin{array}{cccc}
+     cos(\phi) & -sin(\phi) & 0 & 0\\
+     sin(\phi) & cos(\phi) & 0 & 0\\
+     0 & 0 & 1 & 0\\
+     0 & 0 & 0 & 1
+   \end{array}
+\right)$
+
+\section{Texture Mapping}
+
+\subsection{Grundidee}
+
+\begin{itemize}
+\item realitischere Aussehen einer Oberfläche kann man durch \glqq Feinstrukturierung pro Pixel\grqq\ erreichen
+\item kombiniere Geometrie mit Bildern
+\item dadurch erreicht man einfach hohe Detailgrade, auch mit gröberen Netzen
+\end{itemize}
+
+\subsection{Parametrisierung von 2D-Texturen}
+
+\subsubsection{Planare Projektion}
+
+\begin{itemize}
+\item definiere Ebene, z. B. durch einen Punkt p und zwei aufspannende Vektoren s,t
+\item Texturkoordinate eines Oberflächenpunkts x: $s = (x-p) \cdot s$, $t = (x-p) \cdot t$
+\item der Bereich $[0,1]^2$ repräsentiert die ganze Textur -> Unabhängigkeit von der tatsächlichen Auflösung
+\end{itemize}
+
+\subsubsection{Sphärische Parametrisierung}
+
+\begin{itemize}
+\item Darstellung der Objektkoordinaten in Polarkoordinaten($r,\phi,\theta$)
+\item Texturkoordinaten $\left(
+   \begin{array}{c}
+     s 0\\
+     t 0
+   	\end{array}
+	\right)
+ $:=$ \left(
+ 	\begin{array}{c}
+     \phi /2\pi\\
+     \theta /2\pi
+   \end{array}
+	\right)$
+\end{itemize}
+
+\subsection{Zylindrische Parametrisierung}
+
+\begin{itemize}
+\item Darstellung der Objektkoordinaten in Zylinderkoordinaten ($r,\phi,y$)
+\item Texturkoordinaten $\left(
+   \begin{array}{c}
+     s 0\\
+     t 0
+   	\end{array}
+	\right)
+ $:=$ \left(
+ 	\begin{array}{c}
+     \phi /2\pi\\
+     y/2\pi
+   \end{array}
+	\right)$
+\end{itemize}
+
+\subsubsection{Würfel Parametrisierung}
+
+\begin{itemize}
+\item mehere mögliche Abbildungen:
+\begin{itemize}
+\item Projektion von 6 Ebenen (Bild)
+\item lese die Würfeltextur dort aus, wo ein Strahl vom Objektmittelpunkt durch einen Oberflächenpunkt einen umgebenden Würfel schneidet
+\end{itemize}
+\item andere Abbildungen Objekt <-> Hilfskörper natürlich ebenfalls möglich
+\end{itemize}
+
+\subsection{Texture Wrapping}
+
+\begin{itemize}
+\item Repeat/Wrapping: Fortsetzen/Kacheln einer Textur über $[0,1]^2$ hinaus
+\item Adressierung wird für jede Dimension separat gewählt
+\end{itemize}
+
+\subsection{Textur-Filterung}
+
+\begin{itemize}
+\item Abbildung weniger Texel auf viele Pixel
+\item Nearest Neighbor
+\begin{itemize}
+\item verwende Farbe des nächstliegenden Texels
+\end{itemize}
+\item Bilineare Interpolation
+\begin{itemize}
+\item Interpolation der 4 nächsten Texel
+\item Nutzung der \glqq Nachkommastellen\grqq
+\item dadurch wird das Textursignal geglättet
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Bilineare Interpolation}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{8cm}
+\vspace{0pt}
+\begin{itemize}
+\item Interpolation für Punkt aus seinen Nachbarpixeln
+\item $a, (1-a), b$ und $(1-b)$ sind die relativen Abstände zu den Textelmittelpunkten entlang der $s-$ und $t-$Achsen
+\item bilineare Interpolation ist nicht linear, sondern quadratisch
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=6cm]{/Users/Manu/Desktop/bilinear.png}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Mip-Mapping}
+
+\begin{itemize}
+\item einfache Vorfilterung von Texturen
+\item speichere rekursive Texturen mit $\frac{1}{4}$ Größe (Halbierung entlang jeder Achse) -> Auflösungspyramide mit nur 33\% mehr Speicherbedarf
+\item meist Mittelung über je 2x2 Texel (kein optimaler Tiefpass)
+\item beachte: gleichzeitige Filterung und Auflösungsreduktion
+\item wähle Texturauflösung (Mip-Map Stufe $n$) so, dass
+\begin{itemize}
+\item Texelgröße($n$) $\le$ Größe Pixelfootprint auf Textur < Texelgröße($n$+1)
+\item $n = 0$ entrspricht der höchsten Auflösungsstufe
+\end{itemize}
+\item der endgültige Farbwert wird durch \textbf{trilineare Interpolation} zwischen zwei Mip-Map-Stufen (8 nächstliegende Texel) bestimmt
+\begin{itemize}
+\item bilinear auf Stufe $n$, bilinear auf Stufe $n+1$
+\item anschließend linear zwischen diesen Farben
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Anisotrope Texturfilterung}
+
+\begin{itemize}
+\item Mip-Mapping resultiert oft in sehr verwaschenen Details
+\item der Abdruck (Footprint) eines Pixels im Texturraum ist oft eher länglich
+\begin{itemize}
+\item die Vorfilterung be Mip-Mapping ist isotrop (gleichförmig in $s$ und $t$)
+\end{itemize}
+\item wie kann man bei der Vorfilterung darauf Rücksicht nehmen?
+\begin{itemize}
+\item RIPmaps (enthält Vorfilerung unabhängig in jeder Achse, 4x Speicherbedarf, löst das Problem nur teilweise und behandelt nur Anisotropie entlang einer der Achsen)
+\item anisotrope Filterung in der Praxis: Abtasten des Bereichs durch eine geschickte Kombination von Abtastung verschiedener Mip-Map-Stufen mit typischerweise mehreren Abtaststellen (z.B. 8 oder 16)
+\item Summed Area Tables (nicht wichtig?)
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Bestimmung des Footprints}
+
+\begin{itemize}
+\item einfachste Möglichkeit: schicke einen Primärstrahl durch die Ecken eines Pixels oder betrachte einen 2x2 Pixelblock und bestimme die 4 Texturkoordinaten
+\item Differenz der Texturkoordinaten liefert Größe/Form des Footprints
+\begin{itemize}
+\item Mip-Mapping: bestimme max(Breite,Höhe) und daraus $n$
+\item Rip-Mapping, SAT: betrachte Breite und Höhe
+\end{itemize}
+\item Textur-Lookup an berechneter Stelle mit entsprechender Filterung
+\end{itemize}
+
+\subsection{Texturierungstechniken}
+
+\subsubsection{Diffuse Textur}
+
+\begin{itemize}
+\item Kontrolle der Eigenfarbe eines Materials
+\item Bsp. Phong-Beleuchtungsmodell: $k_d$ aus Textur
+\item $I = k_a \cdot I_L + k_d \cdot I_L \cdot (N \cdot L) + k_s \cdot I_L \cdot (R \cdot V)^n$
+\end{itemize}
+
+\subsubsection{Bump oder Normal Mapping}
+
+\begin{itemize}
+\item Variation der Normale einer Oberfläche berechnet aus der Veränderung einer Basisfläche durch eine Bump Map oder Displacement Map
+\item verändertes $N$ aus Textur (und dementsprechend auch anderes $R$)
+\item $I = k_a \cdot I_L + k_d \cdot I_L \cdot (\boldsymbol{N} \cdot L) + k_s \cdot I_L \cdot (\textbf{R} \cdot V)^n$
+\item Fläche bleibt aber geometrisch flasch und nur die Notmalen variieren
+\item Berechnung meist im Tangentenraum
+\end{itemize}
+
+\subsubsection{Gloss-Map/Gloss-Textur}
+
+\begin{itemize}
+\item Kontrolle der Stärke und Streuung der spekularen Reflexion
+\item Bsp. Phong-Beleuchtungsmodell: $k_s$ und $n$ aus Textur
+\item $I = k_a \cdot I_L + k_d \cdot I_L \cdot (N \cdot L) + \boldsymbol{k_s} \cdot I_L \cdot (R \cdot V)^n$
+\end{itemize}
+
+\subsubsection{Displacement Mapping}
+
+\begin{itemize}
+\item Verschiebung der Oberfläche und Änderung der Normale
+\item mehr als nur Änderung der Belechtungsberechnung
+\item z.B. durch Geometrie-Tesellierung und Verschiebung (GPU-unterstützt)
+\end{itemize}
+
+\subsubsection{Inverse Displacement Mapping}
+
+\begin{itemize}
+\item besonders schnelle Approximation geeignet um \glqq Bodendetail\grqq\ darzustellen
+\item Geometrie wird nicht wirklich erzeugt: führe Schnittpunktberechnung stattdessen im Texturraum durch
+\end{itemize}
+
+\subsubsection{Ambient Occlusion}
+
+\begin{itemize}
+\item Kontrolle der ambienten Beleuchtung (Umgebungslicht)
+\item $k_a$ aus Textur, meistens wird auch der diffuse Term modifiziert
+\item $k_a \cdot I_L + k_d \cdot I_L \cdot (N \cdot L) + k_s \cdot I_L \cdot (R \cdot V)^n$
+\end{itemize}
+
+\subsubsection{Textur-Atlas}
+
+\begin{itemize}
+\item spezielle (bijektive) Parametrisierung
+\begin{itemize}
+\item jedem Oberflächenpunkt entspricht eine Stelle in der Textur
+\item keine Stelle der Textur taucht an mehr als einem Oberflächenpunkt auf
+\end{itemize}
+\item Erstellung aufwändig per Hand oder automatisch
+\end{itemize}
+
+\subsection{Environment Map}
+
+Eine Environment-Map ist eine Textur zur Darstellung der Umgebung. Bei Einvironment-Maps nimmt man an, dass der Betrachter weit genug von der Umgebung entfernt ist, sodass die Position keine Rolle spielt und ausschließlich die Blickrichtung wichtig ist. Übliche Parametrisierungen von Environment-Maps sind:
+\begin{itemize}
+\item Cube Maps
+\begin{itemize}
+\item + ist bei korrekter Filterung nahtlos
+\item + keine Singularität am Rand
+\end{itemize}
+\item Sphere Maps
+\begin{itemize}
+\item - Singularität am Rand
+\item + mit Kamera, Chromkugel und Photoshop kann sie recht einfach aufgenommen / erstellt werden
+\end{itemize}
+\item LatLong Maps
+\begin{itemize}
+\item - die Pole werden ungleichmäßig abgetastet
+\end{itemize}
+\end{itemize}
+
+\subsection{Shadow Mapping}
+
+\begin{itemize}
+\item Eine Textur speichert für viele Richtungen wie weit die Oberflächen von der Lichtquelle entfernt sind (mehr in Kapitel 7: OpenGL).
+\end{itemize}
+
+\subsection{Fazit}
+
+\begin{itemize}
+\item Texture Mapping ist eine fundamentale Technik in der Computergrafik
+\item erlaubt Detailreichtum, der mit einer Geometrie nicht möglich wäre
+\item vielseitiger Einsatz
+\begin{itemize}
+\item Farbtexturen
+\item Normalen
+\item Displacement
+\item Environment Mapping
+\item Image-Based Lighting
+\item Shadow Mapping
+\item Visualisierung
+\item Lookup-Tabellen für aufwändige Berechnungen
+\end{itemize}
+\end{itemize}
+\newpage
+\section{Räumliche Datenstrukturen}
+
+\subsection{Bounding Volume-Hierarchie}
+
+\subsubsection{Aufbau der Hierarchie}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item bestimme die Bounding Box der Objekte
+\item teile die Objekte jeweils wieder in zwei Gruppen auf
+\item verfahre so rekursiv weiter (z.B. bis nur noch $m$ Objekte in jeder Gruppe enthalten sind)
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=6cm]{/Users/Manu/Desktop/bvh.png}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Beschleunigung der Schnittberechnung mit BVHs}
+
+\begin{itemize}
+\item überprüfe auf Schnitt mit der Wurzel (= AABB der gesamten Szene)
+\item dan steige rekursiv ab (beginnend mit dem näheren Kindknoten)
+\item teste auf Schnitt mit Objekten im Kindknoten (steige evtl. weiter ab)
+\item prüfe anschließend noch die weiter entfernten Knoten (sofern ein näherer Schnittpunkt existieren kann)
+\end{itemize}
+
+\subsubsection{Fazit BVHs}
+
+Vorteile: 
+\begin{itemize}
+\item Konstruktion und Traversierung ist einfach
+\item resultiert in einem Binärbaum mit fixer, geringer Verzweigung
+\item Komplexität für den Aufbau O($n logn$) wenn in der Mitte der AABBs unterteilt wird, O($log^2 n$) wenn die Objekte in einer AABB in zwei (etwa) gleich große Gruppen geteilt werden und eine O($n log n$) Sortierung verwendet wird.
+\end{itemize}
+
+Herausforderungen
+\begin{itemize}
+\item Finden einer guten Unterteilung ist schwierig
+\item ungeschickte Verteilung kann zu schlechter Aufteilung führen
+\end{itemize}
+
+\subsection{Reguläre und adaptive Gitter}
+
+\subsubsection{Grundidee, Prinzip}
+
+\begin{itemize}
+\item Unterteilung des Raumes in Zellen gleicher Größe und Forum
+\item Eintrag der Objekte in Zellen, die von ihnen geschnitten werden
+\item Traversierung der vom Strahl getroffenen Zellen und Schnittberechnung mit den enthaltenen Objekten
+\end{itemize}
+
+\subsection{Oktalbaum/Octree}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item beginne wieder mit der Bounding Box für die ganze Szene
+\item rekurisve 1-zu-8 Unterteilung jeweils in der Mitte in jeder Richtung, falls noch zu viele Primitive in einer Zelle sind
+\item adaptive Unterteilung erlaubt große Schritte im leeren Raum
+\item feine Unterteilung nur dort, wo Geometrie ist
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=6cm]{/Users/Manu/Desktop/octree.png}
+\end{minipage}
+\end{figure}
+
+\subsection{Vergleich Gitter vs Octree}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+Gitter
+\begin{itemize}
+\item einfacher Algorithmus
+\item schlecht bei ungleich verteilter Geometrie: kein effizientes Überspringen von leerem Raum
+\item adaptiv nur durch verschachtelte Gitter
+\item ähnlicher Aufwand für ähnliche Strahlen
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+Octree
+\begin{itemize}
+\item Adaptivität mit feiner Granularität
+\item häufige Vertikalbewegung
+\item Traversierungskosten für zwei ähnliche Strahlen können stark variieren
+\end{itemize}
+\end{minipage}
+\end{figure}
+\newpage
+\subsection{BSP-Baum und kD-Baum}
+
+\subsubsection{Grundidee}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item Erweiterung von Binärbäumen auf $k$ Dimensionen
+\item verwende Ebenen um den Baum rekursiv zu unterteilen
+\item Unterschied: BSP-Bäume verwenden beliebig orientierte Ebenen, kD-Bäume nur Ebenen die senkrecht zur $x$-, $y$- und $z$-Achse sind
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=6cm]{/Users/Manu/Desktop/bsp.png}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Konstruktion}
+
+\begin{itemize}
+\item Konstruktion findet rekursiv, ähnlich wie BVH, statt
+\begin{itemize}
+\item initialisiere Wurzelknoten: enthält alle Objekte/Primitive der Szene
+\item unterteile den Wurzelknoten rekursiv
+\begin{itemize}
+\item bis ein Knoten nur noch eine vorgegebene maximale Anzahl an Primitiven enthält
+\item oder eine maximale Rekursionstiefe erreicht ist
+\end{itemize}
+\item unterteile den Raum und ordne die Primitive einem linken oder rechten Kindknoten zu
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Eigenschaften}
+
+\begin{itemize}
+\item echte Raumunterteilung: Knoten überlappen sich nicht (vgl. BVH)
+\item gute Anpassung an Geometrie möglich (v. a. bei BSP-Bäumen)
+\item die Blattknoten speichern die Primitive bzw. Verweise/Indizes darauf
+\item innere Knoten speichern die Split-Ebenen
+\begin{itemize}
+\item BSP-Baum: Normale der Ebene und Abstand zum Ursprung
+\item kD-Baum: die zur Ebene senkrechte Achse und die Position entlang der Achse
+\item Zeiger auf Kindknoten
+\end{itemize}
+\item kd-Bäume sind einfacher zu konstruieren und werden daher häufiger eingesetzt
+\end{itemize}
+
+\subsubsection{Traversierung}
+
+\begin{itemize}
+\item Strahl $r(t) = e + td$, mit $t_{min} \le t \le t_{max}$
+\item Ziel: Traversierung der Knoten von vorne nach hinten
+\item verwende Stack, um die Knoten für die Bearbeitung zu halten
+\item zu Beginn enthält der Stack den Wurzelknoten (0)
+\item schneide Strahl mit der Split-Ebene (entnehme den ersten Knoten vom Stack)
+\begin{itemize}
+\item der Schnitt liegt bei $t'$ mit $t_{min} \le t' \le t_{max}$
+\item fahre mit beiden Kindern rekursiv fort
+\end{itemize}
+\item wenn Blattknoten erreicht, dann teste Schnittpunkte mit Primitiven
+\item gebe Schnittpunkte zurück, wenn innerhalb $[t_{min},t'`')$
+\item Vorteil echter Raumunterteilung: kein möglicher Schnitt weiter hinten
+\end{itemize}
+
+\subsection{Surface Area Heuristics}
+
+\begin{itemize}
+\item Kostenfunktion für das Unterteilen eines kD-Baums/BVH Knotens p\\
+$C = C_T + \frac{AS(B_l)}{SA(B_p)} + |P_l| C_i + \frac{SA(B_r)}{SA(B_p)} |P_r| C_i$
+\item $B_l, B_r$ und $B_p$ sind die Bounding Boxes der Primitive im linken und rechten Kindknoten, bzw. des betrachteten Knotens p
+\item $C_i$ sind die Kosten eines Strahl-Primitiv-Schnitttests
+\item $C_T$ sind die Kosten der Traversierung eines kD-Baum- bzw. BVH-Knoten
+\item Ziel: finde die Unterteilung, die die Kostenfunktion minimiert
+\end{itemize}
+
+\subsubsection{Optimierung/Bestimmung der Unterteilung}
+\begin{itemize}
+\item aufwändige Suche nach der besten Unterteilung (niedrigste SAH-Kosten), da der Suchraum groß sein kann
+\item Variante 1: approximative Konstruktion (nicht elegant)
+\begin{itemize}
+\item erzeuge einige Unterteilungskandidaten innerhalb der Bounding Box $B_p$
+\item berechne Kostenfunktion für jeden Kandidaten
+\end{itemize}
+\item Variante 2: Konstruktion mit inkrementeller Berechnung
+\begin{itemize}
+\item sortiere die $n$ Primitive nach x-, y- und z-Achse
+\item teste jede der möglichen $n-1$ Aufteilungen
+\item inkrementelle Berechnung der AABBs und damit vergleichsweise effiziente Berechnung der SAH möglich
+\end{itemize}
+\item Konstruktion mit SAH verursacht nicht vernachlässigbare Kosten
+\item gut konstruierte kD-/BSP-Bäume bzw. BVHs können um ein Vielfaches schneller sein, als schlecht konstruierte
+\end{itemize}
+
+\subsection{Fazit}
+
+\begin{itemize}
+\item Kombination verschiedener Beschleunigungstechniken
+\begin{itemize}
+\item oft SIMD-Optimierung zusammen mit BVH oder kD-Baum
+\begin{itemize}
+\item BVHs mit AABBs: schnelle Erzeugung, gute Hierarchie
+\item kD-Baum: etwas aufwändiger zu konstruieren, aber typischerweise etwas besser als BVH, kombiniert mit AABBs pro Knoten
+\item BSP-Baum: aufwändig zu konstruieren, oft nur ein bisschen besser als ein gut konstruierter kD-Baum
+\item Gitter: eher selten, aber Aufbau auf (Grafik-)Hardware einfacher
+\item hierarschische Gitter und Octrees: eher eingesetzt für Simulationen
+\end{itemize}
+\end{itemize}
+\item weitere Verwendung (nicht nur) in der Computergrafik
+\begin{itemize}
+\item Bounding Volumes und BVH: Culling in der Echtzeit-Grafik
+\item kD-/BSP-Bäume: Sortierung, Suche, ...
+\item Octrees: Speicherung von räumlichen Daten, z.B. 3D-Texturen, Kollisionserkennung (Physiksimulation, Robotik)
+\end{itemize}
+\end{itemize}
+
+\section{Rasterisierung, Clipping und Projektionstransformationen}
+
+\subsection{Tiefenpuffer}
+
+\begin{itemize}
+\item bildbasierter Ansatz: speichere für jeden Pixel Distanz zur nahsten Fläche
+\item Entfernung-Tiefen-Wert wird pro Vertex berechnet und interpoliert
+\item zusätzlich zum Farbpuffer gibt es dazu den Z-Buffer (16 bis 32 Bit/Pixel)
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item zusätzlicher Speicherbedarf und -bandbreite (heutzutage nicht mehr)
+\item begrenzte Genauigkeit und z-Aliasing
+\item transparente Flächen können nicht behandelt werden
+\item viel unnötiger Aufwand in Szenen mit hoher Tiefenkomplexität
+\begin{itemize}
+\item Tiefenkomplexität = Anzahl der Schnitte entlang eines Primärstrahls
+\item unnötiger Aufwand, weil verdeckte Flächen rasterisiert werden
+\end{itemize}
+\end{itemize}
+
+Vorteile:
+\begin{itemize}
+\item Dreicke können in beliebiger Reihenfolge verarbeitet werden
+\item Z-Buffering ist Standard in allen Rasterisierern (inkl. Grafik-Hardware)
+\item für die meisten der obigen Probleme existieren heute spezielle Lösungen oder Rendering-Techniken
+\end{itemize}
+
+\subsection{Clipping}
+
+\begin{itemize}
+\item Abschneiden von Linien/Polygon-Teilen die außerhalb des Bildschirms liegen
+\item kann wichtig für Effizienz sein
+\item ist unbedingt notwendig zur Vermeidung problematischer Fälle bei Projektionen
+\end{itemize}
+
+\subsection{Sutherland-Hodgeman Algorithmus}
+
+Clipping gegen eine Kante nach der andren.
+
+\subsection{Frustrum}
+
+Ein Frustum ist ein Kegelstumpf, wobei in der Computergrafik eher ein Pyramidenstumpf gemeint ist. Das View Frustum ist der Bereich der Szene, der sichtbar ist.
+
+\subsection{Rasterisierung vs. Raytracing}
+
+Rasterisierung:
+\begin{itemize}
+\item sehr effizient, Hardware-Umsetzung ist einfach
+\item nur für Primärstrahlen: globale Effekte nur über spezielle Techniken
+\item Handhabung komplexer Szenen durch räumliche Datenstrukturen
+\item spezielle Techniken, z. B. zur Einschränkung der Schattierungsberechnung auf sichtbare Flächen
+\item Anwendung: Echtzeit-Rendering
+\end{itemize}
+
+Raytracing:
+\begin{itemize}
+\item konzeptionell einfaches Verfahren
+\item Sekundärstrahlen, komplexe Beleuchtungseffekte sind einfach
+\item Handhabung komplexer Szenen durch räumliche Datenstrukturen
+\item Offline-Rendering, bedingt interaktives Rendering
+\end{itemize}
+
+\section{OpenGL und Grafik-Hardware}
+
+\subsection{Gouraud-Shading}
+
+Berechne Parameter wie z.B. Farbe an den Eckpunkten; interpoliere innerhalb des Polygons.
+
+\subsection{Phong-Shading}
+
+Beleuchtungsberechnung mit interpolierter Normalen. Phong-Shading hat mit dem Phong-Beleuchtungsmodell inhaltlich nichts zu tun.
+
+\subsection{Backface Culling}
+
+Dreiecke, auf deren Rückseite man blickt werden üblicherweise nicht gezeichnet. 
+\begin{lstlisting}
+glEnable(GL_CULL_FACE); glCullFace(GL_BACK);
+\end{lstlisting}
+
+\subsection{Stencil-Puffer}
+
+Ein Stencil-Puffer ist eine Stanzmaske, welche für jeden Pixel im Framebuffer einen 8-bit Wert speichert. Im einfachsten Fall begrenzt der Stencil-Puffer das Renderinggebiet.
+
+\subsection{Geometry Shader}
+
+Geometry Shader bearbeiten Primitive und können Primitive vervielfachen, entfernen oder umwandeln. Sie werden nach dem Vertex und Tessellation Shader ausgeführt. Sie können nicht beliebig viel Geometrie ausgeben.
+
+\subsection{Scissor-Test}
+
+Der Scissor-Test dient lediglich dazu Fragmente außerhalb eines Rechtecks zu entfernen.
+
+\subsection{Dithering}
+
+Fehlerdiffusion
+
+
+\subsection{Blending}
+
+Kombination der Farbwerte im Framebuffer (Source) mit Farben von Fragmenten (Destination) anhand Gewichten, die aus den RGBA-Werten erzeugt werden oder als konstant festgelegt werden.
+
+Zeichen eines semitransparenten Objekts:
+\begin{lstlisting}
+glEnable( GL_BLEND )
+glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA )
+\end{lstlisting}
+
+Die Blend Equation legt die Verknüpfungsoperation Op fest.
+\begin{lstlisting}
+glBlendEquation( GL_FUNC_ADD ) (default)
+\end{lstlisting}
+
+Semitransparente Objekte:
+\begin{lstlisting}
+glEnable( GL_DEPTH_TEST );
+glDisable ( GL_BLEND );
+glUseProgram( DrawOpaqueProgram );
+<drawscene> // nur Fragmente von opaken Objekte ausgeben
+glEnable ( GL_BLEND );
+glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA ); 
+glDepthMask( GL_FALSE );
+glUseProgram( DrawTransparentProgram );
+<drawscene> // blende sortierte transparente Objekte 
+glDepthMask( GL_TRUE );
+\end{lstlisting}
+
+Multiplikation der Source- mit der Destination-Farbe:
+\begin{lstlisting}
+glBlendFunc( GL_DST_COLOR, GL_ZERO )
+\end{lstlisting}
+
+Addition der beider Farbvektoren
+\begin{lstlisting}
+glBlendFunc( GL_ONE, GL_ONE )
+\end{lstlisting}
+
+\section{Prozedurale Modelle, Content Creation, Texturen \& Geometrie}
+
+\subsection{Textursynthese}
+
+\begin{itemize}
+\item oft kleine Textur (Exemplar) vorgegeben (z. B. extrahiert aus Fotografie)
+\begin{itemize}
+\item Tiling (Kachelung) führt zu sichtbaren Wiederholungen
+\end{itemize}
+\item Ziel: Berechnen (Synthese) einer großen Textur die \glqq genauso\grqq\ aussieht
+\begin{itemize}
+\item Verfahren in dieser Vorlesung langsam: keine Auswertung zur Laufzeit
+\item \glqq gleich aussehen\grqq\ bedeutet \glqq gleiche statistische Eigenschaften\grqq
+\item achte auch darauf genügend Variationen zu erzeugen
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Pixelbasierte Textursynthese}
+
+\begin{itemize}
+\item Ausgabetextur wird Pixel für Pixel von links nach rechts und oben nach unten erzeugt
+\item betrachte Nachbarschaften des nächsten zu erzeugenden Pixels
+\item suche ähnliche Nachbarschaften in der Eingabetextur (Summe über alle Pixeldifferenzen klein)
+\item kopiere den Pixel einer der ähnlichsten Nachbarschaften
+\item sehr einfaches Prinzip/Algorithmus, jedoch sehr langsam
+\end{itemize}
+
+\includegraphics[width=10cm]{/Users/Manu/Desktop/pixsynthese2.png}
+
+\subsubsection{Patchbasierte Textursynthese}
+
+\textbf{TODO}
+
+\subsection{Noise Funktion nach Ken Perlin (1985)}
+
+\begin{itemize}
+\item Grundlage für stochastische Modellierung/prozedulare Texturen
+\item Basis bilden Pseudo-Zufallszahlen aus denen wir Bilder mit den gewünschten Eigenschaften erzeugen
+\item zweig häufig verwendete Arten von Noise-Funktionen
+\begin{itemize}
+\item Lattice Value Noise (lattice value = Werte auf einem Gitter)
+\item Lattice Gradient Noise (Gradient statt Absolutwerte, nicht behandelt)
+\end{itemize}
+\end{itemize}
+
+\subsection{Turbulenz}
+
+$turbulence(x) = \sum_k (\frac{1}{2})^k n(2^k \cdot x)$
+\begin{itemize}
+\item Aufsummieren von k Oktaven, skaliert mit $(\frac{1}{2})^k$
+\item höhere Oktaven erzeugen höherfrequente Anteile, deren Ampliture aber geringer wird
+\item Frequenzspektrum $\frac{1}{2}$ (hier f=2), \glqq rosa Rauschen\grqq
+\item Wie kann man hohe Frequenzen entfernen? -> einfach Oktaven weglassen!
+\end{itemize}
+
+\subsection{Prozedurale Texturen}
+\begin{itemize}
+\item algorithmische Beschreibung von Texturen
+\begin{itemize}
+\item kompakte Repräsentation von Texturen
+\item auflösungsunabhägig
+\item für beliebig große Flächen ohne sichtbare Wiederholungen
+\item parametrisierbar
+\end{itemize}
+\item implizite Methoden
+\begin{itemize}
+\item Aufruf des Shaders für jeden Pixel/Schnittpunkt
+\item benötigt evtl. Zugriff auf benachbarte Pixel (Ableitung)
+\item Filterung ist i.A. nicht trivial
+\end{itemize}
+\item explizite Methoden
+\begin{itemize}
+\item generiere 2D/3D-Textur vor der Verwendung
+\item verwende Texture-Mapping wie bisher
+\item Vorteil: Texture-Filterung ist einfach
+\end{itemize}
+\end{itemize}
+
+\subsection{Hypertextures (Perlin 1989)}
+
+\begin{itemize}
+\item Ziel: Erzeugung von komplexen 3D-Volumenmodellen (z.B. Feuer, Wolken)
+\begin{itemize}
+\item Analogie zu Displacement-Mapping von Flächen: verändern von volumetrischen Gebilden
+\end{itemize}
+\item Beschreibung eines Hypertexture-Objekts durch eine Dichtefunktion (DF) im $\mathbb{R}^3$
+\begin{itemize}
+\item innen $D(x) = 1$, außen $D(x) = 0$, Übergangsbereich $0 < D(x) < 1$
+\item komplexe Strukturen durch Noise-Funktionen und Modulation
+\end{itemize}
+\end{itemize}
+
+\subsection{Distanzfelder}
+
+\begin{itemize}
+\item Distanzfunktion $f(x), x \in \mathbb{R}^3$, die für jeden Punkt x die kürzeste Entfernung zur Oberfläche $f(x) = 0$ liefert
+\item einfache Objekte durch Distanzfunktion beschreibbar
+\item idealerweise ist Abstand vorzeichenbehaftet, z.B. $f(x) < 0$ im Inneren
+\item wird $f(x)$ diskret gespeichert, dann spricht man von einem \textbf{Distanzfeld}
+\item \textbf{Sphere Tracing}: Finden des Schnittpunktes durch Ray Marching und Ausnutzen der Distanzfunktion/-felds für die Schrittweite
+\end{itemize}
+
+\subsection{Lindenmayer-Systeme (L-Systeme)}
+
+\begin{itemize}
+\item theorethisches Modell für biologische Entwicklung und Morphogenese 
+\begin{itemize}
+\item basiert auf formalen Grammatiken
+\item ursprünglich entworfen für die Beschreibung der Entwicklung von mehrzelligen Organismen
+\item später: Erweiterung auf Pflanzen und Strukturen mit Verzweigung
+\end{itemize}
+\item Grundidee: definiere ein komplexes Objekt durch sukzessives Ersetzen von Teilen eines einfacheren Objekts (vgl. Wachstumsprozesse)
+\item L-Systeme arbeiten wie Chomskys formale Grammatiken
+\item ein L-System ist definiert durch ein Quadrupel $G = (V, \Sigma, S, P)$
+\begin{itemize}
+\item Alphabet (Zeichen) V
+\item Terminalsymbole (Zeichen) $\Sigma \subset V$
+\item Startwort/-symbol $S \in V*$
+\item Produktionsregeln $P \subset (V^* \setminus \Sigma^*) x V^*$
+\item wichtiger Unterschied: Produktionsregeln werden parallel angewendet um die biologischen Prozesse nachzubilden
+\end{itemize}
+\item L-System alleine macht noch kein geometrisches Objekte, da eine Interpretationsvorschift benötigt wird
+\end{itemize}
+
+\subsection{Fazit}
+\begin{itemize}
+\item Prozedurale Modellierung ist ein mächtiges Werkzeug
+\item manchmal aber schwer zu kontrollieren
+\item zunehmend wichtiger: die Menge des grafischen Inhalts von Spielen, Filmen etc. steigt schnell
+\item kompakte Beschreibung, ideale Form der \glqq Datenkompression\grqq
+\end{itemize}
+\newpage
+\section{Kurven und Flächen}
+
+\subsection{Bézierkurven}
+
+$P(u) = (1-u)^3 b_0 + 3u(1-u)^2 b_1 + 3u^2(1-u)b_2 + u^3 b_3$ mit $b_0 = \left(\begin{array}{c} x_0 \\ y_0 \end{array}\right)$, $b_1 = \left(\begin{array}{c} x_1 \\ y_1 \end{array}\right)$, ...
+
+\includegraphics[width=10cm]{/Users/Manu/Desktop/bezierkurve.png}
+
+\subsection{Bernstein Polynome}
+
+\begin{figure}[htbp]
+\begin{minipage}[t]{6cm}
+\vspace{0pt}
+\begin{itemize}
+\item $B^3_0(u) = (1-u)^3$
+\item $B^3_1(u) = 3u(1-u)^2$
+\item $B^3_2(u) = 3u^2(1-u)$
+\item $B^3_3(u) = u^3$
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{4cm}
+\vspace{0pt}
+\centering
+\includegraphics[width=4cm]{/Users/Manu/Desktop/bernstein.png}
+\end{minipage}
+\end{figure}
+
+\subsection{de Causteljau-Algorithmus}
+
+Effiziente Auswertung und Unterteilung von Bézierkurven
+\begin{itemize}
+\item möglich durch die rekursive Darstellung der Bernstein-Polynome
+\begin{itemize}
+\item $B^n_i(u) = u \cdot B^{n-1}_{i-1}(u) + (1-u) \cdot B^{n-1}_i(u)$
+\item wir haben die rekursive Darstellung symbolisch betrachtet, setzt man die tatsächlichen Kontrollpunkte ein, wertet man die Kurve direkt aus
+\end{itemize}
+\item Algorithmus
+\begin{itemize}
+\item $b^0_i := b_i$
+\item $b^1_i := (1-u) \cdot b^0_i + u \cdot b^0_{i+1}$, usw.
+\item allgemein: $b^j_i := (1-u) \cdot b^{j-1}_i + u \cdot b^{j-1}_{i+1}$, $i = 0,...,n-j$
+\end{itemize}
+\item Berechnung von $F(u) = \sum^n_{i=0}B^n_i(u)b_i$ durch fortgesetzte lineare Interpolation, ohne die Bernstein-Polynome direkt zu berechnen
+\end{itemize}
+
+\includegraphics[width=10cm]{/Users/Manu/Desktop/causteljau.png}
+
+\subsection{Béziersplines}
+
+\begin{itemize}
+\item Modellieren von komplexeren Formen mit Bézierkurven
+\begin{itemize}
+\item verwende eine Bézierkurve von hohem Grad
+\begin{itemize}
+\item u. U. numerische Probleme, aber noch wichtiger: Jeder Kontrollpunkt beeinflusst die ganze Kurve -> schwierig bei der Modellierung
+\end{itemize}
+\item füge mehrere Bézierkurven niedrigen Grades stückweise aneinander
+\end{itemize}
+\item Bézier-Spline: stückweise polynomielle Kurve, deren einzelne Abschnitte durch Bézierkurven beschrieben sind
+\begin{itemize}
+\item (parametrische) Stetigkeit des Übergangs? Glattheit der Kurve?
+\end{itemize}
+\end{itemize}
+
+\includegraphics[width=10cm]{/Users/Manu/Desktop/beziersplines.png}
+
+\end{document}

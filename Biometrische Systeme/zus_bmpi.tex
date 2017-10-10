@@ -1,0 +1,1149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{varwidth}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Karlsruhe Institute of Technology} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Biometric Systems for Person Identification % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Background}
+
+\begin{itemize}
+\item Bio: life, metric: measurement
+\item Authentification/identification
+\begin{itemize}
+\item What I know (passwords, PIN)
+\item What I have (ID-cards, smart-cards)
+\item What I am (biometrics)
+\end{itemize}
+\item Applications: banking, IT security, healthcare, law and order, time and attenfance, welfare, consumer products
+\item Physical vs behavioral biometrics\\ 
+\begin{varwidth}[t]{.5\textwidth}
+\begin{itemize}
+\item Fingerprints
+\item Iris
+\item Hand geometry
+\item Face
+\item Vein pattern
+\item Retinal scanning
+\item Ear shape
+\end{itemize}
+\end{varwidth}% <---- Don't forget this %
+\hspace{4em}% <---- Don't forget this %
+\begin{varwidth}[t]{.5\textwidth}
+\begin{itemize}
+\item Voice
+\item Signature
+\item Typing pattern
+\item Gait recognition (how you walk)
+\item Heart rate analysis
+\end{itemize}
+\end{varwidth}
+\end{itemize}
+
+\subsection{Performance measurement}
+
+\begin{itemize}
+\item Usability metrics
+\begin{itemize}
+\item Failure to enroll (FTE): Failure of a biometric system to form a proper enrollment reference for an end user. Common failures include end users who are not properly trained to provide their biometrics, the sensor not capturing information correctly, or captured sensor data of insufficient quality to develop a template.
+\item Failure to Acquire (FTA): This failure occurs if the feature extraction (including all preceding operations) was not successful during a recognition attempt. Reasons may be inability to capture, insufficient sample quality (e.g., too noisy sample data), or insufficient number of features (e.g., too few minutiae). The probability of a Failure to Acquire event is called Failure to Acquire Rate (FTA). FTA can be adjusted by increasing or decreasing quality thresholds. Generally, a high quality threshold need not correspond to a better over-all recognition performance!
+\end{itemize}
+\item Performance Metrics
+\begin{itemize}
+\item False Acceptance Rate (FAR) aka False Match Rate (FMR): accepting user who is not registered, mistaking one registered user for another
+\item Fals Rejection Rate (FRR) aka False Non-Match Rate (FNMR): rejeting registered user
+\item High FRR reduces usability
+\item High FAR reduces security
+\end{itemize}
+\end{itemize}
+
+\section{Pattern Recognition}
+
+\subsection{Descriptors}
+
+\subsubsection{Gabor Wavelets}
+
+\begin{itemize}
+\item Gabor filters: 2-D sine waves modulated by a Gaussian envelope.
+\item Gabor Wavelet Transform: $G_{mn}(x,y) = \sum\limits_{s=0}^S \sum\limits_{t=0}^T I(x-s, y-t) g_{m,n}(s,t)$
+\end{itemize}
+
+\subsubsection{Edge Histogram}
+
+\begin{itemize}
+\item Captures the spatial distribution of different types of edges
+\end{itemize}
+
+\subsubsection{SIFT}
+
+\begin{itemize}
+\item divide area around keypoint into 4x4 subregrions
+\item build orientation histogram with 8 bins for each subregion
+\item normalize resulting 128D (4x4x8) vector to unit length
+\item properties
+\begin{itemize}
+\item scale-invariant
+\item rotation-invariant
+\item robust to illumination change
+\item robust to noise
+\item robust to minor changes in view-point
+\end{itemize}
+\end{itemize}
+
+\subsubsection{SURF}
+
+\begin{itemize}
+\item fast approximation of SIFT idea
+\item equivalent quality for object identification
+\end{itemize}
+
+\subsubsection{Local Binary Pattern Histogram}
+
+\begin{itemize}
+\item divide image into cells
+\item compare each pixel to each of its neighbors
+\item where the center pixel's value is greater than the neighbor's value, write "1", otherwise, write "0"
+\item compute histogram over the cell
+\item use the histogram over the cell for classification
+\end{itemize}
+
+\subsection{Keypoint Detectors}
+
+\subsubsection{Hessian \& Harris}
+
+\subsubsection{Laplacian, DoG}
+
+\subsubsection{Harris-/Hessian-Laplace)}
+
+\subsection{Dimensionality Reduction}
+
+\subsubsection{PCA}
+
+\begin{itemize}
+\item leave out dimensions and minimize error made
+\item covariance matrix
+\begin{itemize}
+\item given n sets samples $v_1,...,v_n$
+\item with means $v_i^{`}$ and $v_i = (a_1,...,a_d)$ (d = dimensionality)
+\item a multi-dimensional covariance estimator is defined as $cov(V)_{i,j} = \frac{1}{n-1}{v_i - v_i^{`}}$
+\end{itemize}
+\item goal of PCA: make covariance matrix as diagonal as possible
+\item The covariance matrix is diagonalized by an orthogonal matrix of its eigenvectors.
+\item The higher the eigenvalue the more variance is captured along the dimension.
+\item change of basis
+\begin{itemize}
+\item given the new basis vectors $p_1,...,p_n$ we can transform data samples $x_i$ in the following manner $PX = \begin{bmatrix}
+           p_{1} \\
+           \vdots \\
+           p_{m}
+         \end{bmatrix} \begin{bmatrix}
+         	x_1 \hdots x_n
+         \end{bmatrix}$
+\item i. e. we are projecting $x_i$ onto the new basis vectors $y_i = \begin{bmatrix}
+           p_1 \cdot x_i \\
+           \vdots \\
+           p_m \cdot x_i
+         \end{bmatrix}$
+\end{itemize}
+\item assumptions
+\begin{itemize}
+\item basis (principle components) is orthogonal
+\item change of basis is a linear operation (for non-linear problems: kernel PCA)
+\item mean and variance are sufficient statistics 
+\item large variances have important dynamics
+\end{itemize}
+\end{itemize}
+
+\subsubsection{LDA}
+
+\subsection{Classification}
+
+\subsubsection{Bayesian Classification}
+
+\begin{itemize}
+\item predict class $\omega_i$ of given feature vector $x$ with Bayes rule
+\item $P(\omega_i|x) = \frac{p(x|\omega_i)P(\omega_i)}{p(x)}$ with $p(x) = \sum\limits_i p(x|\omega_i) P(\omega_i)$
+\end{itemize}
+
+\subsubsection{Gaussian Classification}
+
+\begin{itemize}
+\item assumption: $p(x|\omega_i) \approx N(\mu, \Sigma) = \frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} exp[-\frac{1}{2}(x-\mu)^T \Sigma^{-1} (x-\mu)]$
+\item problem: if the assumption(s) do not hold, the model does not represent reality well
+\item estimation of $\mu$ and $\Sigma$ with Maximum Likelihood (ML)
+\begin{itemize}
+\item use paramaters that best explain the data (highest likelihood): $l(\mu,\Sigma) = p(data|\mu,\Sigma) = p(x_0,x_1,...,x_n|\mu,\Sigma) = p(x_0|\mu,\Sigma) \cdot p(x_1|\mu,\Sigma) \cdot ... \cdot p(x_n|\mu,\Sigma)$
+\item $log(l(\mu,\Sigma)) = log(p(x_0|\mu, \Sigma)) + ... + log(p(x_n|\mu, \Sigma))$
+\item maximimize $log(l(\mu,\Sigma))$ over $\mu$ and $\Sigma$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Gaussian Mixture Models (GMMs)}
+
+\begin{itemize}
+\item approximate true density function using a weighted sum of several Gaussians
+\item $p(x) = \sum\limits_i w_i\frac{1}{(2\pi)^{d/2}|\Sigma|^{1/2}} exp[-\frac{1}{2}(x-\mu)^T \Sigma^{-1} (x-\mu)]$ with $\sum\limits_i w_i = 1$
+\item any density can be approximated but might need many Gaussians
+\item need to estimate parameters of the Gaussians as well as the weights (use Expectation Maximization (EM) Algorithm)
+\end{itemize}
+
+\subsubsection{Expectation Maximization (EM)}
+
+\begin{itemize}
+\item we don't exactly know to which Gaussian each data point belogs, but we can estimate
+\item EM Algorithm
+\begin{itemize}
+\item initialize parameters of GMM randomly
+\item repeat until convergence
+\begin{itemize}
+\item Expectation: compute the probability $p_{ij}$ that data point $i$ belongs to Gaussian $j$, take the value of each Gaussian at point $i$ and normalize so they sum up to one
+\item Maximization: compute new GMM parameters using soft assignments $p_{ij}$, maximum likelihood with data weighted according to $p_{ij}$
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsubsection{parametric vs. non-parametric}
+
+\begin{itemize}
+\item Gaussian and GMMs are called parametric classifiers as they assume a specific form of probability distribution with some paramaters
+\item methods which do not assume a specific form of probability distribution are called non-parametric (e. g. parzen windows, k-nearest neighbors)
+\item parametric classifiers need less training data because less parameters need to be estimated, but only work well if model fits data
+\item non-parametric classifiers work well for all types of distributions, but need more data to correctly estimate the distribution
+\end{itemize}
+
+\subsubsection{generative vs. discriminative}
+
+\begin{itemize}
+\item methods that model $P(\omega_i)$ and $p(x|\omega_i)$ explicitly are called generative models: $p(x|\omega_i)$ allows to generate new samples of class $\omega_i$
+\item discriminative models directly model $P(\omega_i|x)$ or just output a decision $\omega_i$ given an input pattern $x$
+\item discriminative models are often easier to train because they solve a simpler problem
+\end{itemize}
+
+\subsubsection{Linear Discriminant Functions}
+
+\begin{itemize}
+\item separate two classes with a linear hyper plane: $y(x) = w^T x + w_0$
+\item decide $y_1$ if $y(x) > 0$ and $y_2$ if $y(x) < 0$ with $w^T$ the normal vector of the hyper plane
+\item examples: Perceptron, Linear SVM
+\end{itemize}
+
+\subsubsection{Instance-based Learning}
+
+\begin{itemize}
+\item learning means storing all training instances
+\item classification = assigning target function to a new instance
+\item referred to as lazy learning instance
+\item examples: Template-Matching, k-Nearest Neighbor
+\end{itemize}
+
+\section{Iris Recognition}
+
+\subsection{Iris Recognition System}
+
+\begin{itemize}
+\item Acquisition of the eye -> Image
+\item Locate pupil and iris (pupil not relevant)
+\item demarcated zones (radial features in iris)
+\item polar representation
+\item gabor filters
+\item iris code
+\end{itemize}
+
+\subsection{Daugman's integro-differential operator}
+
+\begin{itemize}
+\item the main step is to find the pupillary (inner) and limbic (outer) boundaries
+\item Daugman's integro-differential operator was historically used
+\begin{itemize}
+\item $max_{r,x_0,y_0} G_\sigma(r) * \int{\frac{d}{d_r}}\frac{I(x,y)}{2\pi r}d_s$
+\item searches over the image domain (x,y) for the maximum in the blurred partial derivative with respect to increasing radius r, of the normalized contour integral of I(x,y) along a circular arc $d_s$ of radius $r$ and center $(x_0,y_0)$
+\item chosoe $(x_0,y_0,r)$ that maximizes Gaussian smoothing over r of difference with respect to $r$ of average pixel intensity along (portions of) circle $x_0,y_0,r$
+\item bounding box of the largest dark region might be a range to search for $x_0,y_0$ with $r$ in a feasible range
+\item non-circular pupillary and limbic boundaries have been handled by: fitting ellipses, fitting circles and adjusting using active contours, using balloon active countours
+\item inner and outer boundaries are used to unwrap the iris region to a rectangle
+\item rubber sheet model: all iris regions in all images are mapped to the same size rectangular version (each pixel is mapped into a polar pair)
+\item iris code: texture filters can then be applied at a fixed grip on the rectangle to generate the same size iris code for any image
+\item the rectangular image also has a binary mask that tells where the iris region was occluded/what iris code bits not to use
+\item the amsk records where the natural iris texture is occluded by eyelids, specular reflections, eyelashes, strands of hair,...
+\item encoding with 2-D gabor filtrs
+\item measurement with fractional hamming distance (FHD) where 1.0 means all different, 0.0 all same and 0.5 random agreement
+\end{itemize}
+\end{itemize}
+
+\section{Palmprint Recognition}
+
+\subsection{Palmprint}
+
+\begin{itemize}
+\item palms of human hands contain unique pattern of ridges and valleys
+\item larger than finger: expected to be even more reliable
+\item more expensive scanners because of bigger area
+\item highly accurate biometric system could be combined using hands
+\end{itemize}
+
+\subsection{Features}
+
+\begin{itemize}
+\item geometric features: width, length and area of palm
+\item line features: length, position, depth and size of various lines
+\item point features or minutiae: ridges, ridge endings, bifurcation and dots, datum point: endpoints of principal lines
+\end{itemize}
+
+\subsection{Algorithms}
+
+\subsubsection{Online Images}
+
+\begin{itemize}
+\item Histogram equalization
+\item Low-pass filtering
+\end{itemize}
+
+\subsubsection{Offline Images}
+
+\begin{enumerate}
+\item Estimate and midfy the orientation field
+\item Remove noise in a grey-scale image (filter)
+\item Binarization based on local threshold
+\item Noise removal in binary image (morphological operators)
+\end{enumerate}
+
+\subsubsection{Minutiae-based matching}
+
+\begin{itemize}
+\item most widely used technique
+\item location, direction and orientation of each point
+\item higher recognition accuracy
+\item does not take advantage of textural or visual features
+\item time consuming because of muntiae extraction
+\end{itemize}
+
+\subsubsection{Correlation-based matching(Alignment)}
+
+\begin{itemize}
+\item line up the palm images and subtract them
+\item determine if the ridges in the two palm images correspond
+\item less tolerant to elastic, rotational and translational variances and noise within the image
+\item algorithm
+\begin{enumerate}
+\item binarize the image using a threshold
+\item obtain the boundaries of the gaps
+\item compute the tangent of the two gaps
+\item line up (x1, y1) and (x2, y2) to get the y-axis of the palmprint coordinate system
+\item extract a sub-image of fixed size based on the coordinate system (gabor filter for feature extraction, hamming distance for matching)
+\end{enumerate}
+\end{itemize}
+
+\subsubsection{Ridge-based matching}
+
+\begin{itemize}
+\item ridge pattern landmark features such as sweat pores, spatial attributes and geometric characteristics of ridges and/or local texture analysis
+\item faster than minutiae
+\item overcomes difficulties associated with extracting minutiae from poor quality images
+\item lower distinctiveness than the minutiae
+\item algorithm
+\begin{enumerate}
+\item line feature extraction
+\item line feature matching (two lines are considered the same if they have a small euclidean distance)
+\end{enumerate}
+\end{itemize}
+
+\subsubsection{Minutiae Based Latent-full}
+
+\begin{itemize}
+\item Features used: ridge orientation and ridge period features extracted around each minutiae
+\item clustering using k-means
+\item alignment using clustering
+\item matching using a circular spatial grid
+\item match propagation to see if nearby minutiae pairs also match (final latent to full match)
+\end{itemize}
+
+\section{Fingerprint Recognition}
+
+\subsection{Types of fingerprints}
+
+\begin{itemize}
+\item 60-65\% of population has loops
+\item 30-35\% has whorls
+\item and 5\% has arches
+\end{itemize}
+
+\subsection{Feature extraction}
+
+\begin{itemize}
+\item at the local level, there are different local ridge characteristics
+\item the two most prominent ridge characteristics, called minutiae, are ridge termination and ridge bifurcation
+\item at the very-fine level, intra-ridge details (sweat pores) can be detected very distinctive; however, very high-resolution images are required
+\end{itemize}
+
+Local ridge orientation and frequency
+\begin{itemize}
+\item orientation is computed based on gradient phase angles
+\item robust computation based on local averaging of gradient magnitudes
+\item the local frequency at a point [x,y] is the inverse of the number of ridges per unit length along a segment orthogonal to the orientation
+\end{itemize}
+
+Singularity and core detection
+\begin{itemize}
+\item the Poincaré index $P_{G,C}$ under a vector field G and an in G immersed curved C is defined as the total rotation of the vectors of G along C
+\item $P_{G,C}(i,j) = 360°$ for a whorl type singular region
+\item $P_{G,C}{i,j} = 180°$ for a loop type singular region
+\item $P_{G,C}{i,j} = -180°$ for a delta type singular region
+\end{itemize}
+
+\subsection{Matching}
+
+\begin{itemize}
+\item Problems: displacement, rotation, partial overlap, nonlinear disortion, changing skin condition, noise, feature extraction errors, etc.
+\item many ambiguous fingersprints, whose exclusive membership cannot be reliably stated even by human experts
+\item correlation-based matching: intensity based correlation between the fingerprint images are computed
+\begin{itemize}
+\item cross-correlation between the two templates
+\item has many problems and is not reliable
+\end{itemize}
+\item minutae-based matching: minutiae are extracted from two fingerprints and stored as sets of points in the 2d plane. matching is done based on minutae pairings.
+\begin{itemize}
+\item template representation T and input fingerprint I (feature vector of variable length)
+\item each miniutia $m$ is a triplet with location x,y and angle $\Theta$
+\item $T = {m_1,m_2,...,m_m}, m_i = {x_i,y_i,\Theta_i}, i = 1..m$
+\item $I = {m_1',m_2',...,m_n'}, m_j' = {x_j',y_j',\Theta_j'}, j = 1..n$
+\item $m$ - number of minutiae in $T$ and $n$ number of minutiae in $I$
+\item matching if spatial distance (sd) between I and T is smaller than a given tolerance $r_0$ and the direction difference $dd$ is smaller than an angular tolerance $\Theta_0$
+\item mapping is needed: function that maps a minutia $m_j'$ from I into $m_j'`'$
+\item RANSAC (RANdom SAmple Consenus)
+\begin{itemize}
+\item Objective robust fit of model to data set S which contains outliers
+\item algorithm
+\begin{enumerate}
+\item Randomly select a sample of m minutiae points and instantiate the model from this subset
+\item Determine the set of points $m_i$ which are within a distance threshold $t$ of the model. The set mm is the consensus set of samples and defines the inliers of S.
+\item If the subset of $S_i$ is greater than some threshold $T$, reestimate the model using all the points in $S_i$ and terminate
+\item If the size of $S_i$ is less than T, select a new subset and repeat the above.
+\item After N trials the largest consensus set $S_i$ is selected and the model is reestimated using all the points in the subset $S_i$
+\end{enumerate}
+\item computational complexity might be high -> use rough alignment: find core, find average ridge orientation on left and right side of core, rotate fingerprint around the core such that the different before left and right ridge orientations are minimum
+\end{itemize}
+\end{itemize}
+\item ridge feature-based matching: local orientation and frequency of ridges, ridge shape, texture, etc are used for matching
+\begin{itemize}
+\item size of the fingerprint and shape of the external fingerprint shilhouette
+\item number, type and position of singularities
+\item shape features
+\item global and local texture information
+\item sweat pores
+\item fractal features
+\end{itemize}
+\end{itemize}
+
+\section{Face Recognition}
+
+\subsection{Background}
+
+\subsection{Tasks}
+
+\begin{itemize}
+\item Closed set recognition
+\item Open set recognition
+\item Verification
+\item Known/Unknown
+\end{itemize}
+
+\subsection{Traditional Approaches}
+
+\subsubsection{Appearance-based}
+
+\begin{itemize}
+\item holistic, fiducial regions, statistical (i. e. they process the whole face as the input)
+\item local feature based (i. e. they process facial features, such as eyes, mouth, etc. seperately)
+\end{itemize}
+
+Eigenfaces
+\begin{itemize}
+\item A face image defines a point in the high dimensional image space
+\item different face images share a number of similarities with each other
+\item face images can be described by a relatively low dimensional subspace
+\item project the face images into an appropriately chosen subspace and perform classification by similarity computation (distance, angle)
+\item dimensionality reduction procedure used here is called Karhunen-Loéve transformation or principal component analysis
+\item PCA for face images
+\begin{itemize}
+\item $y$: face image (1d)
+\item face matrix $Y = [y_1,y_2,y_3,...,y_K]$
+\item mean face $m = (1/K) * \sum y$
+\item covariance matrix $C = (Y-m)(Y-m)^T$
+\item eigenvalues $D = U^T CU$ with eigenvectors $U$
+\item representation coefficients $\Omega = U^T * (y-m)$
+\end{itemize}
+\item training
+\begin{itemize}
+\item acquire initial set of face images (training set): $Y = [y_1,y_2,y_3,...,y_K]$
+\item calculate the eigenfaces from the training set keeping only the M images corresponding to the highest eigenvalues: $U = (u_1,u_2,...,u_M$
+\item calculate representation of each known individual k in face space $\Omega_k = U^T * (y_k - m)$
+\end{itemize}
+\item testing
+\begin{itemize}
+\item project input new image y into face space: $\Omega = U^T * (y-m)$
+\item find most likely candidate class $k$ by distance computation $\epsilon_k = ||\Omega - \Omega_k||$ for all $\Omega_k$
+\end{itemize}
+\item principal components are called eigenfaces and they span the face space
+\item projections onto the face space
+\begin{itemize}
+\item images can be reconstructed by their projections in face space: $Y_f = \sum\limits_{i=1}^M \omega_i u_i$
+\item appearance of faces in face-space does not change a lot
+\item difference of mean-adjusted image (Y-m) and projection $Y_f$ gives a measure of faceness 
+\end{itemize}
+\item extension: view-based eigenspaces
+\item problems and shortcomings
+\begin{itemize}
+\item Eigenfaces do not distinguish between shape and appreance: Active Shape Models (ASM), Active Apperance Models (AAM)
+\item PCA does not use class information: PCA projections are optimal for reconstruction from a low dimensional basis, they may not be optimal from a discrimination standpoint: ``Much of the variation from one image to the next is due to illumination changes.''
+\end{itemize}
+\end{itemize}
+
+Linear Discriminant Analysis (LDA) - Fischerfaces
+\begin{itemize}
+\item preserves separability of classes
+\item maximizes ratio of projected between-classes to projected within-class scatter
+\item $W_{fld} = \argmax\limits_W \frac{|W^T S_B W|}{|W^T S_W W|}$
+\item Between-class scatter $S_B = \sum\limits_{i=1}^{c} |x_i| (\mu_i - \mu)(\mu_i - \mu)^T$
+\item Within-class scatter $S_W = \sum\limits_{i=1}^c \sum\limits_{x_k \in X_i} (x_k - \mu_i)(x_k - \mu_i)^T$
+\item $c$: number of classes, $\mu_i$: mean of class $X_i$, $|X_i|$: number of samples of $X_i$
+\end{itemize}
+
+Local vs holistic 
+\begin{itemize}
+\item Local variations on the facial appearance, i.e. due to different expression, occlusion and lighting, lead to modifications on the entire representation in the holistic approaches, while in local approaches only the corresponding local region is effected.
+\item Face images contain different statistical illumination - high frequency at the edges, i.e. eyebrows, low frequence at smooth regions, i.e. cheeks. Easier to represent the varying statistics linearly by using local representation.
+\item Local approaches facilitate the weighting of each local region in terms of their effect on face recognition.
+\end{itemize}
+
+Modular Eigenspaces
+\begin{itemize}
+\item does classification using fiducial regions (eyes, nose, -mouth is excluded in this study-) instead of using entire face
+\item face images are divided into N smaller subimages
+\item PCA is applied on each of these sub-images
+\item performed better than global PCA on large variations of illumination and expression
+\end{itemize}
+
+\subsubsection{Local feature based Face Recognition}
+
+\begin{itemize}
+\item to mitigate the effects of expression, illumination and occlusion variations by performing local analysis and by fusing the outputs of extracted local features at the feature or at the decision level
+\item some popular facial descriptions achieving good results: Local binary Pattern Histogram (LBP), Gabor Feature, Discrete Cosine Transform (DCT), SIFT, etc.
+\end{itemize}
+
+Facial feature vector with Gabor wavelet transformation (GWT)
+\begin{itemize}
+\item $O_{u,v}(x,y) = I(x,y) * \psi_{u,v}(x,y)$ with gabor kernel $\psi_{u,v}(x,y)$ and input image $I(x,y)$
+\item typically, multiple scales $u$ and orientations $v$ are used
+\item therefore $O_{u,v}(x,y)$ becomes a high dimensional vector
+\item techniques to reduce the dimension are applied (such as PCA)
+\end{itemize}
+
+Elastic Bunch Graphs (EBG)
+\begin{itemize}
+\item A ``Jet'' is a set of 40 complex Gabor wavelet coefficients obtained for one image point
+\item A graph consists of N facial landmark points (nodes)
+\item nodes are labelled with jets
+\item edges are labelled with distance vectors
+\item A ``bunch graph'' includes different jets for different poses and appearances (e.g. closed eye, open eye, ...)
+\end{itemize}
+
+Why LBP
+\begin{itemize}
+\item two same gradients may correspond to rather different local structures, thus ambiguous
+\item the concept of uniform LBP provides the possibility to effectively remove outliers
+\end{itemize}
+
+High dimensional dense local feature extraction
+\begin{itemize}
+\item computing features densly
+\item for example on overlapping patches in many scales in the image
+\item problem: very very high dimensionality
+\item solution: encode into a compact form (bag of visual word (BoVW) model, Fisher encoding)
+\end{itemize}
+
+Fisher vector encoding
+\begin{itemize}
+\item aggregates feature vectors into a compact representation
+\item fitting a parametric generative model e.g. Gaussian Mixture Model (GMM)
+\item encode derivative of the likelihood of Model with respect to its parameters
+\item capturing the average first and second order difference between dense features and each of GMM centers $\Phi^{(1)}_k = \frac{1}{N \sqrt{w_k}} \sum\limits_{p=1}^{N} \alpha_p(k) (\frac{x_p - \mu_k}{\sigma_k})$, $\Phi^{(1)}_k = \frac{1}{N \sqrt{2 w_k}} \sum\limits_{p=1}^{N} \alpha_p(k) (\frac{(x_p - \mu_k)^2}{\sigma_k} - 1)$
+\item Fisher vector is obtained by stacking these difference vectors $\phi = [\Phi_1^{(1)}, \Phi_1^{(2)},...,\Phi_K^{(1)}, \Phi_K^{(2)}]$
+\item the fisher vector's dimensionality is 2*K*d, where d is the dimensionality of the underlying feature vectors
+\item dimensionality still high -> subspace learning (PCA is not a good idea)
+\end{itemize}
+
+Problem: Matching across face pose
+\begin{itemize}
+\item problem: different view-point / head orientation
+\item recognition results degrade, when images of different head orientation have to be matched
+\item three major directions to address the face recognition across pose problem: geometric pose normalization (image affine warps), 2D specific pose models, image rendering at pixel or feature level, 3D face model fitting
+\end{itemize}
+
+\subsection{Pose-Normalization}
+
+\begin{itemize}
+\item alignment using just eye-positions is not sufficient
+\item idea: find several facial features (mesh)
+\item use complete mesh to normalize face
+\end{itemize}
+
+Active Appearance Models
+\begin{itemize}
+\item a texture and shape-based parametric model
+\item efficient fitting algorithm: inverse compositional (IC) algorithm
+\item independent shape and appearance model $s = (x_1,y_1,x_2,y_2,...,x_v,y_v)^T = s_0 + \sum\limits_{i=1}^n p_i s_i$, $A(x) = A_0(x) + \sum\limits_{i=1}^m \lambda_i A_i(x)$, $\forall x \in s_0$
+\item fitting goal: $\argmin\limits\_{p,\lambda} \sum\limits_{x \in s_0} [A_0(x) + \sum\limits_{i=1}^m \lambda_i A_i(x) - I(W(x,p))]^2$
+\item fitted modal can be used to warp image to frontal pose (e.g. using piecewise affine transformation of mesh triangles)
+\end{itemize}
+
+Face Recognition Based on Fitting a 3D Morphable Model
+
+\begin{itemize}
+\item A method for face recognition across variations in pose and illumination
+\item Simulates the process of image formation in 3D space
+\item Estimates 3D shape and texture of faces from single images by fitting a statistical morphable model of 3D faces to images
+\item Faces are represented by model parameters for 3D shape and texture
+\item The morphable face model is based on a vector space representation of faces that is constructed such that any combination of shape and texture vectors $S_i$ and $T_i$ describes a realistic human face: $S = \sum\limits_{i=1}^m a_i S_i$, $T = \sum\limits_{i=1}^m b_i T_i$
+\item face vectors
+\begin{itemize}
+\item The definition of shape and texture vectors is based on a reference face $I_0$
+\item The location of the vertices of the mesh in Cartesian coordinates is $(x_k,y_k,z_k)$ with colors $(R_k,G_k,B_k)$
+\item Reference shape and texture vecors are defined by: $S_0 = (x_1,y_1,z_1,x_2,...,x_n,y_n,z_n)^T$ and $T_0 = (R_1,G_1,B_1,R_2,...,R_n,G_n,B_n)^T$
+\item To encode a novel scan $I$, the flow field from $I_0$ to $I$ is computed
+\end{itemize}
+\item PCA is performed on the set of shape and texture vectors separately
+\item Eigenvectors form an orthogonal basis: $S = \bar{s} + \sum\limits_{i=1}^{m-1} \alpha_i \cdot s_i$, $T = \bar{t} + \sum\limits_{i=1}^{m-1} \beta_i \cdot t_i$
+\end{itemize}
+
+\subsection{Deep Neural Networks for face recognition}
+
+\subsubsection{DeepFace - Facebook}
+
+\begin{itemize}
+\item Learn a deep (7 layers) NN (20 million parameters) on 4 million identiy labeled face images directly on RGB pixels
+\item Alignment: use 6 fiducial points for 2D warp, then 67 points for 3D model, frontalize the face for input to NN
+\item Representation: output is fed in k-way softmax, that generates probability distribution over class labels, goal of training is to maximize the probability of the correct class
+\end{itemize}
+
+\subsubsection{FaceNet - Google}
+
+\begin{itemize}
+\item problem is that even a modest number of 5x5 convolutions can be prohibitively expensive on top of a convolutional layer with a large number of filters
+\item solution: reduce the dimensionality
+\item 1x1 convolutions used to compute reductions before the expensive 3x3 and 5x5 convolutions
+\item include the use of rectified linear activation (ReLU)
+\item map images to a compact Euclidean space where distances correspond to face similarity
+\item CNNs to optimize embedding
+\item Triplet-based loss function for training
+\end{itemize}
+
+\section{Multimodal Biometrics}
+
+\subsection{Why Multimodal Biometrics?}
+
+\begin{itemize}
+\item Reliability of Single Biometric - error rates too high
+\item Biometric data is noisy
+\item Acquiring multiple biometrics is easy
+\item Failure to enrull rate (FTE) can be reduced
+\item More robust against spoofing attacks
+\end{itemize}
+
+\subsection{Intramodal Combination}
+
+\begin{itemize}
+\item Within the single biometric - combine multiple matchers (experts)
+\end{itemize}
+
+\subsection{Multimodal Combination}
+
+\begin{itemize}
+\item Among multiple biometrics - combine single/multiple matchers (experts)
+\end{itemize}
+
+\subsection{Design of Multimodal Systems}
+
+\begin{itemize}
+\item Choice and number of biometrics
+\begin{itemize}
+\item Voice, face
+\item Voice, lip Movement
+\item Facial thermogram, face
+\item Iris, face
+\item Palmprint, hand geometry
+\item Ear, voice
+\item Fingerprint, face
+\item Fingerprint, face, voice
+\item Fingerprint, face, hand geometry
+\item Fingerprint, voice, hand geometry
+\item Fingerprint, hand geometry
+\end{itemize}
+\item Level of fusion
+\begin{itemize}
+\item Fusion prior to matching (sensor level, feature level)
+\begin{itemize}
+\item When the feature vectors are homogeneous (e.g., multiple fingerprint impressions of a user's finger), a single resultant feature vector can be calculated as a weighted average of the individual feature vectors.
+\item When the feature vectors are non-homogeneous (e.g., feature vectors of difference biometric modalities like face and iris), we can concatenate them to form a single feature vector. Feature vectors must be compatible.
+\end{itemize}
+\item Fusion after matching (matching mode level, decision level)
+\begin{itemize}
+\item At the decision level: decision level fusion (majority voting and or rules), dynamic classifier selection (choose best performing classifier), rank level (fuse the top N returned matches)
+\item Matching score level: score normalization required (min-max, Z-score, Tanh), classification approach, combination approach (multiple matchers generate single score each, scores are combined by sum, min, max, match weighting etc)
+\end{itemize}
+\end{itemize}
+\item Fusion methodology
+\item Cost vs performance
+\item Multimodal databases
+\end{itemize}
+
+\subsection{Comparison and Combination of Ear and Face Images in Appearance-Based Biometrics}
+
+\begin{itemize}
+\item Fingerprint verification
+\begin{itemize}
+\item Normalization: crop, normalize to 130*150, remove backgroup, histogram equalization
+\item Eigenfacces and Eigenears: PCA computes the eigenvectors and eigenvalues, following the FERET approach, use the eigenvectors corresponding to the first 60 percent of the large eigenvalues and drop the first eigenvector as it represents illumination, another approach uses the fixed percent of total energy
+\item Database: training set consits of 197 subjects, each of whom has both a face image and an ear image, this is a separate (gallery, probe) data set for three experiments: the day variation, the lighting variation and the pose variation
+\end{itemize}
+\item We need to define a measure that indicates the confidence of the decision fusion criterion.
+\item The confidence of a given decision criterion may be characterized by its FAR.
+\item In order to estimate FAR, the impostor distribution needs to be computed.
+\item Decision Fusion
+\begin{itemize}
+\item Each of the top n possible identities established by the face recognition module is verified by the fingerprint verification module: either rejects all the n possibilites or accepts only of them as the genuine identity.
+\item It is usually specified that the FAR of the system should be less than a given value.
+\item The goal of decision fusion, in essence, is to derive a decision criterion which satisfied the FAR specification
+\end{itemize}
+\end{itemize}
+
+\subsection{Integrating Faces and Fingerprints for Personal Identification}
+
+\begin{itemize}
+\item Fingerprint verification
+\begin{itemize}
+\item Alignment stage: transformations such as translation, rotation, and scaling between an input and a template in the databased are estimated, then the input minutiae are aligned with the template minutiae
+\item Matching stage: both the input minutiae and the template minutiae are converted to strings in the polar coordinate system, and an elastic string matching algorithm is used to match the resulting strings
+\end{itemize}
+\end{itemize}
+
+\subsection{Crossmodal biometrics}
+
+\subsubsection{What is crossmodal?}
+
+\begin{itemize}
+\item different sensors
+\item different imaging modalities
+\item practical and largely unsolved problem
+\item examples: matching across different sensors - low resolution CCTV vs high resolution stored database images, matching across different underlying modalities - infrared captured images vs stored high resolution visible spectrum images
+\end{itemize}
+
+\section{Softbiometrics}
+
+\begin{itemize}
+\item Human traits that can aid identification
+\item Behavioral trait, e.g. gait (the way you walk) and many more such as speech or signature
+\item Physical traits: age, gender, ethnicity
+\item Sematic traits (what you perceive): hair (long vs short), body weight, clothing, color, glasses, ...
+\end{itemize}
+
+\subsection{Gait biometrics}
+
+\begin{itemize}
+\item can recognize people
+\item is available at a distance when other biometrics are obscured or at too low resolution
+\item by computer vision, it needs moving feature extraction
+\item many researchers worldwide, many datasets, many approaches
+\item modeling movement: pendular thigh motion model, coupled and forced oscillator, anatomically-guided skeleton
+\item silhouette descriptions: established statistical analysis, temporal symmetry, velocity moments, dynamics of area
+\item average silhouettes signature
+\begin{itemize}
+\item background is taken from each frame and pixels thresholded resulting in a binary image
+\item normalize silhouettes by height to account for distance
+\item average silhouettes
+\item resulting image is the signature
+\end{itemize}
+\item recognition: generate average gait silhouette, compare with dabase, perform recognition
+\end{itemize}
+
+\subsection{Other SoftBiometrics}
+
+\begin{itemize}
+\item use human labels
+\item are grounded in psychology
+\item use psychology in their generation
+\item analyse correlation between human vision and computer vision
+\item advantages of semantic descriptions (height, sex): no ageing, available at a distance/low resolution/poor quality, fit with human description/forensics, complement automatically-perceived measures, need for search mechanisms
+\item disadvantages: psychology/perception, need for labeling 
+\end{itemize}
+
+Traits and Terms
+\begin{itemize}
+\item global features
+\begin{itemize}
+\item features mentioned most often in witness statements
+\item sex and age quite simple
+\item ethnicity
+\begin{itemize}
+\item notoriously unstable
+\item there could be anywhere between 3 and 100 ethnic groups
+\item we've chosen 3 main subgroups and 2 extra to match UK police force groupings
+\end{itemize}
+\end{itemize}
+\item body features
+\begin{itemize}
+\item based on whole body description stability analysis by MacLeod et al: features showing consistency by different viewers looking at the same subjects
+\item mostly comprised of 5 point qualitative measures (very thing -> very fat, very short -> very long)
+\item most likely candidate for association with gait
+\end{itemize}
+\item head features
+\begin{itemize}
+\item mentioned cosistently by people even at long distances
+\item prominent area of gaze
+\item hair length and color inherently connected with style: many different hair styles, style avoided due to unfamiliarity of annotators
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Age Estimation}
+
+\begin{itemize}
+\item aging process is rather complex
+\item differs not only between different ethnic groups
+\item depends on people's genes, health condition, living style, etc.
+\item large usage: electronic customer relationship management (ECRM), security, control and surveilance monitoring, biometrics and entertainment to secure age liminations in daily life, protect minors from age-restricted content in the internet, in combination to improve other areas of the computer vision
+\item implemented using support vector regression on different principle components
+\end{itemize}
+
+\subsubsection{Person Search and Retrieval State of the art}
+
+\begin{itemize}
+\item semantic attribute inference (wearing backpack, female, longhair, etc.)
+\item person reidentification (direct low level embedding for full body description)
+\item efficient query and retrieval
+\item View Specific Pedestrian Attribute Inference (VeSPA)
+\begin{itemize}
+\item deep convolutional neural network
+\item underlying GoogleNet structure
+\item idea: incorporate pose information in the model
+\end{itemize}
+\end{itemize}
+
+\section{Biometric System Attacks}
+
+\subsection{Automated Biometric System Model}
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{/Users/Manu/Desktop/abs.png}
+\caption{possible basic points of attack that plague biometric authentification systems}
+\end{figure}
+
+\subsection{Attacking a Biometric System}
+
+\subsubsection{Attacking Biometric Identifiers}
+
+\begin{itemize}
+\item Attacking at sensor level
+\item Coercive attack
+\begin{itemize}
+\item the true biometric is presented, but in an unauthorized manner
+\item a genuine user is forced by an attacker to identify him or herself to an authentification system -> the system should detect coercion instances reliably without endangering lives (stress analysis, guards, video recording)
+\item the correct biometric is presented after physical removal from the rightful owner -> the system should detect liveness (movement of iris, electrical activity, temperature, pulse in fingers)
+\end{itemize}
+\item Impersonation attack (type 1 attacks)
+\begin{itemize}
+\item an unauthorized individual changes his or her biometrics to appear like an authorized one: Voice and face are the most easily attacked, fake fingerprints or even fingers have been reported
+\item changes one's apperance to cause a false negative error in screening systems: disguises or plastic surgeries
+\item combination of multiple biometrics makes replications more difficult, specially when synchronization is analyzed (works well for the first case - no suggestion for the second)
+\item type 1 attacks - fingerprints
+\begin{itemize}
+\item make a legal use cooperate
+\item using latent fingerprints
+\item artificial fingerprints
+\item gelatine print (gummy bear attack)
+\item silicon print
+\item and of course... chopping off ones finger
+\end{itemize}
+\item type 1 attacks - iris
+\begin{itemize}
+\item porselain eye
+\item photo of an eye
+\item colored contact lens
+\item print iris image onto colored contact lens
+\end{itemize}
+\item type 1 attacks - face
+\begin{itemize}
+\item photo or video of person
+\item mask
+\end{itemize}
+\end{itemize}
+\item Replay attack
+\begin{itemize}
+\item a recording of true data that is presented to the sensor -> prompt random text to be rea, detect tri-dimensionality or require change of expression
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Front-end attacks (extractor and matcher level)}
+
+\begin{itemize}
+\item replay attack (before template extractor)
+\begin{itemize}
+\item a recording of true data is transmitted to extractor
+\item easier than attacking the sensor
+\item digital encryption and time-stamping can protect against these attacks
+\end{itemize}
+\item electronic impersonation (before template extractor)
+\begin{itemize}
+\item injection of an image created artificially from extracted features
+\item example: an image of an artificial fingerprint created from minutia captured from a card
+\item no defense suggested
+\end{itemize}
+\item trojan horse (on template extractor)
+\begin{itemize}
+\item extracted features are replaced (assuming the representation is know)
+\item the extractor would produce a pre-selected feature set at some given time or under some condition
+\item no defense suggested
+\end{itemize}
+\item communication (between template extractor and matcher)
+\begin{itemize}
+\item attacks during transmission to remote matcher
+\item specially dangerous in remote matchers
+\item no defense suggested
+\end{itemize}
+\item trojan horse (on matcher)
+\begin{itemize}
+\item match decision is manipulated
+\item example: a hacker could replace the biometric library on a computer with a library that always declares a true match for a particular person
+\item no defense suggested
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Circumvention (between matcher and application)}
+
+\begin{itemize}
+\item overriding the matcher's output
+\item collusion
+\begin{itemize}
+\item some operators have super-user status, which allows them to bypass the authentification process
+\item attackers can gain super-user status by stealing this status or agreement with operator
+\end{itemize}
+\item covert acquisition
+\begin{itemize}
+\item biometric stolen without the user knowledge, but just parametric data used (difference from impersonation)
+\end{itemize}
+\item denial
+\begin{itemize}
+\item an authentic user be denied by the system (false rejection)
+\item not considered fraud because no unauthorized access was granted
+\item but it disrupts the functioning of the system
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Back-end attacks}
+
+\begin{itemize}
+\item all seen so far (enrollment): enrollment has all the stages above
+\item communication attack (between template database and matcher): attacks during transmission between matcher and central or distributed database
+\item communication attack (between enrollment and template database): attacks during transmission from enrollment stage to central or distributed database
+\item viruses, trojans on application
+\item hacker's attack: modification or deletion of registers and gathering of information
+\end{itemize}
+
+\subsubsection{Other attacks}
+
+\begin{itemize}
+\item password systems are vulnerable to brute force attacks
+\item the number of characters is proportional to the bit-strength of password
+\item biometrics: equivalent notion of bit-strength, called instrinsic error rate
+\item hill climbing
+\begin{itemize}
+\item repeatedly submit biometric data to an algorithm with slight differences, and preserve modifications that result in an improved score
+\item can be prevented by limiting the number of trials or giving out only yes/no matches
+\end{itemize}
+\item swamping
+\begin{itemize}
+\item similar to brute force attack, exploiting weakness in the algorithm to obtain a match for incorrect data
+\item example: fingerprints - submit a print with hundreds of minutiae in the hope that least threshold of number of them will match the stored template
+\item can be prevented by normalizing the number of minutiae
+\end{itemize}
+\item piggy-back
+\begin{itemize}
+\item an unauthorized user gains access through simultaneous entry with a legitimate user (coercion, tailgating)
+\end{itemize}
+\item illegitimate enrollment
+\begin{itemize}
+\item somehow an attacker is enrolled (collusion, forgery)
+\end{itemize}
+\end{itemize}
+
+\subsection{Biometric System Counter attacks}
+
+\subsubsection{Combining Smartcards and Biometrics}
+
+\begin{itemize}
+\item biometrics - reliable authentication
+\item smartcards - store biometrics and other data
+\item suggestion: valid enrolled biometrics + valid card
+\item benefits
+\begin{itemize}
+\item authentication is done locally - cuts down on communication with database
+\item the information never elaves the card - secure by design
+\item attacks occur locally and are treated locally
+\item keeps privacy
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Challenge-Response Protocol}
+
+\begin{itemize}
+\item dynamic authentication - prevents mainly replay attacks
+\item the system issues a challenge to the user, who must respond appropriately (prompted text - increases the difficulty of recorded biometrics use)
+\item it will demand more sophisticated attacks and block the casual ones
+\item extension, e.g. number projected in the retina, that must be typed
+\end{itemize}
+
+\subsubsection{Cancellable Biometrics}
+
+\begin{itemize}
+\item “Cancelable biometrics refers to the intentional and systematically repeatable distortion of biometric features in order to protect sensitive user-specific data.”
+\item once a biometric identifier is somehow compromised, the identifier is compromised forever
+\item privacy: a hacked system can give out user's information (medical history and susceptibility)
+\item proscription: biometric information should not be used for any other purpose than its intended use
+\item concerns: not an extra bit of information should be collected, data integrity and data confidentially are two important issues, cross-matching: matching against law enforcement databases, biometric cannot change (issue a new credit care number, etc.)
+\item cancellable biometrics is a technique that alleviate some of these concerns: biometrics are distorted by some non-invertible transform, if one representation is compromised, another one can be generated
+\item signal domain distortions: distortion of the raw biometric signal (morphed fingerprint, split voice signal and scamble pieces)
+\item feature domain distortions: distortion of preprocessed biometric signal (fingerprint minutiae)
+\item signal compression: the signal temporarily loses its characteristics
+\item encryption: secure transmission (signal is restored after it)
+\item cancellable biometrics: signal loses definitely its characteristic, it's desirable that the distorted signal is impossible to be restored
+\end{itemize}
+
+\subsubsection{Anti Spoofing}
+
+\begin{itemize}
+\item Spoofing: ``The process of defeating a biometric system through the introduction of fake biometric samples.''
+\item Artificially created biometrics
+\begin{itemize}
+\item lifted latent fingerprints
+\item artificial fingers
+\item image of a face or iris
+\item high quality voice recordings
+\item worst case - dismembered fingers
+\end{itemize}
+\item Obfuscation - hiding your identity (spoofing - posing as another individual)
+\begin{itemize}
+\item negative identification applications
+\item may form new identity for positive identification
+\item mutilation of fingerprint
+\item texture-contact lens to hide iris pattern
+\item theatre makeup/putty to change facial characteristics
+\end{itemize}
+\item application-specific risk assessment
+\begin{itemize}
+\item what is the role of biometrics in my application (is it needed)
+\item does it improve upon former methods of identity management
+\item what is the impact of spoofing vulnerability
+\item what is the public perception of spoofing vulnerability
+\end{itemize}
+\item ways to mitigate risk
+\begin{itemize}
+\item multi-factor authentication - password, smart card
+\item multi-biometrics - require multiple biometrics
+\item liveness detection or anti-spoofing
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Liveness Detection}
+
+\begin{itemize}
+\item also termed vitality detection or anti-spoofing
+\item definition: to determine if the biometric being captured is an actual maesurement from the authorized, live person who is present at the time of capture
+\item ``It is liveness, not secrecy, that counts'' - Dorothy Dening
+\begin{itemize}
+\item fingerprint is not secret
+\item cannot reasonably expect it to be absolutely secret
+\item therefore, must ensure measurement is of the real biometric and not a replica
+\item true for most other biometrics, with some exceptions to be discussed
+\end{itemize}
+\item typically treated as a two class problem - live or spoof
+\item rarely do biometric sensors measure liveness, that is, liveness is nt necessary to measure the biometric
+\item hardware-based requires specialized hardware design, it is integrated with biometric sensor (examples: temperature, pulse, blood pressure, odor, electrocardiogram, multispectral imaging, spectroscopy)
+\item software-based uses information already mesured from biometric sensor, additional processing is needed to make a decision (examples: skin deformation, elasticity, pores, perspiration pattern, power spectrum, noise residues in valleys, combining multiple features)
+\item liveness inherent to biometric - must be live to measure it, e.g. electrocardiogram
+\end{itemize}
+
+\end{document}
