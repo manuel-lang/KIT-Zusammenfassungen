@@ -1,22 +1,26 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  13 FEB 2018 18:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  17 FEB 2018 11:34
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**zusammenfassung_nlo.tex
+**zusammenfassung_nlo
 (./zusammenfassung_nlo.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2013/12/19 v3.12 KOMA-Script document class (article)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2013/12/19 v3.12 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2013/12/19 v3.12 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: scrkbase 2013/12/19 v3.12 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2013/12/19 v3.12 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrlfile.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2013/12/19 v3.12 KOMA-Script package (loading files)
 
 Package scrlfile, 2013/12/19 v3.12 KOMA-Script package (loading files)
@@ -34,10 +38,14 @@ Package tocbasic Info: omitting babel extension for `lof'
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 117.
-Class scrartcl Info: File `scrsize11pt.clo' used to setup font sizes on input line 1531.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
-File: scrsize11pt.clo 2013/12/19 v3.12 KOMA-Script font size class option (11pt)
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/typearea.sty
+Class scrartcl Info: File `scrsize11pt.clo' used to setup font sizes on input l
+ine 1531.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2013/12/19 v3.12 KOMA-Script font size class option (11pt
+)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2013/12/19 v3.12 KOMA-Script package (type area)
 
 Package typearea, 2013/12/19 v3.12 KOMA-Script package (type area)
@@ -82,16 +90,21 @@ Package typearea Info: These are the values describing the layout:
 \bibindent=\dimen102
 ) (/usr/local/texlive/2014/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.def
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
-)) (/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2014/03/24 3.9k The Babel package
- (/usr/local/texlive/2014/texmf-dist/tex/generic/babel-german/ngerman.ldf
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2013/12/13 v2.7 German support for babel (new orthography)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/babel-german/ngermanb.ldf
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/babel-german/ngermanb.ldf
 Language: ngermanb 2013/12/13 v2.7 German support for babel (new orthography)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.def
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/03/24 3.9k Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
@@ -99,14 +112,18 @@ File: babel.def 2014/03/24 3.9k Babel common definitions
 \l@naustrian = a dialect from \language\l@ngerman 
 \l@nswissgerman = a dialect from \language\l@ngerman 
 Package babel Info: Making " an active character on input line 88.
-))) (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fourier.sty
+)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fourier.sty
 Package: fourier 2005/01/01 1.4 fourier-GUTenberg package
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.def
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/base/textcomp.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -120,7 +137,8 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1enc.def
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 266.
@@ -148,6 +166,7 @@ Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
 Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
 Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
 Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
 Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
 Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
 Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
@@ -184,7 +203,8 @@ Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
 Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fourier-orns.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fourier-orns.sty
 Package: fourier-orns 2004/01/30 1.1 fourier-ornaments package
 )
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 50.
@@ -234,11 +254,13 @@ LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> FMS/futm/m/n on input line 113.
 LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 114.
 LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 114.
+(Font)              `largesymbols' in the math version `normal' on input line 1
+14.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
 LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 114.
+(Font)              `largesymbols' in the math version `bold' on input line 114
+.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 115.
@@ -280,21 +302,25 @@ LaTeX Font Info:    Redeclaring math accent \hat on input line 254.
 LaTeX Font Info:    Redeclaring math accent \dot on input line 255.
 LaTeX Font Info:    Redeclaring math accent \mathring on input line 256.
 \symUfutm=\mathgroup5
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
- (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks15
 \ex@=\dimen104
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen105
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count89
@@ -334,14 +360,16 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \mathdisplay@stack=\toks19
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup6
 \symAMSb=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 LaTeX Font Info:    Redeclaring math symbol \square on input line 141.
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/amscls/amsthm.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks20
 \thm@bodyfont=\toks21
@@ -352,28 +380,36 @@ Package: amsthm 2004/08/06 v2.20
 \thm@postskip=\skip52
 \thm@headsep=\skip53
 \dth@everypar=\toks25
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
- (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count101
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/base/inputenc.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2014/04/30 v1.2b Input encoding file
 \inpenc@prehook=\toks26
 \inpenc@posthook=\toks27
@@ -384,7 +420,8 @@ Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.dfu
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -533,7 +570,8 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ot1enc.dfu
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -563,7 +601,8 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omsenc.dfu
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -584,7 +623,8 @@ Now handling font encoding FMX ...
 ... no UTF-8 mapping file for font encoding FMX
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1enc.dfu
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1enc.dfu
 File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -666,7 +706,8 @@ File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count102
 \lst@gtempboxa=\box29
 \lst@token=\toks28
@@ -679,28 +720,34 @@ File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 \lst@newlines=\count106
 \lst@lineno=\count107
 \lst@maxwidth=\dimen118
- (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstmisc.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 \c@lstnumber=\count108
 \lst@skipnumbers=\count109
 \lst@framebox=\box30
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.cfg
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
- (/usr/local/texlive/2014/texmf-dist/tex/latex/placeins/placeins.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/lipsum/lipsum.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count110
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count111
 \float@exts=\toks29
 \float@box=\box31
 \@float@everytoks=\toks30
 \@floatcapt=\box32
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/multicol.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
 \c@tracingmulticols=\count112
 \mult@box=\box33
@@ -748,8 +795,38 @@ Package: multicol 2014/04/23 v1.8e multicolumn formatting (FMi)
 \mult@nat@firstbox=\box57
 \colbreak@box=\box58
 \mc@col@check@num=\count120
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/sectsty/sectsty.sty
-Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading styles
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count121
+\c@ALG@rem=\count122
+\c@ALG@nested=\count123
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count124
+\c@ALG@blocknr=\count125
+\c@ALG@storecount=\count126
+\c@ALG@tmpcounter=\count127
+\ALG@tmplength=\skip58
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+\@float@every@algorithm=\toks31
+\c@algorithm=\count128
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
 )
 
 Class scrartcl Warning: Usage of package `fancyhdr' together
@@ -757,79 +834,92 @@ Class scrartcl Warning: Usage of package `fancyhdr' together
 (scrartcl)              I'd suggest to use 
 (scrartcl)              package `scrpage2' or `scrlayer-scrpage'.
 (scrartcl)              Nevertheless, using requested
-(scrartcl)              package `fancyhdr' on input line 39.
+(scrartcl)              package `fancyhdr' on input line 52.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip56
-\f@ncyO@elh=\skip57
-\f@ncyO@erh=\skip58
-\f@ncyO@olh=\skip59
-\f@ncyO@orh=\skip60
-\f@ncyO@elf=\skip61
-\f@ncyO@erf=\skip62
-\f@ncyO@olf=\skip63
-\f@ncyO@orf=\skip64
-) (./zusammenfassung_nlo.aux)
+\fancy@headwidth=\skip59
+\f@ncyO@elh=\skip60
+\f@ncyO@erh=\skip61
+\f@ncyO@olh=\skip62
+\f@ncyO@orh=\skip63
+\f@ncyO@elf=\skip64
+\f@ncyO@erf=\skip65
+\f@ncyO@olf=\skip66
+\f@ncyO@orf=\skip67
+)
+(./zusammenfassung_nlo.aux)
 \openout1 = `zusammenfassung_nlo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 74.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 74.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutm.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 87.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 87.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 74.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 74.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmsfutm.fd
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 87.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 87.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 74.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 74.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmxfutm.fd
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 87.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 87.
+
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 74.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 87.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 74.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/t1futs.fd
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 87.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
-) (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+)
+(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count121
+\scratchcounter=\count129
 \scratchdimen=\dimen128
 \scratchbox=\box59
-\nofMPsegments=\count122
-\nofMParguments=\count123
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count124
+\nofMPsegments=\count130
+\nofMParguments=\count131
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count132
 \MPscratchDim=\dimen129
-\MPnumerator=\count125
-\makeMPintoPDFobject=\count126
-\everyMPtoPDFconversion=\toks32
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
+\everyMPtoPDFconversion=\toks33
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
@@ -837,17 +927,23 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
- (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-)) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
- (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -855,60 +951,72 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
 Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
-\c@lstlisting=\count127
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 80.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1cmss.fd
+\c@lstlisting=\count135
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 93.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 80.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutmi.fd
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 93
+.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 80.
+(Font)              scaled to size 13.24796pt on input line 93.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 80.
+(Font)              scaled to size 9.19998pt on input line 93.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 80.
+(Font)              scaled to size 7.35999pt on input line 93.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 80.
+(Font)              scaled to size 13.24796pt on input line 93.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 80.
+(Font)              scaled to size 9.19998pt on input line 93.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 80.
-LaTeX Font Info:    Try loading font information for U+msa on input line 80.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+(Font)              scaled to size 7.35999pt on input line 93.
+LaTeX Font Info:    Try loading font information for U+msa on input line 93.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 80.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 93.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 86.
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 99.
+
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/ts1futs.fd
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 86.
+(Font)              scaled to size 10.07397pt on input line 99.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 86.
+(Font)              scaled to size 7.63599pt on input line 99.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 86.
+(Font)              scaled to size 5.51999pt on input line 99.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 86.
+(Font)              scaled to size 10.07397pt on input line 99.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 86.
+(Font)              scaled to size 7.63599pt on input line 99.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 86.
+(Font)              scaled to size 5.51999pt on input line 99.
 
-Overfull \hbox (36.7814pt too wide) in paragraph at lines 99--100
-[]\T1/futs/m/n/10.95 Definition Lˆs-bar-keit: Das Mi-ni-mie-rungs-pro-blem $\FML/futmi/m/it/10.95 P$ \T1/futs/m/n/10.95 heiˇt \T1/futs/m/it/10.95 lˆs-bar\T1/futs/m/n/10.95 , falls es ein $[]$ mit $\FML/futmi/m/it/10.95 inf[]f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å
+Overfull \hbox (36.7814pt too wide) in paragraph at lines 112--113
+[]\T1/futs/m/n/10.95 Definition Lˆs-bar-keit: Das Mi-ni-mie-rungs-pro-blem $\FM
+L/futmi/m/it/10.95 P$ \T1/futs/m/n/10.95 heiˇt \T1/futs/m/it/10.95 lˆs-bar\T1/f
+uts/m/n/10.95 , falls es ein $[]$ mit $\FML/futmi/m/it/10.95 inf[]f\T1/futs/m/n
+/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å
  []
 
 [1
@@ -918,71 +1026,185 @@ Overfull \hbox (36.7814pt too wide) in paragraph at lines 99--100
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 117.
- [2]
-Overfull \hbox (0.11375pt too wide) in paragraph at lines 135--136
-\FML/futmi/m/it/10.95 Y \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n/10.95 ei-ne streng mo-no-ton wach-sen-de Funk-ti-on. Dann gilt $[] \FML/futmi/m/it/10.95  \T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )) \FMS/futm/m/n/10.95 Å \FML/futmi/m/it/10.95  \T1/futs/m/n/10.95 ([] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ))$,
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 130.
+
+[2]
+Overfull \hbox (0.11375pt too wide) in paragraph at lines 148--149
+\FML/futmi/m/it/10.95 Y \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n
+/10.95 ei-ne streng mo-no-ton wach-sen-de Funk-ti-on. Dann gilt $[] \FML/futmi/
+m/it/10.95  \T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML
+/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )) \FMS/futm/m/n/10.95 Å \FML/futmi/m/it/
+10.95  \T1/futs/m/n/10.95 ([] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/f
+utmi/m/it/10.95 x\T1/futs/m/n/10.95 ))$,
  []
 
 
-Overfull \hbox (0.1914pt too wide) in paragraph at lines 143--144
-\T1/futs/m/n/10.95 die nicht von den Va-ria-blen aus $\U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 ab-h‰ngt. Dann sind die Pro-ble-me $\FML/futmi/m/it/10.95 P \T1/futs/m/n/10.95 : [] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )$
+Overfull \hbox (0.1914pt too wide) in paragraph at lines 156--157
+\T1/futs/m/n/10.95 die nicht von den Va-ria-blen aus $\U/futm/m/n/10.95 R[]$ \T
+1/futs/m/n/10.95 ab-h‰ngt. Dann sind die Pro-ble-me $\FML/futmi/m/it/10.95 P \T
+1/futs/m/n/10.95 : [] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/i
+t/10.95 x\T1/futs/m/n/10.95 )$
  []
 
 [3] <imgs/eindimeinschr.png, id=18, 274.02374pt x 168.63pt>
 File: imgs/eindimeinschr.png Graphic file (type png)
- <use imgs/eindimeinschr.png>
-Package pdftex.def Info: imgs/eindimeinschr.png used on input line 160.
+
+<use imgs/eindimeinschr.png>
+Package pdftex.def Info: imgs/eindimeinschr.png used on input line 173.
 (pdftex.def)             Requested size: 209.12778pt x 128.69531pt.
  [4 <./imgs/eindimeinschr.png>]
-Overfull \hbox (7.1214pt too wide) in paragraph at lines 178--179
-\T1/futs/m/n/10.95 Pro-dukt des Zei-len-vek-tors $\FML/futmi/m/it/10.95 Df\T1/futs/m/n/10.95 ([])$ mit dem Spal-ten-vek-tor $\FML/futmi/m/it/10.95 d$\T1/futs/m/n/10.95 . F¸r zwei all-ge-mei-ne (Spalten-
+Overfull \hbox (7.1214pt too wide) in paragraph at lines 191--192
+\T1/futs/m/n/10.95 Pro-dukt des Zei-len-vek-tors $\FML/futmi/m/it/10.95 Df\T1/f
+uts/m/n/10.95 ([])$ mit dem Spal-ten-vek-tor $\FML/futmi/m/it/10.95 d$\T1/futs/
+m/n/10.95 . F¸r zwei all-ge-mei-ne (Spalten-
  []
 
 
-Overfull \hbox (10.06477pt too wide) in paragraph at lines 185--186
-\T1/futs/m/n/10.95 heiˇt $[]$ \T1/futs/m/it/10.95 Sat-tel-punkt \T1/futs/m/n/10.95 von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , falls $[]$ zwar kri-ti-scher Punkt von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , aber we-der lo-ka-ler Minimal-
+Overfull \hbox (10.06477pt too wide) in paragraph at lines 198--199
+\T1/futs/m/n/10.95 heiˇt $[]$ \T1/futs/m/it/10.95 Sat-tel-punkt \T1/futs/m/n/10
+.95 von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , falls $[]$ zwar kri-ti-sc
+her Punkt von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , aber we-der lo-ka-l
+er Minimal-
  []
 
 [5]
-Overfull \hbox (6.99695pt too wide) in paragraph at lines 193--194
-[]\T1/futs/m/n/10.95 Cauchy-Schwarz-Ungleichgung: $\FMS/futm/m/n/10.95 ^^@jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] Å ^^@jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] ^^T h\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i ^^T jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] ^^A jj\FML/futmi/m/it/10.95 d\FMS/futm/m/n/10.95 jj[] Å
+Overfull \hbox (6.99695pt too wide) in paragraph at lines 206--207
+[]\T1/futs/m/n/10.95 Cauchy-Schwarz-Ungleichgung: $\FMS/futm/m/n/10.95 ^^@jjr\F
+ML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] Å ^^@jjr\F
+ML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] ^^T h\FML/
+futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n
+/10.95 i ^^T jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.
+95 jj[] ^^A jj\FML/futmi/m/it/10.95 d\FMS/futm/m/n/10.95 jj[] Å
  []
 
 [6]
-Overfull \hbox (2.09631pt too wide) in paragraph at lines 216--217
-[]\T1/futs/m/n/10.95 Satz 2.1.27 Not-wen-di-ge Op-ti-ma-li-t‰ts-be-din-gung zwei-ter Ord-nung: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
+Overfull \hbox (2.09631pt too wide) in paragraph at lines 229--230
+[]\T1/futs/m/n/10.95 Satz 2.1.27 Not-wen-di-ge Op-ti-ma-li-t‰ts-be-din-gung zwe
+i-ter Ord-nung: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U
+/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
  []
 
 
-Overfull \hbox (6.8764pt too wide) in paragraph at lines 222--223
-[]\T1/futs/m/n/10.95 Es sei $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n/10.95 dif-fe-ren-zier-bar in $[]$. Dan gilt f¸r al-le $\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$\T1/futs/m/n/10.95 : $\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n/10.95 Ä hr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; x \FMS/futm/m/n/10.95 ^^@
+Overfull \hbox (6.8764pt too wide) in paragraph at lines 235--236
+[]\T1/futs/m/n/10.95 Es sei $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/fu
+tm/m/n/10.95 R[] \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n/10.95 
+dif-fe-ren-zier-bar in $[]$. Dan gilt f¸r al-le $\FML/futmi/m/it/10.95 x \FMS/f
+utm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$\T1/futs/m/n/10.95 : $\FML/futmi/m/it/10.
+95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m
+/n/10.95 Å \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n/10.95 Ä
+ hr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; x \FMS
+/futm/m/n/10.95 ^^@
  []
 
 
-Overfull \hbox (19.93633pt too wide) in paragraph at lines 222--223
-[]\FMS/futm/m/n/10.95 i Ä \FML/futmi/m/it/10.95 o\T1/futs/m/n/10.95 (\FMS/futm/m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []\T1/futs/m/n/10.95 )\FMS/futm/m/n/10.95 jj$\T1/futs/m/n/10.95 , wo-bei $\FML/futmi/m/it/10.95 o\T1/futs/m/n/10.95 (\FMS/futm/m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []\T1/futs/m/n/10.95 )\FMS/futm/m/n/10.95 jj$ \T1/futs/m/n/10.95 einen Aus-druck der Form $\FML/futmi/m/it/10.95 !\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^A jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []jj\FML/futmi/m/it/10.95 mitlim[]!x \FMS/futm/m/n/10.95 Å
+Overfull \hbox (19.93633pt too wide) in paragraph at lines 235--236
+[]\FMS/futm/m/n/10.95 i Ä \FML/futmi/m/it/10.95 o\T1/futs/m/n/10.95 (\FMS/futm/
+m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []\T1/futs/m/n/10.9
+5 )\FMS/futm/m/n/10.95 jj$\T1/futs/m/n/10.95 , wo-bei $\FML/futmi/m/it/10.95 o\
+T1/futs/m/n/10.95 (\FMS/futm/m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/
+10.95 ^^@ []\T1/futs/m/n/10.95 )\FMS/futm/m/n/10.95 jj$ \T1/futs/m/n/10.95 eine
+n Aus-druck der Form $\FML/futmi/m/it/10.95 !\T1/futs/m/n/10.95 (\FML/futmi/m/i
+t/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^A jj\FML/futmi/m/it/10.95 x
+ \FMS/futm/m/n/10.95 ^^@ []jj\FML/futmi/m/it/10.95 mitlim[]!x \FMS/futm/m/n/10.
+95 Å
  []
 
 
-Overfull \hbox (5.83025pt too wide) in paragraph at lines 226--227
-[]\T1/futs/m/n/10.95 Definition 2.1.35 Nicht-de-ge-ne-rier-te kri-ti-sche und Mi-ni-mal-punk-te: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
+Overfull \hbox (5.83025pt too wide) in paragraph at lines 239--240
+[]\T1/futs/m/n/10.95 Definition 2.1.35 Nicht-de-ge-ne-rier-te kri-ti-sche und M
+i-ni-mal-punk-te: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : 
+\U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
  []
 
-[7] [8] (./zusammenfassung_nlo.aux) ) 
+[7] [8] [9] [10] [11]
+Overfull \hbox (34.08783pt too wide) in paragraph at lines 378--394
+[]\T1/futs/m/n/10.95 Lemma 2.2.33: Es sei $\FMS/futm/m/n/10.95 r\FML/futmi/m/it
+/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/fu
+tm/m/n/10.95 6Å \T1/futs/m/n/10.95 0$. Dann lˆst der Vek-tor $\FML/futmi/m/it/1
+0.95 d \FMS/futm/m/n/10.95 Å ^^@[]$ \T1/futs/m/n/10.95 das Pro-blem $[]\FMS/fut
+m/m/n/10.95 hr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 
+x\T1/futs/m/n/10.95 )\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i$
+ []
+
+[12]
+Overfull \hbox (16.37181pt too wide) in paragraph at lines 411--412
+\T1/futs/m/n/10.95 ent-fernt liegt, ist $\FML/futmi/m/it/10.95 D[]f\T1/futs/m/n
+/10.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/10.95 )$ nicht not-wen-di-ger-wei
+-se po-si-tiv de-fi-nit und die Newton-Richtung
+ []
+
+[13] [14]
+Overfull \hbox (3.60352pt too wide) in paragraph at lines 463--464
+[]\T1/futs/m/n/10.95 Lemma 2.2.57: Es sei-en $\FML/futmi/m/it/10.95 d[]; :::; d
+[]$ \T1/futs/m/n/10.95 paar-wei-se kon-ju-giert be-z¸g-lich $\FML/futmi/m/it/10
+.95 A$ \T1/futs/m/n/10.95 und $\FML/futmi/m/it/10.95 x[]; :::; x[]$ \T1/futs/m/
+n/10.95 schon
+ []
+
+
+Overfull \hbox (16.95476pt too wide) in paragraph at lines 464--479
+[]\T1/futs/m/n/10.95 Satz 2.2.58: Un-ter den Vor-raus-set-zun-gen von Lem-ma 2.
+2.57 ist die Rich-tung $\FML/futmi/m/it/10.95 d[] \FMS/futm/m/n/10.95 Å ^^@r\FM
+L/futmi/m/it/10.95 q\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/1
+0.95 ) \FMS/futm/m/n/10.95 Ä
+ []
+
+[15] [16]
+Overfull \hbox (34.07785pt too wide) in paragraph at lines 542--543
+[]\T1/futs/m/n/10.95 Definition 3.1.7 ƒu-ˇe-rer Li-nea-ri-sie-rungs-ke-gel: F¸r
+ $[] \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 heiˇt $\FM
+L/futmi/m/it/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m
+/n/10.95 ) \FMS/futm/m/n/10.95 Å f\FML/futmi/m/it/10.95 d \FMS/futm/m/n/10.95 2
+ \U/futm/m/n/10.95 R[]\FMS/futm/m/n/10.95 jhr\FML/futmi/m/it/10.95 g[]\T1/futs/
+m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i ^^T
+ []
+
+
+Overfull \hbox (36.90295pt too wide) in paragraph at lines 543--544
+[]\T1/futs/m/n/10.95 Definition 3.1.11 In-ne-rer Li-nea-ri-sie-rungs-ke-gel: F¸
+r $[] \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 heiˇt $\F
+ML/futmi/m/it/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/
+m/n/10.95 ) \FMS/futm/m/n/10.95 Å f\FML/futmi/m/it/10.95 d \FMS/futm/m/n/10.95 
+2 \U/futm/m/n/10.95 R[]\FMS/futm/m/n/10.95 jhr\FML/futmi/m/it/10.95 g[]\T1/futs
+/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i Ç
+ []
+
+[17]
+Overfull \hbox (10.82518pt too wide) in paragraph at lines 556--557
+[]\T1/futs/m/n/10.95 Satz 3.1.24 F¸r al-le $[] \FMS/futm/m/n/10.95 2 \FML/futmi
+/m/it/10.95 M$ \T1/futs/m/n/10.95 gilt die In-klu-si-ons-ket-te $\FML/futmi/m/i
+t/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) 
+\FMS/futm/m/n/10.95 ^^R \FML/futmi/m/it/10.95 T\T1/futs/m/n/10.95 ([]\FML/futmi
+/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^R \FML/futmi/m/it/10.
+95 C\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/fu
+tm/m/n/10.95 ^^R
+ []
+
+Missing character: There is no n in font fourier-bb!
+[18] [19] [20] (./zusammenfassung_nlo.aux) ) 
 Here is how much of TeX's memory you used:
- 7288 strings out of 493117
- 104096 string characters out of 6135433
- 306321 words of memory out of 5000000
- 10549 multiletter control sequences out of 15000+600000
- 100360 words of font info for 114 fonts, out of 8000000 for 9000
+ 7887 strings out of 493117
+ 112912 string characters out of 6135433
+ 314823 words of memory out of 5000000
+ 11130 multiletter control sequences out of 15000+600000
+ 105426 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,10n,47p,787b,332s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-bb.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-mcl.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on zusammenfassung_nlo.pdf (8 pages, 110292 bytes).
+ 47i,10n,47p,783b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist
+/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/fourier/fourier-bb.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/fourier/fourier-mcl.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/fourier/fourier-mex.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/fourier/fourier-mlit.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/fourier/fourier-ms.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/
+utopia/putr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/
+putri8a.pfb>
+Output written on zusammenfassung_nlo.pdf (20 pages, 169990 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 109 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
