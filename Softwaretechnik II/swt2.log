@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  19 FEB 2018 16:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  1 MAR 2018 14:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**zusammenfassung_nlo.tex
-(./zusammenfassung_nlo.tex
+**swt2.tex
+(./swt2.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/koma-script/scrartcl.cls
@@ -793,8 +793,8 @@ Class scrartcl Warning: Usage of package `fancyhdr' together
 \f@ncyO@erf=\skip65
 \f@ncyO@olf=\skip66
 \f@ncyO@orf=\skip67
-) (./zusammenfassung_nlo.aux)
-\openout1 = `zusammenfassung_nlo.aux'.
+) (./swt2.aux)
+\openout1 = `swt2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
 LaTeX Font Info:    ... okay on input line 87.
@@ -913,263 +913,102 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 93.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 99.
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 98.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/ts1futs.fd
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
-)
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 99.
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 99.
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 99.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 99.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 99.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 99.
-
-Overfull \hbox (36.7814pt too wide) in paragraph at lines 112--113
-[]\T1/futs/m/n/10.95 Definition Lˆs-bar-keit: Das Mi-ni-mie-rungs-pro-blem $\FML/futmi/m/it/10.95 P$ \T1/futs/m/n/10.95 heiˇt \T1/futs/m/it/10.95 lˆs-bar\T1/futs/m/n/10.95 , falls es ein $[]$ mit $\FML/futmi/m/it/10.95 inf[]f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å
- []
-
-[1
+) <imgs/wasserfall.png, id=1, 765.86125pt x 371.3875pt>
+File: imgs/wasserfall.png Graphic file (type png)
+ <use imgs/wasserfall.png>
+Package pdftex.def Info: imgs/wasserfall.png used on input line 108.
+(pdftex.def)             Requested size: 390.8805pt x 189.55244pt.
+ [1
 
 
 
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 130.
- [2]
-Overfull \hbox (0.11375pt too wide) in paragraph at lines 148--149
-\FML/futmi/m/it/10.95 Y \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n/10.95 ei-ne streng mo-no-ton wach-sen-de Funk-ti-on. Dann gilt $[] \FML/futmi/m/it/10.95  \T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )) \FMS/futm/m/n/10.95 Å \FML/futmi/m/it/10.95  \T1/futs/m/n/10.95 ([] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ))$,
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 110.
+ <imgs/vmodell.png, id=9, 732.7375pt x 363.3575pt>
+File: imgs/vmodell.png Graphic file (type png)
+ <use imgs/vmodell.png>
+Package pdftex.def Info: imgs/vmodell.png used on input line 120.
+(pdftex.def)             Requested size: 390.8805pt x 193.83713pt.
+ [2 <./imgs/wasserfall.png> <./imgs/vmodell.png>] [3] <imgs/up.png, id=19, 752.8125pt x 459.7175pt>
+File: imgs/up.png Graphic file (type png)
+ <use imgs/up.png>
+Package pdftex.def Info: imgs/up.png used on input line 163.
+(pdftex.def)             Requested size: 390.8805pt x 238.70374pt.
+
+Overfull \hbox (13.75731pt too wide) in paragraph at lines 167--168
+[]\T1/futs/m/n/10.95 Verschiedene Pha-sen: In-cep-ti-on, Ela-bo-ra-ti-on, Kon-struk-ti-on, Tran-si-ti-on ¸ber Zeitach-
  []
 
 
-Overfull \hbox (0.1914pt too wide) in paragraph at lines 156--157
-\T1/futs/m/n/10.95 die nicht von den Va-ria-blen aus $\U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 ab-h‰ngt. Dann sind die Pro-ble-me $\FML/futmi/m/it/10.95 P \T1/futs/m/n/10.95 : [] \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )$
- []
-
-[3] <imgs/eindimeinschr.png, id=18, 274.02374pt x 168.63pt>
-File: imgs/eindimeinschr.png Graphic file (type png)
- <use imgs/eindimeinschr.png>
-Package pdftex.def Info: imgs/eindimeinschr.png used on input line 173.
-(pdftex.def)             Requested size: 209.12778pt x 128.69531pt.
- [4 <./imgs/eindimeinschr.png>]
-Overfull \hbox (7.1214pt too wide) in paragraph at lines 191--192
-\T1/futs/m/n/10.95 Pro-dukt des Zei-len-vek-tors $\FML/futmi/m/it/10.95 Df\T1/futs/m/n/10.95 ([])$ mit dem Spal-ten-vek-tor $\FML/futmi/m/it/10.95 d$\T1/futs/m/n/10.95 . F¸r zwei all-ge-mei-ne (Spalten-
+Overfull \hbox (2.70941pt too wide) in paragraph at lines 174--175
+[]\T1/futs/m/n/10.95 Inception (An-fangs-pha-se): Sco-pe, Busi-ness ca-ses?, mach-bar?, auf Markt?, Kos-
  []
 
 
-Overfull \hbox (10.06477pt too wide) in paragraph at lines 198--199
-\T1/futs/m/n/10.95 heiˇt $[]$ \T1/futs/m/it/10.95 Sat-tel-punkt \T1/futs/m/n/10.95 von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , falls $[]$ zwar kri-ti-scher Punkt von $\FML/futmi/m/it/10.95 f$\T1/futs/m/n/10.95 , aber we-der lo-ka-ler Minimal-
+Overfull \hbox (7.60185pt too wide) in paragraph at lines 175--176
+\T1/futs/m/n/10.95 be-trach-tet, An-for-de-run-gen ver-ste-hen, ‹ber-gang in Kon-struk-ti-ons-pha-se, klappt
+ []
+
+[4 <./imgs/up.png>]
+Overfull \hbox (0.27734pt too wide) in paragraph at lines 183--184
+[]\T1/futs/m/n/10.95 Entwurf: Lˆ-sungs-ori-en-tiert, aber klei-ne kla-re Gren-ze zu An-for-de-run-gen, nicht
+ []
+
+
+Overfull \hbox (0.33148pt too wide) in paragraph at lines 189--190
+[]\T1/futs/m/n/10.95 6 best prac-ti-ces (sehr ge-ne-rel-le Aus-sa-gen): ite-ra-tiv ent-wi-ckeln, An-for-de-run-gen ver-
+ []
+
+
+Overfull \hbox (0.53798pt too wide) in paragraph at lines 191--192
+[]\T1/futs/m/n/10.95 verschiedene Rol-len f¸r ver-schie-de-ne Dis-zi-pli-nen de-fi-niert, An-pas-sun-gen f¸r kon-
  []
 
 [5]
-Overfull \hbox (6.99695pt too wide) in paragraph at lines 206--207
-[]\T1/futs/m/n/10.95 Cauchy-Schwarz-Ungleichgung: $\FMS/futm/m/n/10.95 ^^@jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] Å ^^@jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] ^^T h\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i ^^T jjr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FMS/futm/m/n/10.95 jj[] ^^A jj\FML/futmi/m/it/10.95 d\FMS/futm/m/n/10.95 jj[] Å
- []
-
-[6]
-Overfull \hbox (2.09631pt too wide) in paragraph at lines 229--230
-[]\T1/futs/m/n/10.95 Satz 2.1.27 Not-wen-di-ge Op-ti-ma-li-t‰ts-be-din-gung zwei-ter Ord-nung: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
+Overfull \hbox (2.7941pt too wide) in paragraph at lines 217--218
+\T1/futs/m/n/10.95 Pair Pro-gram-ming (ver-dop-pelt Kos-ten, nicht im-mer ge-recht-fer-tigt, ver-bes-sert Qua-
  []
 
 
-Overfull \hbox (6.8764pt too wide) in paragraph at lines 235--236
-[]\T1/futs/m/n/10.95 Es sei $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 ! \U/futm/m/n/10.95 R$ \T1/futs/m/n/10.95 dif-fe-ren-zier-bar in $[]$. Dan gilt f¸r al-le $\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$\T1/futs/m/n/10.95 : $\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å \FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n/10.95 Ä hr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; x \FMS/futm/m/n/10.95 ^^@
+Overfull \hbox (0.22308pt too wide) in paragraph at lines 220--221
+[]\T1/futs/m/n/10.95 Kritik: ad-hoc Pro-zess, schwer re-pli-zier-bar, schlech-te Do-ku, nicht wie-der-ver-wend-
  []
 
 
-Overfull \hbox (19.93633pt too wide) in paragraph at lines 235--236
-[]\FMS/futm/m/n/10.95 i Ä \FML/futmi/m/it/10.95 o\T1/futs/m/n/10.95 (\FMS/futm/m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []\T1/futs/m/n/10.95 )\FMS/futm/m/n/10.95 jj$\T1/futs/m/n/10.95 , wo-bei $\FML/futmi/m/it/10.95 o\T1/futs/m/n/10.95 (\FMS/futm/m/n/10.95 jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []\T1/futs/m/n/10.95 )\FMS/futm/m/n/10.95 jj$ \T1/futs/m/n/10.95 einen Aus-druck der Form $\FML/futmi/m/it/10.95 !\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^A jj\FML/futmi/m/it/10.95 x \FMS/futm/m/n/10.95 ^^@ []jj\FML/futmi/m/it/10.95 mitlim[]!x \FMS/futm/m/n/10.95 Å
+Overfull \hbox (3.6045pt too wide) in paragraph at lines 220--221
+\T1/futs/m/n/10.95 ba-re Soft-wa-re, Kun-den m¸s-sen ein-ge-bun-den wer-den (will Kun-de das?), vie-les nicht
  []
 
 
-Overfull \hbox (5.83025pt too wide) in paragraph at lines 239--240
-[]\T1/futs/m/n/10.95 Definition 2.1.35 Nicht-de-ge-ne-rier-te kri-ti-sche und Mi-ni-mal-punk-te: Die Funk-ti-on $\FML/futmi/m/it/10.95 f \T1/futs/m/n/10.95 : \U/futm/m/n/10.95 R[] \FMS/futm/m/n/10.95 !
+Overfull \hbox (0.84557pt too wide) in paragraph at lines 232--233
+[]\T1/futs/m/n/10.95 Retroperspective Mee-ting (En-de vom Pro-jekt): Was h‰t-te man bes-ser ma-chen kˆn-
  []
 
-[7] [8] [9] [10] [11]
-Overfull \hbox (34.08783pt too wide) in paragraph at lines 378--394
-[]\T1/futs/m/n/10.95 Lemma 2.2.33: Es sei $\FMS/futm/m/n/10.95 r\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 6Å \T1/futs/m/n/10.95 0$. Dann lˆst der Vek-tor $\FML/futmi/m/it/10.95 d \FMS/futm/m/n/10.95 Å ^^@[]$ \T1/futs/m/n/10.95 das Pro-blem $[]\FMS/futm/m/n/10.95 hr\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x\T1/futs/m/n/10.95 )\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i$
+[6] [7]
+Overfull \hbox (3.0356pt too wide) in paragraph at lines 252--253
+\T1/futs/m/n/10.95 (hˆchs-te Qua-li-t‰t, groˇe Grup-pen, ...), be-nˆ-tigt viel Ar-beit und Dis-zi-plin (nicht
  []
 
-[12]
-Overfull \hbox (16.37181pt too wide) in paragraph at lines 411--412
-\T1/futs/m/n/10.95 ent-fernt liegt, ist $\FML/futmi/m/it/10.95 D[]f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/10.95 )$ nicht not-wen-di-ger-wei-se po-si-tiv de-fi-nit und die Newton-Richtung
- []
-
-[13] [14]
-Overfull \hbox (3.60352pt too wide) in paragraph at lines 463--464
-[]\T1/futs/m/n/10.95 Lemma 2.2.57: Es sei-en $\FML/futmi/m/it/10.95 d[]; :::; d[]$ \T1/futs/m/n/10.95 paar-wei-se kon-ju-giert be-z¸g-lich $\FML/futmi/m/it/10.95 A$ \T1/futs/m/n/10.95 und $\FML/futmi/m/it/10.95 x[]; :::; x[]$ \T1/futs/m/n/10.95 schon
- []
-
-
-Overfull \hbox (16.95476pt too wide) in paragraph at lines 464--479
-[]\T1/futs/m/n/10.95 Satz 2.2.58: Un-ter den Vor-raus-set-zun-gen von Lem-ma 2.2.57 ist die Rich-tung $\FML/futmi/m/it/10.95 d[] \FMS/futm/m/n/10.95 Å ^^@r\FML/futmi/m/it/10.95 q\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Ä
- []
-
-[15] [16]
-Overfull \hbox (34.07785pt too wide) in paragraph at lines 542--543
-[]\T1/futs/m/n/10.95 Definition 3.1.7 ƒu-ˇe-rer Li-nea-ri-sie-rungs-ke-gel: F¸r $[] \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 heiˇt $\FML/futmi/m/it/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å f\FML/futmi/m/it/10.95 d \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]\FMS/futm/m/n/10.95 jhr\FML/futmi/m/it/10.95 g[]\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i ^^T
- []
-
-
-Overfull \hbox (36.90295pt too wide) in paragraph at lines 543--544
-[]\T1/futs/m/n/10.95 Definition 3.1.11 In-ne-rer Li-nea-ri-sie-rungs-ke-gel: F¸r $[] \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]$ \T1/futs/m/n/10.95 heiˇt $\FML/futmi/m/it/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 Å f\FML/futmi/m/it/10.95 d \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R[]\FMS/futm/m/n/10.95 jhr\FML/futmi/m/it/10.95 g[]\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; d\FMS/futm/m/n/10.95 i Ç
- []
-
-[17]
-Overfull \hbox (10.82518pt too wide) in paragraph at lines 556--557
-[]\T1/futs/m/n/10.95 Satz 3.1.24 F¸r al-le $[] \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 M$ \T1/futs/m/n/10.95 gilt die In-klu-si-ons-ket-te $\FML/futmi/m/it/10.95 L[]\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^R \FML/futmi/m/it/10.95 T\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^R \FML/futmi/m/it/10.95 C\T1/futs/m/n/10.95 ([]\FML/futmi/m/it/10.95 ; M\T1/futs/m/n/10.95 ) \FMS/futm/m/n/10.95 ^^R
- []
-
-Missing character: There is no n in font fourier-bb!
-[18] [19]
-Overfull \hbox (17.3235pt too wide) in paragraph at lines 631--632
-[]\T1/futs/m/n/10.95 Die Men-ge der glo-ba-len Mi-ni-mal-punk-te von $\FML/futmi/m/it/10.95 P$ \T1/futs/m/n/10.95 stimmt mit der Men-ge $\FMS/futm/m/n/10.95 f[] 2 \FML/futmi/m/it/10.95 M\FMS/futm/m/n/10.95 jh\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; x \FMS/futm/m/n/10.95 ^^@
- []
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 641.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 641.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 642.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 642.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 643.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 643.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 643.
-
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 643.
-
-[20]
-
-LaTeX Warning: Command \i invalid in math mode on input line 650.
-
-
-Overfull \hbox (30.62932pt too wide) in paragraph at lines 650--651
-\T1/futs/m/n/10.95 Mul-ti-pli-ka-to-ren $\FML/futmi/m/it/10.95 ^^T \FMS/futm/m/n/10.95 ^^U \T1/futs/m/n/10.95 0\FML/futmi/m/it/10.95 ; ^^U[] \FMS/futm/m/n/10.95 ^^U \T1/futs/m/n/10.95 0\FML/futmi/m/it/10.95 ; \T1/futs/m/n/10.95 ^^Y \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 I[]\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; u[] \FMS/futm/m/n/10.95 2 \U/futm/m/n/10.95 R\FML/futmi/m/it/10.95 ; j \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 J$\T1/futs/m/n/10.95 , nicht al-le null, mit $\FML/futmi/m/it/10.95 ^^T\FMS/futm/m/n/10.95 r\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n/10.95 Ä [] \FML/futmi/m/it/10.95 ^^U[]\FMS/futm/m/n/10.95 r\FML/futmi/m/it/10.95 g[]\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n/10.95 Ä
- []
-
-
-Overfull \hbox (40.46492pt too wide) in paragraph at lines 651--652
-[]\T1/futs/m/n/10.95 Definition 3.2.40 Mangasarian-Fromowitz-Bedingung: Der Punkt $[] \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 M$ \T1/futs/m/n/10.95 er-f¸llt die Mangasarian-
- []
-
-
-Overfull \hbox (53.41875pt too wide) in paragraph at lines 657--658
-[]\T1/futs/m/n/10.95 Definition 3.2.42 Lineare-Unabh‰ngigkeits-Bedingung: An $[] \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 M$ \T1/futs/m/n/10.95 gilt die Lineare-Unabh‰ngigkeits-
- []
-
-
-Overfull \hbox (22.221pt too wide) in paragraph at lines 664--665
-\T1/futs/m/n/10.95 (KKT-Punkt) von $\FML/futmi/m/it/10.95 P$\T1/futs/m/n/10.95 . Die Ko-ef-fi-zi-en-ten $\FML/futmi/m/it/10.95 ^^U[]; i \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 I[]\T1/futs/m/n/10.95 ([])$, und $\FML/futmi/m/it/10.95 ^^V[]; j \FMS/futm/m/n/10.95 2 \FML/futmi/m/it/10.95 J$\T1/futs/m/n/10.95 , hei-ˇen KKT-Multiplikatoren. 
- []
-
-
-Overfull \hbox (2.16046pt too wide) in paragraph at lines 665--676
-[]\T1/futs/m/n/10.95 Korollar 3.2.48: Es sei $[]$ ein lo-ka-ler Mi-ni-mal-punkt von $\FML/futmi/m/it/10.95 P$\T1/futs/m/n/10.95 , an dem die Funk-tio-nen $\FML/futmi/m/it/10.95 f; g[]; i \FMS/futm/m/n/10.95 2
- []
-
-[21]
-Overfull \hbox (1.20686pt too wide) in paragraph at lines 694--695
-[]\T1/futs/m/n/10.95 Definition 3.2.62 Nicht-de-ge-ne-rier-ter kri-ti-scher Punkt ei-nes re-strin-gier-ten Pro-blems: F¸r
- []
-
-[22]
-Overfull \hbox (4.79393pt too wide)ten Pro-blems: F¸r
- []
-
-[22]
-Overfull \hbox (4.79393pt too wide) in paragraph at lines 703--704
-[]\T1/futs/m/n/10.95 Korollar 3.2.67: Ein KKT-Punkt $[]$ von $\FML/futmi/m/it/1
-0.95 P$ \T1/futs/m/n/10.95 mit Mul-ti-pli-ka-to-ren $[]\FML/futmi/m/it/10.95 ; 
-[]$ \T1/futs/m/n/10.95 er-f¸l-le $\FML/futmi/m/it/10.95 d[]D[]L\T1/futs/m/n/10.
-95 ([]\FML/futmi/m/it/10.95 ; []; []\T1/futs/m/n/10.95 )\FML/futmi/m/it/10.95 d
- \FMS/futm/m/n/10.95 É
- []
-
-
-Overfull \hbox (4.38051pt too wide) in paragraph at lines 711--712
-[]\FMS/futm/m/n/10.95 r\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([]) \FMS/futm
-/m/n/10.95 Ä [] []r\FML/futmi/m/it/10.95 f[]\T1/futs/m/n/10.95 ([]) \FMS/futm/m
-/n/10.95 Ä [] []r\FML/futmi/m/it/10.95 h[]\T1/futs/m/n/10.95 ([]) \FMS/futm/m/n
-/10.95 Å \T1/futs/m/n/10.95 0$ und so, dass die Vek-to-ren $[]\FMS/futm/m/n/10.
-95 r\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 ([])\FML/futmi/m/it/10.95 ; []\FM
-S/futm/m/n/10.95 r\FML/futmi/m/it/10.95 g[]\T1/futs/m/n/10.95 ([])\FML/futmi/m/
-it/10.95 ; i \FMS/futm/m/n/10.95 2
- []
-
-[23]
-Overfull \hbox (14.33496pt too wide) in paragraph at lines 746--747
-[]\T1/futs/m/n/10.95 Primal-duale Ver-fah-ren ver-su-chen hin-ge-gen, di-rekt d
-as Karush-Kuhn-Tucker-System
- []
-
-
-Overfull \hbox (11.54532pt too wide) in paragraph at lines 759--760
-[]\T1/futs/m/n/10.95 Nun kann man ver-su-chen, an-stel-le von $\FML/futmi/m/it/
-10.95 P$ \T1/futs/m/n/10.95 das un-re-strin-gier-te Mehr-ziel-pro-blem $[] []$
- []
-
-[24] [25] [26]
-Overfull \hbox (19.0616pt too wide) in paragraph at lines 829--830
-[]\T1/futs/m/n/10.95 F¸r zwei Ite-rier-te $\FML/futmi/m/it/10.95 x[]$ \T1/futs/
-m/n/10.95 und $\FML/futmi/m/it/10.95 x[]$ \T1/futs/m/n/10.95 do-mi-niert das Pa
-ar $(\FML/futmi/m/it/10.95 f\T1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x[]\T1/fu
-ts/m/n/10.95 )\FML/futmi/m/it/10.95 ; []\T1/futs/m/n/10.95 (\FML/futmi/m/it/10
-.95 x[]\T1/futs/m/n/10.95 ))$ das Paar $(\FML/futmi/m/it/10.95 f\T1/futs/m/n/10
-.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/10.95 )\FML/futmi/m/it/10.95 ; []\T
-1/futs/m/n/10.95 (\FML/futmi/m/it/10.95 x[]\T1/futs/m/n/10.95 ))$,
- []
-
-
-Overfull \hbox (1.72047pt too wide) in paragraph at lines 838--839
-[]\T1/futs/m/n/10.95 Quadratische Op-ti-mie-rungs-pro-ble-me tre-ten h‰u-fig al
-s Hilfs-pro-ble-me auf, et-wa das Pro-
- []
-
-! Undefined control sequence.
-l.839   \item Satz 3.3.23: Es sei $L \suqq
-                                           0$ und f√ºr alle $k$ besitze das ...
-
-? 
-! Emergency stop.
-l.839   \item Satz 3.3.23: Es sei $L \suqq
-                                           0$ und f√ºr alle $k$ besitze das ...
-End of file on the terminal!
-
- 
+[8] (./swt2.aux) ) 
 Here is how much of TeX's memory you used:
- 7886 strings out of 493117
- 112914 string characters out of 6135433
- 316823 words of memory out of 5000000
- 11131 multiletter control sequences out of 15000+600000
- 105426 words of font info for 119 fonts, out of 8000000 for 9000
+ 7812 strings out of 493117
+ 111806 string characters out of 6135433
+ 311817 words of memory out of 5000000
+ 11084 multiletter control sequences out of 15000+600000
+ 59958 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,12n,47p,783b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
-fourier/fourier-ms.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on zusammenfassung_nlo.pdf (27 pages, 201331 bytes).
+ 47i,10n,47p,499b,395s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
+Output written on swt2.pdf (8 pages, 263012 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

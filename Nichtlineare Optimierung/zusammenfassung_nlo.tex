@@ -620,4 +620,224 @@ Df_m(\bar{x})
   \item Korollar 3.2.24: Es seien $g_i(x) = a^T_i x + b_i, 1 \le i \le p$, und $\bar{x}$ sei ein lokaler Minimalpunkt von $P$, an dem $f$ differenzierbar ist. Dann existieren Multiplikatoren $\lambda_i \ge 0, i \in I_0(\bar{x})$, mit $\nabla f(\bar{x}) + \sum\limits_{i \in I_0(\bar{x})} \lambda_i a_i = 0$. Dabei kann man die $\lambda_i$ so wählen, dass $|\{i \in I_0(\bar{x}) | \lambda_i > 0\}| \le n$ gilt.
 \end{itemize}
 
+\subsubsection{Trennungssatz}
+
+\begin{itemize}
+  \item Lemma 3.2.25: Es seien $X \subseteq \mathbb{R}^n$ eine nichtleere abgeschlossene Menge und $z \in \mathbb{R}^n$, dann ist das Projektionsproblem $Pr(z,X)$ lösbar.
+  \item Satz 3.2.26: Es seien $X \subseteq \mathbb{R}^n$ eine nichtlineare, abgeschlossene und konvexe Menge sowie $z \in \mathbb{R}^n$. Dann besitzt das Problem $Pr(z,X)$ einen eindeutigen globalen Minimalpunkt.
+  \item Satz 3.2.27 Variationsformulierung konvexer Probleme: Die Menge $M \subseteq \mathbb{R}^n$ und die Funktion $f \in C^1(M,\mathbb{R})$ seien konvex. Dann gelten die folgenden Aussagen
+  \begin{itemize}
+    \item Der Punkt $\bar{x} \in \mathbb{R}^n$ ist genau dann globaler Minimalpunkt von $P: min f(x)$ s.t. $x \in M$, wenn $\bar{x}$ globaler Minimalpunkt von $\tilde{P}_{lin}(\bar{x}): \min\limits_x \langle nabla f(\bar{x}),x-\bar{x} \rangle$ s.t. $x \in M$ ist.
+    \item Die Menge der globalen Minimalpunkte von $P$ stimmt mit der Menge $\{ \bar{x} \in M | \langle f(\bar{x}),x-\bar{x} \rangle \ge 0$ für alle $x \in M\}$ überein.
+    \item Definition 3.2.28 Normalenkegel an konvexen Mengen: Für eine konvexe Menge $X \subseteq \mathbb{R}^n$ und $\bar{x} \in X$ heißt $N(\bar{x},X) := \{s \in \mathbb{R}^n | \langle s,x-\bar{x} \rangle \le 0$ für alle $x \in X\}$ Normalenkegel an $X$ in $\bar{x}$. Die Elemente $s$ des Normalenkegels $N(\bar{x},X)$ nennt man auch (äußere) Normalenrichtungen an $X$ in $\bar{x}$.
+    \item Korollar 3.2.30: Die Menge $M \subseteq \mathbb{R}^n$ und die Funktion $f \in C^1(M,\mathbb{R})$ seien konvex. Dann ist $\bar{x} in \mathbb{R}^n$ genau dann globaler Minimalpunkt von $P: min f(x)$ s.t. $x \in M$, wenn die Bedingungen $\bar{x} \in X$ und $- \nabla f(\bar{x}) \in N(bar{x},X)$ erfüllt sind.
+    \item Satz 3.2.31 Projektionslemma: Es seien $X  \subseteq \mathbb{R}^n$ eine nichtleere, abgeschlossene und konvexe Menge sowie $z \in \mathbb{R}^n$. Dann ist der eindeutige Minimalpunkt $pr(z,X)$ des Projektionsproblems $Pr(z,X): min ||x-z||_2$ s.t. $x \in X$ gleichzeitig die eindeutige Lösung der Bedingungen $x \in X$ und $z \in x + N(x,X)$.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Normalenkegel}
+
+\begin{itemize}
+  \item Definition 3.2.33 Polarkegel: Für eine Menge $A \subseteq \mathbb{R}^n$ heißt $A° = \{ s \in \mathbb{R}^n | \langle s,d\rangle \le 0$ für alle $d \in A\}$ Polarkegel von $A$.
+  \item Definition 3.2.34 Normalenkegel an beliebige Mengen: Für eine Menge $X \subseteq \mathbb{R}^n$ und $\bar{x} \in X$ heißt $N(\bar{x},X) = C°(\bar{x},X)$ Normalenkegel an $X$ in $\bar{x}$. Die Elemente $s$ des Normalenkegel $N(\bar{x},X)$ heißen wieder (äußere) Normalenrichtungen an $X$ in $\bar{x}$.
+  \item Satz 3.2.35: Für jede konvexe Menge $X \subseteq \mathbb{R}^n$ und $\bar{x} \in X$ gilt $(X - \bar{x})° = C°(\bar{x},X)$.
+\end{itemize}
+
+\subsubsection{Optimalitätsbedingungen erster Ordnung mit Gleichungsresktriktionen}
+
+\begin{itemize}
+  \item zulässige Menge von $P$ nun wieder durch $M = \{ x \in \mathbb{R}^n | g_i(x) \le 0, i \in I, h_j(x) = 0, j \in J\}$.
+  \item Satz 3.2.39 Satz von Fritz John: Es sei $\bar{x}$ ein lokaler Minimalpunkt von $P$, an dem die Funktionen $f, g_i, i \in I_0(\bar{x})$, und $h_j,j\in J$, stetig differenzierbar sind. Dann existieren Multiplikatoren $\kappa \ge 0, \lambda_i \ge 0, \i \in I_0(\bar{x}), u_j \in \mathbb{R}, j\in J$, nicht alle null, mit $\kappa \nabla f(\bar{x}) + \sum\limits_{i \in I_0(\bar{x})} \lambda_i \nabla g_i(\bar{x}) + \sum\limits_{j \in J} u_j \nabla h_j(\bar{x}) = 0$. Dabei kann man $\kappa$ und die $\lambda_i$ so wählen, dass entweder $\kappa > 0$ und $|\{i\in I_0(\bar{x}) | \lambda_i > 0 \}| \ge n-q$ gilt oder $\kappa = 0$ und $|\{i \in I_0(\bar{x}) | \lambda_i > 0 \}| \le n-q+1$.
+  \item Definition 3.2.40 Mangasarian-Fromowitz-Bedingung: Der Punkt $\bar{x} \in M$ erfüllt die Mangasarian-Fromowitz-Bedingung (MFB), falls folgende Bedingungen gelten
+  \begin{itemize}
+    \item Die Vektoren $\nabla h_j(\bar{x}), j \in J$ sind linear unabhängig.
+    \item Es existiert ein $d \in \mathbb{R}^n$ mit $\langle g_i(\bar{x}),d \rangle < 0, i \in I_0(\bar{x}), \langle \nabla h_j(\bar{x}),d \rangle = 0, j \in J$.
+  \end{itemize}
+  \item Satz 3.2.41 Satz von Karush-Kuhn-Tucker: Es sei $\bar{x}$ ein lokaler Minimalpunkt von $P$, an dem die Funktionen $f, g_i, i \in I_0(\bar{x})$ und $h_j, j \in J$ stetig differenzierbar sind, und an $\bar{x}$ gelte die MFB. Dann existieren Multiplikatoren $\lambda_i \ge 0, i \in I_0(\bar{x}), u_j \in \mathbb{R}, j \in J$ mit $\nabla f(\bar{x}) + \sum\limits_{i \in I_0(\bar{x})} \lambda_i \nabla g_i(\bar{x}) + \sum\limits_{j \in J} u_j \nabla h_j(\bar{x}) = 0$. Dabei kann man die $\lambda_i$ so wählen, dass $|\{ i \in I_0(\bar{x}) | \lambda_i > 0 \}| \le n-q$ gilt.
+  \item Definition 3.2.42 Lineare-Unabhängigkeits-Bedingung: An $\bar{x} \in M$ gilt die Lineare-Unabhängigkeits-Bedingung (LUB), falls die Vektoren $\nabla g_i(\bar{x}), i \in I_0(\bar{x}), \nabla h_j(\bar{x}), j \in J$, also die Gradienten aller in $\bar{x}$ aktiven Resktionen, linear unabhängig sind.
+  \item Satz 3.2.43: Die LUB an $\bar{x}$ impliziert die MFB an $\bar{x}$.
+\end{itemize}
+
+\subsubsection{Karush-Kuhn-Tucker-Punkte}
+
+\begin{itemize}
+  \item Definition 3.2.47 Karush-Kuhn-Tucker-Punkt: Zu $\bar{x} \in M$ gebe es $\lambda_i \ge 0, i \in I_0(\bar{x}), \mu_j, j\in J$ mit $\nabla f(\bar{x}) + \sum\limits_{i \in I_0(\bar{x})} \lambda_i \nabla g_i(\bar{x}) + \sum\limits_{j \in J} \mu_j \nabla h_j(\bar{x}) = 0$. Dann heißt $\bar{x}$ Karush-Kuh-Tucker-Punkt (KKT-Punkt) von $P$. Die Koeffizienten $\lambda_i, i \in I_0(\bar{x})$, und $\mu_j, j \in J$, heißen KKT-Multiplikatoren.
+  \item Korollar 3.2.48: Es sei $\bar{x}$ ein lokaler Minimalpunkt von $P$, an dem die Funktionen $f, g_i, i \in I_0(\bar{x})$ und $h_j. j \in J$, stetig differenzierbar sind, und an $\bar{x}$ gelte die LUB. Dann ist $\bar{x}$ ein KKT-Punkt von $P$ mit eindeutigen KKT-Multiplikatoren.
+  \begin{algorithm}
+  \caption{Konzeptioneller Algorithmus zur restringierten nichtlinearen Minimierung mit Informationen erster Ordnung}
+  \begin{algorithmic}[1]
+    \Require Lösbares restringiertes $C^1$-Optimierungsproblem $P$
+    \Ensure Globaler Minimalpunkt $x^*$ von $P$
+    \State Bestimme die Menge $LA$ der Punkte in $M$, an denen die LUB verletzt ist.
+    \State Bestimme unter den Punkten in $M$, an denen die LUB erfüllt ist, die MEnge $KKT$ aller KKT-Punkte.
+    \State Bestimme einen Minimalpunkt $x^*$ von $f$ in in $LA \cup KKT$.
+  \end{algorithmic}
+  \end{algorithm}
+  \item Definition 3.2.50 Strikte Komplementaritätsbedingung: Am KKT-Punkt $\bar{x}$ gelte die LUB, und zu $\bar{x}$ sei $(\bar{\lambda}_{I_0},\bar{\mu})$ die eindeutige Lösung von (3.8). Dann gilt an $\bar{x}$ die strikte Komplementaritätsbedingung (SKB), falls $\bar{\lambda_i} > 0$ für alle $i \in I_0(\bar{x})$ erfüllt ist.
+  \item Definition 3.2.52 Lagrange-Funktion: Die Funktion $L: \mathbb{R}^n \times \mathbb{R}^p \times \mathbb{R}^q \rightarrow \mathbb{R}, (x,\lambda,\mu) \mapsto	f(x) + \sum\limits_{i \in I} \lambda_i g_i(x) + \sum\limits_{j \in J} u_j h_j(x)$ heißt Lagrange-Funktion von $P$.
+\end{itemize}
+
+\subsubsection{Optimalitätsbedingungen zweiter Ordnung}
+
+\begin{itemize}
+  \item $ 0 = \mathcal{J}(x,\lambda,\mu) := \begin{pmatrix} \nabla_x L(x,\lambda,\mu) \\ diag(\lambda) \cdot \nabla_\nabla L(x,\lambda,\mu) \\ \nabla_\mu L(x,\lambda,\mu)\end{pmatrix}$.
+  \item Definition 3.2.55 Kritischer Punkt eines restringierten Problems: Ein Punkt $\bar{x} \in M$, der mit Multiplikatoren $\bar{\lambda}$ und $\bar{\mu}$ die Gleichung $\mathcal{J}(\bar{x},\bar{\lambda},\bar{\mu}) = 0$ erfüllt, heißt kritischer Punkt vo n $P$.
+  \item Lemma 3.2.57: Es sei $\mathcal{J}(\bar{x},\bar{\lambda},\bar{\mu}) = 0$. Dann ist $D\mathcal{J}(\bar{x},\bar{\lambda},\bar{\mu})$ genau dann nichtsingulär, wenn $\bar{\lambda_i} \neq 0$ für alle $i \in I_0(\bar{x})$ gilt und wenn die Matrix $\begin{pmatrix} D^2_x L(\bar{x},\bar{\lambda},\bar{\mu}) & \nabla g_{I_0}(\bar{x}) & \nabla h(\bar{x}) \\ Dg_{I_0}(\bar{x}) & 0 & 0 \\ Dh(\bar{x}) & 0 & 0\end{pmatrix}$ nichtsingulär ist.
+  \item Definition 3.2.58 Einschränkung einer Matrix: Die $(m-n,m-n)$-Matrix $A|_{kernB^T} := V^TAV$ heißt Einschränkung von $A$ auf kern$B^T$.
+  \item Lemma 3.2.60 Strukturlemma: Für eine $(n,n)$-Matrix $A$ und eine $(n,m)$-Matrix $B$ ist die Blockmatrix $\begin{pmatrix}A & B \\ B^T & 0\end{pmatrix}$ genau dann nichtsingulär, wenn $rang(B) = m$ gilt und wenn $A|_{kernB^T}$ nichtsingulär ist.
+  \item Satz 3.2.61: Es sei $\mathcal{J}(\bar{x},\bar{\lambda},\bar{\mu}) = 0$. Dann ist $D \mathcal{J}(\bar{x},\bar{\lambda},\bar{\mu})$ genau dann nichtsingulär, wenn die folgenden drei Bedingungen gleichzeitig gelten
+  \begin{itemize}
+    \item An $\bar{x}$ gilt die LUB.
+    \item Es gilt $\bar{\lambda}_i \neq 0$ für alle $i \in I_0(\bar{x})$.
+    \item Die Matrix $D^2_x L(\bar{x},\bar{\lambda},\bar{\mu})|_{T(\bar{x},M)}$ ist nichtsingulär.
+  \end{itemize}
+  \item Definition 3.2.62 Nichtdegenerierter kritischer Punkt eines restringierten Problems: Für einen kritischen Punkt $\bar{x}$ von $P$ mit Multiplikatoren $\bar{\lambda}, \bar{\mu}$ seien die Bedingungen a, b und c aus Satz 3.2.61 erfüllt. Dann heißt $\bar{x}$ nichtdegnerierter kritischer Punkt von $P$.
+  \item Definition 3.2.64 Nichtdegenerierter Minimalpunkt eines restringierten Problems: Ein KKT-Punkt $\bar{x}$ von $P$ mit Multiplikatoren $\bar{\lambda},\bar{\mu}$ erfülle die folgenden Bedingungen
+  \begin{itemize}
+    \item An $\bar{x}$ gilt die LUB.
+    \item An $\bar{x}$ gilt die SKB.
+    \item Die Matrix $D^2_x L(\bar{x},\bar{\lambda},\bar{\mu})|_{T(\bar{x},M)}$ ist positiv definit.
+  \end{itemize}
+  Dann heißt $\bar{x}$ nichtdegenerierter lokaler Minimalpunkt von $P$.
+  \item Satz 3.2.66 Hinreichende Optimalitätsbedingung zweiter Ordnung: Jeder nichtdegenerierte lokale Minimalpunkt ist strikter lokaler Minimalpunkt von $P$.
+  \item Korollar 3.2.67: Ein KKT-Punkt $\bar{x}$ von $P$ mit Multiplikatoren $\bar{\lambda},\bar{\mu}$ erfülle $d^TD^2_xL(\bar{x},\bar{\lambda},\bar{\mu})d > 0$ für alle $d \in K(\bar{x},M) \setminus \{ 0 \}$. Dann ist $\bar{x}$ strikter lokaler Minimalpunkt von $P$.
+  \item Korollar 3.2.68 Hinreichende Optimalitätsbedingung erster Ordnung: Ein KKT-Punkt $\bar{x}$ von $P$ erfülle die folgenden Bedingungen
+  \begin{itemize}
+    \item An $\bar{x}$ gilt die LUB.
+    \item An $\bar{x}$ gilt die SKB.
+    \item Es gilt $p_0 + q = n$.
+  \end{itemize}
+  Dann ist $\bar{x}$ strikter lokaler Minimalpunkt von $P$.
+  \item Satz 3.2.69: Zu $\bar{x} \in M$ gebe es Multiplikatoren $\bar{\kappa} \ge 0, \bar{\lambda}_i \ge 0, i \in I_0(\bar{x}), \bar{\mu}_j \in \mathbb{R}, j \in J$ mit $\bar{\kappa} \nabla f(\bar{x}) + \sum\limits_{i \in I_0(\bar{x})} \bar{\lambda}_i \nabla f_i(\bar{x}) + \sum\limits_{j \in J} \bar{\mu}_j \nabla h_j(\bar{x}) = 0$ und so, dass die Vektoren $\bar{\kappa} \nabla f(\bar{x}), \bar{\lambda}_i \nabla g_i(\bar{x}), i \in I_0(\bar{x}), \bar{\mu}_j \nabla h_j(\bar{x}), j \in J$, gemeinsam den Rang $n$ besitzen. Dann ist $\bar{x}$ ein strikter lokaler Minimalpunkt von $P$.
+  \item Satz 3.2.70 Notwendige Optimalitätsbedingung zweiter Ordnung: Es sei $\bar{x}$ ein lokaler Minimalpunkt von $P$, und an $\bar{x}$ sei die LUB erfüllt. Dann gilt:
+  \begin{itemize}
+    \item $\bar{x}$ ist KKT-Punkt von $P$ mit eindeutigen Multiplikatoren $\bar{\lambda} \ge 0 und \bar{\mu}$.
+    \item Die Matrix $D^2_x L(\bar{x},\bar{\lambda},\bar{\mu})|_{t(\bar{x},M)}$ ist positiv semidefinit.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Konvexe Optimierungsprobleme}
+
+\begin{itemize}
+  \item Das restringierte Optimierungsproblem $P: min f(x)$ s.t. $x \in M$ heißt konvex, falls die Menge $M \subseteq \mathbb{R}^n$ und die Funktion $f: M \rightarrow \mathbb{R}$ konvex sind.
+  \item Definition 3.2.73 Konvex beschriebene Menge: Wir nennen eine mit beliebigen Indexmengen $I$ und $J$ durch Ungleichungen und Gleichungen gegebene Menge $M = \{ x \in \mathbb{R}^n | g_i(x) \le 0, i \in I, h_j(x) = 0, j \in J\}$ konvext beschrieben, wenn die Funktionen $g_i: \mathbb{R}^n \rightarrow \mathbb{R}, i \in I$ konvex und die Funktionen $h_j: \mathbb{R}^n \rightarrow \mathbb{R}, j \in J$ affin-linear sind.
+  \item Definition 3.2.74 Slater-Bedingung: Die Menge $M \subseteq \mathbb{R}^n$ sei konvex beschrieben. Dann erfüllt $M$ die Slater-Bedingung (SB), falls die folgendenen beiden Bedingungen erfüllt sind:
+  \begin{itemize}
+    \item Es gilt $rang(A) = q$
+    \item Es gibt einen Punkt $x^* \in \mathbb{R}^n$ mit $g(x^*) < 0$ und $h(x^*) = 0$.
+  \end{itemize}
+  \item Satz 3.2.75: Die Menge $M \subseteq \mathbb{R}^n$ sei konvex beschrieben, nichtleer, und die Funktionen $g_i: \mathbb{R}^n \rightarrow \mathbb{R}, i \in I$, seien zusätzlich stetig differenzierbar. Dann sind die folgenden Aussagen äquivalent:
+  \begin{itemize}
+    \item Die MFB gilt überall in $M$
+    \item Die MFB gilt irgendwo in $M$
+    \item $M$ erfüllt die $SB$
+  \end{itemize}
+  \item Korollar 3.2.76: Das Problem $P$ sei konvex und $M$ erfülle die $SB$. Dann ist jeder lokale Minimalpunkt von $P$ KKT-Punkt.
+  \item Satz 3.2.77: Der Punkt $\bar{x}$ sei ein KKT-Punkt des konvexen Problems $P$. Dann ist $\bar{x}$ ein globaler Minimalpunkt von $P$.
+  \item Charakterisierung für globale Minimalpunkte konvexer Probleme $P$: $\bar{x}$ globaler Minimalpunkt $\xrightarrow{\text{SB}} \bar{x}$ KKT-Punkt $\rightarrow \bar{x}$ globaler Minimalpunkt.
+\end{itemize}
+
+\subsection{Numerische Verfahren}
+
+\begin{itemize}
+  \item Dieser Abschnitt behandelt einige numberische Verfahren zur Lösung des Problems $P: \min\limits_{x \in \mathbb{R}^n} f(x)$ s.t. $g_i(x) \le 0, i \in I, h_j(x) = 0, j \in J$ mit hinreichend glatten Funktionen $f, g$ und $h$. Wir unterscheiden im Wesentlichen zwei Klassen numberischer Verfahren für $P$
+  \begin{itemize}
+    \item Auf der sukzessiven Approximation von $P$ durch unrestringierte Optimerungsprobleme basieren das Straftermverfahren, das Multiplikationsverfahren und das Barriereverfahren. Solche Verfahren werden auch primal genannt.
+    \item Primal-duale Verfahren versuchen hingegen, direkt das Karush-Kuhn-Tucker-System von $P$ zu lösen. Hierzu zählen die primal-dualen Innere-Punkte-Methoden und das SQP-Verfahren.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Straftermverfahren}
+
+\begin{itemize}
+  \item Grundidee von Straftermverfahren ist es, neben der Minimierung der Zielfunktion $f$ die Zulässigkeit eines Punkts (also die Forderung $x \in M$) als ein zweites Ziel zu formulieren. Dazu bedient man sich des folgenden Konzepts
+  \item Definition 3.3.1 Straftermfunktion: Eine Funktion $\alpha: \mathbb{R}^n \rightarrow \mathbb{R}$ heißt Straftermfunktion für $M \subseteq \mathbb{R}^n$, falls folgende Bedingungen erfüllt sind
+  \begin{itemize}
+    \item Für alle $x \in M$ gilt $\alpha(x) = 0$
+    \item Für alle $x \in M^c$ gilt $\alpha(x) > 0$
+  \end{itemize}
+  \item Nun kann man versuchen, anstelle von $P$ das unrestringierte Mehrzielproblem $\min\limits_x \begin{pmatrix} f(x) \\ \alpha(x)\end{pmatrix}$ zu lösen.
+  \item Das Straftermverfahren bedient sich des Skalarisierungsansatzes zur Lösung des Mehrzielproblems, d.h. minimiert wird eine gewichtete Summe der beiden Zielfunktionen $f$ und $\alpha$.
+  \item $P(t): \min\limits_{x \in \mathbb{R}^n} f(x) + t \cdot \alpha(x)$
+  \item Satz 3.3.6: Die Funktion $\alpha : \mathbb{R}^n \rightarrow \mathbb{R}$ sei eine stetige Straftermfunktion für $M, (t^k)$ sei eine monoton wachsende Folge mit $lim_k t^k = + \infty$, und für alle $k \in \mathbb{N}$ sei $x^k$ ein globaler Minimalpunkt von $P(t^k)$. Dann ist jeder Häufungspunkt $x^*$ von $(x^k)$ ein globaler Minimalpunkt von $P$.
+  \begin{algorithm}
+  \caption{Straftermverfahren}
+  \begin{algorithmic}[1]
+    \Require Lösbares restringiertes $C^1$-Optimierungsproblem $P$ und stetige Straftermfunktion von $\alpha$
+    \Ensure Approximiertes $\bar{x}$ eines globalen Minimalpunkts von $P$ (falls das Verfahren terminiert)
+    \State Wähle einen Parameter $t^0 > 0$, einen Startpunkt $x^0 \in \mathbb{R}^n$, eine Toleranz $\epsilon > 0$, einen Faktor $\rho > 1$ und setze $k = 0$
+    \Repeat
+    \State Ersetze $k$ durch $k+1$
+    \State Setze $t^k = \rho t^{k-1}$
+    \State Bestimme vom Startpunkt $x^{k-1}$ aus einen globalen Minimalpunkt $x^k$ von $P(t^k): min f(x) + t^k \alpha(x)$
+    \Until {$t^k \alpha(x^k) < \epsilon$}
+    \State Setze $\bar{x} = x^k$
+  \end{algorithmic}
+  \end{algorithm}
+  \item Satz 3.3.8: Es sei $\bar{x}$ ein nichtdegenerierter lokaler Minimalpunkt von $P$ mit Multiplikatoren $\bar{\lambda},\bar{\mu}$. Dann ist $\bar{x}$ für alle $t > ||(\bar{\lambda}_{I_0}, \bar{\mu})||_\infty (= max \{ \bar{\lambda}_i, i \in I_0(\bar{x}),|\bar{\mu}_j|, j \in J)$ auch lokaler Minimalpunkt von $P_1(t)$
+\end{itemize}
+
+\subsubsection{Multiplikatorenverfahren}
+
+\begin{itemize}
+  \item Satz 3.3.10: Es sei $\bar{x}$ ein nichtdegenerierter lokaler Minimalpunkt von $P$ mit Multiplikator $\bar{\mu}$. Dann existiert ein $\bar{t} > 0$, so dass $\bar{x}$ für alle $t > \bar{t}$ ein strikter lokaler Minimalpunkt von $\pi(x,t,\bar{\mu}) := L(x,\bar{\mu}) + t||h(x)||^2_2$ ist.
+\end{itemize}
+
+\subsubsection{Barriereverfahren}
+
+\begin{itemize}
+  \item Definition 3.3.11 Barrierefunktion: Die Funktion $\beta: M_< \rightarrow \mathbb{R}$ heißt Barrierefunktion für $M$, falls für alle Folgen $(x^k) \subseteq M_<$ mit $lim_k x^k = \bar{x} \in bdM_<: \lim\limits_k \beta(x^k) = +\infty$ gilt.
+  \item Satz 3.3.13: Es gelte $M = cl(M_<), \beta$ sei steitg auf $M_<$ und für $t^k \searrow 0$ seien $x^k$ globale Minimalpunkte von $P(t^k)$. Dann ist jeder Häufungspunkt $x^*$ von $(x^k)$ globaler Minimalpunkt von $P$.
+  \begin{algorithm}
+  \caption{Barriereverfahren}
+  \begin{algorithmic}[1]
+    \Require Lösbares restringiertes $C^1$-Optimierungsproblem $P$ mit $J = \emptyset$ und $M_< \neq \emptyset$ sowie Barrierefunktion lösbares $\beta$
+    \Ensure Approximiertes $\bar{x}$ eines globalen Minimalpunkts von $P$ (falls das Verfahren terminiert)
+    \State Wähle einen Parameter $t^0 > 0$, einen Startpunkt $x^0 \in M_<$, eine Toleranz $\epsilon > 0$, einen Faktor $\rho \in (0,1)$ und setze $k = 0$
+    \Repeat
+    \State Ersetze $k$ durch $k+1$
+    \State Setze $t^k = \rho t^{k-1}$
+    \State Bestimme vom Startpunkt $x^{k-1}$ aus einen globalen Minimalpunkt $x^k$ von $P(t^k): min f(x) + t^k \beta(x)$
+    \Until {$t^k < \epsilon$}
+    \State Setze $\bar{x} = x^k$
+  \end{algorithmic}
+  \end{algorithm}
+  \item Satz 3.3.15: Bei Anwendung von Algorithmus Barrierefunktion auf ein $C^1$-Problem $P$ mit auf $\mathbb{R}^n$ kovexen Funktionen $f$ und $g_i, i \in I$, sowie mit der logarithmischen Barrierefunktion $\beta{x} = - \sum\limits_{i \in I} log(-g_i(x))$ erfüllt der generierte Punkt $\bar{x}$ die Ungleichungen $v_P \le f(\bar{x}) y v_P + p \epsilon$.
+\end{itemize}
+
+\subsubsection{Primal-duale Innerer-Punkte-Methoden}
+
+\begin{itemize}
+  \item Satz 3.3.17: Es sei $\bar{x}$ ein nichtdegenerierter lokaler Minimalpunkt von $P$ mit Multiplikator $\bar{\lambda}$. Dann gibt es eine Umbung $V$ von $0$ und $(C^{k-1})$-Funktionen $x(t), \lambda(t)$ auf $V$ mit $(x(0),\lambda(0)) = (\bar{x},\bar{\lambda}), \mathcal{J}(t,x(t),\lambda(t)) = 0$ für alle $t \in V$ sowie $g(x(t)) < 0$ und $\lambda(t) > 0$ für alle positiven $t \in V$.
+  \item Definition 3.3.18 Primal-dualer zentraler Pfad: Mit den Bezeichnungen aus Satz 3.3.17 heißt die Menge $C_{PD} = \{ (x(t),\lambda(t))|t \in V, t > 0 \}$ primal-dualer zentraler Pfad an $(\bar{x},\bar{\lambda})$.
+\end{itemize}
+
+\subsubsection{SQP-Verfahren}
+
+\begin{itemize}
+  \item Verfahren des Sequential Quadratic Programming (SQP) nutzen die Idee des Newton-Verfahrens, eine Lösung eines nichtlinearen Problems durch die sukzessive Lösung von Linearisierungen anzunähern.
+  \item Lemma 3.3.19: Es sei $\bar{x}$ ein nichtdegenerierter lokaler Minimalpunkt von $P$ mit Multiplikator $\bar{\mu}$, und der Startpunkt $(x_0,\mu_0)$ liege hinreichend nahe bei $(\bar{x},\bar{\mu})$. Dann konvergiert $(x^k,\mu^k)$ quadratisch gegen $(\bar{x},\bar{\mu})$.
+  \item Lemma 3.3.20: Für $d^k = 0$ ist $x^k$ KKT-Punkt von $P$.
+\end{itemize}
+
+\subsubsection{Meritfunktionen und Filter}
+
+\begin{itemize}
+  \item Satz 3.3.21: Es sei $L^k \succ 0$ und es sei $d^k \neq 0$ ein KKT-Punkt von $Q^k$ mit Multiplikatoren $\tau^k, \sigma^k$. Dann ist $d^k$ für alle $\rho \ge ||(\tau^k,\sigma^k)||_\infty$ eine Abstiegsrichtung erster Ordnung für $A_l(\rho,x) = f(x) + \rho \alpha_1(x)$ in $x^k$.
+  \item Definition 3.3.22 Filter
+  \begin{itemize}
+    \item Für zwei Iterierte $x^k$ und $x^\ell$ dominiert das Paar $(f(x^k),\alpha_1(x^k))$ das Paar $(f(x^\ell),\alpha_1(x^\ell))$, wenn sowohl $f(x^k) \le f(x^\ell)$ als auch $\alpha_1(x^k) \le \alpha_1(x^\ell)$ gilt.
+    \item Eine Liste von Paaren $(f(x^k),\alpha_1(x^k))$, von denen keines ein anderes dominiert, heißt Filter.
+    \item Eine Iterirte $x^{k+1}$ heißt akzeptabel, wenn das Paar $(f(x^{k+1}),\alpha_1(x^{k+1}))$ von keinem Filtereintrag dominiert wird.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Quadratische Optimierung}
+
+\begin{itemize}
+  \item Quadratische Optimierungsprobleme treten häufig als Hilfsprobleme auf, etwa das Problem $Q^k$ im SQP-Verfahren oder das Trust-Region-Hilfsproblem $TR^k$ mit einer polyedrischen Restriktion wie $||d||_\infty \le t^k$.
+  \item Satz 3.3.23: Es sei $L \succ 0$ und für alle $k$ besitze das Gleichungssystem in $Q^k$ vollen Rang. Dann findet die Aktive-Index-Methode die Lösung von $Q$ in endlich vielen Schritten.
+\end{itemize}
+
+
 \end{document}
