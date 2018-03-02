@@ -74,7 +74,7 @@
 
 \title{
 \normalfont \normalsize
-\textsc{Karlsruhe Institute of Technology} \\ [25pt] % Your university, school and/or department name(s)
+\textsc{Karlsruher Insitut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \huge Softwaretechnik II\\ Zusammenfassung WS17/18 % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
@@ -301,8 +301,148 @@ Modelle
   \begin{itemize}
     \item funktional oder nicht-funktional hat nichts mit Repräsentation zu tun
     \item werden in natürlicher Sprache gegeben
-    \item Guidelines: kurze Sätze (1 Anforderung pro Satz), klare Formulierung, klar machen wer zuständig ist, schwache Sachen vermeiden (effektiv, Nutzer-freundlich... unprüfbar), Glossar hilft
+    \item Guidelines: kurze Sätze (1 Anforderung pro Satz), klare Formulierung, klar machen wer zuständig ist, schwache Sachen vermeiden (effektiv, Nutzer-freundlich... unprüfbar), Glossar hilft (aber nicht als Selbstzweck), aktive Sprache (Akteure?)
   \end{itemize}
+  \item Schablonen verwenden: z.B. The system must/should/will <whom?> <objects> <process word>, Wortwiederholungen nicht wie normal vermeiden, bewusst das selbe gemeint klarmachen!
+  \item Natürliche Sprache bietet Vorteile, da sie von allen Stakeholdern verstanden wird, Diagramme o.ä. dagegen nicht unbedingt
+  \item Featurelisten: Requirements mit eindeutiger ID um verfolgbar zu sein, verwendbar für Entwurfsentscheidungen, Nachteil: unterschiedliches Abstraktionsniveau und manchmal Liste viel zu feingranular
+  \item heutzutage User Stories (agil) oder Use Cases (modellbasiert)
+  \item Validierung von Anforderungen: Baue ich das richtige System?
+  \item Verifikation von Anforderungen: Baue ich das System richtig?
+  \item keine formalen Modelle zur Verifikation
+  \item Code Review: gemeinsames Fehlerfinden (Inspektion, Review, Walkthrough)
+  \item Simulation: Performance-Eigenschaften simulieren
+  \item Prototyping: Mock-Up die Interaktion mit dem System zeigt
+  \item Aufstellen von System-Testfällen (zeigt ob Anforderungen verstanden wurden)
+  \item Model Checking: formale Verifikationstechniken zum Untersuchen von Widersprüchen
+  \item Wie weit RE? Fehlerbehebungskosten? Verweildauer von Bugs? Was sind Kosten einen Fehler zu entfernen ggü. Anforderung zu spezifizieren - 2 Kurven ergeben Wirtschaftlichkeit und Optimum dieser?
+  \item Zusammenfassung: Was sind Anforderungen? Wie klassifizieren? Wie aufschreiben? Validierung? Kosten und Vorteile von RE
+  \item{Use Cases}
+  \begin{itemize}
+    \item Helfen geeignete Abstraktionsebene zu finden (auch durch Übung)
+    \item Art wie man Anforderungen aufschreibt
+    \item Use-Cases nur eine Notation!
+    \item Use-Case-Diagramm zeigt Beziehungen der Use-Cases
+    \item System oft als Blackbox (also nur Angaben über Schnittstelle)
+    \item UI wird in Use Case nicht beschrieben
+    \item aus der Sicht der Ziele eines Benutzers
+    \item System Boundary: Was wird entwickelt, was nicht?
+    \item System Kontext: Gesamte Umgebung die notwendig ist
+    \item Context Boundary: trennt System Kontext von irrelevanter Umgebung
+    \item Common Scopes: Business use case (Unternehmen ist Blackbox/Whitebox), System use case (System ist Blackbox/Whitebox), component use case (immer Whitebox)
+    \item Use Cases als Vorlage für Sequenzdiagramm
+    \item Elementary Business Process (EBP): Beschreibung wie Abläufe in Unternehmen funktionieren
+    \item Heuristiken: Boss Test (Vorstellung: Chef fragt was habe ich den ganzen Tag gemacht? z.B. Kundenkonten angelegt statt Felder ausgefüllt), Coffee Break Test (logischer Block zu Ende und dann Kaffee trinken), Größe Test (nur 1 Schritt zu wenig)
+    \item Verschiedene Ebenen: Summary - gesamter Geschäftsprozess, Ziele eines Benutzers - hier, Subfunktionen - wiederverwendbar in verschiedenen Use-Cases z.B. Anmeldung, Too low - Systemaufrufe
+  \end{itemize}
+  \item Use Case Diagramm
+  \begin{itemize}
+    \item Überblick über die Use-Cases
+    \item Definieren Use-Cases nicht
+    \item Systemgrenzen werden gezeigt
+    \item Üblicherweise User Goal Use-Cases (nicht zwangsweise)
+    \item Aktoren üblicherweise links
+    \item Stakeholder beeinflusst/Bezug
+    \item Primary Aktoren lösen Interaktionen aus
+    \item Szenario: kann unterschieden werden zu Use-Case (z.B. PIN eingeben), also Instanz eines Use-Cases (z.B. 2x vertippt ... PIN ... etc.)
+    \item Wie Use-Cases finden? Systemgrenzen?, Primary Actors?, Welche Ziele (user goals) hat Aktor?, Welche Interaktion braucht man?
+    \item Beziehung zwischen Ziel und Szenario? Abhängigkeiten in beide Richtungen, z.B. Szenarien ergeben dass Ziele verfeinert werden müssen, bspw. durch Subziele, zyklische Abhängigkeiten
+    \item Iterativer Prozess zur Findung von Use Cases, lieber erst mal Überblick in breiter Suche bevor man zu weit in Tiefe geht, mit viel Erfahrung kann Abstraktionsebene schnell gewechselt werden
+    \item Use Case Definition: Aktor, Erfolgsszenario, Wann kein Erfolg? (Bedingungen), Welche Fehler können sinnvoll behoben werden
+    \item Aufsplitten oder Zusammenführen kann möglich sein
+    \item Use Case Schablonen, bekanntester "fully dressed": Context of us, scope, goal level, primary actor, stakeholder, pre- und post conditions, trigger, main success scenario, extensions, special requirements, technology and data variation lists
+    \item Casual: verkürzt
+    \item RUP: nahe zu Fully Dressed
+    \item Wie Daten beschreiben? Level 1 Data nickname, z.B. PIN, reicht meist, sonst weiter als Typ oder noch weiter mit Länge und Validierung, möglichst keine If-Abfragen, eher trennen
+    \item Fully Dressed Use Case sections
+    \begin{itemize}
+      \item Vorspann bei fully dressed: Actor, Scope
+      \item Stakeholder und interessierte
+      \item Vorbedingungen: Annahmen über Systemzustand modellieren (sinnvoll, z.B. nicht Stromversorgung)
+      \item Nachbedingung: Erfolgsgarantie
+      \item Main Success Scenario: keine Verzweigungen
+      \item Erweiterung / Alternativen: bei Fehlern (genaues Handling nicht zwangsweise)
+      \item Annahmen über nichtfunktionale Anforderungen (z.b. Performanz)
+      \item Technologie und Daten
+    \end{itemize}
+    \item Struktur von Requirements-Dokumenten
+    \begin{itemize}
+      \item Einleitung (Kontext des Systems, Warum will man das System bauen? Extrem wichtig für Moral/Motivation, Lücken von Spezifikationen können evtl. umgangen werden)
+      \item Beschreibung des Systems: Umgebung, Architekturbeschreibung
+      \item Anforderungen
+      \item Anhang
+      \item Index
+      \item Beispiel: RUP
+      \item versioniert
+    \end{itemize}
+    \item Werkzeuge für Requirements
+    \begin{itemize}
+      \item damit nicht bspw. per Email geschickt werden
+      \item z.B. ROOM
+      \item Multi-user-access
+      \item Web-Frontend
+      \item Wiki kann auch gut sein (können viele lesen / bearbeiten, billig, aber wenig Generierungsfähigkeit, verschiedene Zugangslevel auch nicht möglich)
+    \end{itemize}
+    \item Divide and Conquer
+    \begin{itemize}
+      \item reale Welt
+      \item Analyse
+      \item Architektur/Design
+      \item Code
+    \end{itemize}
+    \item Zusammenfassung: verschiedene Abstraktionsebenen (summary, user goal), Scopes (business, user goal, component)
+  \end{itemize}
+  \item Analyse und Entwurf hochgradig verzahnt (aber zwei verschiedene Tätigkeiten, Entwurf Gedanken für Losung)
+  \item Operation Contracts
+  \begin{itemize}
+    \item Anforderungen zu Sequenzdiagrammen / Entwurf?
+    \item Input aus Domänenmodell und Use Cases
+    \item Sequenz- und Klassendiagramme ableitbar
+    \item Design by contract: zwischen zwei Entitäten, aufrufender Kontext und Funktion, Contract für Methode sagt Vor- und Nachbedingung für Objekte und Rückgabewerte
+    \item Beschreiben Ablauf
+    \item Schema: Name der Operation, Referenzen auf Use Cases, Vor- und Nachbedingung
+    \item Nutzen in Business Prozessen, Use Cases, System Operationen oder auch bspw. Java Methoden
+  \end{itemize}
+  \item Contracts vs Use Cases
+  \begin{itemize}
+    \item Use Cases für Anforderungen
+    \item Contracts können zur weiteren Spezifikation erstellt werden, falls Verfeinerung notwendig
+  \end{itemize}
+  \item Zusammenfassung Contracts: Operationen identifizieren, Vorbedingung und Nachbedingung, üblichster Fehler ist Vergessen von Assoziationen
+\end{itemize}
+
+\section{Software Architektur}
+
+\begin{itemize}
+  \item zwischen Anforderungen und Code
+  \item Entwurfsentscheidungen dokumentieren
+  \item bei jedem Projekt anders
+  \item viele Entscheidungen können vorbedingt sein
+  \item Verteilung wichtig
+  \item Einschränkungen des Entwurfsraums (z.B. objektorientierter vs prozeduraler Stil)
+  \item Was evolvieren und was nicht? z.B. wartbar für welches Szenario? Was ist änderbar?
+  \item Was wird selbst gemacht, was von außen? Was soll wiederverwendbar sein/werden?
+  \item Design vs Architektur: Objektorientierung zwingt zu feingranularer Aufteilung, Architektur übersichtlicher (z.B. Komponentendiagramm)
+  \item Verschiedene Sichten auf System (Requirements Engineer, Architekt, Operator, Tester, ...)
+  \item Architekturbegriff setzt rationalen Planungsentwurf vorraus (laut Reussner)
+  \item Grobe Struktur eines Systems
+  \item Definition Reussner: Ergebnis einer Menge von Entwurfsentscheidungen und die betreffen die Komponenten und deren Beziehung untereinander und das Deployment
+  \item Nicht ein Diagramm für alles, sondern verschiedene Sichten
+  \item Ähnliche Sichten können in Viewpoint zusammengefasst werden (deutsch: Perspektive)
+  \item Mindestens 3 Sichten werden benötigt: Aussage über Struktur (Komponenten, Abhängigkeiten), Was passierend während Ablauf (dynamisch, Abstraktion über Verhalten, Kommunikation der Komponenten untereinander oder was passiert bei Methodenaufrufen?), Abbildung auf verschiedene Ressourcen (Deployment View Point)
+  \item Decision View Point: um auf View Points zu kommen müssen Entwurfsentscheidungen getroffen werden, warum bewusst Entscheidung getroffen
+  \item Alternativ Kruchten 4+1 (logical, development, process, physical view und scenarios), verwendet in RUP, UP noch ausführlicher
+  \item Komponentendiagramm gibt keine Aussage über Deployment (z.B. Thin Client vs Fat Client)
+  \item Sequenzdiagramm Interaktion über Entitäten
+  \item Aktivitätsdiagramm: Ablauf innerhalb von Komponenten
+  \item Deployment View: Komponenten abbilden auf Ressourcen (3D, kann gestapelt werden)
+  \item Vorteile explizit dokumentierter Architektur: Kommunikationsmedium (z.B. Namen für Komponenten), prüfen ob nichtfunktionale Anforderungen eingehalten werden können, Wiederverwendung, Aufwand von kleineren Komponenten leichter schätzbar, andere Faktoren können einbezogen werden
+  \item getrieben von nicht-funktionalen Eigenschaften: Performance (sehr wichtig, Skalierbarkeit), Sicherheit (Architektur kann Exploits vorbeugen, auch wenn die meist durch Entwicklungsfehler entstehen), Verfügbarkeit (Überlastet, Abstürze, ...), Wartbarkeit, nicht sequentiell abarbeitbar, daher Architekturmuster
+  \item Faktoren die die Architektur beinflussen: Anforderungen (nicht-funktional und Rahmenbedingungen), Wiederverwendbarkeit (Patterns), Convey's Law: Architektur wird auch durch Form der Organisation der Software beeinflusst (Teamgröße, -erfahrung, Arbeit mit anderen Firmen und anderen Kompetenzen)
+  \item Wiederverwendbarkeit: Referenz-Architektur, Produktlinie
+  \item Architekturpattern gröber als Designpattern, Designpattern 1-zu-1 Beziehnung zu Problem, Architekturpattern bieten dies nicht, eher Kompromiss mehrerer funktionaler Anforderungen
+  \item Terminologie zur Wiederverwendung: konstanter Stil (nicht mischen), Muster kann man mischen, z.B. Übersetzer (Pipeline, Parser)
+  \item Architekturpatterns: Schichtung (z.B. ISO/OSI), Enterprise Application Patterns, Domänenmodell, ...
 \end{itemize}
 
 \end{document}

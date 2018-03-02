@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  1 MAR 2018 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  2 MAR 2018 16:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -995,20 +995,45 @@ Overfull \hbox (3.0356pt too wide) in paragraph at lines 252--253
 \T1/futs/m/n/10.95 (höchs-te Qua-li-tät, groÿe Grup-pen, ...), be-nö-tigt viel Ar-beit und Dis-zi-plin (nicht
  []
 
-[8] (./swt2.aux) ) 
+[8]
+Overfull \hbox (2.04013pt too wide) in paragraph at lines 283--284
+[]\T1/futs/m/n/10.95 Stakeholder: Be-nut-zer des Sys-tems (An-wen-den), Be-trei-ber des Sys-tems (De-ploy-en), Auf-
+ []
+
+[9]
+Overfull \hbox (1.36029pt too wide) in paragraph at lines 317--318
+[]\T1/futs/m/n/10.95 Model Checking: for-ma-le Ve-ri-fi-ka-ti-ons-tech-ni-ken zum Un-ter-su-chen von Wi-der-sprü-chen 
+ []
+
+
+Overfull \hbox (0.2844pt too wide) in paragraph at lines 319--320
+[]\T1/futs/m/n/10.95 Zusammenfassung: Was sind An-for-de-run-gen? Wie klas-si-fi-zie-ren? Wie auf-schrei-ben? Va-
+ []
+
+[10]
+Overfull \hbox (0.22362pt too wide) in paragraph at lines 348--349
+[]\T1/futs/m/n/10.95 Wie Use-Cases fin-den? Sys-tem-gren-zen?, Pri-ma-ry Ac-tors?, Wel-che Zie-le (user goals)
+ []
+
+[11]
+Overfull \hbox (9.17738pt too wide) in paragraph at lines 356--357
+\T1/futs/m/n/10.95 ter als Typ oder noch wei-ter mit Län-ge und Va-li-die-rung, mög-lichst kei-ne If-Abfragen,
+ []
+
+[12] [13] (./swt2.aux) ) 
 Here is how much of TeX's memory you used:
- 7812 strings out of 493117
- 111806 string characters out of 6135433
- 311817 words of memory out of 5000000
- 11084 multiletter control sequences out of 15000+600000
+ 7814 strings out of 493117
+ 111836 string characters out of 6135433
+ 311819 words of memory out of 5000000
+ 11086 multiletter control sequences out of 15000+600000
  59958 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,10n,47p,499b,395s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
-Output written on swt2.pdf (8 pages, 263012 bytes).
+Output written on swt2.pdf (13 pages, 273949 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
