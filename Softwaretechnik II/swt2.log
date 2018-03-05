@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  2 MAR 2018 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.17)  5 MAR 2018 17:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -793,61 +793,68 @@ Class scrartcl Warning: Usage of package `fancyhdr' together
 \f@ncyO@erf=\skip65
 \f@ncyO@olf=\skip66
 \f@ncyO@orf=\skip67
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip68
+\enit@outerparindent=\dimen128
+\enit@toks=\toks32
+\enit@inbox=\box59
+\enitdp@description=\count129
 ) (./swt2.aux)
 \openout1 = `swt2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 87.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 87.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 99.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 99.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 87.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 87.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 99.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 99.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 87.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 87.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 99.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 99.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 87.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 99.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 87.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 87.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 99.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 ) (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
-\scratchdimen=\dimen128
-\scratchbox=\box59
-\nofMPsegments=\count130
-\nofMParguments=\count131
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count132
-\MPscratchDim=\dimen129
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
-\everyMPtoPDFconversion=\toks33
+\scratchcounter=\count130
+\scratchdimen=\dimen129
+\scratchbox=\box60
+\nofMPsegments=\count131
+\nofMParguments=\count132
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count133
+\MPscratchDim=\dimen130
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
+\everyMPtoPDFconversion=\toks34
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -884,156 +891,383 @@ Package grfext Info: Graphics extension search list:
  (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count135
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 93.
+\c@lstlisting=\count136
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 103.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 93.
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 103.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 93.
+(Font)              scaled to size 13.24796pt on input line 103.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 93.
+(Font)              scaled to size 9.19998pt on input line 103.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 93.
+(Font)              scaled to size 7.35999pt on input line 103.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 13.24796pt on input line 93.
+(Font)              scaled to size 13.24796pt on input line 103.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 9.19998pt on input line 93.
+(Font)              scaled to size 9.19998pt on input line 103.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.35999pt on input line 93.
-LaTeX Font Info:    Try loading font information for U+msa on input line 93.
+(Font)              scaled to size 7.35999pt on input line 103.
+LaTeX Font Info:    Try loading font information for U+msa on input line 103.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 93.
+LaTeX Font Info:    Try loading font information for U+msb on input line 103.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 98.
+) (./swt2.toc)
+\tf@toc=\write3
+\openout3 = `swt2.toc'.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/ts1futs.fd
-File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
-) <imgs/wasserfall.png, id=1, 765.86125pt x 371.3875pt>
-File: imgs/wasserfall.png Graphic file (type png)
- <use imgs/wasserfall.png>
-Package pdftex.def Info: imgs/wasserfall.png used on input line 108.
-(pdftex.def)             Requested size: 390.8805pt x 189.55244pt.
  [1
 
 
 
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 110.
- <imgs/vmodell.png, id=9, 732.7375pt x 363.3575pt>
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 110.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/fourier/ts1futs.fd
+File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
+) <imgs/wasserfall.png, id=8, 765.86125pt x 371.3875pt>
+File: imgs/wasserfall.png Graphic file (type png)
+ <use imgs/wasserfall.png>
+Package pdftex.def Info: imgs/wasserfall.png used on input line 120.
+(pdftex.def)             Requested size: 390.8805pt x 189.55244pt.
+ <imgs/vmodell.png, id=10, 732.7375pt x 363.3575pt>
 File: imgs/vmodell.png Graphic file (type png)
  <use imgs/vmodell.png>
-Package pdftex.def Info: imgs/vmodell.png used on input line 120.
+Package pdftex.def Info: imgs/vmodell.png used on input line 132.
 (pdftex.def)             Requested size: 390.8805pt x 193.83713pt.
- [2 <./imgs/wasserfall.png> <./imgs/vmodell.png>] [3] <imgs/up.png, id=19, 752.8125pt x 459.7175pt>
+ [2 <./imgs/wasserfall.png>] [3 <./imgs/vmodell.png>] <imgs/up.png, id=19, 752.8125pt x 459.7175pt>
 File: imgs/up.png Graphic file (type png)
  <use imgs/up.png>
-Package pdftex.def Info: imgs/up.png used on input line 163.
+Package pdftex.def Info: imgs/up.png used on input line 175.
 (pdftex.def)             Requested size: 390.8805pt x 238.70374pt.
 
-Overfull \hbox (13.75731pt too wide) in paragraph at lines 167--168
+Overfull \hbox (13.75731pt too wide) in paragraph at lines 179--180
 []\T1/futs/m/n/10.95 Verschiedene Pha-sen: In-cep-ti-on, Ela-bo-ra-ti-on, Kon-struk-ti-on, Tran-si-ti-on über Zeitach-
  []
 
-
-Overfull \hbox (2.70941pt too wide) in paragraph at lines 174--175
+[4 <./imgs/up.png>]
+Overfull \hbox (2.70941pt too wide) in paragraph at lines 186--187
 []\T1/futs/m/n/10.95 Inception (An-fangs-pha-se): Sco-pe, Busi-ness ca-ses?, mach-bar?, auf Markt?, Kos-
  []
 
 
-Overfull \hbox (7.60185pt too wide) in paragraph at lines 175--176
+Overfull \hbox (7.60185pt too wide) in paragraph at lines 187--188
 \T1/futs/m/n/10.95 be-trach-tet, An-for-de-run-gen ver-ste-hen, Über-gang in Kon-struk-ti-ons-pha-se, klappt
  []
 
-[4 <./imgs/up.png>]
-Overfull \hbox (0.27734pt too wide) in paragraph at lines 183--184
+
+Overfull \hbox (0.27734pt too wide) in paragraph at lines 195--196
 []\T1/futs/m/n/10.95 Entwurf: Lö-sungs-ori-en-tiert, aber klei-ne kla-re Gren-ze zu An-for-de-run-gen, nicht
  []
 
 
-Overfull \hbox (0.33148pt too wide) in paragraph at lines 189--190
+Overfull \hbox (0.33148pt too wide) in paragraph at lines 201--202
 []\T1/futs/m/n/10.95 6 best prac-ti-ces (sehr ge-ne-rel-le Aus-sa-gen): ite-ra-tiv ent-wi-ckeln, An-for-de-run-gen ver-
  []
 
 
-Overfull \hbox (0.53798pt too wide) in paragraph at lines 191--192
+Overfull \hbox (0.53798pt too wide) in paragraph at lines 203--204
 []\T1/futs/m/n/10.95 verschiedene Rol-len für ver-schie-de-ne Dis-zi-pli-nen de-fi-niert, An-pas-sun-gen für kon-
  []
 
 [5]
-Overfull \hbox (2.7941pt too wide) in paragraph at lines 217--218
+Overfull \hbox (2.7941pt too wide) in paragraph at lines 229--230
 \T1/futs/m/n/10.95 Pair Pro-gram-ming (ver-dop-pelt Kos-ten, nicht im-mer ge-recht-fer-tigt, ver-bes-sert Qua-
  []
 
 
-Overfull \hbox (0.22308pt too wide) in paragraph at lines 220--221
+Overfull \hbox (0.22308pt too wide) in paragraph at lines 232--233
 []\T1/futs/m/n/10.95 Kritik: ad-hoc Pro-zess, schwer re-pli-zier-bar, schlech-te Do-ku, nicht wie-der-ver-wend-
  []
 
 
-Overfull \hbox (3.6045pt too wide) in paragraph at lines 220--221
+Overfull \hbox (3.6045pt too wide) in paragraph at lines 232--233
 \T1/futs/m/n/10.95 ba-re Soft-wa-re, Kun-den müs-sen ein-ge-bun-den wer-den (will Kun-de das?), vie-les nicht
  []
 
-
-Overfull \hbox (0.84557pt too wide) in paragraph at lines 232--233
+[6]
+Overfull \hbox (0.84557pt too wide) in paragraph at lines 244--245
 []\T1/futs/m/n/10.95 Retroperspective Mee-ting (En-de vom Pro-jekt): Was hät-te man bes-ser ma-chen kön-
  []
 
-[6] [7]
-Overfull \hbox (3.0356pt too wide) in paragraph at lines 252--253
+[7]
+Overfull \hbox (3.0356pt too wide) in paragraph at lines 264--265
 \T1/futs/m/n/10.95 (höchs-te Qua-li-tät, groÿe Grup-pen, ...), be-nö-tigt viel Ar-beit und Dis-zi-plin (nicht
  []
 
 [8]
-Overfull \hbox (2.04013pt too wide) in paragraph at lines 283--284
+Overfull \hbox (2.04013pt too wide) in paragraph at lines 295--296
 []\T1/futs/m/n/10.95 Stakeholder: Be-nut-zer des Sys-tems (An-wen-den), Be-trei-ber des Sys-tems (De-ploy-en), Auf-
  []
 
 [9]
-Overfull \hbox (1.36029pt too wide) in paragraph at lines 317--318
+Overfull \hbox (1.36029pt too wide) in paragraph at lines 329--330
 []\T1/futs/m/n/10.95 Model Checking: for-ma-le Ve-ri-fi-ka-ti-ons-tech-ni-ken zum Un-ter-su-chen von Wi-der-sprü-chen 
  []
 
 
-Overfull \hbox (0.2844pt too wide) in paragraph at lines 319--320
+Overfull \hbox (0.2844pt too wide) in paragraph at lines 331--332
 []\T1/futs/m/n/10.95 Zusammenfassung: Was sind An-for-de-run-gen? Wie klas-si-fi-zie-ren? Wie auf-schrei-ben? Va-
  []
 
 [10]
-Overfull \hbox (0.22362pt too wide) in paragraph at lines 348--349
+Overfull \hbox (0.22362pt too wide) in paragraph at lines 360--361
 []\T1/futs/m/n/10.95 Wie Use-Cases fin-den? Sys-tem-gren-zen?, Pri-ma-ry Ac-tors?, Wel-che Zie-le (user goals)
  []
 
 [11]
-Overfull \hbox (9.17738pt too wide) in paragraph at lines 356--357
+Overfull \hbox (9.17738pt too wide) in paragraph at lines 368--369
 \T1/futs/m/n/10.95 ter als Typ oder noch wei-ter mit Län-ge und Va-li-die-rung, mög-lichst kei-ne If-Abfragen,
  []
 
-[12] [13] (./swt2.aux) ) 
+[12] [13] [14]
+Overfull \hbox (0.68129pt too wide) in paragraph at lines 451--452
+[]\T1/futs/m/n/10.95 Vorteile ex-pli-zit do-ku-men-tier-ter Ar-chi-tek-tur: Kom-mu-ni-ka-ti-ons-me-di-um (z.B. Na-men für
+ []
+
+
+Overfull \hbox (10.99614pt too wide) in paragraph at lines 454--455
+[]\T1/futs/m/n/10.95 Wiederverwendbarkeit: Referenz-Architektur (Ar-chi-tek-tur schon vor-ge-ge-ben - neue Kom-
+ []
+
+
+Overfull \hbox (47.77554pt too wide) in paragraph at lines 463--464
+\T1/futs/m/n/10.95 ent-schei-dun-gen (z.B. nicht an-neh-men dass ein Au-to einen Mo-tor hat - au-to.motor.anlassen()
+ []
+
+[15]
+Overfull \hbox (3.78139pt too wide) in paragraph at lines 486--487
+[]\T1/futs/m/n/10.95 Domain Layer: Do-mä-nen-mo-del, Da-ten-mo-dell + Funk-tio-na-li-tä-ten, Über-nah-me aus
+ []
+
+
+Overfull \hbox (1.44952pt too wide) in paragraph at lines 499--500
+\T1/futs/m/n/10.95 die In-ne-rei-en ver-stan-den wer-den müs-sen. Man wird nicht ge-zwun-gen den Source-
+ []
+
+[16]
+Overfull \hbox (1.4129pt too wide) in paragraph at lines 514--515
+[]\T1/futs/m/n/10.95 Palladio Com-po-nent Mo-del (PCM) ist Spra-che um Kom-po-nen-ten zu be-schrei-
+ []
+
+
+Overfull \hbox (3.2644pt too wide) in paragraph at lines 516--517
+\T1/futs/m/n/10.95 teigrö-ÿe bei Upload), drei der vier Fak-to-ren kontext-abhängig (nicht von Kom-
+ []
+
+[17]
+Overfull \hbox (6.44275pt too wide) in paragraph at lines 522--523
+[]\T1/futs/m/n/10.95 Was be-nö-tigt man um Per-for-man-ce vor-her-sa-gen? Kom-po-nen-ten-mo-dell, Struk-
+ []
+
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 526.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 526.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 526.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 10.07397pt on input line 526.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.63599pt on input line 526.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 526.
+
+Overfull \hbox (13.42728pt too wide) in paragraph at lines 528--529
+[]\T1/futs/m/n/10.95 Software De-ploy-er: Ab-bil-dung auf Hardware-Ressourcen (häu-fig auch durch
+ []
+
+
+Overfull \hbox (1.38054pt too wide) in paragraph at lines 540--541
+[]\T1/futs/m/n/10.95 Delegation Connec-tor (ver-ti-kal - ver-schach-telt) und As-sem-b-ly Connec-tor (ho-
+ []
+
+[18]
+Overfull \hbox (12.35245pt too wide) in paragraph at lines 546--547
+[]\T1/futs/m/n/10.95 Am En-de be-kommt man Wahr-schein-lich-keits-ver-tei-lung (Re-spon-se Ti-me - Wahr-
+ []
+
+
+Overfull \hbox (1.28267pt too wide) in paragraph at lines 547--548
+\T1/futs/m/n/10.95 ba-sier-te Ent-wick-lung, Tren-nung Architektur- und Kom-po-nen-ten-ent-wick-lung,
+ []
+
+
+Overfull \hbox (1.49158pt too wide) in paragraph at lines 560--561
+[]\T1/futs/m/n/10.95 Schichten von EA: Front End, Ge-schäfts-lo-gik, Da-ten (tech-no-lo-gie-ge-trie-ben), hier haupt-
+ []
+
+[19] [20] [21]
+Overfull \hbox (7.59251pt too wide) in paragraph at lines 658--659
+[]\T1/futs/m/n/10.95 Wann soll-te man was ver-wen-den? Ge-schäfts-lo-gik nach Trans-ak-ti-ons-lo-gik, dann
+ []
+
+[22]
+Overfull \hbox (41.50618pt too wide) in paragraph at lines 685--686
+[]\T1/futs/m/n/10.95 Wann neh-me ich was? Sin-gle Ta-ble: eher bei In-stan-zen der Un-ter-klas-sen, Performance-
+ []
+
+[23]
+Overfull \hbox (2.66156pt too wide) in paragraph at lines 721--722
+[]\T1/futs/m/n/10.95 Design Class Dia-gram (DCD) - Frag-ment ei-nes Klas-sen-dia-gramms, be-schreibt ei-ne Klas-
+ []
+
+[24]
+Overfull \hbox (2.14879pt too wide) in paragraph at lines 735--736
+[]\T1/futs/m/n/10.95 Composer Com-po-nent: Fasaden-Muster (Fasaden-Controller) kann Use-Case
+ []
+
+
+Overfull \hbox (40.16588pt too wide) in paragraph at lines 744--745
+[]\T1/futs/m/n/10.95 z.B. vie-le ver-schie-de-ne Pay-ments, dann ab-strak-te Klas-se Pay-ment die Authorisierungs-
+ []
+
+
+Overfull \hbox (4.08577pt too wide) in paragraph at lines 745--746
+[]\T1/futs/m/n/10.95 Vererbung ist Whitebox-Technik, Kom-po-si-ti-on da-ge-gen Blackbox-Technik (In-
+ []
+
+[25] [26]
+Overfull \hbox (6.51614pt too wide) in paragraph at lines 814--815
+[]\T1/futs/m/n/10.95 Funktionen die Poin-ter oder Re-fe-ren-zen zu Basis-Klassen ver-wen-den müs-
+ []
+
+[27]
+Overfull \hbox (4.0869pt too wide) in paragraph at lines 828--829
+[]\T1/futs/m/n/10.95 Designproblem: Ge-ne-ri-schen Al-go-rith-mus von de-tail-lier-tem Kon-text tren-
+ []
+
+
+Overfull \hbox (7.75516pt too wide) in paragraph at lines 831--832
+[]\T1/futs/m/n/10.95 Dependancy In-jec-ti-on: Tech-no-lo-gie um ab-strak-te Ab-hän-gig-kei-ten mit kon-
+ []
+
+[28]
+Overfull \hbox (2.31294pt too wide) in paragraph at lines 855--856
+[]\T1/futs/m/n/10.95 "Clean Ar-chi-tec-ture": kreis-för-mi-ge Schich-ten re-prä-sen-tie-ren ver-schie-de-ne Be-reich
+ []
+
+
+Overfull \hbox (2.71921pt too wide) in paragraph at lines 856--857
+[]\T1/futs/m/n/10.95 Entities: Kapp-seln Busi-ness Ru-les, Ob-jekt mit Me-tho-den, Da-ten-strukt-set mit Funk-
+ []
+
+[29]
+Overfull \hbox (12.29976pt too wide) in paragraph at lines 875--876
+[]\T1/futs/m/n/10.95 Metamodelle (grie-chisch me-ta = nach): Mo-del-le die Mo-del-lie-rung be-schrei-ben, be-schreibt
+ []
+
+
+Overfull \hbox (11.5986pt too wide) in paragraph at lines 885--886
+[]\T1/futs/m/n/10.95 Statische Se-man-tik: be-schreibt die Mo-del-lie-rungs-re-geln und -einschränkungen,
+ []
+
+[30]
+Overfull \hbox (0.4405pt too wide) in paragraph at lines 902--903
+[]\T1/futs/m/n/10.95 Model-Driven En-gi-nee-ring: Kom-bi-na-ti-on von Domain-specific mo-del-ling lan-gua-
+ []
+
+
+Overfull \hbox (26.3367pt too wide) in paragraph at lines 903--904
+[]\T1/futs/m/n/10.95 Model-Driven Soft-wa-re De-ve-lop-ment: An-wen-dung von MDE für Software-Entwicklung,
+ []
+
+
+Overfull \hbox (17.38126pt too wide) in paragraph at lines 903--904
+\T1/futs/m/n/10.95 an-de-re An-wen-dun-gen: Hardware-Entwicklung, Software-intensive Sys-te-me, Laufzeit-
+ []
+
+
+Overfull \hbox (8.39018pt too wide) in paragraph at lines 904--905
+[]\T1/futs/m/n/10.95 Model-Driven Ar-chi-tec-ture: Mar-ken-zei-chen der Ob-ject Ma-na-ge-ment Group (OMG),
+ []
+
+[31]
+Overfull \hbox (4.84128pt too wide) in paragraph at lines 935--936
+\T1/futs/m/n/10.95 und Um-ge-bung, De-tails der Struk-tur und Ver-hal-ten sind ver-deckt oder un-be-stimmt 
+ []
+
+
+Overfull \hbox (3.65814pt too wide) in paragraph at lines 936--937
+[]\T1/futs/m/n/10.95 Platform-Independant Mo-del (PIM) fo-kus-siert auf An-wen-dung ei-nes Sys-tems, aber
+ []
+
+[32] [33]
+Overfull \hbox (4.38246pt too wide) in paragraph at lines 995--996
+[]\T1/futs/m/n/10.95 Interrupts: Kon-trol-le wird au-to-ma-tisch an einen de-fi-nier-ten Speicher-be-reich trans-
+ []
+
+
+Overfull \hbox (3.85526pt too wide) in paragraph at lines 1001--1002
+[]\T1/futs/m/n/10.95 Monitoring Sys-te-me füh-ren Ak-tio-nen as wenn au-ÿer-ge-wöhn-li-che Sens-or-da-ten auf-
+ []
+
+
+Overfull \hbox (7.10738pt too wide) in paragraph at lines 1002--1003
+[]\T1/futs/m/n/10.95 Control Sys-te-me kon-trol-lie-ren kon-ti-nu-ier-lich Hard-wa-re Ak-to-ren ab-hän-gig der Sens-
+ []
+
+[34] [35]
+Overfull \hbox (0.50516pt too wide) in paragraph at lines 1037--1038
+\T1/futs/m/n/10.95 ten, dy-na-mi-sches La-den und Lin-king von Klas-sen ist pro-ble-ma-tisch, JIT Com-
+ []
+
+
+Overfull \hbox (14.04912pt too wide) in paragraph at lines 1060--1061
+[]\T1/futs/m/n/10.95 In UML sind Threads Gr-und-ein-heit von Ne-ben-läu-fig-kei-ten (Light-weight Threads
+ []
+
+[36]
+Overfull \hbox (6.5272pt too wide) in paragraph at lines 1078--1079
+[]\T1/futs/m/n/10.95 Verhalten von Sende-Operationen blo-ckend oder nicht-blockend (Kom-
+ []
+
+[37] [38]
+Overfull \hbox (8.3557pt too wide) in paragraph at lines 1147--1148
+[]\T1/futs/m/n/10.95 billigere Er-hö-hung von Sa-fe-ty oh-ne Red-un-danz durch Fehl-er-de-tek-ti-on in Chan-
+ []
+
+[39]
+Overfull \hbox (17.2704pt too wide) in paragraph at lines 1200--1201
+[]\T1/futs/m/n/10.95 Availability be-schreibt die Zeit wann sie ver-füg-bar ist: Availa-bi-li-ty = (MTBF/(MTBF+MTTR)) 
+ []
+
+
+Overfull \hbox (6.31952pt too wide) in paragraph at lines 1204--1205
+[]\T1/futs/m/n/10.95 Software-Fehler ent-ste-hen durch Bugs im Co-de, Hard-wa-re da-ge-gen durch Material-
+ []
+
+[40] [41]
+Overfull \hbox (2.04858pt too wide) in paragraph at lines 1267--1268
+[]\T1/futs/m/n/10.95 Wahrscheinlichkeiten ba-sie-ren auf Wis-sen oder Er-war-tun-gen (z.B. Logs
+ []
+
+[42]
+Overfull \hbox (16.0126pt too wide) in paragraph at lines 1283--1284
+[]\T1/futs/m/n/10.95 Limitationen: Exception-Bedingungen, zu-stand-s-ab-hän-gi-ge Feh-ler, Usage-
+ []
+
+[43] (./swt2.aux) ) 
 Here is how much of TeX's memory you used:
- 7814 strings out of 493117
- 111836 string characters out of 6135433
- 311819 words of memory out of 5000000
- 11086 multiletter control sequences out of 15000+600000
- 59958 words of font info for 64 fonts, out of 8000000 for 9000
+ 8191 strings out of 493117
+ 117966 string characters out of 6135433
+ 320305 words of memory out of 5000000
+ 11446 multiletter control sequences out of 15000+600000
+ 77173 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,10n,47p,499b,395s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb>
-Output written on swt2.pdf (13 pages, 273949 bytes).
+ 47i,10n,47p,525b,686s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
+Output written on swt2.pdf (43 pages, 379130 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 178 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
