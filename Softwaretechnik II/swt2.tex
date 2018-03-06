@@ -33,6 +33,7 @@
 \usepackage{multicol}
 \usepackage{algpseudocode}
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{graphicx,wrapfig}
 
 % Algorithmic modifications
 \makeatletter
@@ -117,25 +118,33 @@ Modelle
 \begin{itemize}
   \item Softwareentwicklung liefert nicht nur Code, sondern auch Deployment-Deskriptoren (Zusazudokumente), ursprüngliche Anforderungen (Code -> Anforderungen funktioniert nicht), welche Produkte wann und wo?
   \item Wasserfall-Modell\\
-  \includegraphics[width=\linewidth]{imgs/wasserfall}
-  \begin{itemize}
-    \item Erstes Modell zur Definition der verschiedenen Phasen
-    \item überhaupt machbar?
-    \item Welche Stakeholder?
-    \item Lastenheft/Pflichtenheft
-    \item etc.
-    \item Problem: sehr steife Reihenfolge, klingt logisch, aber Phasenübergang ist in Realität unklar
-    \item Feedbackzyklen nötig, aber Unterscheidbarkeit der Phasen trotzdem schwierig
-    \item Zu langes Vorplanen (Airbus 10 Jahre?!) sehr schwierig, Was kann in der Zwischenzeit passieren? Niemand weiß das, daher kann Wasserfall langfristig nicht geplant werden (lange Planbarkeit nur sehr selten gegeben)
-  \end{itemize}
+    \begin{itemize}
+      \begin{minipage}{.5\textwidth}
+        \item Erstes Modell zur Definition der verschiedenen Phasen
+        \item überhaupt machbar?
+        \item Welche Stakeholder?
+        \item Lastenheft/Pflichtenheft
+        \item Problem: sehr steife Reihenfolge, klingt logisch, aber Phasenübergang ist in Realität unklar
+      \end{minipage}
+      \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{imgs/wasserfall}
+      \end{minipage}%
+      \item Feedbackzyklen nötig, aber Unterscheidbarkeit der Phasen trotzdem schwierig
+      \item Zu langes Vorplanen (Airbus 10 Jahre?!) sehr schwierig, Was kann in der Zwischenzeit passieren? Niemand weiß das, daher kann Wasserfall langfristig nicht geplant werden (lange Planbarkeit nur sehr selten gegeben)
+    \end{itemize}
   \item V-Modell\\
-  \includegraphics[width=\linewidth]{imgs/vmodell}
   \begin{itemize}
-    \item sieht ähnlich aus wie Wasserfall
-    \item besagt welche Artefakte man hat + erklärt Zusammenhänge zwischen Dokumenten
-    \item überprüft bspw. Zusammenhang zwischen Implementierung und Design (Verifikation, zeigt Abwesenheit von Fehlern, All-Quantor funktioniert immer)
-    \item Z.B. mehrere Module zusammen testen (Validierung, nicht Verifikation, Existenz-Quantor, Test-Fall der funktioniert)
-    \item Hauptbotschaft: kein notwendiger Wasserfall: Artefakte + Zusammenhänge (Validierung + Verifikation)
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/vmodell}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \item sieht ähnlich aus wie Wasserfall
+      \item besagt welche Artefakte man hat + erklärt Zusammenhänge zwischen Dokumenten
+      \item überprüft bspw. Zusammenhang zwischen Implementierung und Design (Verifikation, zeigt Abwesenheit von Fehlern, All-Quantor funktioniert immer)
+      \item Z.B. mehrere Module zusammen testen (Validierung, nicht Verifikation, Existenz-Quantor, Test-Fall der funktioniert)
+      \item Hauptbotschaft: kein notwendiger Wasserfall: Artefakte + Zusammenhänge (Validierung + Verifikation)
+    \end{minipage}
   \end{itemize}
   \item 6 grundlegende Phasen in jedem SE-Projekt
   \begin{itemize}
@@ -172,11 +181,15 @@ Modelle
     \item Nicht inkrementell, sondern evolutionär
   \end{itemize}
   \item UP (Unified Process)\\
-  \includegraphics[width=\linewidth]{imgs/up}
   \begin{itemize}
-    \item zuerst UML: vereinheitlichte Notation, z.B. Symbole für Widerstände und Transistoren, Industriestandard
-    \item Folge: vereinheitlichte Prozesse, also UP, aber komplett verschieden zu UML (einheitlich), aber es gibt nicht den einen richtigen Software-Prozess, hängt von vielen verschiedenen Faktoren ab (z.B. eingebettete Software), also Rahmenwerk für Prozesse
-    \item Verschiedene Phasen: Inception, Elaboration, Konstruktion, Transition über Zeitachse
+    \begin{minipage}{.5\textwidth}
+      \item zuerst UML: vereinheitlichte Notation, z.B. Symbole für Widerstände und Transistoren, Industriestandard
+      \item Folge: vereinheitlichte Prozesse, also UP, aber komplett verschieden zu UML (einheitlich), aber es gibt nicht den einen richtigen Software-Prozess, hängt von vielen verschiedenen Faktoren ab (z.B. eingebettete Software), also Rahmenwerk für Prozesse
+      \item Verschiedene Phasen: Inception, Elaboration, Konstruktion, Transition über Zeitachse
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/up}
+    \end{minipage}
     \item Verschiedene Disziplinen wie früher Phasen, auch mit Deployment, insgesamt moderner, andere Disziplinen wie Änderungsmanagement, Projektmanagement, Environment (Entwicklungsumgebung) = Aufrechterhalten der Produktivumgebung + Zusammenspiel der Komponenten + Patches
     \item iterativ und inkrementell (streng nicht dasselbe, iterativ mehrere Schleifen durch Prozess, inkrementell heißt neues Teil), quasi Synonyme
     \item Risiko-getrieben, sehr früh auf Risiken reagierbar
@@ -229,8 +242,13 @@ Modelle
     \item innen Entwickler: einfache Entwürfe für aktuelle Anforderung, Realisierung mit Pair Programming (verdoppelt Kosten, nicht immer gerechtfertigt, verbessert Qualität auch nicht besser als andere Review-Formen), testgetriebene Entwicklung (immer testbare Software + i.d.R. besser testbare Schnittstellen), Refactoring (Anpassen des Entwurfs für weitere Anforderungen)
     \item außenrum Team: Continuous Integration (keine großen Aufwände bei Builds), Collective Ownership (jeder für alles verantwortlich, kann aber auch fehlschlagen, daher Gesamtprojektverantwortung), Coding Standard
     \item äußerster Kreis: kleine Releases für schnelles Feedback, Kunden testen mit, Planungsspiele (Aufteilen der Inkremente)
-    \item Kritik: ad-hoc Prozess, schwer replizierbar, schlechte Doku, nicht wiederverwendbare Software, Kunden müssen eingebunden werden (will Kunde das?), vieles nicht wissenschaftlich validiert (z.B. Pair Programming), TDD kann problematisch sein
-    \item endet in Praxis oft in Code \& Fix
+    \begin{minipage}{.5\textwidth}
+      \item Kritik: ad-hoc Prozess, schwer replizierbar, schlechte Doku, nicht wiederverwendbare Software, Kunden müssen eingebunden werden (will Kunde das?), vieles nicht wissenschaftlich validiert (z.B. Pair Programming), TDD kann problematisch sein
+      \item endet in Praxis oft in Code \& Fix
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/XP}
+    \end{minipage}
   \end{itemize}
   \item Scrum
   \begin{itemize}
@@ -1289,5 +1307,210 @@ Modelle
 \end{itemize}
 
 \section{Software Security}
+
+\begin{itemize}
+  \item Wieso Software Security in Betracht ziehen? - Unsichere Software kostet Geld wegen DOwntimes, Zeit und Kosten Probleme zu beheben, Datenlecks, zusätzliche Sicherheitsmaßnahmen (Firewalls, Anti Viren Software, Spam Filter)
+  \item Software ohne Secure kann auch Safety Problem weren
+  \item Ziele von Software Security
+  \begin{itemize}
+    \item Hauptziele: Vertraulichkeit (persönliche Daten - Privacy, Unternehmensdaten), Availability und Integrity von Daten und System
+    \item Unterstützende Ziele: Nutzer-Authentifikation, Rückverfolgbarkeit \& Revision, Monitoring, Anonymität
+    \item Wie Testen: Die Abstinenz von Bugs/Sicherheitslücken kann nicht gezeigt werden
+  \end{itemize}
+  \item Wieso wird Software unsicher?
+  \begin{itemize}
+    \item oft durch Manangement-Vorgaben (keine Zeit/Geld zum Testen, Änderung der Anforderungen, System wird in verschiedenem Kontext verwendet, Leute nicht genügend ausgebildet)
+    \item Schlechtes Design
+    \item Im Gegensatz zu Safety oder Reliability Problemen werden Security Probleme durch intelligente Angreifer hervorgerufen
+    \item Implementierungsfehler (häufig: Buffer Overflows bei Eingaben, Race Conditions, Pseudo Randomness)
+  \end{itemize}
+  \item Potentielle Angriffe
+  \begin{itemize}
+    \item Netzwerk-Sniffer und Proxies
+    \item Viren, Würmer, Trojaner
+    \item Rootkits, Port Scanner
+    \item Insider Attacks
+    \item Diebstahl
+    \item Einbruch
+    \item Social Engineering Angriffe
+  \end{itemize}
+  \item Security während Entwicklungs-Lifecycle
+  \begin{itemize}
+    \item Security ist nicht-funktionale Anforderung (so früh wie möglich in Betracht ziehen)
+    \item Software Security Management = Risiko Management (Trade-Off zwischen Funktionalität, Performanz, Usability und Time-To-Market)
+    \item Design for Security (Security in jeder Phase der Entwicklung berücksichtigen, auch Entwicklungs-Umgebung schützen)
+  \end{itemize}
+  \item Finden von Security-Requirements
+  \begin{itemize}
+    \item Ziehe Security Ziele in Betracht (jedoch meist zu generell)
+    \item Versuche potentielle "Misues Cases" zu finden (basierende auf Use Cases), z.B. "Kreditkartendaten lesen" - darf nicht für Angreifer möglich sein
+    \item Ziehe System Kontext in Betracht
+    \item Bedrohungsmodellierung mit Checklisten
+  \end{itemize}
+  \item Formulieren von Security-Requirements
+  \begin{itemize}
+    \item Vermeide generelle Aussagen und identifiziere was geschützt werden soll (vor wem? wieso?)
+    \item Klassifiziere Schutz-Anforderungen für Risiko- und Prioritätsmanagement
+  \end{itemize}
+  \item In der Design Phase
+  \begin{itemize}
+    \item leite potentielle Maßnahmen von den Sicherheits-Anforderungen und Misuse Cases ab
+    \item Evaluiere verschiedene Design-Alternativen
+    \item Finde angebrachten Trade-Off für widersprüchliche Anforderungen
+    \item Weitere Maßnahmen: verwende etablierte Prinzipien und Patterns, halte das Design einfach
+  \end{itemize}
+  \item Prinzipien zum Erstellen von securer Software
+  \begin{enumerate}
+    \item Sichere die schwächste Verbindung
+    \item Übe Verteidigung in Tiefe aus, falls ein Fehler nicht von einer Verteidigung abgefangen wird, dann eben von einer anderen
+    \item Faile sicher: sicheres Exception-Handling, keine System-Details herausgeben
+    \item Secure by default: Alle Security Einstellungen sollte per Default aktiviert sein
+    \item Folge dem least privilege Prinzip: vergebe nur minimale benötige Rechte
+    \item Keine Security durch Obscurity (Kerkhoff's Prinzip): keine verstecken oder magischen URLs, Logins oder Cheats um Reverse Engineering zu vermeiden
+    \item Minimiere die Angriffsfläche: weniger Code ist besser da er die Auftrittswahrscheinlichkeit von Bugs minimiert (vermeide Duplikate), nicht unnötig viele Interfaces
+    \item Vertraulicher Kern: isolierter Code mit Sicherheits-Privilegien
+    \item Eingabe Validierung und Ausgabe Encoding (Eingabe über Whitelists überprüfen, Ausgabe annotieren, dass sie nicht ausgeführt werden kann)
+    \item Mische nicht Daten und Code: Buffer Overflows können erlauben auf diese zuzugreifen, alle Daten extern
+  \end{enumerate}
+  \item Weitere nützliche Security Patterns / Idiome
+  \begin{enumerate}
+    \item Verwende federated identity management (LDAP) wenn möglich
+    \item Wenn Passwörter benötigt werden, überprüfe Password-Stärke, niemals im Client validieren, Hash + Salt auf Server
+    \item Session Handling ist kritisch in Web Apps
+  \end{enumerate}
+  \item Implementierung
+  \begin{itemize}
+    \item Bugs oder ungepflegte Implementierung kann zu Security Issues führen: dokumentiere Security-relevanten Code gut, weise Programmieren dahingehend hin, verwende Techniken für secure Entwicklung
+    \item Beinhalte die kritischten Software-Schwächen im Kopf
+  \end{itemize}
+  \item Guidelines zum Testen
+  \begin{enumerate}
+    \item Am effektivsten: Fokus darauf Risiken zu identifizieren (aber: nur identifizierte Risken werden getesten und es gibt keine Garantie dass nicht andere Schwachstellen existieren)
+    \item Verwende Code Coverage Metrik
+    \item Code und System Reviews
+    \item Versuche Security in frühen Phasen zu evaluieren
+    \item Nutze verschiedene Quellen für Testfälle
+    \item Verwende Standard Security Testing Umgebung die grundlegende Probleme überprüft
+    \item Lass Security Experten das System als Black Box oder White Box überprüfen
+  \end{enumerate}
+  \item Evaluation von Security: Third Party Evaluation mit einem Security Zertifikat
+  \item Security Issues
+  \begin{itemize}
+    \item Race conditions
+    \begin{itemize}
+      \item treten auf wo Threads interagieren
+      \item Annahme muss für bestimmte Zeit gehalten werden
+      \item Beispiel: Time-of-Check vs Time-of-Use
+      \item Zwischen Prüfung Zugriffsrechte und Operation kann Unterbrechung auftreten
+    \end{itemize}
+    \item Buffer Overflows
+    \begin{itemize}
+      \item Mehr Daten in Speicherbereich schreiben als vorgesehen
+      \item Manipulation von Rücksprungadresse
+      \item Beispiele C-Methode gets(...) hat keine Längen-Abfrage, besser fgets
+    \end{itemize}
+    \item SQL Injection
+    \begin{itemize}
+      \item Wenn Abfrage als String verknüpft wird, kann diese so manipuliert werden, dass String beenedet wird und zusätzlich nach der Query noch weitere Operationen ausgeführt werden
+      \item Lösung: Verwendung von PreparedStatements
+    \end{itemize}
+    \item Krpytographie
+    \begin{itemize}
+      \item machen immer Annahmen über Art der Verwendung
+      \item Beispiel Zufallszahlengenerator
+      \begin{itemize}
+        \item jedoch sind Zufallszahlen i.d.R. Pseudo-Zufall, daher nicht Zufall sondern deterministisch wegen gleichbleibendem Seed, besser: dynamischer Seed (Maus-Bewegung, Hintergrundgeräusche, Netzwerk-Traffic)
+        \item richtig mit physikalischem Gerät und Schwingung gibt echten Zufall
+      \end{itemize}
+      \item Message: Bibliotheksfunktionen machen Annahmen
+      \item anderes Beispiel: RSA mit zu kleinen Schlüssel ist unsicher, auch wenn Algorithmus an sich sicher ist.
+    \end{itemize}
+  \end{itemize}
+  \item noch viel mehr möglich, Vorlesung nur Beispiele
+\end{itemize}
+
+\section{Continuous Integration}
+
+\begin{itemize}
+  \item Problem: "On my machine it works" oder es funktionierte gestern - Entwicklungsumgebung ist anders als Kundenumgebung
+  \item Testtreiber für Methoden sinnvoll
+  \item ohne CI meist lokales Testen, nebenläufige Arbeiten, seltene Integrationstests (häufig erst bei Releases)
+  \item CI: viel stärker integrierter Prozess anstatt nur in lokalen Prozessen
+  \item Wichtige Punkte: Ansatz (kein Tool), mehrere Integrationen am Tag (oder noch deutlich häufiger), Automation macht es leichtgewichtiger, für Reussner Fortsetzung der agilen Prinzipien für spätere Phasen (Integration und Deployment), Hauptgrund: schnelle Feedback-Zyklen
+  \item CI Entwicklungs-Prozess: manuell arbeiten und lokal testen, commit, Code gesetzt und gelinkt, dann automatisierte Integrationstests und Feedback, Fehlerbehebung
+  \item Vorteile: Verringerung von Risiken, manuelle Prozesse werden automatisiert, erlaubt schnelles Deployment der Software - Continuous Delivery
+  \item Ist extrem hohe Anzahl von Deployments sinnvoll? nicht für alle gleich beglückend - abhängig von Kontext
+  \item Was wird benötigt für CI? Werkzeuge für Integration - Maven, Ant, make, ... - Versionierung, Test-Automatisierung, Prozess und Leute die sich daran halten
+  \item Best Practices
+  \begin{itemize}
+    \item Versionierung
+    \item Modellierung der Artefakte (welche versioniert? welche generiert und daher nicht versioniert?)
+    \item Konfigurationsdateien versionierbar
+    \item Builden für jede Umgebung
+    \item Builds für Subkomponenten (weniger Abhängigkeiten im Team)
+  \end{itemize}
+  \item Tools: Jenkins (frühes Tool, viele Plugins), Travis CI (moderner, yml statt xml - leichter lesbar)
+  \item Continuous Deliver
+  \item Canary Release: erst CD für wenige User, dann später für alle sofern positives Feedback
+\end{itemize}
+
+\section{Reviews}
+
+\begin{itemize}
+  \item Erinnerung: V-Modell - Reviews: informelle Verifikationstechnik - Menschen überprüfen Artefakte auf Fehler
+  \item Review: Meeting von Menschen zur Überprüfung von Dokumenten - laufend im Projekt
+  \item Retrospektive: War Prozess sinnvoll am Ende vom Projekt?
+  \item Begriffe: Inspection, Team Review, Walkthrough, Pair Programming, Pass-around, Ad-hoch review
+  \item keine ausführbaren Artefakte benötigt
+  \item Reviews sind fast eine Silberkugel
+  \item werden nicht oft verwendet - erhöht Kosten am Anfang vom Prozess
+  \item Gefahren von Reviews: Testen wird vernachlässigt
+  \item Gefahr für Reviews: werden gerne gestrichen bei Knappheiten, Leute nicht gut vorbereitet, ohne gute Fehlerkultur versuchen guten Code zu fabrizieren damit keine Fehler gefunden werden
+  \item Nutzen von Reviews: besserer Überblick, weniger Single-Points-of-Failure (z.B. eine Person krank), für Anfänger ganz gut um von erfahreneren Kollegen zu lernen, in der Regel bessere Lesbarkeit des Codes (da Entwickler wissen, dass es Reviews geben wird)
+  \item verschiedene Phasen in einem Review
+  \begin{itemize}
+    \item Planungsphase - was sind Artefakte
+    \item Überblick - wann ist was bereit? Wer macht mit?
+    \item Vorbereitung - Dokumente werden geschickt (oder Spezifikationen)
+    \item Meeting - zusammensitzen
+    \item Rework - Autor setzt Dinge um
+    \item Follow-Up - falls nochmal gemeinsam drübergeschaut werden soll
+    \item Causual Analysis - Retrospektives Meeting (Warum gab es Probleme? Was sind häufige Fehler)
+  \end{itemize}
+  \item Rollen in Review-Meeting
+  \begin{itemize}
+    \item Author: Ersteller des Dokuments
+    \item Moderator: Ablauf des Meetings
+    \item Leser
+    \item Recorder: schreibt Protokoll
+    \item Verifier: überprüft ob Sachen sinnvoll umgesetzt sind
+    \item Wie viele Reader? Mehr als 5 nicht nötig.
+  \end{itemize}
+  \item Inspektionsprozess
+  \begin{itemize}
+    \item relativ naheliegend, geschwungen Dokumente und Prozessschritte
+    \item zeigt welche Rollen wo involviert sind
+    \item interessant z.B. wo Tippfehler hingehen (Rework)
+  \end{itemize}
+  \item Techniken zum Lesen von Code
+  \begin{itemize}
+    \item zeilenweise nicht unbedingt sinnvoll
+    \item besser Hypothesen-basiert (Wozu ist diese Schleife da? Macht sie das auch? If - ist Fehlerbehandlung? If in Schleife - Extraelement oder früherer Abbruch?)
+    \item falls kein Code: architectural reading: unklar, Pattern durch Hypothesen erkennen, Was sind Strukturen/Stile?
+  \end{itemize}
+  \item Verschiedene Review-Typen (TODO Folie 15 einfügen), Pair Programming nicht beste Technik
+  \item Psychologische Interaktions Patterns (Anti-Patterns)
+  \begin{itemize}
+    \item The alcoholic pattern: Jemand mit schlechter Angewohnheit, versucht immer zu schauen wie weit er es treiben kann, bevor es klappt (nicht vorbereitet, zu spät)
+    \item The "now-I-have-got-you" pattern: unter die Nase reiben, dass Fehler gefunden wurde
+    \item The "see-what-you-made-me" pattern: Ich hätte das erreichen können, wenn du nicht damit gekommen wärst...
+    \item The hurried pattern: überarbeitet, zeigt es aber nicht und bekommt zusätzliche Last aufgebrummt
+    \item The "if-it-were-not-for-you" pattern: Wenn es nicht für dich wäre, hätte ich das erreicht...
+    \item The "Look-how-hard-I-tried" pattern: Leute dokumentieren wie hart sie arbeiten, Projekt scheitert aber ihnen liegt es nicht
+    \item The "Schlemiel" pattern: Verursacher ist ganz woanders, aber anderer steht als Verantwortlicher dar
+    \item The "yes-but" pattern: Vorschlag gemacht, dann ja aber... (typische Abwehrhaltung)
+    \item The "wouldn't-it-be-nice-if" pattern: Gegenteil zu yes but, etwas implementiert und dann kommt wäre es aber nicht schön? ja aber...
+  \end{itemize}
+\end{itemize}
 
 \end{document}
