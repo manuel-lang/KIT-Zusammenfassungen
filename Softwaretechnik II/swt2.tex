@@ -87,7 +87,7 @@
 
 \title{
 \normalfont \normalsize
-\textsc{Karlsruher Insitut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
+%\textsc{Karlsruher Insitut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \huge Softwaretechnik II\\ Zusammenfassung WS17/18 % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
@@ -95,7 +95,7 @@
 
 \author{Manuel Lang} % Your name
 
-\date{\normalsize\today} % Today's date or a custom date
+\date{} % Today's date or a custom date
 
 \begin{document}
 
@@ -238,24 +238,34 @@ Modelle
   \end{itemize}
   \item Extreme Programming (XP)
   \begin{itemize}
-    \item Programmieren = zentral, alles andere außen rum
-    \item innen Entwickler: einfache Entwürfe für aktuelle Anforderung, Realisierung mit Pair Programming (verdoppelt Kosten, nicht immer gerechtfertigt, verbessert Qualität auch nicht besser als andere Review-Formen), testgetriebene Entwicklung (immer testbare Software + i.d.R. besser testbare Schnittstellen), Refactoring (Anpassen des Entwurfs für weitere Anforderungen)
+    \begin{minipage}{.5\textwidth}
+      \item Programmieren = zentral, alles andere außen rum
+      \item innen Entwickler: einfache Entwürfe für aktuelle Anforderung, Realisierung mit Pair Programming (verdoppelt Kosten, nicht immer gerechtfertigt, verbessert Qualität auch nicht besser als andere Review-Formen), testgetriebene Entwicklung (immer testbare Software + i.d.R. besser testbare Schnittstellen), Refactoring (Anpassen des Entwurfs für weitere Anforderungen)
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/XP2}
+    \end{minipage}
     \item außenrum Team: Continuous Integration (keine großen Aufwände bei Builds), Collective Ownership (jeder für alles verantwortlich, kann aber auch fehlschlagen, daher Gesamtprojektverantwortung), Coding Standard
-    \item äußerster Kreis: kleine Releases für schnelles Feedback, Kunden testen mit, Planungsspiele (Aufteilen der Inkremente)
+    \item äußerster Kreis: kleine Releases für schnelles Feedback, Kunden testen mit, Planungsspiele (Aufteilen der Inkremente)\\
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/XP}
+    \end{minipage}
     \begin{minipage}{.5\textwidth}
       \item Kritik: ad-hoc Prozess, schwer replizierbar, schlechte Doku, nicht wiederverwendbare Software, Kunden müssen eingebunden werden (will Kunde das?), vieles nicht wissenschaftlich validiert (z.B. Pair Programming), TDD kann problematisch sein
       \item endet in Praxis oft in Code \& Fix
     \end{minipage}
-    \begin{minipage}{.5\textwidth}
-      \includegraphics[width=\linewidth]{imgs/XP}
-    \end{minipage}
   \end{itemize}
   \item Scrum
   \begin{itemize}
-    \item Rahmenwerk mit notwendigen Anpassungen, aber ziemlich elaboriert
-    \item Name von Rugby
-    \item Product Owner verantwortlich für zu realisierende User Stories und landen als Sammlung in Product Backlog
-    \item Inkremente (Sprints): Planning Meeting Product Backlog in Sprint Backlog, Dauer 2-4 Wochen aber konstant
+    \begin{minipage}{.5\textwidth}
+      \item Rahmenwerk mit notwendigen Anpassungen, aber ziemlich elaboriert
+      \item Name von Rugby
+      \item Product Owner verantwortlich für zu realisierende User Stories und landen als Sammlung in Product Backlog
+      \item Inkremente (Sprints): Planning Meeting Product Backlog in Sprint Backlog, Dauer 2-4 Wochen aber konstant
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\linewidth]{imgs/scrum}
+    \end{minipage}
     \item Daily Scrum: täglicher Projektfortschritt, Burn Down Chart (Liste der offenen TODOs abgearbeitet)
     \item Scrum Master trainiert das Team, sorgt dafür, dass sich Entwickler auf das Entwickeln konzentrieren können (also eine stabile Arbeitsumgebung)
     \item Sprint Review Meeting: Wie war die Qualität?
@@ -312,7 +322,8 @@ Modelle
   \item Aktivitäten im RE (iterativ): Eliciation (Was sind die Anforderungen?), Dokumentation (z.B. Use-Cases oder formal z.B. mathematische Verifikation), Übereinstimmung (Widersprüche/Konflikte finden und priorisieren, gemeinsamen Konsens finden), zusätzlich Validieren und Verwalten (Hand in Hand mit anderen Aktivitäten, Änderungen, andere Priosierung)
   \item Stakeholder: Benutzer des Systems (Anwenden), Betreiber des Systems (Deployen), Auftraggeber, Entwickler (und deren Kenntnisse), Architekten (wiederverwendbare Komponenten), Tester (frühe Testbarkeit hilft Validierung der Anforderungen), Botschaft: nicht nur der Anwender
   \item Rolle Requirements Engineer (Anforderungserheber): technisches Wissen ist notwendig, reicht aber nicht, Kommunikation, Konfliktlösung, etc.
-  \item Techniken zur Gewinnung von Anforderung: Brainstorming (allein/Gruppe), User Stories zur Kommunikation mit Kunden, Beobachtungen (über die Schulter schauen), Fragebögen, Interviews, Vorgängersysteme? Vorschlagen von Ideen ggü. Kunde sinnvoll
+  \item Techniken zur Gewinnung von Anforderung: Brainstorming (allein/Gruppe), User Stories zur Kommunikation mit Kunden, Beobachtungen (über die Schulter schauen), Fragebögen, Interviews, Vorgängersysteme? Vorschlagen von Ideen ggü. Kunde sinnvoll\\
+  \includegraphics[width=\linewidth]{imgs/requirements_types}
   \item Funktional vs nicht-funktional vs constraint (Kind)
   \begin{itemize}
     \item Verhalten von Software spezifizierbar (Turing Maschine): funktional, sonst nicht-funktional (Wartbarkeit, Sicherheit, Performanz, etc.)
@@ -333,7 +344,8 @@ Modelle
     \item werden in natürlicher Sprache gegeben
     \item Guidelines: kurze Sätze (1 Anforderung pro Satz), klare Formulierung, klar machen wer zuständig ist, schwache Sachen vermeiden (effektiv, Nutzer-freundlich... unprüfbar), Glossar hilft (aber nicht als Selbstzweck), aktive Sprache (Akteure?)
   \end{itemize}
-  \item Schablonen verwenden: z.B. The system must/should/will <whom?> <objects> <process word>, Wortwiederholungen nicht wie normal vermeiden, bewusst das selbe gemeint klarmachen!
+  \item Schablonen verwenden: Wortwiederholungen nicht wie normal vermeiden, bewusst das selbe gemeint klarmachen!\\
+  \includegraphics[width=\linewidth]{imgs/use_case_template}
   \item Natürliche Sprache bietet Vorteile, da sie von allen Stakeholdern verstanden wird, Diagramme o.ä. dagegen nicht unbedingt
   \item Featurelisten: Requirements mit eindeutiger ID um verfolgbar zu sein, verwendbar für Entwurfsentscheidungen, Nachteil: unterschiedliches Abstraktionsniveau und manchmal Liste viel zu feingranular
   \item heutzutage User Stories (agil) oder Use Cases (modellbasiert)
@@ -367,10 +379,12 @@ Modelle
   \end{itemize}
   \item Use Case Diagramm
   \begin{itemize}
-    \item Überblick über die Use-Cases
+    \item Überblick über die Use-Cases\\
+    \includegraphics[width=\linewidth]{imgs/usecasediagram}
     \item Definieren Use-Cases nicht
     \item Systemgrenzen werden gezeigt
-    \item Üblicherweise User Goal Use-Cases (nicht zwangsweise)
+    \item Üblicherweise User Goal Use-Cases (nicht zwangsweise)\\
+    \includegraphics[width=\linewidth]{imgs/usecaselevels}
     \item Aktoren üblicherweise links
     \item Stakeholder beeinflusst/Bezug
     \item Primary Aktoren lösen Interaktionen aus
@@ -458,12 +472,19 @@ Modelle
   \item Grobe Struktur eines Systems
   \item Definition Reussner: Ergebnis einer Menge von Entwurfsentscheidungen und die betreffen die Komponenten und deren Beziehung untereinander und das Deployment
   \item Nicht ein Diagramm für alles, sondern verschiedene Sichten
-  \item Ähnliche Sichten können in Viewpoint zusammengefasst werden (deutsch: Perspektive)
-  \item Mindestens 3 Sichten werden benötigt: Aussage über Struktur (Komponenten, Abhängigkeiten), Was passierend während Ablauf (dynamisch, Abstraktion über Verhalten, Kommunikation der Komponenten untereinander oder was passiert bei Methodenaufrufen?), Abbildung auf verschiedene Ressourcen (Deployment View Point)
+  \item Ähnliche Sichten können in Viewpoint zusammengefasst werden (dt: Perspektive)\\
+  \begin{minipage}{.5\textwidth}
+    \item Mindestens 3 Sichten werden benötigt: Aussage über Struktur (Komponenten, Abhängigkeiten), Was passierend während Ablauf (dynamisch, Abstraktion über Verhalten, Kommunikation der Komponenten untereinander oder was passiert bei Methodenaufrufen?), Abbildung auf verschiedene Ressourcen (Deployment View Point)
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \includegraphics[width=\linewidth]{imgs/viewpoints}
+  \end{minipage}
   \item Decision View Point: um auf View Points zu kommen müssen Entwurfsentscheidungen getroffen werden, warum bewusst Entscheidung getroffen
   \item Alternativ Kruchten 4+1 (logical, development, process, physical view und scenarios), verwendet in RUP, UP noch ausführlicher
-  \item Komponentendiagramm gibt keine Aussage über Deployment (z.B. Thin Client vs Fat Client)
-  \item Sequenzdiagramm Interaktion über Entitäten
+  \item Komponentendiagramm gibt keine Aussage über Deployment (z.B. Thin Client vs Fat Client)\\
+  \includegraphics[width=.8\textwidth]{imgs/komponenten}
+  \item Sequenzdiagramm Interaktion über Entitäten\\
+  \includegraphics[width=.8\textwidth]{imgs/sequenz}
   \item Aktivitätsdiagramm: Ablauf innerhalb von Komponenten
   \item Deployment View: Komponenten abbilden auf Ressourcen (3D, kann gestapelt werden)
   \item Vorteile explizit dokumentierter Architektur: Kommunikationsmedium (z.B. Namen für Komponenten), prüfen ob nichtfunktionale Anforderungen eingehalten werden können, Wiederverwendung, Aufwand von kleineren Komponenten leichter schätzbar, andere Faktoren können einbezogen werden
@@ -482,15 +503,21 @@ Modelle
     \item Vermeidung von Redundanzen
     \item (YAGNI) - überleg ob du es brauchst? nicht alle Szenarien planen, Refactoring wenn nötig
   \end{itemize}
+  \begin{minipage}{.5\textwidth}
   \item Observer Pattern
-  \begin{itemize}
-    \item löst Problem von verschiedenen Sichten
-    \item z.B. verschiedene Sichten auf Datenbestand
-    \item Objekt zu beobachten
-    \item Beobachter
-    \item kann auch als Architekturpattern verwendet werden
-  \end{itemize}
-  \item Model View Controller \& Observer
+    \begin{itemize}
+      \item löst Problem von verschiedenen Sichten
+      \item z.B. verschiedene Sichten auf Datenbestand
+      \item Objekt zu beobachten
+      \item Beobachter
+      \item kann auch als Architekturpattern verwendet werden
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \includegraphics[width=\linewidth]{imgs/observer}
+  \end{minipage}
+  \item Model View Controller \& Observer\\
+  \includegraphics[width=.7\linewidth]{imgs/mvcobs}
   \begin{itemize}
     \item Erweiterung des Observers
     \item Controller und View an Observer, aktualisieren Model
@@ -503,15 +530,20 @@ Modelle
     \item Daten Transfer Objekte: Sammlung von Objekten zusammengefasst
     \item Domain Layer: Domänenmodel, Datenmodell + Funktionalitäten, Übernahme aus objektorientierter Analse
   \end{itemize}
-  \item Layered Architecture
-  \begin{itemize}
-    \item oben User Interface
-    \item Geschäftslogik (Anwendungslogik + fachliche Domäne)
-    \item unten Infrastruktur
-    \item neue User Interfaces entkoppelt (Schnittstellen)
-    \item Evaluation schwierig bei neuen Features (Änderung auf jeder Schicht)
-  \end{itemize}
-  \item Referenzarchitektur hängt mit Layering zusammen, z.B. wird ISO/OSI auch geschichtet (7 Schichten)
+  \begin{minipage}{.5\textwidth}
+    \item Layered Architecture
+    \begin{itemize}
+      \item oben User Interface
+      \item Geschäftslogik (Anwendungslogik + fachliche Domäne)
+      \item unten Infrastruktur
+      \item neue User Interfaces entkoppelt (Schnittstellen)
+      \item Evaluation schwierig bei neuen Features (Änderung auf jeder Schicht)
+    \end{itemize}
+    \item Referenzarchitektur hängt mit Layering zusammen, z.B. wird ISO/OSI auch geschichtet (7 Schichten)
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \includegraphics[width=\textwidth]{imgs/layered}
+  \end{minipage}
   \item Software Komponenten
   \begin{itemize}
     \item Definition: ein Baustein, der komponiert und adaptiert werden kann ohne dass die Innereien verstanden werden müssen. Man wird nicht gezwungen den Source-Code zu lesen bzw. zu verstehen, Widerspruch zu Vererbung (B müsste A kennen um sinnvoll zu überschreiben/erweitern, A weiß nicht ob B seine Methoden überschrieben hat)
@@ -559,8 +591,8 @@ Modelle
       \item Systemmodell: Schnittstelle nach außen, komponentenbasierte Architektur, kann Komponenten von verschiedenen Repositories beinhalten, nur als Einheit deploybar
       \item weitere Aufgaben des Softwarearchitekts: baut Architektur, trifft Entwurfsentscheidungen, Performanceanalyse, Feedback vom Deployment, delegiert die Entwicklungsaufgaben
       \item System Deployer: bildet Komponenten ab auf Ressourcen (können auch verschachtelt werden, Ressourcetypen: CPU, Netzwerk, Speicher (HD, RAM - noch nicht in Palladio))
-      \item Domänenexperte: beschreibt Interaktion mit System an äußerster Systemschnittstelle, modelliert Anwendungsverhalten, nicht Komponenten, Benutzungsprofil ähnlich zu SEFF, aber kein Bezug auf Ressourcen oder Komponenten des Systems, Eingabeparameter, wie viele Requests?
-      \item TODO Folie 56 einfügen
+      \item Domänenexperte: beschreibt Interaktion mit System an äußerster Systemschnittstelle, modelliert Anwendungsverhalten, nicht Komponenten, Benutzungsprofil ähnlich zu SEFF, aber kein Bezug auf Ressourcen oder Komponenten des Systems, Eingabeparameter, wie viele Requests?\\
+      \includegraphics[width=\linewidth]{imgs/paladiomodelle}
       \item Am Ende bekommt man Wahrscheinlichkeitsverteilung (Response Time - Wahrscheinlichkeit) oder akkumulierte Dichtefunktion (mit welcher Wahrscheinlichkeit bekommt man Antwort innerhalb gewisser Zeit)
       \item Lesson learned: Kontexte, Einflussfaktoren auf Performance, komponentenbasierte Entwicklung, Trennung Architektur- und Komponentenentwicklung, Black Boxes für Komponenten, SEFF und Parametrisierung
     \end{itemize}
@@ -586,7 +618,8 @@ Modelle
       \item Datenmodell existiert, wie strukturier ich Logik?
       \item hohe Komplexität, testbar, wartbar, änderbar, ...
       \item Beispiel: Versicherung macht Auszahlung nach Prämie, anders für jedes Versicherungsprodukt, richtiger Algorithmus für Summe
-      \item Transaction Script (Muster)
+      \item Transaction Script (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/transactionscript}
       \begin{itemize}
         \item Was sind Anfragen die aus Benutzerschicht kommen?
         \item Was wird dafür in der Geschäftslogik benötigt?
@@ -595,14 +628,16 @@ Modelle
         \item Vorteile: leicht von Entwicklern verständlich, Transaktionsgrenzen leicht verständlich, einfach auf Datenquellen anwendbar
         \item Probleme: skaliert schlecht mit komplexer Logik, oft Code-Duplikate
       \end{itemize}
-      \item Domain Model (Muster)
+      \item Domain Model (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/domainmodel}
       \begin{itemize}
         \item Kappselung in Klassen
         \item Objekt-orientierter Ansatz
         \item Vorteil: gut mit komplexer Logik, skaliert gut
         \item Nachteile: Objektorientierung kann schwierig für Entwickler sein
       \end{itemize}
-      \item Table Module (Muster)
+      \item Table Module (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/tablemodulefull}
       \begin{itemize}
         \item Funktion gliedern an Daten, möglichst wie Datenbankschema
         \item Welche Geschäftsfunktionalität kann auf Daten ausgeführt werden?
@@ -624,7 +659,8 @@ Modelle
       \item Auch bei NOSQL - muss auch OO Dargestellt werden
       \item Lösungen: Manuell (JDBC), Hibernate (oder andere OR-Mapper) oder XML
       \item Zur Wartbarkeit keine SQL-Statements im Code verstreuen!
-      \item Record Set (Muster)
+      \item Record Set (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/recordset}
       \begin{itemize}
         \item Daten in einer Tabelle als geordnete Liste im Speicher (in-memory) abgelegt
         \item Eine Klasse des Record Sets mit Tabellen verknüpft
@@ -632,7 +668,8 @@ Modelle
         \item Zugriff über Strings (resultSet.getString("Fname");) nicht schön, Typfehler erst zur Laufzeit
         \item schlechte Wartbarkeit - ist es wirklich das Set?
       \end{itemize}
-      \item Table Data Gateway (Muster)
+      \item Table Data Gateway (Muster)\\
+      \includegraphics[width=.4\textwidth]{imgs/tdgateway}
       \begin{itemize}
         \item Objekt einer Klasse, das Schnittstelle zur Datenbanktabelle ist
         \item Instanz Zugriff auf alle Tabellen
@@ -641,28 +678,40 @@ Modelle
         \item beißt sich mit Domänenmodell, da Daten stark nach DB gegliedert, anders als bei Domänenmodell, passt aber gut zu Transaktionsskript
         \item Gateway oder Fasade: Fasade verschattet möglichst komplexe Struktur und bietet einfachen Zugriffsweg, Gateway kappselt bewusst wie auf Datenbank zugegriffen wird, Fasade wird von Entwickler zur Verfügung zur Verfügung stellt, Gateway wird von Nutzer zur Verfügung gestellt
       \end{itemize}
-      \item Active Record (Muster)
-      \begin{itemize}
-        \item Objekt das eine Zeile der Datenbank beinhaltet, Geschäftslogik mit integriert
-        \item Passt sehr gut zur Domänenlogik
-        \item Gibt kein Record-Set, eine Instanz auf die CRUD-Operationen ausführbar sind
-        \item Nachteile: bei komplexerer Geschäftslogik können Funktionen benötigt werden, die auch Zugriff auf andere Objekte benötigen
-        \item Klappt nicht bei viel Verarbeitung - wie bei Oberklasse?
-        \item sehr stark an Datenbankschema orientiert
-      \end{itemize}
-      \item Row Data Gateway (Muster)
-      \begin{itemize}
-        \item Objekt einzelner Zugriff (Zeile), aber ohne Geschäftslogik
-        \item Vorteil: mehr Freiheitsgrade zur Strukturierung der Geschäftslogik
-        \item Gut für Code Generierung, Entkoppelung von DB
-      \end{itemize}
-      \item Identity Map (Muster)
+      \begin{minipage}{.5\textwidth}
+        \item Active Record (Muster)
+        \begin{itemize}
+          \item Objekt das eine Zeile der Datenbank beinhaltet, Geschäftslogik mit integriert
+          \item Passt sehr gut zur Domänenlogik
+          \item Gibt kein Record-Set, eine Instanz auf die CRUD-Operationen ausführbar sind
+          \item Nachteile: bei komplexerer Geschäftslogik können Funktionen benötigt werden, die auch Zugriff auf andere Objekte benötigen
+          \item Klappt nicht bei viel Verarbeitung - wie bei Oberklasse?
+          \item sehr stark an Datenbankschema orientiert
+        \end{itemize}
+      \end{minipage}
+      \begin{minipage}{.5\textwidth}
+        \includegraphics[width=\textwidth]{imgs/activerecord}
+      \end{minipage}
+      \begin{minipage}{.5\textwidth}
+        \item Row Data Gateway (Muster)
+        \begin{itemize}
+          \item Objekt einzelner Zugriff (Zeile), aber ohne Geschäftslogik
+          \item Vorteil: mehr Freiheitsgrade zur Strukturierung der Geschäftslogik
+          \item Gut für Code Generierung, Entkoppelung von DB
+        \end{itemize}
+      \end{minipage}
+      \begin{minipage}{.5\textwidth}
+        \includegraphics[width=\textwidth]{imgs/rdgateway}
+      \end{minipage}
+      \item Identity Map (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/identitymap}
       \begin{itemize}
         \item Zugriff auf DB
         \item Überprüfung ob Objekt schon da ist
         \item Nur eine Instanz von Objekt, nicht mehrere Instanzen von "dem selben"
       \end{itemize}
-      \item Data Mapper (Muster)
+      \item Data Mapper (Muster)\\
+      \includegraphics[width=.7\textwidth]{imgs/datamapper}
       \begin{itemize}
         \item Schicht die sich darum küppert wie Daten in DB kommen
         \item Entkoppelt durch Mapper
@@ -679,7 +728,8 @@ Modelle
     \begin{itemize}
       \item relationale Datenbank + objekttorientierte Struktur im Business Layer (mit Vererbung)
       \item müssen sehr häufig nicht selbst implementiert werden
-      \item Single-Table Inheritance
+      \item Single-Table Inheritance\\
+      \includegraphics[width=.5\textwidth]{imgs/singletableinheritance}
       \begin{itemize}
         \item alles in eine Tabelle
         \item Vereinigung der Attribute in Tabelle
@@ -687,14 +737,16 @@ Modelle
         \item Vorteile: sehr einfach, keine Joins, Refactoring von Felder hoch und runter benötigt keine Änderungen der Datenbank
         \item Nachteile: wenn irgendwo was geändert wird, muss immer Tabelle geändert werden, Tabelle kann sehr groß werden, für Basisklasse müssen alle Eigenschaften angelegt werden auch wenn diese nicht gebraucht werden
       \end{itemize}
-      \item Class Table Inheritance
+      \item Class Table Inheritance\\
+      \includegraphics[width=.5\textwidth]{imgs/classtableinheritance}
       \begin{itemize}
         \item Jede Klasse bekommt eigene Tabelle
         \item wieder 1:1 Mapping der Attribute
         \item Vorteile: Felder werden sinnvoll verwendet (keine leeren), konzeptionell sehr einfach
         \item Nachteile: viele Joins (Performanceprobleme möglich), häufiger Zugriff auf Super-Types
       \end{itemize}
-      \item Concrete Table Inheritance
+      \item Concrete Table Inheritance\\
+      \includegraphics[width=.5\textwidth]{imgs/concretetableinheritance}
       \begin{itemize}
         \item Attribute der Oberklasse werden nach unten mit kopiert (nur nicht abstrakte)
         \item Vorteil: wenger Platzverschwendung, Joins vermieden
@@ -752,7 +804,8 @@ Modelle
       \item Grund 1: Zentralle Klasse soll Use-Cases bearbeiten
       \item Composer Component: Fasaden-Muster (Fasaden-Controller) kann Use-Case beinhalten
     \end{itemize}
-    \item Low Coupling \& High Cohesion
+    \item Low Coupling \& High Cohesion\\
+    \includegraphics[width=.7\textwidth]{imgs/lchc}
     \begin{itemize}
       \item Wenn 2 Sachen eng zusammenarbeiten, dann in eine Komponente (hohe Kohesion kappseln und niedrige Kopplung, geringe Kohesion aufsplitten)
       \item Beispiel: Fasade Split (nicht so toll) - Fasaden oft Gott-Klassen
@@ -764,12 +817,15 @@ Modelle
       \item Mehrfachvererbung in C++ könnte helfen mehrere Superklassen zu definieren
       \item In Java dagegen Strategiemuster: Ente, Schnittstellen die FlyBehaviour und QuackyBehavior definieren (Komponenten statt Vererbung)
     \end{itemize}
+    \item Strategy Pattern\\
+    \includegraphics[width=.7\textwidth]{imgs/stratpat}
     \item Pure Fabrication
     \begin{itemize}
       \item Datenbankevolution und Geschäftsmodellevolution in selber Klasse
       \item Daher Entity Manager oder PersistentStorage erzeugt Methode zur Datenbankankopplung
     \end{itemize}
-    \item Indirection
+    \item Indirection\\
+    \includegraphics[width=.7\textwidth]{imgs/indirection}
     \begin{itemize}
       \item Aufgaben werden an andere Klassen delegiert
       \item wegen zu hohem Evolutionsdruck
@@ -827,11 +883,16 @@ Modelle
         \item Verhalten sollte durch neuen Code verändert werden, nicht dadurch alten Code zu ändern
         \item Sehr stark verbunden mit dem "Information Hiding Principle"
       \end{itemize}
-      \item Liskov Substitution Principle (LSP)
-      \begin{itemize}
-        \item Funktionen die Pointer oder Referenzen zu Basis-Klassen verwenden müssen Objekte der Basis-Klasse verwenden können
-        \item Verbunden zu Design by Contract: "When redefining a routine [in a derivative], you may only repalce its precondition by a weaker one, and its postcondition by a stronger one."
-      \end{itemize}
+      \begin{minipage}{.5\textwidth}
+        \item Liskov Substitution Principle (LSP)
+        \begin{itemize}
+          \item Funktionen die Pointer oder Referenzen zu Basis-Klassen verwenden müssen Objekte der Basis-Klasse verwenden können
+          \item Verbunden zu Design by Contract: "When redefining a routine [in a derivative], you may only repalce its precondition by a weaker one, and its postcondition by a stronger one."
+        \end{itemize}
+      \end{minipage}
+      \begin{minipage}{.5\textwidth}
+        \includegraphics[width=\textwidth]{imgs/liskov}
+      \end{minipage}
       \item Interface Segregation Principle (ISP)
       \begin{itemize}
         \item "Clients should not be forced to depend upon intercaes that they do not use."
@@ -841,10 +902,15 @@ Modelle
       \end{itemize}
       \item Dependancy Inversion Principle (DIP)
       \begin{itemize}
-        \item "A. High level modules should not depend upon low level modules. Both should depend upon abstractions.
-        B. Abstractions should not depend upon details. Details should depend upon abstractions."
-        \item Designproblem: Generischen Algorithmus von detailliertem Kontext trennen
-        \item Template Method Pattern: Inheritance, Binding zu Compile-Zeit, hängt stark von Algorithmus ab und verletzt DIP
+        \begin{minipage}{.5\textwidth}
+          \item \glqq A. High level modules should not depend upon low level modules. Both should depend upon abstractions.
+          B. Abstractions should not depend upon details. Details should depend upon abstractions.\grqq
+          \item Designproblem: Generischen Algorithmus von detailliertem Kontext trennen
+          \item Template Method Pattern: Inheritance, Binding zu Compile-Zeit, hängt stark von Algorithmus ab und verletzt DIP
+        \end{minipage}
+        \begin{minipage}{.5\textwidth}
+          \includegraphics[width=\textwidth]{imgs/dip}
+        \end{minipage}
         \item Strategy Pattern: Parametrisierung mit Konstruktor oder Setter
         \item Dependancy Injection: Technologie um abstrakte Abhängigkeiten mit konkreten Objekten zur Laufzeit zu instanziieren
         \item Inversion of Control (IoC) Container
@@ -857,21 +923,29 @@ Modelle
     \item Principle of Least Surprise: "Any function or class should implement the behaviours that another programmer could reasonably expect." , wenn offensichtliches Verhalten nicht implementiert wird, können Leser und Anwender nicht ihrer Intuition vertrauen und müssen Internals lesen
     \item Code Conventions
     \begin{itemize}
-      \item Naming: standardisiert, aussagekröftig (für jeden klar) - Hinweis über Kontext (AccountName in Account-Klasse), Hinweise über Typen (nameString, accountList), bestimmte prefixes (m\_name, IName), können durch IDE bereitgestellt werden, aussagelose Namen Vermeiden (außer Sonderfälle wie i als Schleifeninvariante)
-      \item Kommentare: nicht schlechten Code kommentieren, besser neuschreiben, gute Kommentare sind aussagekräftig (z.B. Test case takes ages), warnend (X used here isn't threadsafe), informativ (TODO: .. Will take care of missing..), aber aussagekräftiger Code ist besser als viele Kommentare
+      \item Naming: standardisiert, aussagekröftig (für jeden klar) - Hinweis über Kontext (AccountName in Account-Klasse), Hinweise über Typen (nameString, accountList), bestimmte prefixes (m\_name, IName), können durch IDE bereitgestellt werden, aussagelose Namen Vermeiden (außer Sonderfälle wie i als Schleifeninvariante)\\
+      \includegraphics[width=.7\linewidth]{imgs/naming}
+      \item Kommentare: nicht schlechten Code kommentieren, besser neuschreiben, gute Kommentare sind aussagekräftig (z.B. Test case takes ages), warnend (X used here isn't threadsafe), informativ (TODO: .. Will take care of missing..), aber aussagekräftiger Code ist besser als viele Kommentare\\
+      \includegraphics[width=.7\linewidth]{imgs/commenting}
     \end{itemize}
     \item Formatierung: Kohesionslevel visuell repräsentieren, vertikaler Abstand zwischen Konzepten (z.B. nach Imports oder Methoden), horizontaler Abstand um Operatoren oder Parameter zu betonen - verdeutlichen Elemente, häufig unterstützen IDEs Auto-Formatierung
     \item Don't Repeat Yourself (DRY) - copy \& paste reduziert Wartbarkeit, Verständllichkeit und Evolvierbarkeit, Code-Duplikation fördert Fehler und Inkonsistenzen
     \item Keep It Simple, Stupid (KISS) - "Make everything as simple as possible, but not simpler" (Albert Einstein), guter Code ist für jeden leicht verständlich, guter Code adressiert das Problem adäquat, z.B. wenn IEnumerable ausreicht, verwende keine ICollection oder eine IList, Techniken die helfen dass Code für andere verständlich ist: Code Reviews, Pair Programming
     \item You Ain't Gonna Need It (YAGNI): Features sind teuer (+Testen/Dokumentation) und machen das System schlechter wartbar da sie komplex werden (KISS), Vorsicht vor Optimierungen (kann teuer werden)
-    \item Single Level of Abstraction (SLA): Abstraktion wie Zeitung - TODO
+    \item Single Level of Abstraction (SLA)\\
+    \includegraphics[width=.5\textwidth]{imgs/SLA}
   \end{itemize}
   \item Clean Architecture Patterns
   \begin{itemize}
     \item verschiedene Designpatterns: heagonale Architektur ("Ports and Adapters", bessere Testbarkeit des Kerns und unabhängig von äußeren Services die leicht ersetzbar sind), Zwiebel Architektur (kontrolliert Coupling, da es richtung Zentrum geht), Boundary/Control/Entity(BCE): Varation des MVC, Verteilung der Verantwortungen
-    \item Clean Architecture Patterns führen zu Unabhängigkeit von Frameworks, testbaren Systemen, Unabhängigkeiten vom UI, Unabhängigkeit von Datenbanken, Unabhängkeite von externen Gegebenheiten
-    \item "Clean Architecture": kreisförmige Schichten repräsentieren verschiedene Bereich von Software (weiter innen = höheres Level der Software, außen Mechanismen, innen Policies), "The Dependancy Rule": Source Code Abhängigkeiten zeigen immer nach innen
-    \item Entities: Kappseln Business Rules, Objekt mit Methoden, Datenstruktset mit Funktionen, kann als Businessobjekt für Anwendungen verwendet werden, operationale Änderungen sollten die Entity nicht ändern
+    \item Clean Architecture Patterns führen zu Unabhängigkeit von Frameworks, testbaren Systemen, Unabhängigkeiten vom UI, Unabhängigkeit von Datenbanken, Unabhängkeite von externen Gegebenheiten\\
+    \begin{minipage}{.5\textwidth}
+      \item "Clean Architecture": kreisförmige Schichten repräsentieren verschiedene Bereich von Software (weiter innen = höheres Level der Software, außen Mechanismen, innen Policies), "The Dependancy Rule": Source Code Abhängigkeiten zeigen immer nach innen
+      \item Entities: Kappseln Business Rules, Objekt mit Methoden, Datenstruktset mit Funktionen, kann als Businessobjekt für Anwendungen verwendet werden, operationale Änderungen sollten die Entity nicht ändern
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[width=\textwidth]{imgs/CLA}
+    \end{minipage}
     \item Use Cases: beinhaltet architekturabhängige Business Rules, implementiert Use Cases des Systems, Schicht sollte sich nicht ändern bei Änderung der Entitites oder DB, UI oder anderen Externas, Schichte sollte sich ändern bei operationalen Änderungen der Anwendung
     \item Interface Adapters: Betrifft Datenaustausch zwischen Schichten, beinhaltet MVC Architektur eines GUI, Modelle sind Datenstrukturen
     \item Grenzen überschreiten: Controller und Presenter kommunizieren in Use-Cases, Source Code Abhängigkeiten zeigen nach innen (meist mit Dependancy Inversion)
@@ -898,22 +972,32 @@ Modelle
     \item Klassendiagramme verwedendet für modellbasierte Software-Entwicklung und hauptsächlich für Kommunikation designed
     \item Spezifikation von Metamodellen
     \begin{itemize}
-      \item Abstrakte Syntax: beschreibt die Konstrukte des Modells und die Eigenschaften und Beziehungen zwischen ihnen, Beschreibung ist unabhängig von der konkreten Darstellung dieser Konstrukte, Eigenschaften und Beziehungen.
-      \item Konkrete Syntax: beschreibt die Darstellung von Konstrukten, Eigenschaften und Beziehungen, die in der abstrakten Syntax spezifiziert sind. Für die abstrakte Syntax eines Metamodells muss mindestens eine konkrete Syntax angegeben werden, und beliebig viele können angegeben werden.
-      \item Statische Semantik: beschreibt die Modellierungsregeln und -einschränkungen, die in der abstrakten Syntax nicht ausgedrückt werden können. Für die Definition von Restriktionen als Constraints gibt es spezialisierte Sprachen (z.B. OCL).
-      \item Dynamische Semantik:beschreibt die Bedeutung seiner Konstrukte. Die dynamische Semantik wird oft nicht formal festgelegt, sondern durch Texte in natürlicher Sprache. Durch die Erstellung eines Mappings des Metamodells auf eine Sprache mit genau definierter Semantik (z.B. Petri-Netze) kann die dynamische Semantik formal spezifiziert werden.
+      \item Abstrakte Syntax: beschreibt die Konstrukte des Modells und die Eigenschaften und Beziehungen zwischen ihnen, Beschreibung ist unabhängig von der konkreten Darstellung dieser Konstrukte, Eigenschaften und Beziehungen.\\
+      \includegraphics[width=\textwidth]{imgs/abssyntax}
+      \item Konkrete Syntax: beschreibt die Darstellung von Konstrukten, Eigenschaften und Beziehungen, die in der abstrakten Syntax spezifiziert sind. Für die abstrakte Syntax eines Metamodells muss mindestens eine konkrete Syntax angegeben werden, und beliebig viele können angegeben werden.\\
+      \includegraphics[width=\textwidth]{imgs/consyntax}
+      \item Statische Semantik: beschreibt die Modellierungsregeln und -einschränkungen, die in der abstrakten Syntax nicht ausgedrückt werden können. Für die Definition von Restriktionen als Constraints gibt es spezialisierte Sprachen (z.B. OCL).\\
+      \includegraphics[width=\textwidth]{imgs/ocl}
+      \item Dynamische Semantik:beschreibt die Bedeutung seiner Konstrukte. Die dynamische Semantik wird oft nicht formal festgelegt, sondern durch Texte in natürlicher Sprache. Durch die Erstellung eines Mappings des Metamodells auf eine Sprache mit genau definierter Semantik (z.B. Petri-Netze) kann die dynamische Semantik formal spezifiziert werden.\\
+      \includegraphics[width=\textwidth]{imgs/dynsem}
     \end{itemize}
   \end{itemize}
-  \item Representation / Instatation
-  \begin{itemize}
-    \item Modell repräsentiert Original
-    \item Wenn das Modell preskriptiv (vor dem Original) erstellt wurde, dann Instanziiert das Original das Modell
-    \item Metamodelle werden normalerweise im vorraus erstellt, damit Modelle als Instanzen erstellt werden können
-    \item häufig Modellierung in vier Schichten
-  \end{itemize}
+  \begin{minipage}{.7\textwidth}
+    \item Representation / Instatation
+    \begin{itemize}
+      \item Modell repräsentiert Original
+      \item Wenn das Modell preskriptiv (vor dem Original) erstellt wurde, dann Instanziiert das Original das Modell
+      \item Metamodelle werden normalerweise im vorraus erstellt, damit Modelle als Instanzen erstellt werden können
+      \item häufig Modellierung in vier Schichten
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}{.3\textwidth}
+    \includegraphics[width=\textwidth]{imgs/repinst}
+  \end{minipage}
   \item Selbstbeschreibende Modelle
   \begin{itemize}
-    \item Modelle der abstraktesten Schicht werden oft "self-descriptive" genannt
+    \item Modelle der abstraktesten Schicht werden oft "self-descriptive" genannt\\
+    \includegraphics[width=.7\textwidth]{imgs/selfdesc}
   \end{itemize}
   \item Model-Driven Software Development (MDSD)
   \begin{itemize}
@@ -1630,7 +1714,7 @@ Modelle
     \item Knows of Derived: Oberklasse ist abhängig von Unterklassen, bei Änderung der Unterklassen ändert sich die Oberklasse, schlechte Wartbarkeit
     \item God Klasse: lange Methoden, zentralisierter Ablauf, gebündelt in großer Klasse, niemand will diese Klasse anfassen, besser Aufteilen in mehrere Klassen
   \end{itemize}
-  \item Keypunkte: Software ändert sich zwangsweise, wenn nicht sinkt Werkt und Qualität der Software, ohne regelmäßig Wartungszyklen wird Software so schwert wartbar, dass nur noch Änderungen irgendwie hineinbekommen werden, nicht schön für Mitarbeiter, nicht gut fürs Unternehmen, Softwareevolutionsmethoden helfen dagegen, gutes Design: Kappselung, Abstraktion, Information Hiding, ... 
+  \item Keypunkte: Software ändert sich zwangsweise, wenn nicht sinkt Werkt und Qualität der Software, ohne regelmäßig Wartungszyklen wird Software so schwert wartbar, dass nur noch Änderungen irgendwie hineinbekommen werden, nicht schön für Mitarbeiter, nicht gut fürs Unternehmen, Softwareevolutionsmethoden helfen dagegen, gutes Design: Kappselung, Abstraktion, Information Hiding, ...
 \end{itemize}
 
 \end{document}
