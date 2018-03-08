@@ -1513,4 +1513,124 @@ Modelle
   \end{itemize}
 \end{itemize}
 
+\section{Cloud Computing \& Cloud Architecture}
+
+\begin{itemize}
+  \item Cloud-Dienste sind meist unvermeidbar (v.a. für Mobilgeräte)
+  \item Fünf essentielle Charakteristiken von Cloud Services (NIST)
+  \begin{itemize}
+    \item Elastic Scalability: Es gibt immer bisschen mehr, Skalierbarkeit: Eigenschaft einer Software-Anwendung steigende Last wird durch mehr Ressourcen ausgeglichen (keine binäre Eigenschaft), Elastizizät: Infrastruktureigenschaft - System erkennt dass mehr Ressourcen benötigt werden (bzw. Last hoch ist)
+    \item On-demand Self-Service: End-Anwender bestimmt welche Dienste er braucht und konfiguriert so
+    \item Allgegenwärtiger Netzwerk-Zugang (z.B. Synchronisierung von Smartphones)
+    \item Resource Pooling: Ressourcen in Zentren verteilt, besser auslastbar, im Schnitt weniger Auslastung, Beispiel Carsharing-Systeme
+    \item Measured Service: Man zahlt nur für das, was man benutzt
+  \end{itemize}
+  \item Ressourcen: Rechenleistung, Speicher, Netzwerk, Energie, Gebäudekosten, Administratoren und Apps, ADaten, ...
+  \item Performance ist Geld (mehr Ressourcen)
+  \item Problem: Effizienter Nutzen der Ressourcen, aber Last ist nicht immer perfekt vorhersagbar
+  \item Vergleich Cloud vs. Nicht-Cloud Kosten (Folie 14 einfügen) - ungenutzter Bereich bei Cloud zwischen 2 Kurven, bei Nicht-Cloud zwischen Gerade und Linie
+  \item Multi-Tenancy (Mandantenfähigkeit): verwaltet Rechte auf Festplatten, Schutzmechanismus der dafür sorgt, dass ein User A nicht Daten von User B sehen kann - schon in Anwendung, damit Ressourcen nicht dupliziert werden, funktional einfach, nicht-funktional schwierig (z.B. ein Nutzer erzeugt viel Last - Aufteilung von Ressourcen, aber man möchte auch skalieren und ihm Ressourcen geben, daher Trade-Off), Anwender kann Anwendung aber auch selbst konfigurieren
+  \item Virtualisierung: Logische Sicht wird auf physische Sicht abgebildet (z.B. logisches Bild von 2 Platten abgebildet auf 1 Platte), Umkehrung: Viele Platten auf eine große Abgebildet (viele physische in eine logische)
+  \item Für Cloud-Camputing: Virtualisierung anwendungsnah
+  \item Hypervisor: Scheduler auf Hardware der logische Sicht generiert
+  \item Paravirtualisierung: Performanter wenn Hypervisor nicht perfekte logische Sicht angeboten werden muss, abgespeckte Schicht, leicht veränderte logische Schicht, andere Betriebssysteme nötig
+  \item Vorteile von Virtualisierung: höhere Effizienz (weniger Energie benötigt), bessere Verfügbarkeit (da VMs flexibel auf Hardware gemappt werden können), Quality of Service, Ressourcen können auch überbucht werden, Management-Gründe: Sichten sind abgeschirmt, daher leichteres Management, relativ wenig Performance-Overhead
+  \item TODO Folie 21 Einfügen als Übersicht
+  \item Service Delivery Modelle (Ebenenen um Ressourcen zur Verfügung zu Stellen)
+  \begin{itemize}
+    \item Hardwarenah - Infrastracture as a Service (von außen denkt man, man arbeitet auf der Hardware - IaaS)
+    \item Platform as a Service (Paas): Programmierschnittstelle auf Cloud zur Verfügung gestellt - Was ist Programmieren? Was ist Konfigurieren?
+    \item Software as a Service (SaaS): Cloud-Service (z.B. Google Docs)
+  \end{itemize}
+  \item Total Cost of Ownership (TCO): Lizenzen, Hardwarekosten, Softwareupdates, Patches, Fixes, Backups, Änderungsmanagement, ... bei SaaS: Entwicklung, Test, Betrieb, Rest fällt weg, aber Betriebskosten werden nicht weniger, nur im Verhältnis zu Kundenzahl
+  \item Deployment Modelle
+  \begin{itemize}
+    \item Google Docs z.B. Public Cloud - jeder Anwender kann zugreifen (Daten nicht öffentlich) - Vertrauen zu Service Provider nötig
+    \item Verteilen der Daten auf verschiedene Provider möglich, damit erst Kombination sinnvolle Aufschlüsse liefert
+    \item Private Cloud, Infrastruktur wird selbst betrieben - Angriffe von innen ausgeschlossen
+    \item Hybride Cloud: Kombination aus Public und Private
+    \item Salesforce: viel Text, wenig Informationen
+  \end{itemize}
+  \item Amazon "Grep The Web"
+  \begin{itemize}
+    \item exemplarische Architektur
+    \item Grep: RegEx Matching UNIX
+    \item Grep The Web hochskaliert auf Internet (z.B. Begriffe in Dokumenten)
+    \item Eingabe: Dokumentliste, RegEx, GetStatus
+    \item Ausgabe: Subset
+    \item Wann weiß man wann fertig?
+    \item Cloud-Operationen möglichst asynchron
+    \item Beim Bauen von Cloud-Anwendungen auf Cloud-Anwendungen bauen (Empfehlung Reussner)
+    \item Gequeuete Operationen (d.h. asynchron)
+    \item Phasen der Architektur: Launch (Anfrage kommt), Monitor (Berechnung), Shutdown (Beenedet), Cleanup (Ressourcen freigegeben + Rechnung)
+  \end{itemize}
+  \item Google's MapReduce
+  \begin{itemize}
+    \item paralleles Programmiermodell
+    \item Zwinge in Map (ein Prozess auf viele Module) und Reduce Modul
+    \item Beispiel: Wort Count
+    \item Reduce (Baumartige Reduktion, viele Key-Value Paare werden reduziert)
+    \item Jedes Wort zu 1 Mappen und Keys unique machen gibt Summe
+  \end{itemize}
+  \item Architektur-Prinzipien: Dezentralisierung (nicht ein großer Job, sondern verschiedene Ressourcen), asynchrone Kommunikation (Fortschritt unter allen Umständen, kein Blockieren), Autonomität: alle Komponenten laufen lokal, lokale Verantwortungen (alle Informationen die er benötigt liegen lokal, entkoppelte Systeme), kontrollierte Nebenläufigkeiten (Elastizität/Skalierbarkeit), Fehlertoleranz (schon durch Asynchronität, Gesamtfunktionalität wird nicht in Frage gestellt wenn einzelne Komponenten ausfallen), kontrollierter Parallelismus (Abstraktionen auf denen Parallelität ausgeführt werden, keine Implementierung von Threads benötigt), kleine Bausteine (Wiederverwendbarkeit + bessere Administrierbarkeit), Symmetrie (möglichst gleiche Infrastrukturen), Einfachheit (so einfach wie möglich)
+  \item SaaS, PaaS, IaaS verschmelzen zunehmend bzw. Abgrenzungen werden geringer
+\end{itemize}
+
+\section{Software Evolution}
+
+\begin{itemize}
+  \item Systeme ändern sich
+  \item keine wirkliche Definition von "Fertig"
+  \item Lehman's Laws (1+2): 1 - Ein System das in der realen Welt verwendet wird, muss permanent angepasst werden. 2 - Um dagegen zu wirken, muss Energie aufgewendet werden.
+  \item Typen von Änderungen: korrektive Änderungen (Fixen von Bugs, Fixen von Design-Fehlern), adaptive Änderungen (Infrastruktur ändern (Hardware + Software), Ersetzen von externen Bibliotheken), Perfektive Änderungen (neue / geänderte Anforderungen)
+  \item Change driving Factors: interne Faktoren (Business Prozesse / Praktiken), Technologische Faktoren (neuer Plattformen / Bibliotheken), externe Faktoren (neue generelle Rahmenbedingungen z.B. Gesetzesänderungen)
+  \item Reale Constraints: Zeitdruck, Gelddruck, ...
+  \item Folge: Qualität wird schlechter (v.a. aber auch Wartbarkeit), typische Gründe: unvorhergesehene Nutzungsszenarien, mischen von alten und neuen Technologien, fehlendes Wissen über das System, Shortcuts (eigentlich müsste man etwas woanders einbauen, macht es aber "eben fix hier")
+  \item übliche Symptome: limitiertes Verständnis des Systems, Dokumente nicht mehr aktuell, lange Entwicklungszyklen, hohe Bug-Rate und längere Fix-Zeiten, Design und Code Schwächen, Code smells, längere Build-Zeiten, fehlende Code-Dokumentation, fehlende Tests
+  \item Software Evolution vs. Maintenance: Maintenance = Wartung, Evolution = Entwicklung + Wartung
+  \item Fehlerkorrigierungskosten am Anfang (Requirements) normiert 1, Implementierung 10, Operation 120
+  \item Wartungskosten: schwankende Zahlen, aber allgemein zwischen 60\% und 100 \% (kommt drauf ob korrektive Änderungen, aber immerhin wird Software gezielt weiterentwickelt)
+  \item Wofür werden Wartungskosten eingesetzt? ungefähr die Hälfte für Verständnis des Codes, nur geringer Teil für Coden (~19\%)
+  \item Kostenfaktoren in der Wartung: Softwarealter (Software wird zewartet/Anpassungen), inkonsistenzen zwischen den Softwareartefakten, Verständnis der Entwickler über das System, wie stabil ist das Team?
+  \item Maintenance Predication: Kostenabschätzung, welche Teile werden häufig geändert? Was sind erwartbare Change-Requests? Welche Teile des Systems werden am stärksten von Change Requests betroffen sein?
+  \item Legacy Systems: Systeme, die so wertvoll sind, dass sie weiter gepflegt werden sollen, aber bspw. schlechte Dokumentation, veraltete Plattformen
+  \item Softwareevolutionsprozess: Änderungsmanagement, Analyse der Auswirkung von Änderungen, Modernisierung (Code + Doku), Qualitätssicherung, Analyse der Auswirkung von Qualität
+  \item Management von Requirements und Änderungen: stellen Rückverfolgbarkeit von Software-Artefakten sicher (forwärts: Anforderungen zu Software-Artefakten, rückwärts: Anforderungen zu Quelle), managen Änderungswünsche (sammeln und validieren Änderungswünsche, dokumentieren diese, aktualisieren Anforderungen, Analyse der Auswirkungen, Kostenschätzung, Planen der Änderungen / des Releases)
+  \item Analyse der Auswirkungen von Änderungen: Bestimmte Ausmaß von Änderungen (Identifiziere bekannte Auswirkungen), unterstützende Technologien (Analyse der Verfolgbarkeit, textuelle Vergleiche, statische Programm-Analyse, Test Coverage)
+  \item Software-Modernisierung: Anpassung an neue Umgebung (Programmiersprache, Frameworks, Betriebssystem, Infrastruktur), unterstützende Technologien (Source to Source Übersetzung, Service Orientierung, Wrapping)
+  \item Software Quality Assurance: Finden und Korrigieren von Design Problemen um kosteneffektive Wartung zu vermeiden
+  \item Evolution supporting System Design
+  \begin{itemize}
+    \item Software-Design ist der Prozess um eine Software-Lösung für ein Problem in einem gegebenen Kontext zu planen um die Komplexität des Systems zu managen und Wiederverwendbarkeit zu erleichtern
+    \item Korrektes Design vs. gutes Design: Es gibt kein korrektes Design, keine Anleitung wie man dies erreicht, Kriterien um Design zu evaluieren (Komplexitätsmanagement, Quality-Aspekte, Wiederverwendbarkeit)
+    \item Ein gutes Design ist eines das Trade-Offs balanciert um die Gesamtkosten des System über die komplette Lebensdauert zu minimieren und um Charakteristiken die zu schlechten Konsequenzen führen zu vermeiden
+    \item Modularität: Grad wie ein System oder Programm in diskrete Komponenten unterteilt ist, so dass eine Änderung einer Komponente minimale Einfluss auf andere Komponenten hat
+    \item Meyer's 5 Kriterien für Modularität
+    \begin{itemize}
+      \item Decomposability of the problem into sub-problems
+      \item Composability of modules to produce new systems
+      \item Understandability of a module in isolation
+      \item Continuity - small changes have localized effects
+      \item Protection - fault isolation
+    \end{itemize}
+    \item Encapsulation: Softwareentwicklungs-Technik - Isolation einer Systemfunktion oder eines Sets von Daten und Operationen innerhalb eines Moduls und Bereistellen präziser Spezifikation für das Modul
+    \item Abstraktion: Sicht auf ein Objekt die sich auf relevante Informationen für bestimmten Zweck fokussiert und die anderen ignoriert
+    \item Information Hiding: Interfaces geben so wenig heraus wie nötig
+    \item Cross-cutting concerns: ein Concern dessen Implementierung nicht in OO Code einbezogen werden kann (z.B. Persistenz)
+    \item Vorteile von gutem Design: unterstützt Software-Evolution (garantiert Flexibilität und Adaptivität ggü. Änderungen)m erlaubt large scale Wiederverwendbarkeit, Verbessert Kommunikation mit Stakeholdern
+    \item Programmier für eine Schnittstelle: Klassen sollten von Interfaces abhängen, nicht von konkreten Klassen, Interfaces werden sich nicht so oft ändern, Vorteile: geringere Koppelung, bessere Stabilität
+    \item Isoliere vergängliches Verhalten: Vergänglicher Code sollte gekappselt werden und vom restlichen System getrennt werden, Vorteile: weniger Orte für Änderungen
+  \end{itemize}
+  \item Design-Probleme
+  \begin{itemize}
+    \item Improper Layering: Layer-Zugriff oben nach unten, Überspringen sollte man Schichten generell nicht, Überspringen kann Sinn machen (z.B. Rootkits, invariante Zwischenstufe bringt Overhead, also bei zeitkritischen Anwendungen OS-API übersprüngen)
+    \item Simulierte Polymorphie: if/else instace of überprüft in Oberklasse welche Unterklasse es ist, richtig: Logik in Unterklassen
+    \item Refused Bequest (ausgeschlagenes Erbe): Oberklasse implementiert Methode, Unterklassen erben, Überschreiben der Methoden der Oberklasse mit leerem Methodenrumpf (Aufrufer erwartet dass Verhalten eintritt)
+    \item Feature Envy: Klasse greift eher auf Member von anderen Klassen zu, schwer zu verstehen, besser in Methoden
+    \item Knows of Derived: Oberklasse ist abhängig von Unterklassen, bei Änderung der Unterklassen ändert sich die Oberklasse, schlechte Wartbarkeit
+    \item God Klasse: lange Methoden, zentralisierter Ablauf, gebündelt in großer Klasse, niemand will diese Klasse anfassen, besser Aufteilen in mehrere Klassen
+  \end{itemize}
+  \item Keypunkte: Software ändert sich zwangsweise, wenn nicht sinkt Werkt und Qualität der Software, ohne regelmäßig Wartungszyklen wird Software so schwert wartbar, dass nur noch Änderungen irgendwie hineinbekommen werden, nicht schön für Mitarbeiter, nicht gut fürs Unternehmen, Softwareevolutionsmethoden helfen dagegen, gutes Design: Kappselung, Abstraktion, Information Hiding, ... 
+\end{itemize}
+
 \end{document}
