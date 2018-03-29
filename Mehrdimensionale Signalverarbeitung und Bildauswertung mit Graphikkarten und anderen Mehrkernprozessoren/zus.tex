@@ -1,0 +1,153 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+%\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{varwidth}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{enumitem}
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+\textsc{Karlsruhe Institute of Technology} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Mehrdimensionale Signalverarbeitung und Bildauswertung mit Graphikkarten und anderen Mehrkernprozessoren % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\begin{itemize}
+  \item Parallel computing: Use of multiple (interacting) computational units(CU) to execute a (divisible) task.
+  \item Amdahls law: We want to know how fast we can complete a task on a particular data set by increasing the CU count. $\eta_n = \frac{TW}{T(n)W} = \frac{T}{t_s + \frac{t_p}{n} + t_{comm}}$
+  \begin{itemize}
+    \item $\eta_n$: Speeup
+    \item $W$: Work load
+    \item $T$: Total runtime $t_s + t_p$
+    \item $t_s$: Runtime serial part
+    \item $t_p$: Runtime parallel part
+    \item $t_{comm}$: Communication time (normally not included)
+    \item $n$: Number of computational units
+  \end{itemize}
+  \item Gustafson's law: We want to know if we can analyze more data in approximately the same amount of time by increasing the CU count. $\eta_n = \frac{TW(n)}{TW} = (1-p)W + npW$
+  \begin{itemize}
+    \item $\eta_n$: Speeup
+    \item $W$: Work load
+    \item $T$: Total runtime
+    \item $p$: Workload fraction benefiting from additional CUs
+    \item $W(n): (1-p)W + np W \equiv aW + n(1-a)W = nW - a(n-1)W$
+    \item $n$: Number of computational units
+  \end{itemize}
+  \item Data parallelism: Each CU performs the same task on dierent data
+  \begin{itemize}
+    \item The CPU cores and GPU streaming-cores are OpenCL compute devices
+    \item Concurrent processing on all herterogeneous cores.
+  \end{itemize}
+  \item Task parallelism: Each CU performs a different task on the same data
+  \item Instruction level parallelism: Automatic parallel execution of instructions by processor
+  \item Spatial parallelism: More units work in parallel
+  \item Temporal parallelism $\rightarrow$ Pipelining
+  \item Latency
+  \begin{itemize}
+    \item The latency of an instruction is the \textbf{delay} that the instruction generates in a dependy chain. The measurement unit is clock cycles.
+    \item CPUs try to minimize latency. Low efficiency on parallel portions.
+  \end{itemize}
+  \item Throughput
+  \begin{itemize}
+    \item The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle when the operands of each instruction are independant of the preceding instrucions.
+    \item GPUs try to maximize throughput. Low performance on sequentiel portions.
+  \end{itemize}
+  \item Graphic card slang
+  \begin{itemize}
+    \item A GPU executes a program, the \textit{kernel}.
+    \item A thread executes an instance of the kernel.
+    \item Threads are combined into warps/wavefronts running in lockstep. Individual threads composing a warp start together at the same program address, but they have their own instruction address counter and register state and are therefore free to branch and execute independently.
+    \item Warps/wavefronts are part of threaded blocks/work groups. These are defined by the user.
+    \item A thread runs on a core. A number of cores form a \textit{Streaming Multiprocessor (SM) / Compute Unit (CU)}. Thread blocks/work groups are scheduled over SMs/CUs.
+  \end{itemize}
+\end{itemize}
+
+\section{Parallelism / Programming models}
+
+\begin{itemize}
+  \item Foster's PCAM model
+  \begin{itemize}
+    \item Tasks communicate over channels
+    \begin{itemize}
+      \item Task: A program with local memory, in- and outports. Tasks execute concurrently. The number of tasks can vary during program execution.
+      \item Channel: Connecting outports of a task with import of another task. Channels are buffered sending asynchronously and receiving synchronously (task blocks).
+    \end{itemize}
+  \end{itemize}
+  \item Parallel Patterns
+  \begin{itemize}
+    \item The Berkeley View
+    \item The Intel View
+  \end{itemize}
+\end{itemize}
+
+\section{OpenMP}
+
+\section{OpenACC}
+
+\section{OpenCL}
+
+\subsection{OpenCL-API}
+
+\subsection{OpenCL-C}
+
+\subsection{OpenCL-Memory}
+
+\section{Optimization for CPUs}
+
+\section{Optimization for GPUs}
+
+\section{SIFT Optimization}
+
+
+
+\end{document}

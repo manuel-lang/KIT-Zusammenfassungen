@@ -1,0 +1,171 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[ngerman]{babel}
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage[section]{placeins}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{algpseudocode}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{graphicx,wrapfig}
+
+% Algorithmic modifications
+\makeatletter
+\newcommand{\ALOOP}[1]{\ALC@it\algorithmicloop\ #1%
+  \begin{ALC@loop}}
+\newcommand{\ENDALOOP}{\end{ALC@loop}\ALC@it\algorithmicendloop}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algorithmicbreak}{\textbf{break}}
+\newcommand{\BREAK}{\STATE \algorithmicbreak}
+\makeatother
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\usepackage{enumitem}
+\setlistdepth{20}
+\renewlist{itemize}{itemize}{20}
+
+% initially, use dots for all levels
+\setlist[itemize]{label=$\cdot$}
+
+% customize the first 3 levels
+\setlist[itemize,1]{label=\textbullet}
+\setlist[itemize,2]{label=--}
+\setlist[itemize,3]{label=*}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+%\textsc{Karlsruher Insitut für Technologie} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Softwaretechnik II\\ Zusammenfassung WS17/18 % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Manuel Lang} % Your name
+
+\date{} % Today's date or a custom date
+
+\begin{document}
+
+\begin{itemize}
+\item Was ist Overfitting?
+\item Was ist Change Detection? Wie unterschieden sich multivariate von univariaten Datenströmen?
+\item ‚Kategorisierung von Daten‘ (erste Folie dieses Kapitels) sprechend wiedergeben können.
+\item Gegeben Aggregationsfunktion X, ist sie distributiv/algebraisch/holistisch/self-maintainable?
+\item Sehen Sie einen allgemeinen Zusammenhang zwischen distributiv/algebraisch/holistisch auf der einen und self-maintainable auf der anderen Seite? (Es gibt einen.)
+\item Wie groß ist die Entropie, wenn alle Klassen gleich häufig sind? Schreiben Sie dafür eine allgemeine Formel hin.
+\item Welche Möglichkeiten kennen Sie, die Stärke des Zusammenhangs zwischen zwei Zufallsvariablen zu quantifizieren?
+\item  Welche statistischen Tests kennen Sie?
+\item Wofür genau sind die einzelnen Tests gut?
+\item Was bedeutet Dimensionality Reduction?
+\item Welche Möglichkeiten der Dimensionality Reduction kennen Sie?
+\item Welche Diskretisierungsverfahren kennen Sie?
+\item Wie findet man jeweils den besten Merge bzw. Split?
+\item Warum kann man für räumliche Anfragen nicht ohne weiteres auswerten, wenn man für jede Dimension separat einen B-Baum angelegt hat?
+\item Wie ist der R-Baum aufgebaut?
+\item Wie funktioniert die Suche nach dem nächsten Nachbarn mit dem R-Baum? (Frage ich ganz gerne u. a. dann, wenn die Prüfung stockend verläuft...)
+\item Was ändert sich, wenn die Objekte eine räumliche Ausdehnung haben? Dto. Anfragen.
+\item Stören uns Überlappungen von Knoten des R-Baums? Wenn ja, warum?
+\item Wie unterscheiden sich R-Baum, kD-Baum und kDB-Baum? (Wie Balancierung für kDB-Baum funktioniert, muss man für Prüfung nicht wissen.)
+\item Wie funktioniert Einfügen in den R-Baum, inklusive Split?
+\item Wie baut man einen Entscheidungsbaum auf?
+\item Wie kann man Overfitting beim Aufbau eines Entscheidungsbaums berücksichtigen?
+\item Wie kann Aufbau des Entscheidungsbaums berücksichtigen, dass unterschiedliche Fehlerarten unterschiedlich schlimm sind?
+\item Was ist die „10-fold cross validation“?
+\item Wie haben wir die Erfolgsquote definiert?
+\item Was ist ein Lift Chart? Wie unterscheidet es sich von der ROC Kurve?
+\item Was für Fehlerarten gibt es bei Vorhersagen von Klassenzugehörigkeiten?
+\item Was für Kennzahlen kennen Sie, die diese Fehlerarten sämtlich berücksichtigen?
+\item Was ist Unterschied zwischen Kovarianz und Correlation Coefficient?
+\item Warum kommt bei der informational loss Funktion die Logarithmusfunktion zur Anwendung?
+\item Was sind Association Rules?
+\item Wie findet man sie?
+\item Wie überprüft man rasch für viele Transaktionen, welche Kandidaten sie enthalten?
+\item Geben Sie ein Beispiel für eine Association Rule mit hohem/niedrigem Support und hoher/niedriger Confidence.
+\item Was sind multidimensionale Association Rules?
+\item Was sind Multi-Level Association Rules, und wie findet man sie?
+\item In welchen Situationen ist Apriori teuer, und warum?
+\item Was kann man gegen diese Schwächen tun?
+\item Was sind FP-Trees, und wie lassen sie sich für die Suche nach Frequent Itemsets verwenden?
+\item Was kann man tun, wenn FP-Trees für den Hauptspeicher zu groß sind?
+\item Was ist Constraint-basiertes Mining? Was sind die Vorteile?
+\item Was für Arten von Constraints kennen sie? Beispiele hierfür.
+\item Was ist Anti-Monotonizität, Succinctness? <Für ein bestimmtes Constraint sagen/begründen, ob anti-monoton/succinct.>
+\item Wie lässt sich Apriori für das Mining von Teilfolgen verallgemeinern?
+\item Antagonismus von Support-basiertem und Constraint-basiertem Pruning erklären können.
+\item Alternativen für Constraint-basiertes Pruning (wenn Constraint nicht anti-monoton) erklären können.
+\item Welche Clustering-Verfahren kennen Sie?
+\item Gegeben Szenario X, welche Clustering-Verfahren sind sinnvoll, und warum?
+\item Erklären Sie Clustering-Verfahren XY.
+\item Warum funktionieren herkömmliche Clustering-Verfahren in hochdimensionalen Merkmalsräumen nicht?
+\item Skizzieren Sie eine mögliche Lösung.
+\item Erklären Sie, warum Clustering mit kategorischen Attributen besonders ist? Warum ist Link-basiertes Clustering hier hilfreich?
+\item Welche Definitionen für Outlier kennen Sie?
+\item Gegeben die abstandsbasierte Definition von Outlier, welche Techniken zur Ermittlung der Outlier kennen Sie?
+\item Warum kann man beim Dichte-basierten Clustering nicht einfach die Dichte um die Punkte herum vergleichen und die mit der geringsten Dichte zurückgeben?
+\item Sehen Sie einen Zusammenhang zwischen Clustering und Outlier Detection?
+\item Welche Anomalien hochdimensionaler Merkmalsräume kennen Sie?
+\item Wieso funktionieren hierarchische Indexstrukturen in hochdimensionalen Merkmalsräumen nicht?
+\item Was ist der Zusammenhang zwischen der Zelldichte und Outlier Detection in hochdimensionalen Merkmalsräumen?
+\item Wie groß sollten die Zellen sein?
+\item Geben Sie die Klassifizierung aus der LV in 'interessante' und 'weniger interessante' Outlier wieder.
+\item What do we mean with ‚physically consistent models‘?
+\item What is matrix completion?
+\item What are residuals?
+\item Describe the objective and the main ingredients of GLUE.
+\item Please reproduce the classification of approaches for theory-guided data science from this chapter.
+\end{itemize}
+
+\end{document}
