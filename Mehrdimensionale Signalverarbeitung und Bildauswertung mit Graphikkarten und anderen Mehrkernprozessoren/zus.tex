@@ -122,17 +122,294 @@
       \item Task: A program with local memory, in- and outports. Tasks execute concurrently. The number of tasks can vary during program execution.
       \item Channel: Connecting outports of a task with import of another task. Channels are buffered sending asynchronously and receiving synchronously (task blocks).
     \end{itemize}
+    \item Paritioning: The computation that is to be performed and the data operated on by this computation are decomposed into small tasks. Practical issues such as the number of processors in the target computer are ignored, and attention is focused on recognizing opportunities for parallel execution.
+    \begin{itemize}
+      \item The partitioning stage of a design is intended to expose opportunities for parallel execution.
+      \item Focus is on defining a large number of small tasks (fine-grained decomposition).
+      \item A good partition divides both the computation and the data into small pieces.
+      \item One approach is to focus first on partitioning the data associated with a problem; this is called domain decomposition.
+      \begin{itemize}
+        \item First partition data; ideally divide data into small pieces of approximately equal size.
+        \item Next partition computation, typically by associating each operation with the data on which it operates.
+        \item Focus first on the largest data structure or on the data structure that is accessed most frequently.
+      \end{itemize}
+      \item The alternative approach, termed functional decomposition, decomposes the computation into seperate tasks before considering how to partition the data.
+      \begin{itemize}
+        \item Initital focus is on the computation that is to be performed rather than on the data.
+        \item Divide computation into disjoint tasks.
+        \item Examine data requirements of tasks:
+        \begin{enumerate}
+          \item Requirements may be disjoint, in which case the partition is complete.
+          \item Requirements may overlap significantly, in which case considerable communication will be required to avoid replication of data. Domain decomposition should be considered instead.
+        \end{enumerate}
+        \item Functional decomposition is valuable as a different way of thinking about problems and should be considered when exploring possible parallel algorithms.
+        \item A focus on the computations that are to be performed can sometimes reveal structure in a problem, and hence opportunities for optimization, that would not be obvious from a study of data alone.
+        \item Functional decomposition is an important program structuring technique; can reduce the complexity of the overall design.
+      \end{itemize}
+      \item Theses are complementary techniques.
+      \item Seek to avoid replicating computation and data (may change this later in process).
+      \item Paritioning checklist
+      \begin{itemize}
+        \item Does your partition define at least an order of magnitude more tasks than there are processors in your target computer?
+        \item Does your partition avoid redundant computation and storage requirements?
+        \item Are tasks of comparable size?
+        \item Have you identified several alternative partitions?
+      \end{itemize}
+    \end{itemize}
+    \item Communication: The communication required to coordinate task execution is determined, and appropriate communication structures and algorithms are defined.
+    \begin{itemize}
+      \item Conceptualize a need for communication between two tasks as a channel linking the tasks, on which one task can send messages and from which the other can receive.
+      \item Channel structure links tasks that require data (consumers) with tasks that possess those data (producers).
+      \item Definition of a channel involves an intellectual cost and the sending of a message involves a physical cost - avoid introducing unnecessary channels and communication operations.
+      \item We want to distribute communication operations over many tasks.
+      \item We want to organize communication operations in a way that permits concurrent execution.
+      \item For functional decomposition communication is often 'natural'.
+      \item For domain decomposition:
+      \begin{itemize}
+        \item First partition data structures into disjoint subsets and then associate with each datum those operations that operate solely on that datum.
+        \item Handle dependencies with other tasks.
+      \end{itemize}
+      \item Communication patterns
+      \begin{itemize}
+        \item local vs. global
+        \item structured vs. unstructured
+        \item static vs. dynamic
+        \item synchronous vs. asynchronous
+      \end{itemize}
+      \item Communication checklist
+      \begin{itemize}
+        \item Do all tasks perform about the same number of communication operations?
+        \item Does each task communicate only with a small number of neighbors?
+        \item Are communication operations able to proceed concurrently?
+        \item Is the computation associated with different tasks able to proceed concurrently?
+      \end{itemize}
+    \end{itemize}
+    \item Agglomeration: The task and communication structures defined in the first two stages of a design are evaluated with respect to performance requirements and implementation costs. If necessary, tasks are combined into larger tasks to improve performance or to reduce development costs.
+    \begin{itemize}
+      \item Move from parallel abstractions to real implementation. At this point we've broken down our problem enough that we understand the individual tasks and the necessary communication between tasks. The goal now is to being making the parallel solution practical and as efficient as possible.
+      \begin{itemize}
+        \item Is it useful to combine, or agglomerate, tasks to reduce the number of tasks?
+        \item Is it worthwile to replicate data and/or computation?
+      \end{itemize}
+      \item Agglomeration goals
+      \begin{itemize}
+        \item Reducing communication costs by increasing computation and communication granularity.
+        \item Retaining flexibility with respect to scalability and mapping decisions.
+      \end{itemize}
+      \item Surface-to-Volume effects
+      \begin{itemize}
+        \item The communication requirements of a task are proportional to the surface of the subdomain on which it operates, while the computation requirements are proportional to the subdomain's volume. In a two-dimensional problem, the surface scales with the problem size while the volume scales as the problem size squared.
+        \item The amount of communication performed for a unit of computation (the communication/computation ratio) decreases as task size increases. This effect is often visible when a partition is obtained by using domain decomposition techniques.
+      \end{itemize}
+      \item Replication of computations: Sometimes it's more efficient for a task to compute a needed quantity rather than to receive it from another task where it is already known or has been computed.
+      \item Avoid communication: Agglomeration is almost always beneficial if analysis of communication requirements reveals that a set of tasks cannot execute concurrently.
+      \item Preserving flexibility
+      \begin{itemize}
+        \item It is important when agglomerating to avoid making design decisions that limit unnecessarily an algorithm's scalability. For example, we might choose to decompose a multidimensional data structure in just a single dimension.
+        \item Don't assume during the design that the number of processors will always be limited to the currently available number.
+        \item Good parallel algorithms are designed to be resilient to changes in processor count.
+        \item It can be advantageous to map several tasks to a processor. Then, a blocked task need not result in a processor becoming idle, since another task may be able to execute in its place.
+      \end{itemize}
+      \item Agglomeration checklist
+      \begin{itemize}
+        \item Has agglomeration reduced communication costs by increasing locality?
+        \item If agglomeation has replicated communication, have you verified that the benefits of this replication outweigh its costs, for a range of problem sizes and processor counts?
+        \item If agglomeration replicates data, have you verified that this does not compromise the scalability of your algorithm by restricting the range of problem sizes or processor counts that it can address?
+        \item Has agglomeration yielded tasks with similar computation and communication costs? The larger the tasks created by agglomeration, the more important it is that they have similar costs.
+        \item Does the number of tasks still scale with problem size?
+        \item If agglomeration eliminated opportunities for concurrent execution, have you verified that there is sufficient concurrency for current and future target computers?
+        \item Can the number of tasks be reduced still further, without introducing load imbalances or reducing scalability?
+      \end{itemize}
+    \end{itemize}
+    \item Mapping: Each task is assigned to a processor in a manner that attempts to satisfy the competing goals of maximizing processor utilization and minimizing communication costs. Mapping can be specified statically or determined at runtime by load-balancing algorithms.
+    \begin{itemize}
+      \item At this point we have a set of tasks and we need to assign them to processors on the available machine. The mapping problem does not arise on uniprocessors or on shared-memory computers that provide automatic task scheduling.
+      \item General-purpose mapping mechanisms have yet to be developed for scalable parallel computers. The general-case mapping problem is NP-complete.
+      \item Our goal in developing mapping algorithms is normally to minimize total execution time. We use two strategies to achieve this goal:
+      \begin{enumerate}
+        \item We place tasks that are able to execute concurrently on different processors, so as to enhance concurrency.
+        \item We place tasks that communicate frequently on the same processor, so as to increase locality.
+      \end{enumerate}
+      \item Considerable knowledge has been gained on specialized strategies and heuristics and the classes of problem for which they are effective.
+      \item When domain decomposition is used there is often a fixed number of equal-size tasks and structured local and global communication.
+      \item If, instead, there are variable amounts of work per task and/or unstructured communication patterns, we might use load balancing algorithms that seek to identify efficient agglomeration and mapping strategies. The time required to execute these algorithms must be weighed against the benefits of reduced execution time. Probabilistic load-balancing methods tend to have lower overhead than do methods that exploit structure in an application.
+      \item When either the number of tasks or the amount of computation or communication per task changes dynamically during program execution we might use dynamic load-balancing strategy in which a load-balancing algorithm is executed periodically to determine a new agglomeration and mapping.
+      \item If functional decomposition is used we can use task-scheduling algortihms which allocate tasks to processors that idle or that are likely to become idle.
+    \end{itemize}
   \end{itemize}
   \item Parallel Patterns
   \begin{itemize}
     \item The Berkeley View
+    \begin{itemize}
+      \item Seven critical questions for 21st century parallel computing
+      \begin{itemize}
+        \item Applications
+        \begin{itemize}
+          \item What are the applications?
+          \item What are common kernels of the applications?
+        \end{itemize}
+        \item Hardware
+        \begin{itemize}
+          \item What are the hardware building blocks?
+          \item How to connect them?
+        \end{itemize}
+        \item Programming models
+        \begin{itemize}
+          \item How to describe applications and kernels?
+          \item How to program the hardware?
+        \end{itemize}
+        \item Evaluation
+        \begin{itemize}
+          \item How to measure success?
+        \end{itemize}
+      \end{itemize}
+      \item 13 Dwarfs
+      \begin{enumerate}
+        \item Finite State Machine
+        \item Combinational Logic
+        \item Graph Traversal
+        \item Structured Grids
+        \item Dense Linear Algebra
+        \item Sparse Linear Algebra
+        \item Spectral Methods (FFT)
+        \item Dynamic Programming
+        \item N-Body Methods
+        \item MapReduce
+        \item Back-track/Branch \& Bound
+        \item Graphical Model Inference
+        \item Unstructured Grids
+      \end{enumerate}
+      \item 4 Valuable Roles of Dwarfs
+      \begin{enumerate}
+        \item "Anti-benchmarks" not tied to code or language artifcats $\implies$ encourage innovation in algorithms, languages, data structures, and/or hardware
+        \item Universal, understandable vocabulary to talk across disciplinary boundaries
+        \item Define building blocks for creating libraries \& frameworks that cut across app domains
+        \item They decouplse research, allowing analysis of HW \& SW engineering and programming without waiting years for full apps
+      \end{enumerate}
+      \item Parallel Patterns
+      \begin{itemize}
+        \item A recurring combination of tasks distribution and data access that solves a specific problem in parallel algorithm design.
+        \item Patterns can be used to organize your code, leading to algorithms that are most scalable and maintainable.
+        \item Patterns are universal - they can be used in any parallel programming system.
+        \item Good parallel programming models support a set of useful parallel patterns with low-overhead implementations.
+      \end{itemize}
+      \item Serial Control Patterns
+      \begin{itemize}
+        \item Sequence: A sequence is a ordered list of tasks that are executed in a specific order. Each task is completed before the one after it starts.
+        \item Selection: In the selection pattern, a condition c is evaluated first. If the condition is true, some task a is executed. If c is false, task b will be executed. There is a control-flow dependency between c and a,b, so neither a or b is executed before c. Exactly one of a or b will be executed, never both.
+        \item Iteration: In the iteration pattern, a condition c is evaluated. If it is true, a task a is evaluated, then c is evaluated again, and the process repeats until the condition becomes false. The number of iterations is data dependend.
+        \item Recursion: Recursion is a dynamic form of nesting which allows functions to call themselves, directly or indirectly.
+      \end{itemize}
+      \item Parallel Control Patterns
+      \begin{itemize}
+        \item Fork-Join: The fork-join pattern lets control flow fork into multiple parallel flows that rejoin later.
+        \item Map: The map pattern replicates a (elemental) function over every element of an index set. The index set may be abstract or associated with the elements of a acollection.
+        \item Stencil: Stencil applies a function to neighbourhoods of a collection.
+        \item Reduction: Combines every element in a collection using an associative "combiner function". Because of the associativity of the combiner function, different orderings of the reduction are possible.
+        \item Scan: Computes all partial reduction of a collection. For every output in a collection, a reduction of the input up to that point is computed. If the function being used is associative, the scan can be parallelized. Parallelizing a scan is not obvious at first, because of dependencies to previous iterations in the serial loop. A parallel scan will require more operations than a serial version.
+        \item Recurrence: Recurrence results from loop nests with both input and output dependencies between iterations. For a recurrence to be computable, there must be a serial ordering of the recurrence elements so that elements can be computed using previously computed outputs.
+      \end{itemize}
+      \item Serial Data Management Patterns
+      \begin{itemize}
+        \item Random Read and Write
+        \item Stack Allocation
+        \item Heap Allocation
+        \item Closures
+        \item Objects
+      \end{itemize}
+      \item Parallel Data Management Patterns
+      \begin{itemize}
+        \item Pack: Pack is used eliminate unused space in a collection. Elements marked false are discarded, the remaining elements are placed in a contiguous sequence in the same order. Useful when used with map.
+        \item Pipeline: A Pipeline connects tasks in a producer-consumer manner. Some stages may retain state. Pipelines are most useful when used with other patterns as they can multiply available parallelism.
+        \item Geometric Decomposition: The geometric decomposition arranges data into subcollections. Overlapping and non-overlapping decompositions are possible.
+        \item Gather: Gather reads a collection of data given a collection of indices. The output collection shares the same type as the input collection, but it share the same shape as the indices collection.
+        \item Scatter: Scatter is the inverse of gather. A set of input and indices is required, but each element of the input is written to the output at the given index instead of read from the input at the given index. Race conditions can occur when we have two writes to the same location.
+      \end{itemize}
+      \item Other parallel patterns
+      \begin{itemize}
+        \item Workpile: general map pattern where each instance of elemental function can generate more instances, adding to the "pile" of work.
+        \item Search: finds some data in a collection that meets some criteria.
+        \item Segmentation: operations on subdivided, nonoverlapping, non-uniformly sized partitions of 1D collections.
+        \item Expand: a combination of pack and map. Each map can output any number of elements. The outputs are packed in a specific order.
+        \item Category Reduction: Given a collection of elements each with a label, find all elements with same label and reduce them.
+      \end{itemize}
+    \end{itemize}
     \item The Intel View
   \end{itemize}
 \end{itemize}
 
 \section{OpenMP}
 
+\begin{itemize}
+  \item Supporting Compilers: gcc, PGI, clang, Intel Compiler
+  \item based on a shared memory model
+  \item utilizes software threads (OpenMP runtime system)
+  \item Program use by API, pragmas and Environment variables
+  \item Supported Languages: C, C++, Fortran
+  \item Threads
+  \begin{itemize}
+    \item Concept: Fork-Join
+    \item OpenMP programs start with just one thread: The Master
+    \item Worker threads are spawned at Parallel Regions. Together with the Master they form a Team.
+    \item In between Parallel Regions the Worker threads are put to sleep.
+    \item Allows for an incremental parallelization!
+  \end{itemize}
+  \item OpenMP Parallel Regions
+  \begin{itemize}
+    \item A parallel region is a block of code that will be executed by multiple threads. This is the fundamental OpenMP parallel construct.
+    \item When a thread reaches a PARALLEL directive, it creates a team of threads and becomes the master of the team. The master is a member of that team and has thread number 0 within that team.
+    \item Starting from the beginning of this parallel region, the code is duplicated and all threads will execute that code.
+    \item There is an implied barrier at the end of a parallel region. Only the master thread continues execution past this point.
+    \item If any thread terminates within a parallel region, all threads in the team will terminate, and the work done up until that point is undefined.
+  \end{itemize}
+  \item OpenMP Thread number
+  \begin{itemize}
+    \item The number of threads in a parallel region is determined by the following factors, in order of precedence:
+    \begin{enumerate}
+      \item Evaluation of the $IF$ clause
+      \item Setting of the $NUM_THREADS$ clause
+      \item Use of the $omp_set_num_threads()$ library function
+      \item Setting of the $OMP_NUM-THREADS$ environment variable
+      \item Implementation default - usually the number of CPUs on a node, thought it could be dynamic
+    \end{enumerate}
+    \item Threads are numbered from 0 (master thread) to N-1
+  \end{itemize}
+  \item OpenMP Work-Sharing Constructs
+  \begin{itemize}
+    \item for Construct: The for directive identifies an iterative work-sharing construct that specifies that the iterations of the associated loop will be executed in parallel. The iterations of the for loop will be executed in parallel. The iterations of the for loop are distributed across threads that already exist in the team executing the parallel construct to which it binds.
+    \item The sections directive identifies a noniterative work-sharing construct that specifies a set of constructs that are to be divided among threads in a team. Each section is executed once by a thread in the team. The syntax of the sections directive is as follows... TODO
+    \item The single directive identifies a construct that specifies that the associated structured block is executed by only one thread in the team (not necessarily the master thread). The syntax of the single directive is as follows... TODO
+  \end{itemize}
+  \item OpenMP Memory Model
+  \begin{itemize}
+    \item All threads have access to the same, globally shared memory
+    \item Data in private memory is only accessible by the thread owning this memory
+    \item No other thread sees the change(s) in private memory
+    \item Data transfer is through shared memory and is 100\% transparent to the application
+    \item Private data is undefined on entry and exit (Can use firstprivate and lastprivate to address this)
+    \item Each thread has its own temporary view on the data
+  \end{itemize}
+  \item OpenMP Data Sharing
+  \begin{itemize}
+    \item shared: #pragma omp parallel for shared(a)
+    \item private: #pragma imp parallel for private(a) - a private copy is an uninitialized variable by the same name and same type as the original variable; it does not copy the value of the variable that was in the surrounding context.
+    \item firstprivate: #pragma omp parallel for firstprivate(a) - a firstprivate copy is an initialized variable by the same name and same type as the original variable; it does copy the value of the variable that was in the surrounding context.
+    \item lastprivate: #pragma omp parallel for lastprivate(a) - The lastprivate clause defines a variable private as in firstprivate or private, but causes the value from the last task to be copied back to the original value after the end of the loop/sections construct. In a loop construct (for construct), the last value is the value assigned by the thread that handles the last iteration of the loop. Values assigned during other iterations are ignored.
+  \end{itemize}
+  \item OpenMP Synchronization
+  \begin{itemize}
+    \item Data Race: If between two synchronization points at least one thread writes to a memory location from which at least one other thread reads, the result is not deterministic (race condition).
+  \end{itemize}
+  \item OpenMP Critical Region: The $CRITICAL$ directive specifies a region of code that must be executed by only one thread at a time. If a thread is currently executing inside a $CRITICAL$ region and another reaches that $CRITICAL$ region and attempts to execute it, it will block until the first thread exists that $CRITICAL$ region.
+  \item OpenMP Atomic: The $ATOMIC$ directive specifies that a specific memory location must be updated atomically, rather than letting multiple threads attempt to write to it. In essence, this directive provides a mini-CRITICAL section. The directive provides a mini-CRITICAL section. The directive applies only to a single, immediately following statement.
+  \item OpenMP Reduction: The reduction clause is a mix between the private, shared, and atomic clause. It allows to accumulate a shared variable without the atomic clause, but the type of accumulation must be specified. It will often produce faster executing code than by using the atomic clause.
+\end{itemize}
+
 \section{OpenACC}
+
+\begin{itemize}
+  \item Supporting Compilers: gcc, PGI
+\end{itemize}
 
 \section{OpenCL}
 
