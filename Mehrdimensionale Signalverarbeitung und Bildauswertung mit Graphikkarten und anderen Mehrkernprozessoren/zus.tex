@@ -403,28 +403,831 @@
   \item OpenMP Critical Region: The $CRITICAL$ directive specifies a region of code that must be executed by only one thread at a time. If a thread is currently executing inside a $CRITICAL$ region and another reaches that $CRITICAL$ region and attempts to execute it, it will block until the first thread exists that $CRITICAL$ region.
   \item OpenMP Atomic: The $ATOMIC$ directive specifies that a specific memory location must be updated atomically, rather than letting multiple threads attempt to write to it. In essence, this directive provides a mini-CRITICAL section. The directive provides a mini-CRITICAL section. The directive applies only to a single, immediately following statement.
   \item OpenMP Reduction: The reduction clause is a mix between the private, shared, and atomic clause. It allows to accumulate a shared variable without the atomic clause, but the type of accumulation must be specified. It will often produce faster executing code than by using the atomic clause.
+  \item OpenMP Barrier: The barrier directive causes threads encountering the barrier to wait until all the other threads in the same team have encountered the barrier. There is an implicit barrier at the end of each parallel block, and at the end of each sections, for and single statement, unless the nowait directive is used.
+  \item OpenMP Task: In OpenMP, an explicit task is specified using the task directive. The task directive defined the code associated with the task and its data environment. The task construct can be placed anywhere in the program; whenever a thread encounters a task construct, a new task is generated.
+  \item OpenMP Devices
+  \begin{itemize}
+    \item device: An implementation defined logical execution engine. (A device could have one or more processors.)
+    \item host device: The device on which the OpenMP program begins execution.
+    \item target device: A device onto which code and data may be offloaded from the host device. It is implementation defined (i.e. optional).
+  \end{itemize}
+  \item OpenMP Device Execution Model
+  \begin{itemize}
+    \item host-centric; host device offloads target regions (code and data) to target devices
+    \item the target region may be executed by the target device or host device
+    \item the target region is executed by the host device if a rget device does not exist or the target device is not supported by the implementation or the target device cannot execute the target construct
+    \item the task that encounters the target construct waits at the end of the construct until execution of the region completes
+    \item a target region is executed on one target device
+    \item each device has its own threads
+  \end{itemize}
+  \item OpenMP Device Data Model: Creates a device data environment
+  \begin{itemize}
+    \item data can be implicitly mapped to the target region
+    \item data can explicitly (via data-mapping attribute clause) mapped to the target region
+    \begin{itemize}
+      \item provide more precise information to the compiler
+      \item reduce unnecessary data transfer
+    \end{itemize}
+    \item device: specify on which device the data environment is created
+    \item map:
+    \begin{itemize}
+      \item alloc each new corresponding list item has an undefined initial value
+      \item to each new corresponding list item is initialized with the original list item's value
+      \item from on exit from the region the corresponding list item's value is assigned to each original list item
+      \item fromto default
+    \end{itemize}
+    \item if: if present and false, the device is the host
+  \end{itemize}
+  \item OpenMP Offloading: TODO
+  \item OpenMP target vs target data
+  \begin{itemize}
+    \item The target directive transfers the control flow to the target device. The map clause controls the data transfer directions.
+    \item The targetdata directive creates a scoped devices data environment. The map clause controls the data transfer directions. The device data environmen is valid during the lifetime of the region.
+    \item Device data environment can be used to keep data on target
+  \end{itemize}
+  \item OpemMP declare target
+  \begin{itemize}
+    \item a declarative directive
+    \item specify variables and procedures being mapped to a device
+    \item this directive instructs the compiler that the functions are called or the variables are referenced in the target region; a target device version of the code needs to be generated
+  \end{itemize}
+  \item OpenMP Device Teams
+  \begin{itemize}
+    \item the teams construct creates a league of thread teams
+    \item by default, one team is created
+    \item exploit extra level of parallelism on some hardware (e.g. Nvidia GPU)
+    \item work can be distributed among the teams (distribute construct)
+  \end{itemize}
+  \item OpenMP distribute
+  \begin{itemize}
+    \item iterations distributed among master threads of all teams
+    \item specify to the loops only
+    \item must be closely nested to the teams construct
+    \item workshare among teams to exploit the parallelism on the target device
+    \item the iterations are divided into blocks, each block is offloaded to the teams regions
+    \item collapse(N): Turns the next N loops into one, linearized loop
+    \item dist_schedule(kind[, chunk_size]): If dist_schedule is specified, kind must be static. If specified, iterations are divided into chunks of size chunk_size, chunks are assigned to the teams of the league in a round-robin fashion in the order of the team number.
+  \end{itemize}
+  \item OpenMP simd
+  \begin{itemize}
+    \item The simd construct can be applied to a loop to indicate that the loop can be transformed into a SIMD loop (that is, multiple iterations of the loop can be executed concurrently using SIMD instructions).
+    \item safelen(N): no two iterations executed concurrently with SIMD instructions can have a greater distance in the logical iteration space than N, where N is an integer constant
+    \item simdlen(N): If used, the simdlen clause specifies the preferred number of iterations to be executed concurrently. The parameter of the simdlen clause must be a constant positive integer.
+    \item linear: The linear clause declares one or more list items to be private to a SIMD lane and to have a linear relationship with respect to the iteration space of a loop.
+  \end{itemize}
 \end{itemize}
 
 \section{OpenACC}
 
 \begin{itemize}
   \item Supporting Compilers: gcc, PGI
+  \item Similiar to OpenMP, differences: in OpenMP parallelism is expecitly expressed by the user. Correctness must be provided by the user. In OpenACC parallelism can be expressed implicitly or explicitly.
+  \item A kernel is a function that runs in parallel on the GPU.
+  \item When a program encounters a kernels construct, it will launch a sequence of kernels in order on the device.
+  \item The kernels directive expresses that a region may contain parallelism and the compiler determines what can be safely parallelized.
+  \item The compiler breaks code in the kernel region into a sequence of kernels for execution on the accelerator device.
+  \item The parallel directive identifies a block of code as having parallelism.
+  \item Compiler generates a parallel kernel for that loop.
+  \item The loop directive is used within a parallel or kernels directive identifying a loop that can be executed on the accelerator device.
+  \item The loop directive can be combined with the conclosing parallel or kernels
+  \item OpenACC loop clauses
+  \begin{itemize}
+    \item gang: partition the loop across gangs
+    \item worker: partition the loop across workers
+    \item vector: vectorize the loop
+    \item seq: do not partition this loop, run it sequentially instead
+  \end{itemize}
+  \item OpenACC loop restrictions: The OpenACC specifications enforces that the outermost loop must be a gang loop, the innermost parallel loop must be a vector loop, and a worker loop may appear in between. A sequential loop may appear at any level. When using the parallel directive, one can partition the loop in the form of the num_gangs, num_workers, and vector_length clauses to the parallel directive
+  \item copy(list): Allocates memory on GPU and copies data from host to GPU when entering region and copies data to the host when exiting region.
+  \item copyin(list): Allocates memory on GPU and copies data from host to GPU when entering region.
+  \item copyout(list): Allocates memory on GPU and copies data to the host when exiting region.
+  \item create(list): Allocates memory on GPU but does not copy.
+  \item present(list): Data is already present on GPU from another containing data region.
 \end{itemize}
 
 \section{OpenCL}
 
-\subsection{OpenCL-API}
+\begin{itemize}
+  \item Intel Sandybridge Architecture
+  \begin{itemize}
+    \item Sandybridge has 6 cores and 12 hardware threads (SMT)
+    \item Floating point units can operate on 4 (DP) pr 8 (SP) data words simultaneously in a SIMD fashion.
+  \end{itemize}
+  \item Nvidia Fermi Architecture
+  \begin{itemize}
+    \item Fermi has 16 streaming multiprocessors (SM)
+    \item Each SM has 32 cores such that 512 cores reside within the Fermi
+    \item Each core has an arithmetic logic and a floating point unit
+  \end{itemize}
+  \item CPU and GPU Specs
+  \begin{itemize}
+    \item GPUs exhibit a vast number of arithmetic logic and floating point units which exceeds the number of working units of CPUs
+    \item CPUs are used for more general work and provide more caches and control logic for hiding latencies of memory transfers
+    \item GPUs tackle this bottleneck with thread-level parallelism applied on huge data sets.
+  \end{itemize}
+  \item Parallel Programming
+  \begin{itemize}
+    \item Need to fully utilizt all computational resources
+    \item In many cases compilers are unable to achieve the desired efficiency
+    \item CPUs
+    \begin{itemize}
+      \item Cilk (spawn, sync, inlet, abort)
+      \item High Performance Fortran (forall)
+      \item C++ 11 Thread library (async, join, ...)
+      \item Thread Building Blocks (parallel_for, parallel_do, ...)
+      \item OpemMP (# pragma omp parallel)
+      \item Message Passing Interface
+    \end{itemize}
+    \item GPUs
+    \begin{itemize}
+      \item Shader Programming (OpenGL, Direct3D)
+      \item Rapidmind
+      \item Brook+
+      \item Nvidia Cuda
+    \end{itemize}
+  \end{itemize}
+  \item OpenCL Key Features
+  \begin{itemize}
+    \item open and royalty-free standard for parallel programming
+    \item portable and efficient access to heterogeneous processing platforms
+    \item enhances significantly enhanced parallel programming productivity
+  \end{itemize}
+  \item Hierarchy of Models for Abstraction
+  \begin{itemize}
+    \item Platform model: host - device - compute units
+    \item Execution model: command queues - work items / groups
+    \item Memory model: regions - objects - consistency
+    \item Programming model: platform and runtime layer - kernels
+  \end{itemize}
+  \item Programming Models
+  \begin{itemize}
+    \item Task parallelism - OpenCL API
+    \begin{itemize}
+      \item Within the host program with C or C++
+      \item Decompose program into smaller function units
+      \item Let the function units run in parallel
+    \end{itemize}
+    \item Data parallelism - OpenCL-C/C++
+    \begin{itemize}
+      \item Within separate functions kernels with a dialect of C99 or C++14
+      \item Decompose data into smaller data sets
+      \item Let functions or program segments process the data sets in parallel
+    \end{itemize}
+  \end{itemize}
+  \item Host \& Platforms
+  \begin{itemize}
+    \item A Host conducts how platforms are utilized
+    \item Host programs utilize the OpenCL API
+    \item A Platform is a collection of heterogeneous devices
+    \item Number of platforms depends on the vendors
+    \item Communication between Platforms over host
+  \end{itemize}
+  \item Plaform \& Devices
+  \begin{itemize}
+    \item Each platform may consist of heterogeneous devices
+    \item Each device can have different number of compute units
+    \item Each compute unit (CU) has the same amount of processing elements
+    \item Every device is programmed using an extended C dialect
+  \end{itemize}
+  \item Device \& Subdevice
+  \begin{itemize}
+    \item Device is a hierarchical shared memory system
+    \begin{itemize}
+      \item Processing elements (PE) share a fast local memory within a compute unit
+      \item Slower global memory is shared across all processing elements within a device
+    \end{itemize}
+    \item PEs communicate and synchronize within a CU faster than across CUs
+    \item Devices might be equally subdivded
+  \end{itemize}
+  \item Context \& Device
+  \begin{itemize}
+    \item A Context can be regarded as a collection of devices
+    \item Contexts are created for one or multiple devices within a platform
+    \item Contexts are used by the OpenCL runtime for managing objects
+  \end{itemize}
+  \item Context \& Command Queue
+  \begin{itemize}
+    \item A command queue is processed on a single device to execute commands
+    \item Each context may contain several queues
+    \item Commands from different queues run independently from each other
+    \item Barriers and markers for synchronization
+  \end{itemize}
+  \item Context \& Objects
+  \begin{itemize}
+    \item OpenCL objects are created using a single context
+    \item Operations on these objects are performed using a queue
+    \item Objects do not see devices!
+    \item There are different object types
+    \begin{itemize}
+      \item Buffer(Memory) objects
+      \begin{itemize}
+        \item A Buffer is an one dimensional collection of elements on which data parallel operations are performed.
+        \item The data type of a buffer is specified by the corresponding argument type of the OpenCL kernel function
+        \item Read and write operations are performed using command queues which must be within the same context
+      \end{itemize}
+      \item Event objects
+      \item Program objects
+      \begin{itemize}
+        \item Programs hold data parallel code which are referred to as kernels
+        \item Kernels can be either strings or can reside in a file
+        \item Programs may be built for specified devices residing in the same context
+        \item The build process includes the creating of OpenCL kernels
+        \item Build options available such as optimizations, preprocessor directives
+        \item programs run only on devices for which they were built
+      \end{itemize}
+      \item Kernel objects
+      \begin{itemize}
+        \item OpenCL kernels are data parallel functions written in the OpenCL C language
+        \item Kernel objects are created by program objects which contain the corresponding OpenCL kernels
+        \item No changes allowed to the OpenCL kernel functions after the build process
+        \item Kernel can be run after specifying its arguments
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 
-\subsection{OpenCL-C}
+\subsection{Task-Level Parallelism with the OpenCL-API}
+
+\begin{itemize}
+  \item Different Command Types for
+  \begin{itemize}
+    \item executing kernels, e.g. clEnqueueNDRangeKernel
+    \item Executing memory ops, e.g. clEnqueueReadBuffer
+    \item synchronization, e.g. clEnqueueMarkerWithWaitList
+  \end{itemize}
+  \item Commands can be
+  \begin{itemize}
+    \item blocking: API function do not return until command has completed (memory read/write, flushing)
+    \item non-blocking: API function immediately returns -> execute asynchronous to the host thread
+  \end{itemize}
+  \item Command Queues
+  \begin{itemize}
+    \item Command Queue Execution Types
+    \begin{itemize}
+      \item in-order: appear to execute commands in the order of queuing
+      \item out-of-order: execute commands in any order
+    \end{itemize}
+    \item Command Queue States
+    \begin{itemize}
+      \item queued: command within the queue
+      \item submitted: flushed and submitted for execution
+      \item ready: all prerequisites for execution have been met
+      \item running: command is running on the specified device
+      \item ended: execution of commands end: all workgroups ended
+      \item complete: child commands ended
+    \end{itemize}
+  \end{itemize}
+  \item Event Objects
+  \begin{itemize}
+    \item Events are used to track the commands within a queue
+    \begin{itemize}
+      \item User is able to query the status of an enqueued commands
+      \item Status is queued, submitted, running, complete, error.
+    \end{itemize}
+    \item Event can be also used for intra- and inter-device Communication
+    \begin{itemize}
+      \item Ensure a status is reached until another command is executed
+    \end{itemize}
+    \item You can also use the finish command to ensure blocking for a
+  \end{itemize}
+  \item Intra-Device Communication
+  \begin{itemize}
+    \item Events are created using asynchronous commands
+    \item Events are grouped into event lists
+    \item Event lists are used to block a command queue until all events are completed
+  \end{itemize}
+  \item Inter-Device Communication (Graphic TODO Slide 11 (227))
+\end{itemize}
+
+\subsection{Data parallel programming with OpenCL-C}
+
+\begin{itemize}
+  \item Programming Model: Single-program multiple-data
+  \item Execution Model: Fine-grained data-level parallelism
+  \item Memory Model: Memory spaces with different access properties
+  \item Prerequsities: What needs to be provided in order to make data-parallel programming worthwile?
+  \begin{itemize}
+    \item Existence of large data sets which can be broken into smaller data sets
+    \item Possibility to operate on the smaller data sets from other sets independently
+    \item Hardware architecture which makes a data-parallel execution feasible and preferable
+  \end{itemize}
+  \item Benefits of data-parallel programming
+  \begin{itemize}
+    \item Utilization of the architectural resources more efficiently.
+    \item Possibility to hide latency of memory accesses in case of computations with high artihmetic intensity (ratio of artithmetic to memory operations)
+  \end{itemize}
+  \item OpenCL Kernels
+  \begin{itemize}
+    \item Similar to standard C functions with a set of additional keywords
+    \item Kernels contain data-parallel code for parallel execution on a single OpenCL device
+    \item Facilitates fine granularity of data-parallelism by allowing to map threads to single data items
+    \item Efficient mapping of the kernel code on many devices due to the fine granularity of data-parallelism
+  \end{itemize}
+  \item OpenCL C-Programming Language
+  \begin{itemize}
+    \item Open CL-C is based on C99
+    \item Special built-in data types (16-bit precision floating point types, vector types, image types, sampler types, API types)
+    \item Address Space qualifiers (global: global memory address space, memory objects, local: local memory address space, constant: read only global memory address space, private: variables not declared with an address space qualifier)
+    \item Access Qualifiers - Image objects (read_only, write_only, read_write)
+    \item Function Qualifiers, e.g. __attribute__((vec_type_hint(<type>)))
+    \item Storage Class Qualifiers, e.g. typedef, extern, static
+    \item Built-in functions
+    \begin{itemize}
+      \item Asynchronous Copy \& Prefetching, e.g. async_work_group_copy()
+      \item Atomic functions, e.g. atomic_init()
+      \item Common functions, e.g. clamp(), min(), max(), sign()
+      \item Event functions, e.g. create_user_event()
+      \item Geometric functions, e.g. cross(), dot()
+      \item Imagine functions, e.g. read_imagef(), get_image_width()
+      \item Math functions, e.g. cos(), sin()
+      \item Sync functions, e.g. work_group_barrier()
+      \item Vector functions, e.g. vload(), vstore()
+      \item Work item functions, e.g. get_global_id()
+    \end{itemize}
+    \item Operators, e.g. +, ++, ==
+    \item Conversion and type casting, e.g. convert_int4()
+  \end{itemize}
+  \item Threads
+  \begin{itemize}
+    \item Threads may be implemented in software or hardware
+    \item A software thread, e.g. as defined in PThreads, can be considered as a lightweight process
+    \begin{itemize}
+      \item A process, a running program, contains threads which may run concurrently
+      \item Threads contain a minimal set of resources (stack) and share the rest (heap) with other threads residing in the process
+      \item Faster software context switching organized by the operating system
+    \end{itemize}
+    \item A hardware thread can be considered as a flow of instructions
+    \begin{itemize}
+      \item with its program counter and additional registers
+      \item and can be switched by the hardware to another hardware thread,
+      \item e.g. Intel's Hyperthreading (Simultaneous Multithreading)
+    \end{itemize}
+    \item Threads in OpenCL
+    \begin{itemize}
+      \item In OpenCL, a thread is called work-item
+      \item Work-items correspond to the smallest unit of a running processes of kernel
+      \item A Work-item executes instructions according to the control flow of the kernel body independent of other work-items
+      \item Each work-item runs on a unit of hardware, known as a processing element (PE)
+      \item A processing element may host many work-items
+    \end{itemize}
+    \item Thread-Array
+    \begin{itemize}
+      \item Work-items are organized within a 1D-/2D- or 3D-thread-array
+      \item Each work-item has a unique ID within the index get_global_id(dim)
+      \item Work-items are grouped to larger entities called work-group, identified by get_group_id(dim)
+      \item Within work-groups, work-items are identified by get_local_id(dim).
+    \end{itemize}
+    \item Indexing the Thread-Array: let $k \in \{0,1,2\}$ specify the domensions $x,y,z$.
+    \begin{itemize}
+      \item A work-item within a work-group is identified by: $l_k \in \{0,...,L_{k-1}\}$ where $L_k$ is the number of work-items within a work-group.
+      \item A work-item within the index space is identified by $f_k \in \{0,...G_{k-1}$ where $G-k$ is the number of work-items within an index space.
+      \item A work-group within the index space is identifed by $w_k \in \{0,...W_{k-1}\}$ where $W_k$ is the number of work-groups within an index space.
+      \item A work-item then can also be identified by $g_k = l_l + L_k \cdot w_k$ where $L_k \cdot W_k = G_k$
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 
 \subsection{OpenCL-Memory}
 
+\begin{itemize}
+  \item Prerequsities
+  \begin{itemize}
+    \item Define index space with global and work-group size for each dimension.
+    \item Mostly depends on data set: one work-item $\Leftrightarrow$ one data-item
+  \end{itemize}
+  \item Kernel Execution
+  \begin{itemize}
+    \item All work-items execute the kernel: one work-item $Leftrightarrow$ one kernel instance
+    \item Any work-items can diverge, i.e. have a different control path than other work-items
+    \item Work-item or work-group specific execution: get_global_id(), get_local_id(), get_group_id(), etc.
+    \begin{itemize}
+      \item the control path e.g. if(get_global_id(0) < elements)
+      \item the data path e.g. y[get_global_id(0)] = x[get_global_id(0)]
+    \end{itemize}
+    \item order of execution is not specified
+    \item work-items may be synchronized with barriers work_group_barrier(...)
+  \end{itemize}
+  \item Warps - Wavefronts
+  \begin{itemize}
+    \item Work-groups are split into smaller units called warps (Nvidia) or wavefronts (Ati), consisting of 32 or more threads.
+    \begin{itemize}
+      \item Warps can be considered as hardware threads which execute on a compute unit
+      \item Threads within warps execute the same instruction
+      \item However, threads within a warp may diverge and take different execution paths
+    \end{itemize}
+    \item Hardware unit (warp-scheduler) selects warps which are ready to execute on a compute unit in a SIMD fashion
+  \end{itemize}
+  \item Memory Spaces
+  \begin{itemize}
+    \item Separate layers of address space which are disjoint
+    \item Default address space is for function arguments and local variables private
+    \item Pointer arguments to functions are either from global or local memory
+  \end{itemize}
+  \item Memory Access
+  \begin{itemize}
+    \item Global (device) is accessible by the host as well as by all work-items of the index space
+    \begin{itemize}
+      \item Qualified by global within a kernel
+      \item Host accesses the device memory via write and read commands
+    \end{itemize}
+    \item Local memory is accessible by work-items beloging to a work-group (qualified by local within a kernel)
+    \item Private memory is only accessible by a work-item
+  \end{itemize}
+  \item Memory Consistency
+  \begin{itemize}
+    \item Within a work-item memory has load / store consistency
+    \item Local memory is consistent across work-items in a single work-group at a work-group barrier
+    \item Global memory is consistent across work-items in a single work-group at a work-group barrier, but there are no guarantees of memory consistency between different work-groups executing a kernel
+  \end{itemize}
+  \item Code Optimization
+  \begin{itemize}
+    \item Maximize instruction throughput
+    \begin{itemize}
+      \item Minimizing the use of instructions with low throughput
+      \item Let the thread scheduler to overlap memory transactions with mathematical computations as much as possible
+      \item Minimize warp divergence, make the condition dependent on warp size
+    \end{itemize}
+    \item Maximize memory throughput
+    \begin{itemize}
+      \item Use local memory if data is reused (caching of the global memory)
+      \item Access global memory in coalesced fashion such that consecutive threads access consecutive data-elements in order to issue only one memory transaction
+      \item Reduce local memory bank conflicts
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
 \section{Optimization for CPUs}
+
+\subsection{OpenCL Mapping of CPUs}
+
+\begin{itemize}
+  \item AMD OpenCL CPU model
+  \item OpenCL CPU model
+  \begin{itemize}
+    \item Internal realization
+    \begin{itemize}
+      \item work pool of threads processing kernel
+      \item each queue has a core management thread
+      \item a work-group is processed in one system thread
+      \item work-items in a work-group are processed sequentialy
+    \end{itemize}
+  \end{itemize}
+  \item Intel OpenCL Data-Parallel Execution Model
+  \begin{itemize}
+    \item Implicit SIMD data parallelism (i.e. shader-style)
+    \begin{itemize}
+      \item Write the kernel as a scalar program
+      \item Use vector data types sized naturally to the algorithm
+      \item Kernel automatically mapped to SIMD-compute-resources and cores by the compiler/runtime/hardware
+    \end{itemize}
+    \item Explicit SIMD data parallelism
+    \begin{itemize}
+      \item The kernel defines one stream of instructions
+      \item Parallelism from source-level wide vector types: size vector types to match native HW width
+      \item Programmer hints on the vector data type using attributes: vec_type_hint(typen)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Optimization Tips}
+
+\begin{itemize}
+  \item Kernel code can be imagined as body of for-loops. Every little waste is going to be costly. If you'd move something out of the loop, move it from the kernel.
+  \item Avoiding Spurious Operations in Kernel Code - As every line in the kernel is executed many times, make sure you have no spurious instructions in the kernel code. Pass quantities which are constant as parameters.
+  \item Performing Initialization in a Separate Task - Moving the initialization phase outside the kernel code, either to a separate kernel, or to the host code. Also if you need to run some kernel exactly once (i.e. just for single work-item) use clEnqueueTask which is specially crafted for this purpose.
+  \item Avoiding Handling Edge Conditions in Kernels - Assume you have a full HD image of 1920 x 1080. The four edge if conditions are executed for every pixel, that is, roughly 2 million times. However, they are only relevant for the 6000 pixels on the image edges that make 0.2\% of all the pixels. For the remaining 99.8\% work-items, the edge condition check would be a waste of time.
+  \item Using the Preprocessor for Constants - You can use OpenCL dynamic compilation feature to ensure the exponent is known at the kernel compile time (that is still host run time).
+  \item Prefer Signed Integer Data Types Over Unsigned - Many image-processing kernels operate on uchar input. To avoid overflow those eight bit input values are typically processed as 16- or 32-bit integer values. In both cases it is strongly recommended to use signed data types (shorts and ints), especially in case of further conversion to floating point and back.
+  \item Row-Wise Data Accesses Are Generally Preferable - OpenCL enables you to submit kernel on one-, two- or three-dimensional index space. Given the choice, one-dimensional ranges are preferable, for reasons of cache locality and saving index computations. If two- or three-dimensional range naturally fits your data dimensions, try to keep work-items scanning along rows, not columns.
+  \item Trading off Accuracy and Speed of Calculations
+  \begin{itemize}
+    \item native_* and half_* math built-ins, that have lower precision but are faster than their un-prefixed variants
+    \item compiler optimization options like -cl-fast-relaxed-math flag that allows optimizations for floating-point arithmetic for the whole OpenCL program.
+  \end{itemize}
+  \item Local Memory Usage - One typical GPU-targeted optimization is using local memory for caching of intermediate results. For CPU all OpenCL memory objects are cached by HW, so explicit caching via local memory just introduces unnecessary (moderate) overhead.
+  \item Built-In Functions - OpenCL offers a library of built-in functions, including vector variants. Using the built-in functions is typically more efficient than their manual implementation in OpenCL code.
+  \item Use Vector Components To Support SIMD usage
+  \item Avoid Extracting Vector Components
+\end{itemize}
+
+\subsection{Canny Edge Detector}
+
+\begin{itemize}
+  \item Gaussian blur filter - Smoothing of image to reduce noise
+  \item Compute horizontal derivative with Sobel filter
+  \item Compute vertical derivative with Sobel filter
+  \item Compute magnitude and angular range
+  \item Non-maximum suppression
+  \item Determine hysteresis thresholds from image histogram (percentile, median, Otsu)
+  \item Hysteresis thresholding
+  \item Optimization (see before)
+\end{itemize}
 
 \section{Optimization for GPUs}
 
+\subsection{System level performance optimization for CPU-GPU systems with
+OpenCL}
+
+\begin{itemize}
+  \item Typical image processing pipeline (processing on compute devices (CPUs / GPUs))
+  \begin{itemize}
+    \item Sensor I/O (Camera / Laser / ...)
+    \item Pre-processing (Histogram equalization / Colour adjustment / ...)
+    \item Processing (Feature extraction / Object detection / ...)
+    \item Post-processing (High level heuristics / Decision logic / ...)
+    \item Visualization I/O (Output information / Send to another I/O / ...)
+  \end{itemize}
+  \item General steps in GPU programming with OpenCL
+  \begin{enumerate}
+    \item Allocate memory on GPU: Create OpenCL oclBuffer
+    \item Queue copy command that copies memory from HOST to GPU: call clEnqueueWriteBuffer
+    \item Queue kernel task command: clEnqueueNDRangeKernel
+    \item Queue copy command that copies memory from GPU to HOST: call clEnqueueReadBuffer
+  \end{enumerate}
+  \item Runtime support for memory placement
+  \begin{itemize}
+    \item Memory management with the GPU driver has a complicated set of memory usage scenarios that need to be considered.
+    \item Application developers can control the memory placement by specifying flags during memory allocation as well as through specific memory access or transfer APIs called during runtime.
+    \item Application developers need device-specific knowledge in order to know how to avoid these copies.
+    \item Creating Buffers with clCreateBuffer() - Memory flags for allocation
+    \begin{itemize}
+      \item CL_MEM_READ_WRITE, CL_MEM_READ_ONLY, CL_MEM_WRITE_ONLY: Use these flags to allocate a buffer only on the compute device. This buffer matches device memory alignment.
+      \item CL_MEM_USE_HOST_PTR: Use this when a buffer is already allocated as page-aligned on the Host.
+      \item Create the buffer and its associated cl_mem object using: cl_mem myZeroCopyCLMemObj = clCreateBuffer(ctx, ...CL_MEM_USE_HOST_PTR...);
+      \item To avoid extra copies on the device side the host memory needs to follow the compute device memory alignment!
+      \item CL_MEM_ALLOC_HOST_PTR: runtime allocates the data on the device with a device specific page-alignment, memory may be read back on the host.
+      \item use this flag when you have not yet allocated the memory and want OpenCL to ensure that you have a zero copy buffer: buf = clCreateBuffer(ctx,...CL_MEM_ALLOC_HOST_PTR,...)
+      \item Zero-copy memory aka. Pinned memory
+      \begin{itemize}
+        \item This is host memory that the operating system has bound to a fixed physical address and that the operating system ensures is resident.
+        \item The CPU can access pinned host memory at full memory bandwidth.
+        \item The runtime limits the total amount of pinned host memory that can be used for memory objects.
+        \item If the runtime knows the data is in pinned host memory, it can be transferred to, and from, device memory without requiring staging buffers or having to perform pinning/unpinning on each transfer.
+        \item This offers improved transfer performance
+      \end{itemize}
+      \item CL_MAP_MEM_READ: This flag specifies that the region being mapped in the memory object is being mapped for reading.
+      \item CL_MAP_WRITE: This flag specifies that the region being mapped in the memory object is being mapped for writing.
+      \item CL_MAP_WRITE_INVALIDATE_REGION
+      \begin{itemize}
+        \item This flag specifies that the region being mapped in the memory object is being mapped for writing.
+        \item This flag alllows the implementation to no longer guarantee that the pointer returned by clEnqueueMapBuffer contains the latest bits in the region being mapped which can be a significant performance enhancement.
+        \item It means, if the host/device writes the memory then the device/host can immediately begin with processing without waiting to the end of the transfer.
+      \end{itemize}
+    \end{itemize}
+    \begin{enumerate}
+      \item clCreateBuffer(ctx, ...CL_MEM_ALLOC_HOST_PTR, ...)
+      \item clMapBuffer(ctx, ...CL_MAP_WRITE_INVALIDATE_REGION, ...)
+      \item clEnqueueNDRange(ctx, ...)
+    \end{enumerate}
+    \item Zero-copy memory is unfortunately a vendor specific OpenCL feature
+    \begin{itemize}
+      \item The current AMD-runtime supports following setup
+      \begin{itemize}
+        \item OpenCL runtime use pinned memory for DMA transfer
+        \item $\le$ 32 KB: for transfers from the host to device, the data is copied by the CPU to a runtime pinned host memory buffer, then DMA to device
+        \item $>$ 32 KB and $\le$ 16 MB: the host memory physcial pages are pinned, then DMA
+        \item $>$ 16 MB: OpenCL runtime pins host memory in stages of 16 MB block, then DMA
+      \end{itemize}
+      \item Data transfer is the key point for system level performance optimization
+      \begin{itemize}
+        \item Different flags to clCreateBuffer will result in different heap location of the memory object
+        \item Different heap location results in different transfer speed
+        \item Different memory object type results in different OpenCL runtime overhead
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+  \item OpenCL data transfers optimization methods
+  \begin{itemize}
+    \item Till now we have considered a memory placement in the system
+    \item Now we take a look on methods that improve data transfers between compute units
+    \begin{itemize}
+      \item double buffering
+      \item Asynchronous transfers with DMA units
+    \end{itemize}
+    \item With double buffering aka Asynchronous I/O its possible to overleap a computation with data transfers
+    \item With two command queues we can reduce N-1 time data movement
+  \end{itemize}
+  \item Optimizing GPU $Leftrightarrow$ Host communication
+  \begin{itemize}
+    \item Modern GPUs consist of several DMA (Direct memory access) units
+    \item With DMA units GPUs can overlap memory transfers with computation
+    \item Dual DMA engines allow Simultaneous bidirectional IO
+    \item Possible Improvement with dual DMA engines
+    \begin{itemize}
+      \item Baseline with one queue = 3 * 5 = 15T
+      \item Overlap Case = 7T
+      \item Potential-Theoretical Performance Benefit $\approx$ 50 \%
+    \end{itemize}
+  \end{itemize}
+  \item Abstact image processing flow
+  \begin{enumerate}
+    \item Sensor-Data acquisation
+    \item Image processing
+    \item Output - visualize
+  \end{enumerate}
+  \begin{itemize}
+    \item Many real-life image processing applications share following process architecture
+    \item We analyze the impact of memory placement on the application performance
+  \end{itemize}
+  \item Recap
+  \begin{itemize}
+    \item Double buffering should be used to hide the time of data movement
+    \item Additionally to reduce unnecessary copies between host and GPU use CL_MEM_ALLOC_HOST_PTR
+    \item Benefits of zero-copy (pinned memory):
+    \begin{itemize}
+      \item Avoid data copies, reduce memory usage
+      \item On iGPUs eliminates any transfers via bus
+      \item On dGPUs minimize idle times
+      \begin{itemize}
+        \item Instead of waiting for a host $\Rightarrow$ device memory copy to finish, input data can be processed by the processing units as soon as it arrives.
+        \item Instead of waiting for a kernel to complete before initiating a device $\Rightarrow$ host transfer, the data is posted to the bus as soon as the PU are done processing
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsection{Device level (GPU) performance optimization}
+
+\begin{itemize}
+  \item Mapping of OpenCL onto GPU Devices
+  \begin{itemize}
+    \item Work-group maps to a CU
+    \item Work-item maps to an ALU
+    \item Work-items: Each instance of a Kernel running on a ALU
+    \item Work-Group: GPU schedules the range of work-items onto a group of PE, until all work-items have been processed
+    \item NDRange: OpenCL maps the total number of work-items to be launched onto a n-dimensional grid, Developers can specify how to divide these work-items into work-groups
+  \end{itemize}
+  \item SIMT Execution Model
+  \begin{itemize}
+    \item GPU compute devies are very efficient at parallelizing large numbers of work-items in a manner transparent to the application
+    \item Modern GPUs combine work-items in HW-Threads called by: AMD (Wavefront) or NVIDIA (Warps)
+    \item Each GPU compute device uses the large number of wavefronts to hide memory access latencies.
+    \item The resource scheduler switch the active wavefront in a given compute unit whenever the current wavefronz is stalled (ex. waiting for a memory access to complete)
+    \item Hardware multithreading
+    \begin{itemize}
+      \item Each CU contains a number of wavefronts/warps distributed in the work-groups
+      \item The instructions are executed in a lock-step, one instruction for whole HW-thread (warp, wavefront)
+      \item The GPU scheduler evaluates all available warps to find one that is ready
+      \item This effectively hides latency if there is enough warps to select from and there is a high ratio between memory accesses and arithmetic
+    \end{itemize}
+  \end{itemize}
+  \item Predication and Control Flow
+  \begin{itemize}
+    \item How do we handle threads going down different execution paths when the same instruction is issued to all the work-items in a wavefront?
+    \item Predication is a method for mitigating the costs associated with conditional branches
+    \begin{itemize}
+      \item Beneficial in case of branches to short sections of code
+      \item Based on fact that executing an instruction and squashing its result may be as efficient as executing a conditional
+      \item Compilers may replace switch or if then else statements by using branch predication
+    \end{itemize}
+  \end{itemize}
+  \item Predication for GPUs
+  \begin{itemize}
+    \item Predicate is a condition code that is set to true or false based on a conditional
+    \item Both cases of conditional flow get scheduled for execution
+    \begin{itemize}
+      \item Instructions with a true predicate are commited
+      \item Instructions with a false predicate do not write results or read operands
+    \end{itemize}
+    \item Benefits performance only for very short conditionals
+  \end{itemize}
+  \item Divergent Control Flow
+  \begin{itemize}
+    \item Case 1: All odd threads will execute if conditional while all even threads execute the else conditional. the if and else block need to be issued for each wavefront.
+    \item Case2: All threads of the first wavefront will execute the if case while other wavefronts will execute the else case. In this case only one out of, if or else is issued for each wavefront.
+  \end{itemize}
+  \item Occupancy
+  \begin{itemize}
+    \item Occupancy = active warps / maximum warps per CU
+    \item Warps count is controlled by
+    \begin{itemize}
+      \item work-group sizes
+      \item HW-Resources (registers and local memory)
+    \end{itemize}
+    \item Switchting to other warps enables to mask latency!
+    \item Mask instructions latencies is one of key optimization steps!
+    \item Enough occupancy depends on the code
+    \item To optimize it the programmer need to tune
+    \begin{itemize}
+      \item work-group sizes
+      \item local-shared and register memory usage
+    \end{itemize}
+  \end{itemize}
+  \item GPU Memories
+  \begin{itemize}
+    \item OpenCL has four memory domains: Private, Local, Constant, Images
+    \item Dependent on the HW they present various latencies
+  \end{itemize}
+  \item GPU Memories - Access pattern
+  \begin{itemize}
+    \item The discrepancy in execution times between the mappings is due to data accesses on the global memory
+    \item Assuming row-major data, data in a row(i.e., elements in adjacent columns) are stored sequentially in memory
+    \item To ensure coalesced accesses, consecutive threads in the same wavefronz, HW-threads should be mapped to columns (the second dimension) of the matrices
+  \end{itemize}
+  \item GPU Global memory access patterns
+  \begin{itemize}
+    \item Nvidia GPUs
+    \begin{itemize}
+      \item For example if warp threads accesses elements with the stride = 4 Byte on Nvidia-GPUs and the access is aligned, only one transaction on L1 cache is requested
+      \item If sequential threads in a warp access memory that is sequential but not aligned with the cache lines, two 128-byte L1 cache will be requested
+      \item On L2 cache segments are only 32-byte wide, so now five 32-byte L2 segments are needed to satisfy the request
+    \end{itemize}
+  \end{itemize}
+  \item GPU Local-shared Memory
+  \begin{itemize}
+    \item There are many algorithms where the memory access pattern is hard to control, e.g. matrix transpose.
+    \item No matter which thread mapping is chosen, one operation (read/write) will produce coalesced accesses while the other (write/read) produces undoalesced accesses
+    \item Note that data must be read to a temporary location (such as a register) befire being written to a new location
+    \item If local memory is used to buffer the data between reading and writing, we can rearrange the thread mapping to provide coalesced accesses in both directions (Note that the work group must be square)
+    \item Local-Shared memory are organized in memory banks
+    \item On Nvidia GPUs shared memory uses 32 banks
+    \item Dependent on the memory access there are different conflicts
+    \item To get best performance programmers need to reduce these conflicts
+  \end{itemize}
+  \item GPU read-only, constant memories: To map to the read-only memory:
+  \begin{itemize}
+    \item Annotate pointers with const and __restrict: __kernel void foo(const char* __restrict in) {...} - The compiler knows that the pointers are not aliased
+    \item Allocate the memory statically in the OpenCL device Program: int array[100]; __kernel void foo(const char* __restrict in){...}
+    \item Use explictly constanct memory space: __kernel void foo(const char* __restrict in, constant char* coef){...}
+  \end{itemize}
+  \item GPUs texture memories
+  \begin{itemize}
+    \item C/C++ arrays and OpenCL Buffers objects are stored as a 1D memory objects
+    \item GPUs additionally support in hardware the multidimensional memories, 2D images via OpenCL images
+    \item OpenCL images are memory object optimized for 2D locality
+    \item Adjacent image elements are not guaranteed to be contiguous in HW-memory
+    \item Mostly variant of Z curve layout
+    \item To allow for hardware abstraction in the physical memory layout, images elements cannot be accessed directly from within the kernel
+    \item In OpenCL kernels, the read_image{type} function call is used instead of simply indexing using []
+    \item Usage of read_image and write_image is based on hardware functional units accessed via OpenCL samplers
+    \item OpenCL Image samplers
+    \begin{enumerate}
+      \item Pixel Interpolation, either closest pixel can be returned or a linear interpolation (CL_FILTER_NEAREST (no interpolation) or CL_FILTER_LINEAR (linear interpolation))
+      \item Variable image coordinates (Integers <0-max_size_int>, Floating <0.0-max_size_float>, Normalized <0.0-1.0>)
+      \item Out-of bounds management, hardware manages accesses outside the image (CL_ADDRESS_NONE, CL_ADDRES_CLAMP (set to specified border color value), CL_ADDRES_CLAMP_TO_EDGE (set to the edge color value), CL_ADDRESS_REPEAT (available only with norm. coordinates), CL_ADDRESS_MIRRORED_REPEAT (available only with norm. coordinates))
+      \item Channels in OpenCL images refer to the primary colors that make up an image (Each pixel in a texture can contain 1 to 4 channels (R to RGBA), RGBA: red, green, blue, alpha, The color information is sotred as float / integer data, Packaging several values (channels) in a pixel this can improve memory bandwith utilization)
+    \end{enumerate}
+  \end{itemize}
+  \item GPUs extensions
+  \begin{itemize}
+    \item OpenCL extensions allow for a vendor to expose device functionality without concern for the specification
+    \item Different categories of extensions are available
+    \begin{itemize}
+      \item Khronos/Standard approved
+      \begin{itemize}
+        \item "cl_khr" in extension names
+        \item Approved conformance tests
+        \item Might be promoted to required Core feature in later versions
+        \item e.g. textensions for atomic operations
+      \end{itemize}
+      \item External extensions
+      \begin{itemize}
+        \item "cl_ext" in extension name
+        \item Developed by 2 or more members of the working group
+        \item No required conformance tests
+        \item e.q. Device Fission (cl_ext_device_fission)
+      \end{itemize}
+      \item Vendor specific ext.
+      \begin{itemize}
+        \item Developed by a single vendor
+        \item e.g. AMD cl_amd_printf
+      \end{itemize}
+    \end{itemize}
+    \item Enabling extensions is done in host code by developer - Always check for availability of required extensions before running program in order to maintain device compatibility
+    \item OpenCL extensions have to be enabled in kernel code
+    \item Intial state: all extensions disabled
+    \item Error and warning reporting done according to specification
+    \item Programmer's responsiblity to specify what extensions his code needs
+    \item Known target device will not be known till runtime
+    \item Check device and possibly have a fall-back version because code using any extension will compile as long as the pragma is added to the kernel
+    \item Application can query device for information about extensions using CL_DEVICE_EXTENSIONS parameter
+    \item Checking for extensions
+    \begin{itemize}
+      \item Steps to check for the availability of an extension
+      \item Query device using CL_DEVICE_EXTENSIONS
+      \item Names of extensions supported by device returned in a character array
+      \item Search in array for required extension
+    \end{itemize}
+    \item OpenCL supports wide group of instructions
+    \item Note: various support for matah. Instructions (half, single, double precisions)
+  \end{itemize}
+  \item Half, single and double precision extensions
+  \begin{itemize}
+    \item OpenCL provides double precision floating-point as an optional extension (cl_khr_fp64)
+    \item Standard: single precision for floating point ops.
+    \item Enable extension by using directive in kernel file: double precision vectors of type double, single precisionxs vectors of type float
+    \item Half precision is defined using the extension cl_khr_fp16
+    \item Really important optimization, high possible speed-ups!
+  \end{itemize}
+  \item OpenCL atomic instructions
+  \begin{itemize}
+    \item int atom_add(__global/_local int *p, int val) - Atomically add val to data at location pointed to by p and return old value
+    \item int atom_sub(__global/_local int *p, int val) - Atomically subtract val to data at location pointed to by p and return old value
+    \item int atom_xchg(__global/_local int *p, int val) - Swaps the old value pointed to by p with val
+    \item int atom_inc(__global/_local int* p) - Atomically increment the 32-bit value at location pointed by p. Return the old value
+  \end{itemize}
+\end{itemize}
+
 \section{SIFT Optimization}
-
-
 
 \end{document}
