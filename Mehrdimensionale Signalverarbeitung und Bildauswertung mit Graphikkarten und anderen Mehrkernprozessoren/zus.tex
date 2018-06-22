@@ -1225,9 +1225,42 @@ OpenCL}
     \item int atom_sub(__global/_local int *p, int val) - Atomically subtract val to data at location pointed to by p and return old value
     \item int atom_xchg(__global/_local int *p, int val) - Swaps the old value pointed to by p with val
     \item int atom_inc(__global/_local int* p) - Atomically increment the 32-bit value at location pointed by p. Return the old value
+    \item int atom_dec(__global/_local int* p) - Atomically decrement the 32-bit value at location pointed by p. Return the old value
+    \item int_atom_cmpxchg(__global int* p, int cmp, int val) - Compare val with data at location p and exchange if not equal. Return old value
+    \item int atom_min(__global int *p, int val) - Store min(val, *p) at location pointed by p. Returns original value
+    \item int atom_max(__global int *p, int val) - Store max(val, *p) at location pointed to by p. Returns original value
+    \item int atom_and(__global int *p, int val) - Store and(val, *p) at location pointed to by p. Returns original value
+    \item int atom_or(__global int *p, int val) - Store or(val, *p) at location pointed to by p. Returns original value
+    \item int atom_xor(__global int *p, int val) - Store xor(val, *p) at location pointed to by p. Returns original value
+  \end{itemize}
+  \item Vendor specific extension
+  \begin{itemize}
+    \item AMD: cl_amd_media_ops, cl_amd_media_ops2, cl_amd_bus_addressable_memory, ....
+    \item ARM: cl_arm_dot_product, cl_arm_shared_virtual_memory, ...
+    \item Intel: cl_intel_accelerator, cl_intel_motion_estimation, cl_intel_subgroups, ...
+  \end{itemize}
+  \item Recap
+  \begin{itemize}
+    \item Latency optimization: Occupancy maximize, thread divergence minimize
+    \item Memory throughput optimizations: Global, local, constant, private texture memories accesses
+    \item Instruction throughput optimizations: Math, atomic, extensions
   \end{itemize}
 \end{itemize}
 
-\section{SIFT Optimization}
+\section{Optimization GPU programming}
+
+\begin{itemize}
+  \item Application tuning process
+  \begin{itemize}
+    \item START
+    \item Chose an efficient algorithm
+    \item Write the code
+    \item Optimize to increase efficiency
+    \item Validate the results
+    \item Check performance
+    \item If not efficient, try to optimize further or change the algorithm
+    \item If efficient - READY
+  \end{itemize}
+\end{itemize}
 
 \end{document}
